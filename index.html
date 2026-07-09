@@ -843,22 +843,17 @@
     }
 
     function runIntro() {
-      if (LANG) {
-        showStage("stageLoader");
-        startLoader();
-      } else {
-        showStage("stageLang");
-        function pickLang(lang) {
-          saveLang(lang); applyLang(lang);
-          document.getElementById("langEn").removeEventListener("click", onEn);
-          document.getElementById("langPt").removeEventListener("click", onPt);
-          showStage("stageLoader"); startLoader();
-        }
-        function onEn() { pickLang("en"); }
-        function onPt() { pickLang("pt"); }
-        document.getElementById("langEn").addEventListener("click", onEn);
-        document.getElementById("langPt").addEventListener("click", onPt);
+      showStage("stageLang");
+      function pickLang(lang) {
+        saveLang(lang); applyLang(lang);
+        document.getElementById("langEn").removeEventListener("click", onEn);
+        document.getElementById("langPt").removeEventListener("click", onPt);
+        showStage("stageLoader"); startLoader();
       }
+      function onEn() { pickLang("en"); }
+      function onPt() { pickLang("pt"); }
+      document.getElementById("langEn").addEventListener("click", onEn);
+      document.getElementById("langPt").addEventListener("click", onPt);
     }
 
     /* LANGUAGE TOGGLE (header, always available) */
