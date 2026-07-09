@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FDF6E9" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <title>Website Design - $599 Flat, 5 Days | Gabriella Costa</title>
+  <meta name="description" content="Custom website design for small businesses - $599 flat rate, live in 5 days, 100% yours to keep. No hourly billing, no monthly fees." />
+  <link rel="canonical" href="https://gabriellacosta.design/website-design.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Website Design - $599 Flat, Live in 5 Days" />
+  <meta property="og:description" content="Custom, high-converting websites for small businesses - $599 flat, 5-day delivery, 100% yours." />
+  <meta property="og:url" content="https://gabriellacosta.design/website-design.html" />
+  <meta property="og:image" content="https://gabriellacosta.design/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Hanken+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Website Design",
+    "name": "Custom Website Design - Flat Rate",
+    "description": "Custom-designed, mobile-responsive, SEO-ready website delivered in 5 days with full domain and hosting ownership.",
+    "provider": { "@type": "Person", "name": "Gabriella Costa" },
+    "areaServed": ["Atlanta, GA", "United States"],
+    "url": "https://gabriellacosta.design/website-design.html",
+    "offers": { "@type": "Offer", "price": "599", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --cream:#FDF6E9; --paper:#FFFFFF; --ink:#1A1330; --ink-soft:#4A4266;
+      --magenta:#DB3A8C; --blue:#2856D6; --lime:#A9CC3D; --tangerine:#E8691A; --violet:#6B32E0;
+      --display:"Unbounded","Arial Black",system-ui,sans-serif;
+      --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      --mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+      --fs-hud:clamp(0.66rem,0.6rem + 0.3vw,0.78rem);
+      --fs-body:clamp(1rem,0.96rem + 0.2vw,1.14rem);
+      --fs-lead:clamp(1.15rem,1rem + 0.7vw,1.55rem);
+      --fs-h3:clamp(1.5rem,1.1rem + 1.6vw,2.4rem);
+      --fs-h2:clamp(2.1rem,1.3rem + 3.6vw,4.6rem);
+      --fs-h1:clamp(2.7rem,1.4rem + 6.4vw,6.2rem);
+      --fs-mega:clamp(4rem,1rem + 15vw,15rem);
+      --s-1:8px;--s-2:16px;--s-3:24px;--s-4:32px;--s-5:48px;--s-6:64px;--s-7:96px;--s-8:128px;--s-9:168px;
+      --r:18px;--r-lg:30px;--r-pill:999px;
+      --line:3px solid var(--ink); --pop:6px 6px 0 var(--ink); --pop-sm:4px 4px 0 var(--ink); --pop-lg:10px 10px 0 var(--ink);
+      --maxw:1220px; --ease:cubic-bezier(0.22,1,0.36,1); --spring:cubic-bezier(0.34,1.56,0.64,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;} *{margin:0;padding:0;}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100svh;display:flex;flex-direction:column;}
+    img,svg{display:block;max-width:100%;} a{color:inherit;text-decoration:none;}
+    button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+    ::selection{background:var(--lime);color:var(--ink);}
+    :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px;}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(520px 520px at 88% -6%,rgba(255,60,160,0.16),transparent 60%),radial-gradient(600px 600px at -8% 12%,rgba(45,107,255,0.12),transparent 60%),radial-gradient(560px 560px at 50% 108%,rgba(124,58,255,0.12),transparent 60%),var(--cream);}
+    #confetti{position:fixed;inset:0;z-index:1100;pointer-events:none;}
+    .cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;will-change:transform;}
+    .cur-dot{width:8px;height:8px;background:var(--magenta);transform:translate(-50%,-50%);}
+    .cur-ring{width:34px;height:34px;border:3px solid var(--ink);transform:translate(-50%,-50%);transition:width .25s var(--spring),height .25s var(--spring),background .2s,border-color .2s;}
+    .cur-ring.hot{width:58px;height:58px;background:rgba(200,255,60,0.35);border-color:var(--violet);}
+    @media (hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none;}}
+    .skip-link{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:8px;z-index:1200;font-weight:700;transition:top .2s;}
+    .skip-link:focus{top:12px;}
+    .wrap{width:min(100% - 2*var(--s-3),var(--maxw));margin-inline:auto;}
+    .hud{font-family:var(--mono);font-size:var(--fs-hud);letter-spacing:0.22em;text-transform:uppercase;font-weight:700;}
+    .sticker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border:var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);box-shadow:var(--pop-sm);}
+    .card{background:var(--paper);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop);}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--spring);transition-delay:var(--d,0ms);}
+    .reveal.in-view{opacity:1;transform:none;}
+    .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border:var(--line);border-radius:var(--r-pill);font-family:var(--display);font-weight:700;font-size:0.92rem;letter-spacing:-0.01em;background:var(--lime);color:var(--ink);box-shadow:var(--pop);transition:transform .15s var(--ease),box-shadow .15s var(--ease),background .2s;}
+    .btn:hover{transform:translate(-2px,-2px);box-shadow:var(--pop-lg);background:var(--magenta);color:var(--paper);}
+    .btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+    .btn svg{width:18px;height:18px;transition:transform .2s var(--ease);}
+    .btn:hover svg{transform:translate(3px,-3px) rotate(8deg);}
+    .btn.paper{background:var(--paper);} .btn.paper:hover{background:var(--lime);color:var(--ink);}
+    @keyframes stageIn { from { opacity:0; transform: translateY(24px) scale(.98);} to { opacity:1; transform:none; } }
+
+    /* HEADER */
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,4vw,36px);transition:transform .35s var(--ease);}
+    .site-header .bar{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 12px 10px 18px;border:var(--line);border-radius:var(--r-pill);background:rgba(253,246,233,0.8);backdrop-filter:blur(10px);box-shadow:var(--pop-sm);}
+    .site-header.hide{transform:translateY(-140%);}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.05rem;}
+    .brand .monogram{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--magenta);color:var(--cream);border:2px solid var(--ink);font-family:var(--display);font-weight:800;font-size:0.85rem;transform:rotate(-4deg);}
+    .brand small{display:block;font-family:var(--mono);font-weight:700;font-size:0.54rem;letter-spacing:0.18em;color:var(--ink-soft);text-transform:uppercase;}
+    .nav-levels{display:flex;align-items:center;gap:6px;}
+    .nav-levels a{font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);padding:8px 14px;border-radius:var(--r-pill);transition:background .2s,color .2s;}
+    .nav-levels a:hover,.nav-levels a.active{background:var(--ink);color:var(--cream);}
+    .header-cta{display:flex;align-items:center;gap:10px;}
+    .header-cta .btn{padding:11px 20px;font-size:0.8rem;box-shadow:var(--pop-sm);}
+    .lang-toggle{display:flex;border:2px solid var(--ink);border-radius:var(--r-pill);overflow:hidden;}
+    .lang-pill{font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.08em;padding:8px 12px;color:var(--ink);transition:background .2s,color .2s;}
+    .lang-pill.active{background:var(--ink);color:var(--cream);}
+    @media (max-width:860px){.nav-levels{display:none;}}
+    @media (max-width:560px){
+      .header-cta .btn span{display:none;}
+      .header-cta .btn{padding:11px;}
+      .site-header .bar{padding:8px 8px 8px 12px;}
+      .brand{gap:8px;font-size:0.86rem;}
+      .brand small{display:none;}
+      .lang-pill{padding:6px 8px;font-size:0.6rem;}
+    }
+
+    /* PAGE HERO */
+    main{flex:1;}
+    .phero{padding:clamp(120px,18vh,180px) 0 var(--s-6); position:relative; overflow:hidden;}
+    .phero .wrap{position:relative;z-index:2;}
+    .phero-eyebrow{display:inline-flex;margin-bottom:var(--s-4);}
+    .phero h1{font-family:var(--display);font-weight:800;font-size:var(--fs-h1);line-height:0.94;letter-spacing:-0.03em;max-width:16ch;}
+    .phero h1 .clk{color:var(--magenta);} .phero h1 .cli{color:var(--blue);}
+    .phero h1 .u{position:relative;white-space:nowrap;}
+    .phero h1 .u svg{position:absolute;left:0;right:0;bottom:-0.18em;width:100%;height:0.24em;color:var(--lime);}
+    .phero-lead{font-size:var(--fs-lead);color:var(--ink-soft);max-width:46ch;margin:var(--s-4) 0 var(--s-5);}
+    .phero-actions{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center;}
+    .phero-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--s-5);}
+    .badge-pop{font-family:var(--display);font-weight:800;font-size:0.9rem;padding:10px 18px;border:var(--line);border-radius:var(--r-pill);box-shadow:var(--pop-sm);}
+    .badge-pop.m{background:var(--magenta);color:var(--cream);} .badge-pop.b{background:var(--blue);color:var(--cream);} .badge-pop.l{background:var(--lime);color:var(--ink);}
+    .pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-2);margin-top:var(--s-7);}
+    .pstat{border:var(--line);border-radius:var(--r);padding:var(--s-3);background:var(--paper);box-shadow:var(--pop-sm);}
+    .pstat .num{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-0.02em;}
+    .pstat .cap{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
+
+    /* LEVELS */
+    .levels-head{text-align:center;padding:var(--s-8) 0 var(--s-4);}
+    .levels-head h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);letter-spacing:-0.03em;}
+    .level{padding:var(--s-6) 0;}
+    .level-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:var(--s-5);align-items:center;border:var(--line);border-radius:var(--r-lg);padding:var(--s-5);box-shadow:var(--pop);position:relative;overflow:hidden;}
+    .level-num{font-family:var(--display);font-weight:800;font-size:var(--fs-mega);line-height:0.8;letter-spacing:-0.04em;color:rgba(26,19,48,0.16);}
+    .level-meta .lv-tag{display:inline-flex;margin-bottom:var(--s-2);}
+    .level-meta h3{font-family:var(--display);font-weight:800;font-size:var(--fs-h3);line-height:1.02;letter-spacing:-0.02em;}
+    .level-meta p{color:var(--ink-soft);font-size:var(--fs-lead);margin-top:var(--s-2);max-width:44ch;}
+    .level-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s-3);}
+    .level-tags span{font-family:var(--mono);font-weight:700;font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border:2px solid var(--ink);border-radius:var(--r-pill);}
+    .level-day{font-family:var(--mono);font-weight:700;font-size:0.74rem;margin-top:var(--s-3);display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--r-pill);background:var(--ink);color:var(--cream);}
+    .level.c-magenta .level-inner{background:var(--magenta);color:var(--cream);}
+    .level.c-blue .level-inner{background:var(--blue);color:var(--cream);}
+    .level.c-lime .level-inner{background:var(--lime);color:var(--ink);}
+    .level.c-tangerine .level-inner{background:var(--tangerine);color:var(--ink);}
+    .level.c-violet .level-inner{background:var(--violet);color:var(--cream);}
+    .level.c-cream .level-inner{background:var(--paper);color:var(--ink);}
+    .level.c-magenta .level-num,.level.c-blue .level-num,.level.c-violet .level-num{color:rgba(253,246,233,0.24);}
+    .level.c-magenta .level-meta p,.level.c-blue .level-meta p,.level.c-violet .level-meta p{color:rgba(253,246,233,0.9);}
+    .level.c-magenta .level-tags span,.level.c-blue .level-tags span,.level.c-violet .level-tags span{border-color:var(--cream);color:var(--cream);}
+    .level.c-magenta .lv-tag .sticker,.level.c-blue .lv-tag .sticker,.level.c-violet .lv-tag .sticker{background:var(--cream);}
+    .level.c-lime .level-day,.level.c-tangerine .level-day{background:var(--ink);color:var(--cream);}
+    .level:nth-child(even) .level-inner{grid-template-columns:1.15fr 0.85fr;}
+    .level:nth-child(even) .level-num{order:2;text-align:right;}
+
+    /* OFFER */
+    .offer{background:var(--violet);color:var(--cream);border-block:var(--line);padding:var(--s-8) 0;}
+    .offer-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-6);align-items:center;}
+    .offer-copy h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);line-height:1;letter-spacing:-0.03em;}
+    .offer-copy h2 em{font-style:normal;color:var(--lime);}
+    .offer-copy p{color:rgba(253,246,233,0.9);font-size:var(--fs-lead);margin-top:var(--s-3);max-width:44ch;}
+    .offer-copy b{color:var(--lime);}
+    .loadout{padding:var(--s-5);color:var(--ink);position:relative;}
+    .loadout .price-row{display:flex;align-items:baseline;gap:14px;}
+    .loadout .price{font-family:var(--display);font-weight:800;font-size:clamp(3rem,9vw,5rem);letter-spacing:-0.03em;}
+    .loadout .price small{font-size:1.6rem;color:var(--magenta);vertical-align:super;}
+    .loadout .price-was{font-family:var(--mono);font-weight:700;font-size:0.82rem;color:var(--ink-soft);text-decoration:line-through;}
+    .loadout .price-note{font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--violet);margin:var(--s-1) 0 var(--s-4);}
+    .loadout ul{list-style:none;display:grid;gap:12px;margin-bottom:var(--s-4);}
+    .loadout li{display:flex;gap:12px;align-items:flex-start;font-size:1rem;font-weight:500;}
+    .loadout li .tick{width:24px;height:24px;border-radius:8px;flex:none;display:grid;place-items:center;background:var(--lime);border:2px solid var(--ink);}
+    .loadout li .tick svg{width:14px;height:14px;}
+    .loadout .btn{width:100%;justify-content:center;}
+
+    /* CONTACT / CTA */
+    .complete{padding:var(--s-9) 0 var(--s-8);text-align:center;position:relative;background:radial-gradient(700px 500px at 50% 0%,rgba(255,122,26,0.25),transparent 60%);}
+    .complete-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border:var(--line);border-radius:var(--r-pill);background:var(--lime);color:var(--ink);font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:var(--s-4);box-shadow:var(--pop-sm);}
+    .complete h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h1);line-height:0.94;letter-spacing:-0.03em;max-width:16ch;margin:0 auto var(--s-3);}
+    .complete h2 em{font-style:normal;color:var(--magenta);}
+    .complete>.wrap>.reveal>p{color:var(--ink-soft);font-size:var(--fs-lead);max-width:42ch;margin:0 auto var(--s-6);}
+    .form-card{max-width:620px;margin:0 auto;padding:var(--s-5);text-align:left;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2);}
+    .field{margin-bottom:var(--s-3);}
+    .field label{display:block;font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+    .field label .req{color:var(--magenta);}
+    .field input,.field textarea{width:100%;padding:14px 16px;border:var(--line);border-radius:var(--r);background:var(--cream);color:var(--ink);font-family:var(--body);font-size:1rem;transition:box-shadow .15s,transform .15s;}
+    .field input:focus,.field textarea:focus{outline:none;box-shadow:var(--pop-sm);transform:translate(-2px,-2px);}
+    .field textarea{resize:vertical;min-height:96px;}
+    .field .help{font-size:0.8rem;color:var(--ink-soft);margin-top:6px;}
+    .form-card .btn{width:100%;justify-content:center;margin-top:var(--s-1);}
+    .form-status{font-family:var(--mono);font-weight:700;font-size:0.8rem;margin-top:var(--s-2);text-align:center;min-height:1.2em;}
+    .form-status.ok{color:#1a8a4a;} .form-status.err{color:#d62d2d;}
+    .hp{position:absolute;left:-9999px;opacity:0;}
+    .form-success{display:none;text-align:center;padding:var(--s-4) 0;}
+    .form-success.show{display:block;animation:stageIn .6s var(--spring) both;}
+    .form-success .check{width:56px;height:56px;margin:0 auto var(--s-3);border-radius:50%;background:var(--lime);display:grid;place-items:center;border:2px solid var(--ink);}
+    .form-success .check svg{width:26px;height:26px;}
+    .form-success h3{font-family:var(--display);font-weight:800;font-size:1.8rem;}
+    .form-success p{color:var(--ink-soft);margin-top:8px;}
+
+    /* FOOTER */
+    .site-footer{background:var(--ink);color:var(--cream);border-top:var(--line);padding:var(--s-6) 0 var(--s-4);}
+    .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2);}
+    .footer-bottom p{font-family:var(--mono);font-weight:700;font-size:0.68rem;color:rgba(253,246,233,0.6);}
+    .to-top{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;}
+    .to-top:hover{color:var(--lime);}
+
+    @media (max-width:960px){
+      .level-inner,.level:nth-child(even) .level-inner,.offer-wrap{grid-template-columns:1fr;gap:var(--s-4);}
+      .level:nth-child(even) .level-num{order:0;text-align:left;}
+      .level-num{font-size:clamp(4rem,22vw,8rem);}
+      .pstats{grid-template-columns:1fr;}
+    }
+    @media (max-width:560px){
+      .form-row{grid-template-columns:1fr;}
+      .level-inner{padding:var(--s-4);}
+      .level-num{font-size:clamp(3.2rem,18vw,5.5rem);margin-bottom:-8px;}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;}
+      .reveal{opacity:1!important;transform:none!important;}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div class="cur-ring" aria-hidden="true"></div>
+  <div class="cur-dot" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Gabriella Costa home">
+        <span class="monogram">GC</span>
+        <span>Gabriella Costa<small>Web Design Studio</small></span>
+      </a>
+      <nav class="nav-levels" aria-label="Primary">
+        <a href="#levels" class="active" aria-current="page" data-i18n="navProcess">Process</a>
+        <a href="about.html" data-i18n="navAbout">About</a>
+        <a href="#offer" data-i18n="navPricing">Pricing</a>
+        <a href="index.html#missions" data-i18n="navWork">Work</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" class="lang-pill" id="toggleEn" data-lang="en">EN</button>
+          <button type="button" class="lang-pill" id="togglePt" data-lang="pt">PT</button>
+        </div>
+        <a class="btn" href="#contact" data-magnetic><span data-i18n="headerCtaLabel">Start your site</span><span data-i18n-html="headerCtaPrice"> · $599</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- PAGE HERO -->
+    <section class="phero" aria-labelledby="phero-h1">
+      <div class="wrap">
+        <span class="sticker phero-eyebrow reveal" data-i18n="pheroEyebrow">◆ Site / Web Design</span>
+        <h1 id="phero-h1" class="reveal" data-i18n-html="pheroH1">Websites that turn <span class="clk">clicks</span> into <span class="u cli">clients<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.</h1>
+        <p class="phero-lead reveal" style="--d:100ms" data-i18n="pheroLead">Custom, high-converting websites for small businesses & creators - built to get you found, win trust, and turn visitors into paying customers.</p>
+        <div class="phero-actions reveal" style="--d:180ms">
+          <a class="btn" href="#contact" data-magnetic><span data-i18n="ctaStartSite">Start your site</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+          </a>
+          <a class="btn paper" href="index.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
+        </div>
+        <div class="phero-badges reveal" style="--d:260ms">
+          <span class="badge-pop m" data-i18n-html="badgeFlat">$599 FLAT</span>
+          <span class="badge-pop b" data-i18n="badgeLive">LIVE IN 5 DAYS</span>
+          <span class="badge-pop l" data-i18n="badgeYours">100% YOURS</span>
+        </div>
+        <div class="pstats">
+          <div class="pstat reveal"><div class="num"><span data-count="30" data-suffix="+">0</span></div><div class="cap" data-i18n="statSites">Sites launched</div></div>
+          <div class="pstat reveal" style="--d:80ms"><div class="num"><span data-count="5" data-suffix="-day">0</span></div><div class="cap" data-i18n="statTurnaround">Turnaround, guaranteed</div></div>
+          <div class="pstat reveal" style="--d:160ms"><div class="num" data-i18n-html="statPriceNum">$599</div><div class="cap" data-i18n="statPrice">One flat price</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEVELS -->
+    <section id="levels" aria-label="The build process, level by level">
+      <div class="wrap">
+        <div class="levels-head reveal">
+          <span class="sticker" style="margin-bottom:16px" data-i18n="levelsTag">◆ How we build it</span>
+          <h2 data-i18n-html="levelsH2">Six levels, one <span style="color:var(--magenta)">unforgettable</span> website.</h2>
+        </div>
+
+        <article class="level c-magenta reveal" id="level-1">
+          <div class="level-inner">
+            <div class="level-num" aria-hidden="true">01</div>
+            <div class="level-meta">
+              <span class="lv-tag sticker" data-i18n="lv1Tag">Level 01 - Discovery</span>
+              <h3 data-i18n="lv1H3">Understanding your business.</h3>
+              <p data-i18n="lv1P">Before a single pixel, we decode who you serve, what makes them buy, and the one action your site must drive.</p>
+              <div class="level-tags"><span data-i18n="lv1Tag1">Goals</span><span data-i18n="lv1Tag2">Audience</span><span data-i18n="lv1Tag3">Positioning</span></div>
+              <div><span class="level-day" data-i18n="lv1Day">◈ Day 1 - you share logo, copy & inspiration</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="level c-blue reveal" id="level-2">
+          <div class="level-inner">
+            <div class="level-num" aria-hidden="true">02</div>
+            <div class="level-meta">
+              <span class="lv-tag sticker" data-i18n="lv2Tag">Level 02 - Strategy & UX</span>
+              <h3 data-i18n="lv2H3">Mapping the path that converts.</h3>
+              <p data-i18n="lv2P">We chart the journey from stranger to client - structure, hierarchy, and the exact flow that turns attention into action.</p>
+              <div class="level-tags"><span data-i18n="lv2Tag1">User flow</span><span data-i18n="lv2Tag2">Wireframes</span><span data-i18n="lv2Tag3">Conversion</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="level c-lime reveal" id="level-3">
+          <div class="level-inner">
+            <div class="level-num" aria-hidden="true">03</div>
+            <div class="level-meta">
+              <span class="lv-tag sticker" data-i18n="lv3Tag">Level 03 - UI Design</span>
+              <h3 data-i18n="lv3H3">A custom interface, built for your brand.</h3>
+              <p data-i18n="lv3P">Not a template with your logo dropped in. Every type choice, color and detail is designed to feel unmistakably yours.</p>
+              <div class="level-tags"><span data-i18n="lv3Tag1">Visual identity</span><span data-i18n="lv3Tag2">Typography</span><span data-i18n="lv3Tag3">Motion</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="level c-tangerine reveal" id="level-4">
+          <div class="level-inner">
+            <div class="level-num" aria-hidden="true">04</div>
+            <div class="level-meta">
+              <span class="lv-tag sticker" data-i18n="lv4Tag">Level 04 - Development</span>
+              <h3 data-i18n="lv4H3">Hand-built, fast, and responsive.</h3>
+              <p data-i18n="lv4P">Clean code, flawless on every screen. Built to load in a blink and scale as your business grows.</p>
+              <div class="level-tags"><span data-i18n="lv4Tag1">Responsive</span><span data-i18n="lv4Tag2">Clean code</span><span data-i18n="lv4Tag3">Scalable</span></div>
+              <div><span class="level-day" data-i18n="lv4Day">◈ Days 2-4 - I build the entire thing</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="level c-violet reveal" id="level-5">
+          <div class="level-inner">
+            <div class="level-num" aria-hidden="true">05</div>
+            <div class="level-meta">
+              <span class="lv-tag sticker" data-i18n="lv5Tag">Level 05 - SEO & Performance</span>
+              <h3 data-i18n="lv5H3">Found on Google. Loads in a blink.</h3>
+              <p data-i18n="lv5P">Technical SEO, local optimization and Core Web Vitals baked in - so the right people actually find you.</p>
+              <div class="level-tags"><span data-i18n="lv5Tag1">Technical SEO</span><span data-i18n="lv5Tag2">Local search</span><span data-i18n="lv5Tag3">Web Vitals</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="level c-cream reveal" id="level-6">
+          <div class="level-inner">
+            <div class="level-meta">
+              <span class="lv-tag sticker" style="background:var(--lime)" data-i18n="lv6Tag">Level 06 - Launch 🎉</span>
+              <h3 data-i18n-html="lv6H3">You go live. And you <span style="color:var(--magenta)">own</span> everything.</h3>
+              <p data-i18n="lv6P">Domain and hosting, 100% in your name. No lock-in, no monthly ransom to keep your own website.</p>
+              <div class="level-tags"><span data-i18n="lv6Tag1">Go live</span><span data-i18n="lv6Tag2">Full ownership</span><span data-i18n="lv6Tag3">Support</span></div>
+              <div><span class="level-day" data-i18n="lv6Day">◈ Day 5 - you shine</span></div>
+            </div>
+            <div class="level-num" aria-hidden="true">06</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OFFER -->
+    <section class="offer" id="offer" aria-labelledby="offer-h">
+      <div class="wrap offer-wrap">
+        <div class="offer-copy reveal">
+          <span class="sticker" style="margin-bottom:20px" data-i18n="offerTag">◆ The loadout</span>
+          <h2 id="offer-h" data-i18n-html="offerH2">One price. Everything in. <em>No hourly games.</em></h2>
+          <p data-i18n-html="offerP">Most agencies quote $3,000+ and take two months. I give you a premium, custom site for a flat <b>$599</b> - and you never pay me again to own it.</p>
+        </div>
+        <div class="loadout card reveal" style="--d:120ms">
+          <div class="price-row">
+            <span class="price" data-i18n-html="priceMain"><small>$</small>599</span>
+            <span class="price-was" data-i18n="priceWas">agencies: $3,000+</span>
+          </div>
+          <p class="price-note" data-i18n="priceNote">One flat price · no subscriptions</p>
+          <ul>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="offerLi1">Custom design, built for your business</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="offerLi2">Five-day delivery, guaranteed</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="offerLi3">Flawless on mobile, tablet & desktop</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="offerLi4">SEO setup & local optimization</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="offerLi5">Full domain & hosting ownership</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="offerLi6">Content setup & ongoing support</span></li>
+          </ul>
+          <a class="btn" href="#contact" data-magnetic><span data-i18n="offerCta">Claim this loadout</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section class="complete" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="complete-badge" data-i18n="pcontactBadge">Site / Web Design</span>
+          <h2 id="contact-h" data-i18n-html="pcontactH2">Let's build your <em>website.</em></h2>
+          <p data-i18n="pcontactP">Tell me about your project and I'll come back with a plan - usually within a day.</p>
+        </div>
+
+        <div class="form-card card reveal" style="--d:120ms">
+          <form id="missionForm" novalidate>
+            <input type="hidden" name="access_key" value="3410c514-2783-40bb-8985-234c821ad80e" />
+            <input type="hidden" name="subject" value="New website design inquiry - $599 flat rate" />
+            <input type="hidden" name="from_name" value="Gabriella Costa Website" />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name" data-i18n-html="fieldName">Your name <span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Jane Doe" data-i18n-ph="fieldNamePh" />
+              </div>
+              <div class="field">
+                <label for="f-email" data-i18n-html="fieldEmail">Email <span class="req">*</span></label>
+                <input id="f-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="jane@business.com" data-i18n-ph="fieldEmailPh" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-business" data-i18n="fieldBusiness">Business / project</label>
+              <input id="f-business" name="business" type="text" autocomplete="organization" placeholder="What are we building?" data-i18n-ph="fieldBusinessPh" />
+            </div>
+            <div class="field">
+              <label for="f-message" data-i18n-html="fieldMessage">Tell me about it <span class="req">*</span></label>
+              <textarea id="f-message" name="message" required placeholder="Your goals, timeline, and anything you love or hate in a website." data-i18n-ph="fieldMessagePh"></textarea>
+              <p class="help" data-i18n="fieldHelp">No spam, ever. Your details are only used to reply to you.</p>
+            </div>
+            <button class="btn" type="submit" id="formSubmit" data-magnetic><span data-i18n="formSubmit">Begin the mission</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span>
+            <h3 data-i18n="formSuccessTitle">Mission accepted!</h3>
+            <p data-i18n="formSuccessP">Thanks - your message is in. I'll get back to you shortly. 🌎</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom">
+      <p data-i18n-html="footerCopy">© <span id="year">2026</span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world</p>
+      <a class="to-top" href="index.html" data-i18n="backHome">← Back home</a>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    "use strict";
+    var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var fine=window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var $=function(s,c){return (c||document).querySelector(s);};
+    var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+    document.getElementById("year").textContent=new Date().getFullYear();
+    var palette=["#DB3A8C","#2856D6","#A9CC3D","#E8691A","#6B32E0"];
+
+    var I18N = {
+      en: {
+        navProcess: "Process", navAbout: "About", navPricing: "Pricing", navWork: "Work", navContact: "Contact",
+        headerCtaLabel: "Start your site", headerCtaPrice: " · $599",
+        pheroEyebrow: "◆ Site / Web Design",
+        pheroH1: 'Websites that turn <span class="clk">clicks</span> into <span class="u cli">clients<svg viewBox="0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
+        pheroLead: "Custom, high-converting websites for small businesses & creators - built to get you found, win trust, and turn visitors into paying customers.",
+        ctaStartSite: "Start your site", ctaSeeWork: "See the work",
+        badgeFlat: "$599 FLAT", badgeLive: "LIVE IN 5 DAYS", badgeYours: "100% YOURS",
+        statSites: "Sites launched", statTurnaround: "Turnaround, guaranteed", statPrice: "One flat price", statPriceNum: "$599",
+        levelsTag: "◆ How we build it", levelsH2: 'Six levels, one <span style="color:var(--magenta)">unforgettable</span> website.',
+        lv1Tag: "Level 01 - Discovery", lv1H3: "Understanding your business.",
+        lv1P: "Before a single pixel, we decode who you serve, what makes them buy, and the one action your site must drive.",
+        lv1Tag1: "Goals", lv1Tag2: "Audience", lv1Tag3: "Positioning", lv1Day: "◈ Day 1 - you share logo, copy & inspiration",
+        lv2Tag: "Level 02 - Strategy & UX", lv2H3: "Mapping the path that converts.",
+        lv2P: "We chart the journey from stranger to client - structure, hierarchy, and the exact flow that turns attention into action.",
+        lv2Tag1: "User flow", lv2Tag2: "Wireframes", lv2Tag3: "Conversion",
+        lv3Tag: "Level 03 - UI Design", lv3H3: "A custom interface, built for your brand.",
+        lv3P: "Not a template with your logo dropped in. Every type choice, color and detail is designed to feel unmistakably yours.",
+        lv3Tag1: "Visual identity", lv3Tag2: "Typography", lv3Tag3: "Motion",
+        lv4Tag: "Level 04 - Development", lv4H3: "Hand-built, fast, and responsive.",
+        lv4P: "Clean code, flawless on every screen. Built to load in a blink and scale as your business grows.",
+        lv4Tag1: "Responsive", lv4Tag2: "Clean code", lv4Tag3: "Scalable", lv4Day: "◈ Days 2-4 - I build the entire thing",
+        lv5Tag: "Level 05 - SEO & Performance", lv5H3: "Found on Google. Loads in a blink.",
+        lv5P: "Technical SEO, local optimization and Core Web Vitals baked in - so the right people actually find you.",
+        lv5Tag1: "Technical SEO", lv5Tag2: "Local search", lv5Tag3: "Web Vitals",
+        lv6Tag: "Level 06 - Launch 🎉", lv6H3: 'You go live. And you <span style="color:var(--magenta)">own</span> everything.',
+        lv6P: "Domain and hosting, 100% in your name. No lock-in, no monthly ransom to keep your own website.",
+        lv6Tag1: "Go live", lv6Tag2: "Full ownership", lv6Tag3: "Support", lv6Day: "◈ Day 5 - you shine",
+        offerTag: "◆ The loadout", offerH2: "One price. Everything in. <em>No hourly games.</em>",
+        offerP: 'Most agencies quote $3,000+ and take two months. I give you a premium, custom site for a flat <b>$599</b> - and you never pay me again to own it.',
+        priceMain: "<small>$</small>599", priceWas: "agencies: $3,000+", priceNote: "One flat price · no subscriptions",
+        offerLi1: "Custom design, built for your business", offerLi2: "Five-day delivery, guaranteed",
+        offerLi3: "Flawless on mobile, tablet & desktop", offerLi4: "SEO setup & local optimization",
+        offerLi5: "Full domain & hosting ownership", offerLi6: "Content setup & ongoing support",
+        offerCta: "Claim this loadout",
+        pcontactBadge: "Site / Web Design", pcontactH2: "Let's build your <em>website.</em>",
+        pcontactP: "Tell me about your project and I'll come back with a plan - usually within a day.",
+        fieldName: 'Your name <span class="req">*</span>', fieldNamePh: "Jane Doe",
+        fieldEmail: 'Email <span class="req">*</span>', fieldEmailPh: "jane@business.com",
+        fieldBusiness: "Business / project", fieldBusinessPh: "What are we building?",
+        fieldMessage: 'Tell me about it <span class="req">*</span>', fieldMessagePh: "Your goals, timeline, and anything you love or hate in a website.",
+        fieldHelp: "No spam, ever. Your details are only used to reply to you.",
+        formSubmit: "Begin the mission", formSuccessTitle: "Mission accepted!", formSuccessP: "Thanks - your message is in. I'll get back to you shortly. 🌎",
+        footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world', backHome: "← Back home",
+        formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
+        formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.", formErrNetwork: "Network error. Please email gabip3@gmail.com."
+      },
+      pt: {
+        navProcess: "Processo", navAbout: "Sobre", navPricing: "Preço", navWork: "Portfólio", navContact: "Contato",
+        headerCtaLabel: "Comece seu site", headerCtaPrice: " · R$3.000",
+        pheroEyebrow: "◆ Site / Web Design",
+        pheroH1: 'Sites que transformam <span class="clk">cliques</span> em <span class="u cli">clientes<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
+        pheroLead: "Sites personalizados e de alta conversão para pequenos negócios e criadores de conteúdo - feitos pra você ser encontrado, ganhar confiança e transformar visitantes em clientes pagantes.",
+        ctaStartSite: "Comece seu site", ctaSeeWork: "Veja o portfólio",
+        badgeFlat: "R$3.000 À VISTA", badgeLive: "NO AR EM 5 DIAS", badgeYours: "100% SEU",
+        statSites: "Sites lançados", statTurnaround: "Prazo garantido", statPrice: "Preço único", statPriceNum: "R$3.000",
+        levelsTag: "◆ Como eu construo", levelsH2: 'Seis fases, um site <span style="color:var(--magenta)">inesquecível</span>.',
+        lv1Tag: "Fase 01 - Descoberta", lv1H3: "Entendendo seu negócio.",
+        lv1P: "Antes de qualquer pixel, eu decifro quem você atende, o que faz essas pessoas comprarem, e a única ação que seu site precisa gerar.",
+        lv1Tag1: "Objetivos", lv1Tag2: "Público", lv1Tag3: "Posicionamento", lv1Day: "◈ Dia 1 - você envia logo, textos e referências",
+        lv2Tag: "Fase 02 - Estratégia & UX", lv2H3: "Mapeando o caminho que converte.",
+        lv2P: "Eu traço a jornada de visitante desconhecido até cliente - estrutura, hierarquia e o fluxo exato que transforma atenção em ação.",
+        lv2Tag1: "Fluxo do usuário", lv2Tag2: "Wireframes", lv2Tag3: "Conversão",
+        lv3Tag: "Fase 03 - Design de Interface", lv3H3: "Uma interface sob medida, feita pra sua marca.",
+        lv3P: "Nada de template com sua logo enfiada no meio. Cada fonte, cor e detalhe é pensado pra parecer inconfundivelmente seu.",
+        lv3Tag1: "Identidade visual", lv3Tag2: "Tipografia", lv3Tag3: "Movimento",
+        lv4Tag: "Fase 04 - Desenvolvimento", lv4H3: "Construído à mão, rápido e responsivo.",
+        lv4P: "Código limpo, perfeito em qualquer tela. Feito pra carregar num piscar de olhos e crescer junto com seu negócio.",
+        lv4Tag1: "Responsivo", lv4Tag2: "Código limpo", lv4Tag3: "Escalável", lv4Day: "◈ Dias 2-4 - eu construo tudo",
+        lv5Tag: "Fase 05 - SEO & Performance", lv5H3: "Encontrado no Google. Carrega na hora.",
+        lv5P: "SEO técnico, otimização local e Core Web Vitals já embutidos - pra você ser encontrado pelas pessoas certas.",
+        lv5Tag1: "SEO técnico", lv5Tag2: "Busca local", lv5Tag3: "Web Vitals",
+        lv6Tag: "Fase 06 - Lançamento 🎉", lv6H3: 'Seu site vai ao ar. E você é dono de <span style="color:var(--magenta)">tudo</span>.',
+        lv6P: "Domínio e hospedagem 100% no seu nome. Sem amarras, sem mensalidade obrigatória pra manter o que é seu.",
+        lv6Tag1: "Vai ao ar", lv6Tag2: "Propriedade total", lv6Tag3: "Suporte", lv6Day: "◈ Dia 5 - é a sua vez de brilhar",
+        offerTag: "◆ O pacote", offerH2: "Um preço só. Tudo incluso. <em>Sem joguinho de hora.</em>",
+        offerP: 'A maioria das agências cobra US$3.000+ e leva dois meses. Eu entrego um site premium e personalizado por <b>R$3.000</b> fixos - e você nunca mais paga pra ser dono dele.',
+        priceMain: "<small>R$</small>3.000", priceWas: "agências: US$3.000+", priceNote: "Equivale a US$599 no câmbio atual · sem mensalidade",
+        offerLi1: "Design personalizado, feito pro seu negócio", offerLi2: "Entrega em cinco dias, garantida",
+        offerLi3: "Perfeito no celular, tablet e computador", offerLi4: "SEO configurado e otimização local",
+        offerLi5: "Domínio e hospedagem 100% seus", offerLi6: "Conteúdo configurado e suporte contínuo",
+        offerCta: "Quero esse pacote",
+        pcontactBadge: "Site / Web Design", pcontactH2: "Vamos construir seu <em>site.</em>",
+        pcontactP: "Me conta sobre seu projeto que eu volto com um plano - geralmente em até um dia.",
+        fieldName: 'Seu nome <span class="req">*</span>', fieldNamePh: "Maria Silva",
+        fieldEmail: 'E-mail <span class="req">*</span>', fieldEmailPh: "maria@negocio.com",
+        fieldBusiness: "Negócio / projeto", fieldBusinessPh: "O que vamos construir?",
+        fieldMessage: 'Me conta sobre o projeto <span class="req">*</span>', fieldMessagePh: "Seus objetivos, prazo, e o que você ama ou odeia em um site.",
+        fieldHelp: "Sem spam, nunca. Seus dados só são usados pra te responder.",
+        formSubmit: "Começar a missão", formSuccessTitle: "Missão aceita!", formSuccessP: "Obrigada - sua mensagem chegou. Já volto com uma resposta. 🌎",
+        footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo', backHome: "← Voltar ao início",
+        formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
+        formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.", formErrNetwork: "Erro de conexão. Me manda um e-mail: gabip3@gmail.com."
+      }
+    };
+    var LANG = (function () { try { return localStorage.getItem("gc_lang"); } catch (e) { return "en"; } })() || "en";
+    function applyLang(lang) {
+      LANG = lang;
+      try { localStorage.setItem("gc_lang", lang); } catch (e) {}
+      var dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+      $$("[data-i18n]").forEach(function (el) { if (dict[el.getAttribute("data-i18n")] != null) el.textContent = dict[el.getAttribute("data-i18n")]; });
+      $$("[data-i18n-html]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-html")] != null) el.innerHTML = dict[el.getAttribute("data-i18n-html")]; });
+      $$("[data-i18n-ph]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-ph")] != null) el.placeholder = dict[el.getAttribute("data-i18n-ph")]; });
+      var yearEl = document.getElementById("year"); if (yearEl) yearEl.textContent = new Date().getFullYear();
+      $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
+    }
+    applyLang(LANG);
+    $$(".lang-pill").forEach(function (b) { b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); }); });
+
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in-view"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+      $$(".reveal").forEach(function (el) { io.observe(el); });
+    } else { $$(".reveal").forEach(function (el) { el.classList.add("in-view"); }); }
+
+    var header = document.getElementById("header"), lastY = 0;
+    window.addEventListener("scroll", function () { var y = window.pageYOffset; header.classList.toggle("hide", y > lastY && y > 500); lastY = y; }, { passive: true });
+
+    if (fine && !reduce) {
+      var dot = $(".cur-dot"), ring = $(".cur-ring"), mx = 0, my = 0, rx = 0, ry = 0;
+      window.addEventListener("mousemove", function (e) { mx = e.clientX; my = e.clientY; dot.style.transform = "translate(" + mx + "px," + my + "px) translate(-50%,-50%)"; });
+      (function loop() { rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18; ring.style.transform = "translate(" + rx + "px," + ry + "px) translate(-50%,-50%)"; requestAnimationFrame(loop); })();
+      $$("a,button").forEach(function (el) { el.addEventListener("mouseenter", function () { ring.classList.add("hot"); }); el.addEventListener("mouseleave", function () { ring.classList.remove("hot"); }); });
+      $$("[data-magnetic]").forEach(function (el) {
+        el.addEventListener("mousemove", function (e) { var r = el.getBoundingClientRect(); el.style.transform = "translate(" + (e.clientX - r.left - r.width / 2) * 0.22 + "px," + (e.clientY - r.top - r.height / 2) * 0.3 + "px)"; });
+        el.addEventListener("mouseleave", function () { el.style.transform = ""; });
+      });
+    }
+
+    function countUp(el) {
+      var target = parseFloat(el.getAttribute("data-count")), suffix = el.getAttribute("data-suffix") || "";
+      if (reduce) { el.textContent = target + suffix; return; }
+      var start = null, dur = 1300;
+      function step(t) { if (!start) start = t; var p = Math.min((t - start) / dur, 1); el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix; if (p < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+    if ("IntersectionObserver" in window) {
+      var cObs = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { countUp(e.target); cObs.unobserve(e.target); } }); }, { threshold: 0.6 });
+      $$("[data-count]").forEach(function (el) { cObs.observe(el); });
+    } else { $$("[data-count]").forEach(function (el) { el.textContent = el.getAttribute("data-count") + (el.getAttribute("data-suffix") || ""); }); }
+
+    function confetti() {
+      if (reduce) return;
+      var cv = document.getElementById("confetti"), ctx = cv.getContext("2d"), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
+      var bits = [], N = 140;
+      for (var i = 0; i < N; i++) bits.push({ x: innerWidth * dpr * (0.3 + Math.random() * 0.4), y: innerHeight * dpr * 0.4, vx: (Math.random() - 0.5) * 16 * dpr, vy: (Math.random() * -16 - 6) * dpr, g: 0.5 * dpr, s: (Math.random() * 8 + 5) * dpr, c: palette[i % palette.length], rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.4, life: 1 });
+      var t0 = performance.now();
+      (function anim(t) {
+        var el = t - t0; ctx.clearRect(0, 0, cv.width, cv.height);
+        bits.forEach(function (b) { b.vy += b.g; b.x += b.vx; b.y += b.vy; b.rot += b.vr; b.life = Math.max(0, 1 - el / 2600); ctx.globalAlpha = b.life; ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.rot); ctx.fillStyle = b.c; ctx.fillRect(-b.s / 2, -b.s / 2, b.s, b.s * 0.6); ctx.restore(); });
+        ctx.globalAlpha = 1;
+        if (el < 2600) requestAnimationFrame(anim); else ctx.clearRect(0, 0, cv.width, cv.height);
+      })(t0);
+    }
+
+    var form = document.getElementById("missionForm");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var dict = I18N[LANG] || I18N.en;
+        var status = document.getElementById("formStatus"), btn = document.getElementById("formSubmit"), key = form.querySelector('[name=access_key]').value;
+        if (!form.checkValidity()) { status.className = "form-status err"; status.textContent = dict.formErrRequired; var fi = form.querySelector(":invalid"); if (fi) fi.focus(); return; }
+        if (key === "YOUR_WEB3FORMS_ACCESS_KEY") { status.className = "form-status err"; status.textContent = dict.formErrNotConnected; return; }
+        btn.style.opacity = "0.6"; btn.style.pointerEvents = "none"; status.className = "form-status"; status.textContent = dict.formSending;
+        var data = Object.fromEntries(new FormData(form).entries());
+        fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+          .then(function (r) { return r.json(); })
+          .then(function (j) { if (j.success) { form.style.display = "none"; document.getElementById("formSuccess").classList.add("show"); confetti(); } else { status.className = "form-status err"; status.textContent = j.message || dict.formErrGeneric; btn.style.opacity = ""; btn.style.pointerEvents = ""; } })
+          .catch(function () { status.className = "form-status err"; status.textContent = dict.formErrNetwork; btn.style.opacity = ""; btn.style.pointerEvents = ""; });
+      });
+    }
+
+    $$('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { var id = a.getAttribute("href"); if (id.length < 2) return; var el = document.querySelector(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } });
+    });
+  })();
+  </script>
+</body>
+</html>
