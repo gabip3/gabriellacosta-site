@@ -211,33 +211,17 @@
     .loader-pct { font-family: var(--mono); font-weight:700; font-size:0.78rem; letter-spacing:0.25em; color: var(--cream); margin-top: var(--s-2); }
 
     .ps-title { font-family: var(--display); font-weight:800; font-size: clamp(2.4rem,8vw,5.4rem); line-height:1; margin-bottom: var(--s-5); }
-    .ps-title .p { color: var(--lime); } .ps-title .m { color: var(--magenta); }
-    .press-start { font-family: var(--display); font-weight:800; font-size:1.15rem; letter-spacing:0.02em; padding:22px 52px; border-radius: var(--r-pill); border:3px solid var(--cream); color: var(--ink); background: var(--lime); box-shadow: 8px 8px 0 var(--magenta); animation: bob 1.6s var(--ease) infinite; }
-    .press-start:hover { background: var(--magenta); color: var(--cream); box-shadow: 8px 8px 0 var(--lime); }
-    .press-start:active { transform: translate(8px,8px); box-shadow: 0 0 0 var(--magenta); }
     @keyframes bob { 0%,100%{transform: translateY(0)} 50%{transform: translateY(-8px)} }
-    .press-hint { margin-top: var(--s-3); color: rgba(253,246,233,0.7); }
 
-    .stage-head { margin-bottom: var(--s-5); }
-    .stage-head h2 { font-family: var(--display); font-weight:800; font-size: clamp(1.8rem,6vw,3.4rem); margin-top: var(--s-1); }
     .players { display:grid; grid-template-columns:1fr 1fr; gap: var(--s-3); }
     .player { position:relative; padding: var(--s-4) var(--s-3); border:3px solid var(--cream); border-radius: var(--r-lg); background: rgba(253,246,233,0.06); text-align:left; overflow:hidden; transition: transform .3s var(--spring), background .3s, box-shadow .3s; }
     .player[data-selectable] { cursor:pointer; }
     .player[data-selectable]:hover { transform: translateY(-8px) rotate(-1deg); background: rgba(200,255,60,0.12); box-shadow: 10px 10px 0 var(--magenta); }
-    .player.locked { opacity:0.5; }
-    .player.joined { border-color: var(--lime); background: rgba(200,255,60,0.14); box-shadow: 10px 10px 0 var(--lime); }
-    .player .p-slot { display:block; font-family: var(--mono); font-weight:700; font-size:0.66rem; letter-spacing:0.22em; color: var(--lime); }
     .player .p-avatar { width:64px; height:64px; border-radius:16px; margin: var(--s-2) 0; display:grid; place-items:center; background: linear-gradient(140deg, var(--violet), var(--magenta)); border:2px solid var(--cream); }
     .player.two .p-avatar { background: linear-gradient(140deg, var(--blue), var(--lime)); }
     .player .p-avatar svg { width:32px; height:32px; color: var(--cream); }
     .player .p-name { display:block; font-family: var(--display); font-weight:800; font-size:1.35rem; }
-    .player .p-role { display:block; font-family: var(--mono); font-weight:700; font-size:0.76rem; color: var(--lime); margin-top:6px; }
-    .player .p-desc { display:block; font-size:0.94rem; color: rgba(253,246,233,0.82); margin-top: var(--s-2); }
     .player .p-cta { margin-top: var(--s-3); font-family: var(--mono); font-weight:700; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--lime); display:inline-flex; align-items:center; gap:8px; }
-    .player .p-status { position:absolute; top:14px; right:14px; font-family: var(--mono); font-weight:700; font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; padding:5px 10px; border-radius: var(--r-pill); border:2px solid rgba(253,246,233,0.4); }
-    .player.joined .p-status { color: var(--ink); background: var(--lime); border-color: var(--lime); }
-    .team-hint { margin-top: var(--s-4); text-align:center; font-family: var(--display); font-weight:800; font-size:1.05rem; color: var(--lime); opacity:0; transform: translateY(10px) scale(.96); transition: opacity .4s var(--spring), transform .4s var(--spring); }
-    .team-hint.show { opacity:1; transform:none; }
 
     .lang-btn { text-align:center; display:flex; flex-direction:column; align-items:center; padding: var(--s-5) var(--s-3); }
     .lang-btn .p-avatar { width:56px; height:44px; border-radius:10px; overflow:hidden; }
@@ -245,16 +229,8 @@
     .lang-btn .p-name { font-size:1.5rem; margin-top: var(--s-2); }
     .lang-btn .p-cta { margin-top: var(--s-2); }
 
-    .party-title { font-family: var(--display); font-weight:800; font-size: clamp(2.4rem,8vw,5.4rem); margin-bottom: var(--s-4); }
-    .party-title em { font-style: normal; color: var(--lime); }
-    .party-list { display:inline-flex; flex-direction:column; gap:12px; margin:0 auto var(--s-4); text-align:left; }
-    .party-list li { list-style:none; display:flex; align-items:center; gap:14px; font-family: var(--mono); font-weight:700; font-size:1rem; opacity:0; transform: translateX(-12px); }
-    .party-list li.show { animation: partyIn .5s var(--spring) forwards; }
-    @keyframes partyIn { to { opacity:1; transform:none; } }
     .check { width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background: var(--lime); color: var(--ink); flex:none; border:2px solid var(--cream); }
     .check svg { width:15px; height:15px; }
-    .party-sub { color: rgba(253,246,233,0.85); margin-bottom: var(--s-5); font-size: var(--fs-lead); }
-    .party-sub em { font-style:normal; color: var(--magenta); font-weight:700; }
 
     /* ============================================================ HEADER */
     .site-header { position:fixed; top:0; left:0; right:0; z-index: var(--z-header); display:flex; align-items:center; justify-content:space-between; padding:16px clamp(16px,4vw,36px); transition: transform .35s var(--ease); }
@@ -403,20 +379,14 @@
       .stats { gap: var(--s-2); }
       .stat { padding: var(--s-2); }
 
-      /* Clear the fixed Skip Intro pill on every intro stage, not just Select Player */
+      /* Clear the fixed Skip Intro pill on every intro stage */
       .stage { padding-top: 62px; }
-      .stage-head { margin-bottom: var(--s-3); }
-      .stage-head h2 { font-size: 1.5rem; }
       .players { gap: var(--s-2); }
       .player { padding: var(--s-3) var(--s-2); }
       .player .p-avatar { width:48px; height:48px; margin: 6px 0; }
       .player .p-avatar svg { width:24px; height:24px; }
       .player .p-name { font-size: 1.1rem; }
-      .player .p-role { font-size: 0.68rem; margin-top:4px; }
-      .player .p-desc { font-size: 0.84rem; margin-top:6px; line-height:1.4; }
       .player .p-cta { margin-top: var(--s-2); font-size:0.64rem; }
-      .player .p-status { top:10px; right:10px; font-size:0.54rem; padding:4px 8px; }
-      .player .p-slot { font-size: 0.6rem; }
       .intro-blob { opacity:0.5; filter: blur(24px); }
     }
 
@@ -469,56 +439,6 @@
       <p class="loader-pct" id="loaderPct">00%</p>
     </div>
 
-    <!-- Stage 2: Press Start -->
-    <div class="stage" id="stagePress">
-      <p class="coin" style="animation:none;color:var(--cream);opacity:.7" data-i18n="coinReady">System ready</p>
-      <h2 class="ps-title" data-i18n-html="psTitle">Great sites aren't <span class="p">ordered.</span><br/>They're <span class="m">built together.</span></h2>
-      <button class="press-start" id="pressStart" type="button" data-magnetic data-i18n="pressStart">Press Start</button>
-      <p class="press-hint hud" data-i18n="pressHint">Enter · or click to begin</p>
-    </div>
-
-    <!-- Stage 3: Select Player -->
-    <div class="stage" id="stageSelect">
-      <div class="stage-head">
-        <p class="coin" style="animation:none" data-i18n="coinSelect">Select your player</p>
-        <h2 data-i18n="selectH2">Every project is a two-player game.</h2>
-      </div>
-      <div class="players">
-        <button class="player" id="playerClient" data-selectable type="button" aria-label="Select Player 1, the Client, The Visionary">
-          <span class="p-status" data-i18n="p1Status">Press to join</span>
-          <span class="p-slot" data-i18n="p1Slot">Player 01</span>
-          <span class="p-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>
-          <span class="p-name" data-i18n="p1Name">You - The Client</span>
-          <span class="p-role" data-i18n="p1Role">“The Visionary”</span>
-          <span class="p-desc" data-i18n="p1Desc">You know your business, your customers, and where you want to go.</span>
-          <span class="p-cta"><span data-i18n="p1Cta">Choose this player</span> <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </button>
-        <div class="player two locked" id="playerGabi" aria-label="Player 2, Gabriella Costa, The Builder">
-          <span class="p-status" data-i18n="p2Status">Standing by</span>
-          <span class="p-slot" data-i18n="p2Slot">Player 02</span>
-          <span class="p-avatar" aria-hidden="true"><img src="assets/gabriella.webp" width="64" height="64" alt="" loading="lazy" onerror="this.remove()"/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20v-1a6 6 0 0 1 12 0v1"/><circle cx="10" cy="7" r="3.2"/><path d="M17 8l1.6 1.6L22 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span class="p-name">Gabriella Costa</span>
-          <span class="p-role" data-i18n="p2Role">“The Builder”</span>
-          <span class="p-desc" data-i18n="p2Desc">The designer & developer who turns your vision into a site that converts.</span>
-          <span class="p-cta" data-i18n="p2Cta">Joins automatically</span>
-        </div>
-      </div>
-      <p class="team-hint" id="teamHint" data-i18n="teamHint" aria-live="polite">🤝 Great sites are built together.</p>
-    </div>
-
-    <!-- Stage 4: Party Created -->
-    <div class="stage" id="stageParty">
-      <p class="coin" style="animation:none" data-i18n="coinParty">Mission started</p>
-      <h2 class="party-title" data-i18n-html="partyTitle">Team <em>assembled!</em></h2>
-      <ul class="party-list" id="partyList">
-        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="party1">You - The Visionary</span></li>
-        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="party2">Gabriella Costa - The Builder</span></li>
-      </ul>
-      <p class="party-sub" data-i18n-html="partySub">Ready to build something <em>unforgettable.</em></p>
-      <button class="btn" id="enterSite" type="button" data-magnetic><span data-i18n="enterSite">Enter the mission</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
-      </button>
-    </div>
   </div>
 
   <!-- ========================================================= HEADER -->
@@ -763,19 +683,7 @@
         footerEmail: "Email", footerStart: "Start a project",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world',
         toTop: "Back to top", skipIntro: "Skip intro →",
-        coinInsert: "Let's begin", coinReady: "System ready",
-        psTitle: 'Great sites aren\'t <span class="p">ordered.</span><br/>They\'re <span class="m">built together.</span>',
-        pressStart: "Press Start", pressHint: "Enter · or click to begin",
-        coinSelect: "Select your player", selectH2: "Every project is a two-player game.",
-        p1Status: "Press to join", p1Slot: "Player 01", p1Name: "You - The Client", p1Role: "“The Visionary”",
-        p1Desc: "You know your business, your customers, and where you want to go.", p1Cta: "Choose this player",
-        p2Status: "Standing by", p2Slot: "Player 02", p2Role: "“The Builder”",
-        p2Desc: "The designer & developer who turns your vision into a site that converts.", p2Cta: "Joins automatically",
-        p1StatusReady: "Ready", p2StatusJoined: "Joined", p2CtaJoined: "Auto-joined the party",
-        teamHint: "🤝 Great sites are built together.",
-        coinParty: "Mission started", partyTitle: "Team <em>assembled!</em>",
-        party1: "You - The Visionary", party2: "Gabriella Costa - The Builder",
-        partySub: "Ready to build something <em>unforgettable.</em>", enterSite: "Enter the mission",
+        coinInsert: "Let's begin",
         loaderLines: ["Initializing experience...", "Loading creativity...", "Compiling ideas...", "Optimizing performance...", "Ready."],
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
         formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.",
@@ -809,19 +717,7 @@
         footerEmail: "E-mail", footerStart: "Comece um projeto",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo',
         toTop: "Voltar ao topo", skipIntro: "Pular intro →",
-        coinInsert: "Vamos começar", coinReady: "Sistema pronto",
-        psTitle: 'Grandes sites não são <span class="p">encomendados.</span><br/>São <span class="m">construídos juntos.</span>',
-        pressStart: "Aperta o Start", pressHint: "Enter · ou clique pra começar",
-        coinSelect: "Escolha seu jogador", selectH2: "Todo projeto é um jogo de dois jogadores.",
-        p1Status: "Pressione pra entrar", p1Slot: "Jogador 01", p1Name: "Você - O Cliente", p1Role: "“O Visionário”",
-        p1Desc: "Você conhece seu negócio, seus clientes e onde quer chegar.", p1Cta: "Escolher esse jogador",
-        p2Status: "Aguardando", p2Slot: "Jogador 02", p2Role: "“A Construtora”",
-        p2Desc: "A designer e desenvolvedora que transforma sua visão em um site que converte.", p2Cta: "Entra automaticamente",
-        p1StatusReady: "Pronto", p2StatusJoined: "Entrou", p2CtaJoined: "Entrou automaticamente no grupo",
-        teamHint: "🤝 Grandes sites são construídos juntos.",
-        coinParty: "Missão iniciada", partyTitle: "Equipe <em>formada!</em>",
-        party1: "Você - O Visionário", party2: "Gabriella Costa - A Construtora",
-        partySub: "Pronta pra construir algo <em>inesquecível.</em>", enterSite: "Entrar na missão",
+        coinInsert: "Vamos começar",
         loaderLines: ["Inicializando experiência...", "Carregando criatividade...", "Compilando ideias...", "Otimizando performance...", "Pronto."],
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
         formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.",
@@ -916,7 +812,7 @@
     }
 
     /* INTRO */
-    var intro = document.getElementById("intro"), SEEN = "gc_intro_v2", seen = false;
+    var intro = document.getElementById("intro"), SEEN = "gc_intro_v3", seen = false;
     try { seen = sessionStorage.getItem(SEEN) === "1"; } catch (e) {}
     // Testing helper: ?intro=1 always replays it (including the language pick), ?intro=0 always skips it.
     var introParam = new URLSearchParams(location.search).get("intro");
@@ -941,7 +837,7 @@
       var lineTimer = setInterval(function () { li++; if (li < lines.length) statusEl.innerHTML = '<span class="tick">▸</span> ' + lines[li]; }, 620);
       var prog = setInterval(function () {
         pct += Math.random() * 9 + 4;
-        if (pct >= 100) { pct = 100; clearInterval(prog); clearInterval(lineTimer); statusEl.innerHTML = '<span class="tick">▸</span> ' + lines[lines.length - 1]; setTimeout(function () { showStage("stagePress"); }, 480); }
+        if (pct >= 100) { pct = 100; clearInterval(prog); clearInterval(lineTimer); statusEl.innerHTML = '<span class="tick">▸</span> ' + lines[lines.length - 1]; setTimeout(function () { endIntro(false); }, 480); }
         fill.style.width = pct + "%"; pctEl.textContent = String(Math.floor(pct)).padStart(2, "0") + "%"; $(".loader-bar").setAttribute("aria-valuenow", Math.floor(pct));
       }, 185);
     }
@@ -963,20 +859,6 @@
         document.getElementById("langEn").addEventListener("click", onEn);
         document.getElementById("langPt").addEventListener("click", onPt);
       }
-
-      var press = document.getElementById("pressStart");
-      function doPress() { press.removeEventListener("click", doPress); showStage("stageSelect"); }
-      press.addEventListener("click", doPress);
-      document.addEventListener("keydown", function onEnter(e) { if (!document.getElementById("stagePress").classList.contains("active")) return; if (e.key === "Enter") { document.removeEventListener("keydown", onEnter); doPress(); } });
-
-      var client = document.getElementById("playerClient"), gabi = document.getElementById("playerGabi");
-      client.addEventListener("click", function () {
-        var dict = I18N[LANG] || I18N.en;
-        client.classList.add("joined"); client.querySelector(".p-status").textContent = dict.p1StatusReady;
-        setTimeout(function () { gabi.classList.remove("locked"); gabi.classList.add("joined"); gabi.querySelector(".p-status").textContent = dict.p2StatusJoined; gabi.querySelector(".p-cta").textContent = dict.p2CtaJoined; document.getElementById("teamHint").classList.add("show"); }, 460);
-        setTimeout(function () { showStage("stageParty"); confetti(); var items = $$("#partyList li"); items.forEach(function (it, i) { setTimeout(function () { it.classList.add("show"); }, 280 + i * 300); }); }, 1200);
-      });
-      document.getElementById("enterSite").addEventListener("click", function () { endIntro(false); });
     }
 
     /* LANGUAGE TOGGLE (header, always available) */
