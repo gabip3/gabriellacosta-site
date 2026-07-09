@@ -120,7 +120,14 @@
       font-family: var(--body); font-size: var(--fs-body); line-height: 1.6;
       -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
       overflow-x: hidden; position: relative;
+      transition: background .4s var(--ease), color .4s var(--ease);
     }
+
+    /* ============================================================ CLEAN MODE */
+    :root.clean-mode { --display: Arial, Helvetica, "Inter", system-ui, sans-serif; --cream: #FFFFFF; }
+    .clean-mode body::before, .clean-mode .intro-blob { display: none; }
+    .clean-toggle { font-family: var(--mono); font-weight:700; font-size:0.72rem; letter-spacing:0.04em; display:inline-flex; align-items:center; gap:6px; padding:9px 14px; border:2px solid var(--ink); border-radius: var(--r-pill); background: var(--paper); box-shadow: var(--pop-sm); transition: background .2s, transform .2s, box-shadow .2s; }
+    .clean-toggle:hover { background: var(--lime); transform: translate(-1px,-1px); }
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
@@ -375,6 +382,8 @@
       .brand small { display:none; }
       .lang-toggle { border-width:2px; }
       .lang-pill { padding:6px 8px; font-size:0.6rem; }
+      .clean-toggle { padding:8px 10px; }
+      .clean-toggle .clean-text { display:none; }
       .stats { gap: var(--s-2); }
       .stat { padding: var(--s-2); }
 
@@ -455,6 +464,9 @@
         <a href="#complete" data-i18n="navContact">Contact</a>
       </nav>
       <div class="header-cta">
+        <button type="button" class="clean-toggle" id="cleanToggle" aria-pressed="false" data-magnetic>
+          <span class="clean-emoji" aria-hidden="true">🕶️</span><span class="clean-text">Tired eyes?</span>
+        </button>
         <div class="lang-toggle" role="group" aria-label="Language">
           <button type="button" class="lang-pill" id="toggleEn" data-lang="en">EN</button>
           <button type="button" class="lang-pill" id="togglePt" data-lang="pt">PT</button>
@@ -674,6 +686,7 @@
       en: {
         navHome: "Home", navProcess: "Websites", navAbout: "About", navServices: "Services", navContact: "Contact",
         headerCtaLabel: "Let's talk",
+        cleanOff: "Tired eyes?", cleanOn: "Switch to Creative Mode",
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         heroLead: "Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results.",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
@@ -709,6 +722,7 @@
       pt: {
         navHome: "Início", navProcess: "Sites", navAbout: "Sobre", navServices: "Serviços", navContact: "Contato",
         headerCtaLabel: "Vamos conversar",
+        cleanOff: "Tá com os olhos cansados?", cleanOn: "Ativar Modo Criativo",
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         heroLead: "Sites, identidade visual, social media e impressos - tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
@@ -756,7 +770,32 @@
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
+      updateCleanToggle();
     }
+
+    /* CLEAN MODE */
+    var cleanBtn = document.getElementById("cleanToggle");
+    function updateCleanToggle() {
+      if (!cleanBtn) return;
+      var dict = I18N[LANG] || I18N.en;
+      var on = document.documentElement.classList.contains("clean-mode");
+      cleanBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      cleanBtn.querySelector(".clean-emoji").textContent = on ? "🎨" : "🕶️";
+      cleanBtn.querySelector(".clean-text").textContent = on ? dict.cleanOn : dict.cleanOff;
+    }
+    (function () {
+      var on = false;
+      try { on = localStorage.getItem("gc_clean") === "1"; } catch (e) {}
+      document.documentElement.classList.toggle("clean-mode", on);
+      if (cleanBtn) {
+        cleanBtn.addEventListener("click", function () {
+          var next = !document.documentElement.classList.contains("clean-mode");
+          document.documentElement.classList.toggle("clean-mode", next);
+          try { localStorage.setItem("gc_clean", next ? "1" : "0"); } catch (e) {}
+          updateCleanToggle();
+        });
+      }
+    })();
     var revObsRef = null;
 
     var navLinks = $$(".nav-levels a");

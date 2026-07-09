@@ -56,7 +56,11 @@
     }
     *,*::before,*::after{box-sizing:border-box;} *{margin:0;padding:0;}
     html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-    body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100svh;display:flex;flex-direction:column;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100svh;display:flex;flex-direction:column;transition:background .4s var(--ease),color .4s var(--ease);}
+    :root.clean-mode{--display:Arial,Helvetica,"Inter",system-ui,sans-serif;--cream:#FFFFFF;}
+    .clean-mode body::before{display:none;}
+    .clean-toggle{font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.04em;display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:2px solid var(--ink);border-radius:var(--r-pill);background:var(--paper);box-shadow:var(--pop-sm);transition:background .2s,transform .2s,box-shadow .2s;}
+    .clean-toggle:hover{background:var(--lime);transform:translate(-1px,-1px);}
     img,svg{display:block;max-width:100%;} a{color:inherit;text-decoration:none;}
     button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
     ::selection{background:var(--lime);color:var(--ink);}
@@ -107,6 +111,8 @@
       .brand{gap:8px;font-size:0.86rem;}
       .brand small{display:none;}
       .lang-pill{padding:6px 8px;font-size:0.6rem;}
+      .clean-toggle{padding:8px 10px;}
+      .clean-toggle .clean-text{display:none;}
     }
 
     /* PAGE HERO */
@@ -265,6 +271,9 @@
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
       <div class="header-cta">
+        <button type="button" class="clean-toggle" id="cleanToggle" aria-pressed="false" data-magnetic>
+          <span class="clean-emoji" aria-hidden="true">🕶️</span><span class="clean-text">Tired eyes?</span>
+        </button>
         <div class="lang-toggle" role="group" aria-label="Language">
           <button type="button" class="lang-pill" id="toggleEn" data-lang="en">EN</button>
           <button type="button" class="lang-pill" id="togglePt" data-lang="pt">PT</button>
@@ -517,6 +526,7 @@
       en: {
         navHome: "Home", navProcess: "Websites", navAbout: "About", navPricing: "Pricing", navServices: "Services", navContact: "Contact",
         headerCtaLabel: "Start your site", headerCtaPrice: " · $599",
+        cleanOff: "Tired eyes?", cleanOn: "Switch to Creative Mode",
         pheroEyebrow: "◆ Site / Web Design",
         pheroH1: 'Websites that turn <span class="clk">clicks</span> into <span class="u cli">clients<svg viewBox="0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         pheroLead: "Custom, high-converting websites for small businesses & creators - built to get you found, win trust, and turn visitors into paying customers.",
@@ -568,6 +578,7 @@
       pt: {
         navHome: "Início", navProcess: "Sites", navAbout: "Sobre", navPricing: "Preço", navServices: "Serviços", navContact: "Contato",
         headerCtaLabel: "Comece seu site", headerCtaPrice: " · R$3.000",
+        cleanOff: "Tá com os olhos cansados?", cleanOn: "Ativar Modo Criativo",
         pheroEyebrow: "◆ Site / Web Design",
         pheroH1: 'Sites que transformam <span class="clk">cliques</span> em <span class="u cli">clientes<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         pheroLead: "Sites personalizados e de alta conversão para pequenos negócios e criadores de conteúdo - feitos pra você ser encontrado, ganhar confiança e transformar visitantes em clientes pagantes.",
@@ -629,7 +640,32 @@
       var yearEl = document.getElementById("year"); if (yearEl) yearEl.textContent = new Date().getFullYear();
       renderMissions(lang);
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
+      updateCleanToggle();
     }
+
+    /* CLEAN MODE */
+    var cleanBtn = document.getElementById("cleanToggle");
+    function updateCleanToggle() {
+      if (!cleanBtn) return;
+      var dict = I18N[LANG] || I18N.en;
+      var on = document.documentElement.classList.contains("clean-mode");
+      cleanBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      cleanBtn.querySelector(".clean-emoji").textContent = on ? "🎨" : "🕶️";
+      cleanBtn.querySelector(".clean-text").textContent = on ? dict.cleanOn : dict.cleanOff;
+    }
+    (function () {
+      var on = false;
+      try { on = localStorage.getItem("gc_clean") === "1"; } catch (e) {}
+      document.documentElement.classList.toggle("clean-mode", on);
+      if (cleanBtn) {
+        cleanBtn.addEventListener("click", function () {
+          var next = !document.documentElement.classList.contains("clean-mode");
+          document.documentElement.classList.toggle("clean-mode", next);
+          try { localStorage.setItem("gc_clean", next ? "1" : "0"); } catch (e) {}
+          updateCleanToggle();
+        });
+      }
+    })();
 
     /* PORTFOLIO */
     var missionDefs = [
