@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FDF6E9" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <title>About Gabriella Costa - The Builder | Web Design Studio</title>
+  <meta name="description" content="Gabriella Costa is a Brazilian digital experience designer with 10+ years building high-converting websites for clients worldwide, from São Paulo." />
+  <link rel="canonical" href="https://gabriellacosta.design/about.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Meet Gabriella Costa - The Builder" />
+  <meta property="og:description" content="Brazilian digital experience designer building high-converting websites for the whole world." />
+  <meta property="og:url" content="https://gabriellacosta.design/about.html" />
+  <meta property="og:image" content="https://gabriellacosta.design/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Hanken+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriella Costa",
+    "jobTitle": "Digital Experience Designer & Developer",
+    "url": "https://gabriellacosta.design/about.html",
+    "image": "https://gabriellacosta.design/assets/gabriella.png",
+    "nationality": "Brazilian",
+    "knowsLanguage": ["Portuguese", "English", "Spanish", "German", "Korean"],
+    "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressCountry": "BR" },
+    "worksFor": { "@type": "Organization", "name": "Gabriella Costa - Web Design Studio" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --cream:#FDF6E9; --paper:#FFFFFF; --ink:#1A1330; --ink-soft:#4A4266;
+      --magenta:#FF3CA0; --blue:#2D6BFF; --lime:#C8FF3C; --tangerine:#FF7A1A; --violet:#7C3AFF;
+      --display:"Unbounded","Arial Black",system-ui,sans-serif;
+      --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      --mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+      --fs-hud:clamp(0.66rem,0.6rem + 0.3vw,0.78rem);
+      --fs-body:clamp(1rem,0.96rem + 0.2vw,1.14rem);
+      --fs-lead:clamp(1.15rem,1rem + 0.7vw,1.55rem);
+      --fs-h3:clamp(1.5rem,1.1rem + 1.6vw,2.4rem);
+      --fs-h1:clamp(2.7rem,1.4rem + 6.4vw,6.2rem);
+      --s-1:8px;--s-2:16px;--s-3:24px;--s-4:32px;--s-5:48px;--s-6:64px;--s-7:96px;--s-8:128px;
+      --r:18px;--r-lg:30px;--r-pill:999px;
+      --line:3px solid var(--ink); --pop:6px 6px 0 var(--ink); --pop-sm:4px 4px 0 var(--ink); --pop-lg:10px 10px 0 var(--ink);
+      --maxw:1220px; --ease:cubic-bezier(0.22,1,0.36,1); --spring:cubic-bezier(0.34,1.56,0.64,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;} *{margin:0;padding:0;}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100svh;display:flex;flex-direction:column;}
+    img,svg{display:block;max-width:100%;} a{color:inherit;text-decoration:none;}
+    button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+    ::selection{background:var(--lime);color:var(--ink);}
+    :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px;}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(520px 520px at 88% -6%,rgba(255,60,160,0.16),transparent 60%),radial-gradient(600px 600px at -8% 12%,rgba(45,107,255,0.12),transparent 60%),radial-gradient(560px 560px at 50% 108%,rgba(124,58,255,0.12),transparent 60%),var(--cream);}
+    #particles{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+    .cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;will-change:transform;}
+    .cur-dot{width:8px;height:8px;background:var(--magenta);transform:translate(-50%,-50%);}
+    .cur-ring{width:34px;height:34px;border:3px solid var(--ink);transform:translate(-50%,-50%);transition:width .25s var(--spring),height .25s var(--spring),background .2s,border-color .2s;}
+    .cur-ring.hot{width:58px;height:58px;background:rgba(200,255,60,0.35);border-color:var(--violet);}
+    @media (hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none;}}
+    .skip-link{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:8px;z-index:1200;font-weight:700;transition:top .2s;}
+    .skip-link:focus{top:12px;}
+    .wrap{width:min(100% - 2*var(--s-3),var(--maxw));margin-inline:auto;}
+    .hud{font-family:var(--mono);font-size:var(--fs-hud);letter-spacing:0.22em;text-transform:uppercase;font-weight:700;}
+    .sticker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border:var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);box-shadow:var(--pop-sm);}
+    .card{background:var(--paper);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop);}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--spring);transition-delay:var(--d,0ms);}
+    .reveal.in-view{opacity:1;transform:none;}
+    .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border:var(--line);border-radius:var(--r-pill);font-family:var(--display);font-weight:700;font-size:0.92rem;letter-spacing:-0.01em;background:var(--lime);color:var(--ink);box-shadow:var(--pop);transition:transform .15s var(--ease),box-shadow .15s var(--ease),background .2s;}
+    .btn:hover{transform:translate(-2px,-2px);box-shadow:var(--pop-lg);background:var(--magenta);color:var(--paper);}
+    .btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+    .btn svg{width:18px;height:18px;transition:transform .2s var(--ease);}
+    .btn:hover svg{transform:translate(3px,-3px) rotate(8deg);}
+    .btn.paper{background:var(--paper);} .btn.paper:hover{background:var(--lime);color:var(--ink);}
+
+    /* HEADER */
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,4vw,36px);transition:transform .35s var(--ease);}
+    .site-header .bar{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 12px 10px 18px;border:var(--line);border-radius:var(--r-pill);background:rgba(253,246,233,0.8);backdrop-filter:blur(10px);box-shadow:var(--pop-sm);}
+    .site-header.hide{transform:translateY(-140%);}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.05rem;}
+    .brand .monogram{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--magenta);color:var(--cream);border:2px solid var(--ink);font-family:var(--display);font-weight:800;font-size:0.85rem;transform:rotate(-4deg);}
+    .brand small{display:block;font-family:var(--mono);font-weight:700;font-size:0.54rem;letter-spacing:0.18em;color:var(--ink-soft);text-transform:uppercase;}
+    .nav-levels{display:flex;align-items:center;gap:6px;}
+    .nav-levels a{font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);padding:8px 14px;border-radius:var(--r-pill);transition:background .2s,color .2s;}
+    .nav-levels a:hover,.nav-levels a.active{background:var(--ink);color:var(--cream);}
+    .header-cta{display:flex;align-items:center;gap:10px;}
+    .header-cta .btn{padding:11px 20px;font-size:0.8rem;box-shadow:var(--pop-sm);}
+    .lang-toggle{display:flex;border:2px solid var(--ink);border-radius:var(--r-pill);overflow:hidden;}
+    .lang-pill{font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.08em;padding:8px 12px;color:var(--ink);transition:background .2s,color .2s;}
+    .lang-pill.active{background:var(--ink);color:var(--cream);}
+    @media (max-width:860px){.nav-levels{display:none;}}
+    @media (max-width:560px){
+      .header-cta .btn span{display:none;}
+      .header-cta .btn{padding:11px;}
+      .site-header .bar{padding:8px 8px 8px 12px;}
+      .brand{gap:8px;font-size:0.86rem;}
+      .brand small{display:none;}
+      .lang-pill{padding:6px 8px;font-size:0.6rem;}
+    }
+
+    /* ABOUT HERO */
+    main{flex:1;}
+    .about{padding:clamp(120px,18vh,180px) 0 var(--s-8);}
+    .about-wrap{display:grid;grid-template-columns:0.92fr 1.08fr;gap:var(--s-7);align-items:center;}
+
+    .photo-stage{position:relative;width:100%;max-width:460px;margin-inline:auto;aspect-ratio:4/5;display:flex;align-items:flex-end;justify-content:center;}
+    .photo-ring{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);width:90%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#8b57ff,var(--violet));z-index:0;box-shadow:var(--pop);}
+    .photo-ring::after{content:"";position:absolute;inset:-14px;border:3px solid var(--ink);border-radius:50%;opacity:0.15;}
+    .photo-me{position:relative;z-index:1;height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom center;filter:drop-shadow(10px 12px 0 rgba(26,19,48,0.14));
+      -webkit-mask-image:linear-gradient(to bottom,#000 74%,transparent 97%);mask-image:linear-gradient(to bottom,#000 74%,transparent 97%);}
+    .photo-stage.no-img .photo-me{display:none;}
+    .photo-badge{position:absolute;top:6%;left:-2%;z-index:3;transform:rotate(-6deg);background:var(--lime);}
+    .photo-tab{position:absolute;bottom:1%;left:50%;transform:translateX(-50%) rotate(-2deg);z-index:3;display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 26px;background:var(--paper);text-align:center;}
+    .photo-tab .pt-name{font-family:var(--display);font-weight:800;font-size:1.1rem;}
+    .photo-tab .pt-role{font-family:var(--mono);font-weight:700;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--violet);}
+    .photo-cora{position:absolute;bottom:20%;right:-3%;z-index:3;transform:rotate(5deg);background:var(--blue);color:var(--cream);}
+
+    .about-copy .sticker{margin-bottom:20px;}
+    .about-copy h1{font-family:var(--display);font-weight:800;font-size:var(--fs-h1);line-height:0.94;letter-spacing:-0.03em;}
+    .about-copy h1 span{color:var(--magenta);}
+    .about-copy p{color:var(--ink-soft);font-size:var(--fs-body);margin-top:var(--s-3);max-width:56ch;}
+    .about-copy p b{color:var(--ink);}
+    .lang-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--s-4);}
+    .chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.72rem;padding:8px 14px;border:var(--line);border-radius:var(--r-pill);background:var(--paper);box-shadow:var(--pop-sm);}
+    .chip svg{flex:none;width:18px;height:13px;border-radius:2px;box-shadow:0 0 0 1px rgba(26,19,48,0.25);}
+    .chip.ko{background:var(--lime);} .chip i{font-style:normal;color:var(--ink-soft);}
+    .cta-line{font-family:var(--display);font-weight:700;font-size:var(--fs-h3);color:var(--ink);margin:var(--s-5) 0 var(--s-4);}
+    .cta-line .live{color:var(--magenta);}
+    .about-actions{display:flex;flex-wrap:wrap;gap:var(--s-2);}
+
+    /* doodles */
+    .doodles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+    .doodle{position:absolute;will-change:transform;} .doodle svg{filter:drop-shadow(3px 3px 0 var(--ink));}
+    .spin{animation:spin 10s linear infinite;} .spin-r{animation:spin 14s linear infinite reverse;}
+    .floaty2{animation:floaty 6s var(--ease) infinite;} .floaty3{animation:floaty 8s var(--ease) infinite;animation-delay:1s;}
+    @keyframes spin{to{transform:rotate(360deg);}} @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+    .about{position:relative;overflow:hidden;} .about .wrap{position:relative;z-index:2;}
+
+    /* FOOTER */
+    .site-footer{background:var(--ink);color:var(--cream);border-top:var(--line);padding:var(--s-6) 0 var(--s-4);}
+    .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2);}
+    .footer-bottom p{font-family:var(--mono);font-weight:700;font-size:0.68rem;color:rgba(253,246,233,0.6);}
+    .to-top{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;}
+    .to-top:hover{color:var(--lime);}
+
+    @media (max-width:860px){
+      .about-wrap{grid-template-columns:1fr;gap:var(--s-5);}
+      .photo-stage{order:-1;max-width:360px;}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;}
+      .reveal{opacity:1!important;transform:none!important;} #particles,.doodle{display:none!important;}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="cur-ring" aria-hidden="true"></div>
+  <div class="cur-dot" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Gabriella Costa home">
+        <span class="monogram">GC</span>
+        <span>Gabriella Costa<small>Web Design Studio</small></span>
+      </a>
+      <nav class="nav-levels" aria-label="Primary">
+        <a href="index.html#levels" data-i18n="navProcess">Process</a>
+        <a href="about.html" class="active" aria-current="page" data-i18n="navAbout">About</a>
+        <a href="index.html#offer" data-i18n="navPricing">Pricing</a>
+        <a href="index.html#missions" data-i18n="navWork">Work</a>
+        <a href="index.html#complete" data-i18n="navContact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" class="lang-pill" id="toggleEn" data-lang="en">EN</button>
+          <button type="button" class="lang-pill" id="togglePt" data-lang="pt">PT</button>
+        </div>
+        <a class="btn" href="index.html#complete" data-magnetic><span data-i18n="headerCtaLabel">Start your site</span><span data-i18n-html="headerCtaPrice"> · $599</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="about" aria-labelledby="about-h">
+      <div class="wrap about-wrap">
+        <div class="photo-stage reveal">
+          <span class="photo-ring" aria-hidden="true"></span>
+          <span class="photo-badge sticker" data-i18n="photoBadge">Player 02 · The Builder</span>
+          <img class="photo-me" src="assets/gabriella.webp" width="640" height="640" alt="Illustrated portrait of Gabriella Costa, smiling" onerror="this.closest('.photo-stage').classList.add('no-img')" />
+          <span class="photo-cora sticker" aria-hidden="true">🐾 with Cora</span>
+          <span class="photo-tab card">
+            <span class="pt-name">Gabriella Costa</span>
+            <span class="pt-role" data-i18n="photoRole">São Paulo, Brazil</span>
+          </span>
+        </div>
+
+        <div class="about-copy reveal" style="--d:120ms">
+          <span class="sticker" data-i18n="aboutTag">◆ Meet the builder</span>
+          <h1 id="about-h" data-i18n-html="aboutH1">Hello! I'm <span>Gabriella.</span></h1>
+          <p data-i18n="aboutP1">A proud Brazilian digital experience designer, language lover by soul, and completely fascinated by Asian culture. With more than a decade serving the North American market, I've built a deep understanding of international business needs and global design standards.</p>
+          <p data-i18n-html="aboutP2">I build high-end websites designed to convert visitors into paying clients. My little sidekick, <b>Cora</b>, keeps me company through every creative afternoon. I love traveling, exploring authentic cultures, and above all, I hold Jesus close to my heart as my personal Savior.</p>
+          <div class="lang-chips" aria-label="Languages spoken">
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.5 22 8l-10 5.5L2 8z" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg> <span data-i18n="langPt">Portuguese</span></span>
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#B22234"/><rect y="1.23" width="24" height="1.23" fill="#fff"/><rect y="3.69" width="24" height="1.23" fill="#fff"/><rect y="6.15" width="24" height="1.23" fill="#fff"/><rect y="8.62" width="24" height="1.23" fill="#fff"/><rect y="11.08" width="24" height="1.23" fill="#fff"/><rect y="13.54" width="24" height="1.23" fill="#fff"/><rect width="10.3" height="8.62" fill="#3C3B6E"/></svg> <span data-i18n="langEn">English</span></span>
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg> <span data-i18n="langEs">Spanish</span></span>
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#000"/><rect y="5.33" width="24" height="5.33" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></svg> <span data-i18n="langDe">German</span></span>
+            <span class="chip ko"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><circle cx="12" cy="8" r="4" fill="#CD2E3A"/><path d="M12 4a4 4 0 0 0 0 8 2 2 0 0 1 0-4 2 2 0 0 0 0-4z" fill="#0047A0"/></svg> <span data-i18n-html="langKo">Korean <i>· learning</i></span></span>
+          </div>
+          <p class="cta-line" data-i18n-html="ctaLine">Let's launch your business and get you <span class="live">LIVE!</span></p>
+          <div class="about-actions">
+            <a class="btn" href="index.html#complete" data-magnetic><span data-i18n="ctaStartSite">Start your site</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+            <a class="btn paper" href="index.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom">
+      <p data-i18n-html="footerCopy">© <span id="year">2026</span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world</p>
+      <a class="to-top" href="index.html" data-i18n="backHome">← Back home</a>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    "use strict";
+    var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var fine=window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var $=function(s,c){return (c||document).querySelector(s);};
+    var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+    document.getElementById("year").textContent=new Date().getFullYear();
+
+    /* ==================================================== I18N (EN / PT-BR) - shared "gc_lang" preference with index.html */
+    var I18N = {
+      en: {
+        navProcess: "Process", navAbout: "About", navPricing: "Pricing", navWork: "Work", navContact: "Contact",
+        headerCtaLabel: "Start your site", headerCtaPrice: " · $599",
+        photoBadge: "Player 02 · The Builder", photoRole: "São Paulo, Brazil",
+        aboutTag: "◆ Meet the builder", aboutH1: 'Hello! I\'m <span>Gabriella.</span>',
+        aboutP1: "A proud Brazilian digital experience designer, language lover by soul, and completely fascinated by Asian culture. With more than a decade serving the North American market, I've built a deep understanding of international business needs and global design standards.",
+        aboutP2: 'I build high-end websites designed to convert visitors into paying clients. My little sidekick, <b>Cora</b>, keeps me company through every creative afternoon. I love traveling, exploring authentic cultures, and above all, I hold Jesus close to my heart as my personal Savior.',
+        langPt: "Portuguese", langEn: "English", langEs: "Spanish", langDe: "German", langKo: 'Korean <i>· learning</i>',
+        ctaLine: 'Let\'s launch your business and get you <span class="live">LIVE!</span>',
+        ctaStartSite: "Start your site", ctaSeeWork: "See the work",
+        footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world',
+        backHome: "← Back home"
+      },
+      pt: {
+        navProcess: "Processo", navAbout: "Sobre", navPricing: "Preço", navWork: "Portfólio", navContact: "Contato",
+        headerCtaLabel: "Comece seu site", headerCtaPrice: " · R$3.064",
+        photoBadge: "Jogador 02 · A Construtora", photoRole: "São Paulo, Brasil",
+        aboutTag: "◆ Conheça a construtora", aboutH1: 'Oi! Eu sou a <span>Gabriella.</span>',
+        aboutP1: "Uma designer de experiências digitais brasileira e orgulhosa disso, apaixonada por idiomas, e completamente fascinada pela cultura asiática. Com mais de uma década atendendo o mercado norte-americano, desenvolvi um entendimento profundo das necessidades de negócios internacionais e dos padrões globais de design.",
+        aboutP2: 'Eu construo sites de alto padrão feitos pra transformar visitantes em clientes pagantes. Minha companheirinha, <b>Cora</b>, fica comigo em cada tarde criativa. Amo viajar, explorar culturas autênticas, e acima de tudo, guardo Jesus no coração como meu Salvador pessoal.',
+        langPt: "Português", langEn: "Inglês", langEs: "Espanhol", langDe: "Alemão", langKo: 'Coreano <i>· aprendendo</i>',
+        ctaLine: 'Vamos lançar seu negócio e colocar você <span class="live">NO AR!</span>',
+        ctaStartSite: "Comece seu site", ctaSeeWork: "Veja o portfólio",
+        footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo',
+        backHome: "← Voltar ao início"
+      }
+    };
+    var LANG = (function () { try { return localStorage.getItem("gc_lang"); } catch (e) { return "en"; } })() || "en";
+    function applyLang(lang) {
+      LANG = lang;
+      try { localStorage.setItem("gc_lang", lang); } catch (e) {}
+      var dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+      $$("[data-i18n]").forEach(function (el) { if (dict[el.getAttribute("data-i18n")] != null) el.textContent = dict[el.getAttribute("data-i18n")]; });
+      $$("[data-i18n-html]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-html")] != null) el.innerHTML = dict[el.getAttribute("data-i18n-html")]; });
+      var yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+      $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
+    }
+    applyLang(LANG);
+    $$(".lang-pill").forEach(function (b) { b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); }); });
+
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in-view");io.unobserve(e.target);}});},{threshold:0.15});
+      $$(".reveal").forEach(function(el){io.observe(el);});
+    } else { $$(".reveal").forEach(function(el){el.classList.add("in-view");}); }
+
+    var header=document.getElementById("header"),lastY=0;
+    window.addEventListener("scroll",function(){var y=window.pageYOffset;header.classList.toggle("hide",y>lastY&&y>300);lastY=y;},{passive:true});
+
+    if(fine && !reduce){
+      var dot=$(".cur-dot"),ring=$(".cur-ring"),mx=0,my=0,rx=0,ry=0;
+      window.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.transform="translate("+mx+"px,"+my+"px) translate(-50%,-50%)";});
+      (function loop(){rx+=(mx-rx)*0.18;ry+=(my-ry)*0.18;ring.style.transform="translate("+rx+"px,"+ry+"px) translate(-50%,-50%)";requestAnimationFrame(loop);})();
+      $$("a,button").forEach(function(el){el.addEventListener("mouseenter",function(){ring.classList.add("hot");});el.addEventListener("mouseleave",function(){ring.classList.remove("hot");});});
+      $$("[data-magnetic]").forEach(function(el){
+        el.addEventListener("mousemove",function(e){var r=el.getBoundingClientRect();el.style.transform="translate("+(e.clientX-r.left-r.width/2)*0.22+"px,"+(e.clientY-r.top-r.height/2)*0.3+"px)";});
+        el.addEventListener("mouseleave",function(){el.style.transform="";});
+      });
+    }
+
+    if(!reduce){
+      var cv=document.getElementById("particles"),ctx=cv.getContext("2d"),W,H,dpr=Math.min(window.devicePixelRatio||1,2),parts=[],running=true;
+      var palette=["#FF3CA0","#2D6BFF","#C8FF3C","#FF7A1A","#7C3AFF"];
+      function resize(){W=cv.width=innerWidth*dpr;H=cv.height=innerHeight*dpr;cv.style.width=innerWidth+"px";cv.style.height=innerHeight+"px";var count=innerWidth<640?12:24;parts=[];for(var i=0;i<count;i++)parts.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*4+2)*dpr,vx:(Math.random()-0.5)*0.15*dpr,vy:(Math.random()-0.5)*0.15*dpr,c:palette[i%palette.length],a:Math.random()*0.4+0.25});}
+      resize();window.addEventListener("resize",resize);
+      document.addEventListener("visibilitychange",function(){running=!document.hidden;if(running)draw();});
+      function draw(){if(!running)return;ctx.clearRect(0,0,W,H);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.globalAlpha=p.a;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.fill();}ctx.globalAlpha=1;requestAnimationFrame(draw);}
+      draw();
+    }
+  })();
+  </script>
+</body>
+</html>
