@@ -251,7 +251,6 @@
 
     /* ============================================================ HERO */
     .hero { position:relative; min-height: 100svh; display:flex; align-items:center; padding: var(--s-9) 0 var(--s-6); }
-    .hero-eyebrow { display:inline-flex; margin-bottom: var(--s-4); transform: rotate(-2deg); }
     .hero h1 { font-family: var(--display); font-weight:800; font-size: var(--fs-h1); line-height:0.94; letter-spacing:-0.03em; max-width:16ch; }
     .hero h1 .clk { color: var(--magenta); } .hero h1 .cli { color: var(--blue); }
     .hero h1 .u { position:relative; white-space:nowrap; }
@@ -354,8 +353,6 @@
     .floaty2 { animation: floaty 6s var(--ease) infinite; }
     .floaty3 { animation: floaty 8s var(--ease) infinite; animation-delay: 1s; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .hero-eyebrow { animation: wobble 4s var(--ease) infinite; }
-    @keyframes wobble { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
     .p-avatar { position: relative; overflow: hidden; }
     .p-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
@@ -473,7 +470,6 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-h1">
       <div class="wrap">
-        <span class="sticker hero-eyebrow" data-i18n="heroEyebrow">★ From Brazil · for the whole world 🌎</span>
         <h1 id="hero-h1" class="reveal" data-i18n-html="heroH1">Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.</h1>
         <p class="hero-lead reveal" style="--d:100ms" data-i18n="heroLead">Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results.</p>
         <div class="hero-actions reveal" style="--d:180ms">
@@ -675,7 +671,6 @@
       en: {
         navHome: "Home", navProcess: "Websites", navAbout: "About", navServices: "Services", navContact: "Contact",
         headerCtaLabel: "Let's talk",
-        heroEyebrow: "★ From Brazil · for the whole world 🌎",
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         heroLead: "Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results.",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
@@ -711,7 +706,6 @@
       pt: {
         navHome: "Início", navProcess: "Sites", navAbout: "Sobre", navServices: "Serviços", navContact: "Contato",
         headerCtaLabel: "Vamos conversar",
-        heroEyebrow: "★ Do Brasil · para o mundo inteiro 🌎",
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         heroLead: "Sites, identidade visual, social media e impressos - tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
