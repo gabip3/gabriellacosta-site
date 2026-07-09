@@ -128,31 +128,23 @@
     .pstat .num{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,5vw,3rem);letter-spacing:-0.02em;}
     .pstat .cap{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px;}
 
-    /* LEVELS */
+    /* PROCESS FAQ */
     .levels-head{text-align:center;padding:var(--s-8) 0 var(--s-4);}
     .levels-head h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);letter-spacing:-0.03em;}
-    .level{padding:var(--s-6) 0;}
-    .level-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:var(--s-5);align-items:center;border:var(--line);border-radius:var(--r-lg);padding:var(--s-5);box-shadow:var(--pop);position:relative;overflow:hidden;}
-    .level-num{font-family:var(--display);font-weight:800;font-size:var(--fs-mega);line-height:0.8;letter-spacing:-0.04em;color:rgba(26,19,48,0.16);}
-    .level-meta .lv-tag{display:inline-flex;margin-bottom:var(--s-2);}
-    .level-meta h3{font-family:var(--display);font-weight:800;font-size:var(--fs-h3);line-height:1.02;letter-spacing:-0.02em;}
-    .level-meta p{color:var(--ink-soft);font-size:var(--fs-lead);margin-top:var(--s-2);max-width:44ch;}
+    .faq-list{display:flex;flex-direction:column;gap:var(--s-2);}
+    .faq-item{border:var(--line);border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--pop-sm);overflow:hidden;transition:box-shadow .2s;}
+    .faq-item[open]{box-shadow:var(--pop);}
+    .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:var(--s-4);}
+    .faq-item summary::-webkit-details-marker{display:none;}
+    .faq-num{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:0.9rem;color:var(--cream);}
+    .faq-q{flex:1;font-family:var(--display);font-weight:800;font-size:1.1rem;letter-spacing:-0.01em;line-height:1.2;}
+    .faq-icon{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:1.1rem;transition:transform .25s var(--spring);}
+    .faq-item[open] .faq-icon{transform:rotate(135deg);}
+    .faq-a{padding:0 var(--s-4) var(--s-4) calc(38px + 16px + var(--s-4));}
+    .faq-a p{color:var(--ink-soft);font-size:1rem;max-width:56ch;}
     .level-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s-3);}
     .level-tags span{font-family:var(--mono);font-weight:700;font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;border:2px solid var(--ink);border-radius:var(--r-pill);}
     .level-day{font-family:var(--mono);font-weight:700;font-size:0.74rem;margin-top:var(--s-3);display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--r-pill);background:var(--ink);color:var(--cream);}
-    .level.c-magenta .level-inner{background:var(--magenta);color:var(--cream);}
-    .level.c-blue .level-inner{background:var(--blue);color:var(--cream);}
-    .level.c-lime .level-inner{background:var(--lime);color:var(--ink);}
-    .level.c-tangerine .level-inner{background:var(--tangerine);color:var(--ink);}
-    .level.c-violet .level-inner{background:var(--violet);color:var(--cream);}
-    .level.c-cream .level-inner{background:var(--paper);color:var(--ink);}
-    .level.c-magenta .level-num,.level.c-blue .level-num,.level.c-violet .level-num{color:rgba(253,246,233,0.24);}
-    .level.c-magenta .level-meta p,.level.c-blue .level-meta p,.level.c-violet .level-meta p{color:rgba(253,246,233,0.9);}
-    .level.c-magenta .level-tags span,.level.c-blue .level-tags span,.level.c-violet .level-tags span{border-color:var(--cream);color:var(--cream);}
-    .level.c-magenta .lv-tag .sticker,.level.c-blue .lv-tag .sticker,.level.c-violet .lv-tag .sticker{background:var(--cream);}
-    .level.c-lime .level-day,.level.c-tangerine .level-day{background:var(--ink);color:var(--cream);}
-    .level:nth-child(even) .level-inner{grid-template-columns:1.15fr 0.85fr;}
-    .level:nth-child(even) .level-num{order:2;text-align:right;}
 
     /* OFFER */
     .offer{background:var(--violet);color:var(--cream);border-block:var(--line);padding:var(--s-8) 0;}
@@ -235,16 +227,14 @@
     .to-top:hover{color:var(--lime);}
 
     @media (max-width:960px){
-      .level-inner,.level:nth-child(even) .level-inner,.offer-wrap{grid-template-columns:1fr;gap:var(--s-4);}
-      .level:nth-child(even) .level-num{order:0;text-align:left;}
-      .level-num{font-size:clamp(4rem,22vw,8rem);}
+      .offer-wrap{grid-template-columns:1fr;gap:var(--s-4);}
       .pstats{grid-template-columns:1fr;}
       .missions-grid{grid-template-columns:1fr 1fr;}
     }
     @media (max-width:560px){
       .form-row{grid-template-columns:1fr;}
-      .level-inner{padding:var(--s-4);}
-      .level-num{font-size:clamp(3.2rem,18vw,5.5rem);margin-bottom:-8px;}
+      .faq-q{font-size:1rem;}
+      .faq-a{padding-left:var(--s-4);}
       .missions-grid{grid-template-columns:1fr;}
     }
     @media (prefers-reduced-motion:reduce){
@@ -318,80 +308,82 @@
           <h2 data-i18n-html="levelsH2">Six levels, one <span style="color:var(--magenta)">unforgettable</span> website.</h2>
         </div>
 
-        <article class="level c-magenta reveal" id="level-1">
-          <div class="level-inner">
-            <div class="level-num" aria-hidden="true">01</div>
-            <div class="level-meta">
-              <span class="lv-tag sticker" data-i18n="lv1Tag">Level 01 - Discovery</span>
-              <h3 data-i18n="lv1H3">Understanding your business.</h3>
+        <div class="faq-list">
+          <details class="faq-item reveal" id="level-1" name="faq-group" open>
+            <summary>
+              <span class="faq-num" style="background:var(--magenta)">01</span>
+              <span class="faq-q" data-i18n="lv1H3">What happens during the discovery phase?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-a">
               <p data-i18n="lv1P">Before a single pixel, we decode who you serve, what makes them buy, and the one action your site must drive.</p>
               <div class="level-tags"><span data-i18n="lv1Tag1">Goals</span><span data-i18n="lv1Tag2">Audience</span><span data-i18n="lv1Tag3">Positioning</span></div>
               <div><span class="level-day" data-i18n="lv1Day">◈ Day 1 - you share logo, copy & inspiration</span></div>
             </div>
-          </div>
-        </article>
+          </details>
 
-        <article class="level c-blue reveal" id="level-2">
-          <div class="level-inner">
-            <div class="level-num" aria-hidden="true">02</div>
-            <div class="level-meta">
-              <span class="lv-tag sticker" data-i18n="lv2Tag">Level 02 - Strategy & UX</span>
-              <h3 data-i18n="lv2H3">Mapping the path that converts.</h3>
+          <details class="faq-item reveal" id="level-2" name="faq-group">
+            <summary>
+              <span class="faq-num" style="background:var(--blue)">02</span>
+              <span class="faq-q" data-i18n="lv2H3">How do you plan the structure and user experience?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-a">
               <p data-i18n="lv2P">We chart the journey from stranger to client - structure, hierarchy, and the exact flow that turns attention into action.</p>
               <div class="level-tags"><span data-i18n="lv2Tag1">User flow</span><span data-i18n="lv2Tag2">Wireframes</span><span data-i18n="lv2Tag3">Conversion</span></div>
             </div>
-          </div>
-        </article>
+          </details>
 
-        <article class="level c-lime reveal" id="level-3">
-          <div class="level-inner">
-            <div class="level-num" aria-hidden="true">03</div>
-            <div class="level-meta">
-              <span class="lv-tag sticker" data-i18n="lv3Tag">Level 03 - UI Design</span>
-              <h3 data-i18n="lv3H3">A custom interface, built for your brand.</h3>
+          <details class="faq-item reveal" id="level-3" name="faq-group">
+            <summary>
+              <span class="faq-num" style="background:var(--lime);color:var(--ink)">03</span>
+              <span class="faq-q" data-i18n="lv3H3">What does the design process look like?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-a">
               <p data-i18n="lv3P">Not a template with your logo dropped in. Every type choice, color and detail is designed to feel unmistakably yours.</p>
               <div class="level-tags"><span data-i18n="lv3Tag1">Visual identity</span><span data-i18n="lv3Tag2">Typography</span><span data-i18n="lv3Tag3">Motion</span></div>
             </div>
-          </div>
-        </article>
+          </details>
 
-        <article class="level c-tangerine reveal" id="level-4">
-          <div class="level-inner">
-            <div class="level-num" aria-hidden="true">04</div>
-            <div class="level-meta">
-              <span class="lv-tag sticker" data-i18n="lv4Tag">Level 04 - Development</span>
-              <h3 data-i18n="lv4H3">Hand-built, fast, and responsive.</h3>
+          <details class="faq-item reveal" id="level-4" name="faq-group">
+            <summary>
+              <span class="faq-num" style="background:var(--tangerine);color:var(--ink)">04</span>
+              <span class="faq-q" data-i18n="lv4H3">How do you actually build the website?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-a">
               <p data-i18n="lv4P">Clean code, flawless on every screen. Built to load in a blink and scale as your business grows.</p>
               <div class="level-tags"><span data-i18n="lv4Tag1">Responsive</span><span data-i18n="lv4Tag2">Clean code</span><span data-i18n="lv4Tag3">Scalable</span></div>
               <div><span class="level-day" data-i18n="lv4Day">◈ Days 2-4 - I build the entire thing</span></div>
             </div>
-          </div>
-        </article>
+          </details>
 
-        <article class="level c-violet reveal" id="level-5">
-          <div class="level-inner">
-            <div class="level-num" aria-hidden="true">05</div>
-            <div class="level-meta">
-              <span class="lv-tag sticker" data-i18n="lv5Tag">Level 05 - SEO & Performance</span>
-              <h3 data-i18n="lv5H3">Found on Google. Loads in a blink.</h3>
+          <details class="faq-item reveal" id="level-5" name="faq-group">
+            <summary>
+              <span class="faq-num" style="background:var(--violet)">05</span>
+              <span class="faq-q" data-i18n="lv5H3">Do you handle SEO and site performance?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-a">
               <p data-i18n="lv5P">Technical SEO, local optimization and Core Web Vitals baked in - so the right people actually find you.</p>
               <div class="level-tags"><span data-i18n="lv5Tag1">Technical SEO</span><span data-i18n="lv5Tag2">Local search</span><span data-i18n="lv5Tag3">Web Vitals</span></div>
             </div>
-          </div>
-        </article>
+          </details>
 
-        <article class="level c-cream reveal" id="level-6">
-          <div class="level-inner">
-            <div class="level-meta">
-              <span class="lv-tag sticker" style="background:var(--lime)" data-i18n="lv6Tag">Level 06 - Launch 🎉</span>
-              <h3 data-i18n-html="lv6H3">You go live. And you <span style="color:var(--magenta)">own</span> everything.</h3>
+          <details class="faq-item reveal" id="level-6" name="faq-group">
+            <summary>
+              <span class="faq-num" style="background:var(--ink)">06</span>
+              <span class="faq-q" data-i18n="lv6H3">What happens at launch - do I own everything?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-a">
               <p data-i18n="lv6P">Domain and hosting, 100% in your name. No lock-in, no monthly ransom to keep your own website.</p>
               <div class="level-tags"><span data-i18n="lv6Tag1">Go live</span><span data-i18n="lv6Tag2">Full ownership</span><span data-i18n="lv6Tag3">Support</span></div>
               <div><span class="level-day" data-i18n="lv6Day">◈ Day 5 - you shine</span></div>
             </div>
-            <div class="level-num" aria-hidden="true">06</div>
-          </div>
-        </article>
+          </details>
+        </div>
       </div>
     </section>
 
@@ -529,23 +521,23 @@
         ctaStartSite: "Start your site", ctaSeeWork: "See the work",
         badgeFlat: "$599 FLAT", badgeLive: "LIVE IN 5 DAYS", badgeYours: "100% YOURS",
         statSites: "Sites launched", statTurnaround: "Turnaround, guaranteed", statPrice: "One flat price", statPriceNum: "$599",
-        levelsTag: "◆ How we build it", levelsH2: 'Six levels, one <span style="color:var(--magenta)">unforgettable</span> website.',
-        lv1Tag: "Level 01 - Discovery", lv1H3: "Understanding your business.",
+        levelsTag: "◆ FAQ", levelsH2: 'How we build your <span style="color:var(--magenta)">unforgettable</span> website.',
+        lv1H3: "What happens during the discovery phase?",
         lv1P: "Before a single pixel, we decode who you serve, what makes them buy, and the one action your site must drive.",
         lv1Tag1: "Goals", lv1Tag2: "Audience", lv1Tag3: "Positioning", lv1Day: "◈ Day 1 - you share logo, copy & inspiration",
-        lv2Tag: "Level 02 - Strategy & UX", lv2H3: "Mapping the path that converts.",
+        lv2H3: "How do you plan the structure and user experience?",
         lv2P: "We chart the journey from stranger to client - structure, hierarchy, and the exact flow that turns attention into action.",
         lv2Tag1: "User flow", lv2Tag2: "Wireframes", lv2Tag3: "Conversion",
-        lv3Tag: "Level 03 - UI Design", lv3H3: "A custom interface, built for your brand.",
+        lv3H3: "What does the design process look like?",
         lv3P: "Not a template with your logo dropped in. Every type choice, color and detail is designed to feel unmistakably yours.",
         lv3Tag1: "Visual identity", lv3Tag2: "Typography", lv3Tag3: "Motion",
-        lv4Tag: "Level 04 - Development", lv4H3: "Hand-built, fast, and responsive.",
+        lv4H3: "How do you actually build the website?",
         lv4P: "Clean code, flawless on every screen. Built to load in a blink and scale as your business grows.",
         lv4Tag1: "Responsive", lv4Tag2: "Clean code", lv4Tag3: "Scalable", lv4Day: "◈ Days 2-4 - I build the entire thing",
-        lv5Tag: "Level 05 - SEO & Performance", lv5H3: "Found on Google. Loads in a blink.",
+        lv5H3: "Do you handle SEO and site performance?",
         lv5P: "Technical SEO, local optimization and Core Web Vitals baked in - so the right people actually find you.",
         lv5Tag1: "Technical SEO", lv5Tag2: "Local search", lv5Tag3: "Web Vitals",
-        lv6Tag: "Level 06 - Launch 🎉", lv6H3: 'You go live. And you <span style="color:var(--magenta)">own</span> everything.',
+        lv6H3: "What happens at launch - do I own everything?",
         lv6P: "Domain and hosting, 100% in your name. No lock-in, no monthly ransom to keep your own website.",
         lv6Tag1: "Go live", lv6Tag2: "Full ownership", lv6Tag3: "Support", lv6Day: "◈ Day 5 - you shine",
         offerTag: "◆ The loadout", offerH2: "One price. Everything in. <em>No hourly games.</em>",
@@ -580,23 +572,23 @@
         ctaStartSite: "Comece seu site", ctaSeeWork: "Veja o portfólio",
         badgeFlat: "R$3.000 À VISTA", badgeLive: "NO AR EM 5 DIAS", badgeYours: "100% SEU",
         statSites: "Sites lançados", statTurnaround: "Prazo garantido", statPrice: "Preço único", statPriceNum: "R$3.000",
-        levelsTag: "◆ Como eu construo", levelsH2: 'Seis fases, um site <span style="color:var(--magenta)">inesquecível</span>.',
-        lv1Tag: "Fase 01 - Descoberta", lv1H3: "Entendendo seu negócio.",
+        levelsTag: "◆ Perguntas frequentes", levelsH2: 'Como eu construo seu site <span style="color:var(--magenta)">inesquecível</span>.',
+        lv1H3: "O que acontece na fase de descoberta?",
         lv1P: "Antes de qualquer pixel, eu decifro quem você atende, o que faz essas pessoas comprarem, e a única ação que seu site precisa gerar.",
         lv1Tag1: "Objetivos", lv1Tag2: "Público", lv1Tag3: "Posicionamento", lv1Day: "◈ Dia 1 - você envia logo, textos e referências",
-        lv2Tag: "Fase 02 - Estratégia & UX", lv2H3: "Mapeando o caminho que converte.",
+        lv2H3: "Como vocês planejam a estrutura e a experiência do usuário?",
         lv2P: "Eu traço a jornada de visitante desconhecido até cliente - estrutura, hierarquia e o fluxo exato que transforma atenção em ação.",
         lv2Tag1: "Fluxo do usuário", lv2Tag2: "Wireframes", lv2Tag3: "Conversão",
-        lv3Tag: "Fase 03 - Design de Interface", lv3H3: "Uma interface sob medida, feita pra sua marca.",
+        lv3H3: "Como é o processo de design?",
         lv3P: "Nada de template com sua logo enfiada no meio. Cada fonte, cor e detalhe é pensado pra parecer inconfundivelmente seu.",
         lv3Tag1: "Identidade visual", lv3Tag2: "Tipografia", lv3Tag3: "Movimento",
-        lv4Tag: "Fase 04 - Desenvolvimento", lv4H3: "Construído à mão, rápido e responsivo.",
+        lv4H3: "Como o site é construído, na prática?",
         lv4P: "Código limpo, perfeito em qualquer tela. Feito pra carregar num piscar de olhos e crescer junto com seu negócio.",
         lv4Tag1: "Responsivo", lv4Tag2: "Código limpo", lv4Tag3: "Escalável", lv4Day: "◈ Dias 2-4 - eu construo tudo",
-        lv5Tag: "Fase 05 - SEO & Performance", lv5H3: "Encontrado no Google. Carrega na hora.",
+        lv5H3: "Vocês cuidam de SEO e performance do site?",
         lv5P: "SEO técnico, otimização local e Core Web Vitals já embutidos - pra você ser encontrado pelas pessoas certas.",
         lv5Tag1: "SEO técnico", lv5Tag2: "Busca local", lv5Tag3: "Web Vitals",
-        lv6Tag: "Fase 06 - Lançamento 🎉", lv6H3: 'Seu site vai ao ar. E você é dono de <span style="color:var(--magenta)">tudo</span>.',
+        lv6H3: "O que acontece no lançamento - o site é meu mesmo?",
         lv6P: "Domínio e hospedagem 100% no seu nome. Sem amarras, sem mensalidade obrigatória pra manter o que é seu.",
         lv6Tag1: "Vai ao ar", lv6Tag2: "Propriedade total", lv6Tag3: "Suporte", lv6Day: "◈ Dia 5 - é a sua vez de brilhar",
         offerTag: "◆ O pacote", offerH2: "Um preço só. Tudo incluso. <em>Sem joguinho de hora.</em>",
