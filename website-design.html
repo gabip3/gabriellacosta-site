@@ -173,6 +173,34 @@
     .loadout li .tick svg{width:14px;height:14px;}
     .loadout .btn{width:100%;justify-content:center;}
 
+    /* MISSIONS */
+    .missions{padding:var(--s-8) 0;}
+    .missions h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);letter-spacing:-0.03em;max-width:18ch;line-height:1;}
+    .missions h2 em{font-style:normal;color:var(--tangerine);}
+    .missions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-3);margin-top:var(--s-6);}
+    .mission{position:relative;display:flex;flex-direction:column;border:var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--paper);box-shadow:var(--pop-sm);transition:transform .3s var(--spring),box-shadow .3s;color:var(--ink);text-decoration:none;}
+    .mission:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:var(--pop-lg);}
+    .m-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:var(--line);}
+    .m-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:var(--ink);color:var(--lime);}
+    .m-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;}
+    .m-info{display:block;}
+    .m-name{font-family:var(--display);font-weight:800;font-size:1.05rem;display:block;line-height:1.12;}
+    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:5px;}
+    .m-open{flex:none;width:40px;height:40px;border-radius:50%;border:var(--line);display:grid;place-items:center;background:var(--lime);color:var(--ink);transition:transform .2s var(--spring);}
+    .mission:hover .m-open{transform:rotate(20deg) scale(1.1);}
+    .m-open svg{width:16px;height:16px;}
+
+    /* PROOF */
+    .proof{background:var(--blue);color:var(--cream);border-block:var(--line);padding:var(--s-8) 0;text-align:center;}
+    .stars{display:inline-flex;gap:8px;margin-bottom:var(--s-3);color:var(--lime);}
+    .stars svg{width:26px;height:26px;}
+    .proof h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);letter-spacing:-0.03em;line-height:1.02;max-width:20ch;margin:0 auto;}
+    .proof h2 em{font-style:normal;color:var(--lime);}
+    .logos{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:var(--s-6);}
+    .logos span{font-family:var(--display);font-weight:700;font-size:0.95rem;padding:10px 18px;border:2px solid var(--cream);border-radius:var(--r-pill);transition:background .2s,color .2s;}
+    .logos span:hover{background:var(--cream);color:var(--blue);}
+
     /* CONTACT / CTA */
     .complete{padding:var(--s-9) 0 var(--s-8);text-align:center;position:relative;background:radial-gradient(700px 500px at 50% 0%,rgba(255,122,26,0.25),transparent 60%);}
     .complete-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border:var(--line);border-radius:var(--r-pill);background:var(--lime);color:var(--ink);font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:var(--s-4);box-shadow:var(--pop-sm);}
@@ -211,11 +239,13 @@
       .level:nth-child(even) .level-num{order:0;text-align:left;}
       .level-num{font-size:clamp(4rem,22vw,8rem);}
       .pstats{grid-template-columns:1fr;}
+      .missions-grid{grid-template-columns:1fr 1fr;}
     }
     @media (max-width:560px){
       .form-row{grid-template-columns:1fr;}
       .level-inner{padding:var(--s-4);}
       .level-num{font-size:clamp(3.2rem,18vw,5.5rem);margin-bottom:-8px;}
+      .missions-grid{grid-template-columns:1fr;}
     }
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;}
@@ -239,7 +269,7 @@
         <a href="#levels" class="active" aria-current="page" data-i18n="navProcess">Process</a>
         <a href="about.html" data-i18n="navAbout">About</a>
         <a href="#offer" data-i18n="navPricing">Pricing</a>
-        <a href="index.html#missions" data-i18n="navWork">Work</a>
+        <a href="#missions" data-i18n="navWork">Work</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
       <div class="header-cta">
@@ -265,7 +295,7 @@
           <a class="btn" href="#contact" data-magnetic><span data-i18n="ctaStartSite">Start your site</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
           </a>
-          <a class="btn paper" href="index.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
+          <a class="btn paper" href="#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
         </div>
         <div class="phero-badges reveal" style="--d:260ms">
           <span class="badge-pop m" data-i18n-html="badgeFlat">$599 FLAT</span>
@@ -394,6 +424,35 @@
       </div>
     </section>
 
+    <!-- MISSIONS -->
+    <section class="missions" id="missions" aria-labelledby="missions-h">
+      <div class="wrap">
+        <span class="sticker reveal" style="margin-bottom:16px" data-i18n="missionsTag">◆ Completed missions</span>
+        <h2 id="missions-h" class="reveal" data-i18n-html="missionsH2">Real businesses. Real results. <em>Live sites.</em></h2>
+        <div class="missions-grid" id="missionsGrid"></div>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="proof" aria-labelledby="proof-h">
+      <div class="wrap reveal">
+        <div class="stars" aria-label="Five out of five stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        </div>
+        <h2 id="proof-h" data-i18n-html="proofH2">30+ businesses launched. <em>Serving Atlanta, the U.S. & the whole world.</em></h2>
+        <div class="logos" aria-label="Selected clients">
+          <span>Atlanta Home Concierge</span>
+          <span>Sara Sarres</span>
+          <span>Peachtree Commodities</span>
+          <span>Sweet Shop by Claudia</span>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT / CTA -->
     <section class="complete" id="contact" aria-labelledby="contact-h">
       <div class="wrap">
@@ -504,6 +563,10 @@
         fieldMessage: 'Tell me about it <span class="req">*</span>', fieldMessagePh: "Your goals, timeline, and anything you love or hate in a website.",
         fieldHelp: "No spam, ever. Your details are only used to reply to you.",
         formSubmit: "Begin the mission", formSuccessTitle: "Mission accepted!", formSuccessP: "Thanks - your message is in. I'll get back to you shortly. 🌎",
+        missionsTag: "◆ Completed missions", missionsH2: "Real businesses. Real results. <em>Live sites.</em>",
+        missionLive: "Live",
+        missionTags: { atlanta: "Home services · Atlanta", rk360: "Events · Photo booth", sara: "Brazilian actress · Personal brand", peachtree: "Trading · B2B", sweet: "Bakery · E-commerce", yours: "Next in queue" },
+        proofH2: "30+ businesses launched. <em>Serving Atlanta, the U.S. & the whole world.</em>",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world', backHome: "← Back home",
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
         formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.", formErrNetwork: "Network error. Please email gabip3@gmail.com."
@@ -551,6 +614,10 @@
         fieldMessage: 'Me conta sobre o projeto <span class="req">*</span>', fieldMessagePh: "Seus objetivos, prazo, e o que você ama ou odeia em um site.",
         fieldHelp: "Sem spam, nunca. Seus dados só são usados pra te responder.",
         formSubmit: "Começar a missão", formSuccessTitle: "Missão aceita!", formSuccessP: "Obrigada - sua mensagem chegou. Já volto com uma resposta. 🌎",
+        missionsTag: "◆ Missões concluídas", missionsH2: "Negócios reais. Resultados reais. <em>Sites no ar.</em>",
+        missionLive: "No ar",
+        missionTags: { atlanta: "Serviços domésticos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Atriz brasileira · Marca pessoal", peachtree: "Trading · B2B", sweet: "Confeitaria · E-commerce", yours: "Próximo da fila" },
+        proofH2: "Mais de 30 negócios lançados. <em>Atendendo Atlanta, os EUA e o mundo inteiro.</em>",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo', backHome: "← Voltar ao início",
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
         formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.", formErrNetwork: "Erro de conexão. Me manda um e-mail: gabip3@gmail.com."
@@ -566,15 +633,49 @@
       $$("[data-i18n-html]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-html")] != null) el.innerHTML = dict[el.getAttribute("data-i18n-html")]; });
       $$("[data-i18n-ph]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-ph")] != null) el.placeholder = dict[el.getAttribute("data-i18n-ph")]; });
       var yearEl = document.getElementById("year"); if (yearEl) yearEl.textContent = new Date().getFullYear();
+      renderMissions(lang);
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
     }
-    applyLang(LANG);
+
+    /* PORTFOLIO */
+    var missionDefs = [
+      { key: "atlanta", name: "Atlanta Home Concierge", c: "#E8691A", url: "https://www.atlantahomeconcierge.com" },
+      { key: "rk360", name: "RK360 Photo Booth Rentals", c: "#DB3A8C", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.png" },
+      { key: "sara", name: "Sara Sarres", c: "#2856D6", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.png" },
+      { key: "peachtree", name: "Peachtree Commodities", c: "#6B32E0" },
+      { key: "sweet", name: "Sweet Shop by Claudia", c: "#A9CC3D" },
+      { key: "yours", name: "Your Business", c: "#DB3A8C" }
+    ];
+    var missionsGrid = document.getElementById("missionsGrid");
+    function renderMissions(lang) {
+      if (!missionsGrid) return;
+      var dict = I18N[lang] || I18N.en;
+      var wasEmpty = missionsGrid.childElementCount === 0;
+      missionsGrid.innerHTML = missionDefs.map(function (m, i) {
+        var thumb = "linear-gradient(150deg," + m.c + "," + m.c + "cc)";
+        var tag = m.url ? "a" : "article";
+        var attrs = m.url ? ' href="' + m.url + '" target="_blank" rel="noopener" aria-label="' + m.name + ' - open live site"' : "";
+        var tagText = dict.missionTags[m.key] || "";
+        return '<' + tag + ' class="mission reveal' + (wasEmpty ? "" : " in-view") + '"' + attrs + ' style="--d:' + (i * 60) + 'ms">' +
+          '<span class="m-thumb" style="background:' + thumb + '">' +
+          '<span class="m-live">● ' + dict.missionLive + '</span>' +
+          (m.shot ? '<img src="' + m.shot + '" alt="Screenshot of the ' + m.name + ' website" loading="lazy"/>' : '') +
+          '</span>' +
+          '<span class="m-cap"><span class="m-info"><span class="m-name">' + m.name + '</span><span class="m-tag">' + tagText + '</span></span>' +
+          (m.url ? '<span class="m-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>' : '') +
+          '</span></' + tag + '>';
+      }).join("");
+      if (wasEmpty) { $$(".mission", missionsGrid).forEach(function (el) { if (io) io.observe(el); }); }
+    }
+
     $$(".lang-pill").forEach(function (b) { b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); }); });
 
+    var io = null;
     if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in-view"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+      io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in-view"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+      applyLang(LANG);
       $$(".reveal").forEach(function (el) { io.observe(el); });
-    } else { $$(".reveal").forEach(function (el) { el.classList.add("in-view"); }); }
+    } else { applyLang(LANG); $$(".reveal").forEach(function (el) { el.classList.add("in-view"); }); }
 
     var header = document.getElementById("header"), lastY = 0;
     window.addEventListener("scroll", function () { var y = window.pageYOffset; header.classList.toggle("hide", y > lastY && y > 500); lastY = y; }, { passive: true });

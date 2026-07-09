@@ -6,27 +6,27 @@
   <meta name="theme-color" content="#FDF6E9" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <title>Websites That Turn Clicks Into Clients | Gabriella Costa</title>
-  <meta name="description" content="Custom, high-converting websites for small businesses & creators. $599 flat, live in 5 days, 100% yours. Designed in São Paulo for clients worldwide." />
+  <title>Web Design, Branding & Creative Studio | Gabriella Costa</title>
+  <meta name="description" content="Creative studio in São Paulo serving clients worldwide - websites, brand identity, social media & print design. Custom work that turns ideas into results." />
   <meta name="author" content="Gabriella Costa" />
-  <meta name="keywords" content="web design, custom website, small business website, web developer Atlanta, high-converting website, $599 website, five day website" />
+  <meta name="keywords" content="web design, brand identity, social media design, print design, creative studio, small business branding, web developer Atlanta" />
   <link rel="canonical" href="https://gabriellacosta.design/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Gabriella Costa - Web Design Studio" />
-  <meta property="og:title" content="Websites that turn clicks into clients." />
-  <meta property="og:description" content="Custom, high-converting websites for small businesses & creators. $599 flat · live in 5 days · 100% yours." />
+  <meta property="og:site_name" content="Gabriella Costa - Creative Studio" />
+  <meta property="og:title" content="Creative work that turns ideas into results." />
+  <meta property="og:description" content="Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results." />
   <meta property="og:url" content="https://gabriellacosta.design/" />
   <meta property="og:image" content="https://gabriellacosta.design/og-image.jpg" />
-  <meta property="og:image:alt" content="Gabriella Costa web design studio - press start." />
+  <meta property="og:image:alt" content="Gabriella Costa creative studio - press start." />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Websites that turn clicks into clients." />
-  <meta name="twitter:description" content="Custom, high-converting websites. $599 flat · live in 5 days · 100% yours." />
+  <meta name="twitter:title" content="Creative work that turns ideas into results." />
+  <meta name="twitter:description" content="Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results." />
   <meta name="twitter:image" content="https://gabriellacosta.design/og-image.jpg" />
 
   <!-- Fonts -->
@@ -39,16 +39,24 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Gabriella Costa - Web Design Studio",
-    "description": "Custom, high-converting websites for small businesses and creators. One flat price of $599, delivered live in 5 days, 100% owned by the client.",
+    "name": "Gabriella Costa - Creative Studio",
+    "description": "Creative studio offering web design, brand identity, social media and print design for small businesses and creators worldwide.",
     "url": "https://gabriellacosta.design/",
     "email": "gabip3@gmail.com",
     "image": "https://gabriellacosta.design/og-image.jpg",
-    "priceRange": "$599",
     "areaServed": ["Atlanta, GA", "United States"],
-    "founder": { "@type": "Person", "name": "Gabriella Costa", "jobTitle": "Web Designer & Developer" },
+    "founder": { "@type": "Person", "name": "Gabriella Costa", "jobTitle": "Designer & Developer" },
     "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressCountry": "BR" },
-    "makesOffer": { "@type": "Offer", "name": "Custom website - flat rate", "price": "599", "priceCurrency": "USD", "description": "Custom-designed, mobile-responsive, SEO-ready website delivered in 5 days with full domain and hosting ownership." },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Creative services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "url": "https://gabriellacosta.design/website-design.html" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Identity" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Print & Layout" } }
+      ]
+    },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "30", "bestRating": "5" }
   }
   </script>
@@ -311,34 +319,6 @@
     .cat-card:hover .cat-open { transform: rotate(20deg) scale(1.1); }
     .cat-open svg { width:16px; height:16px; }
 
-    /* ============================================================ MISSIONS */
-    .missions { padding: var(--s-8) 0; }
-    .missions h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
-    .missions h2 em { font-style:normal; color: var(--tangerine); }
-    .missions-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-3); margin-top: var(--s-6); }
-    .mission { position:relative; display:flex; flex-direction:column; border:var(--line); border-radius: var(--r-lg); overflow:hidden; background: var(--paper); box-shadow: var(--pop-sm); transition: transform .3s var(--spring), box-shadow .3s; color: var(--ink); text-decoration:none; }
-    .mission:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: var(--pop-lg); }
-    .m-thumb { position:relative; aspect-ratio:16/10; overflow:hidden; border-bottom:var(--line); }
-    .m-thumb img { width:100%; height:100%; object-fit:cover; object-position:top center; }
-    .m-live { position:absolute; top:12px; left:12px; z-index:2; font-family: var(--mono); font-weight:700; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; padding:5px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); }
-    .m-cap { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 18px; }
-    .m-info { display:block; }
-    .m-name { font-family: var(--display); font-weight:800; font-size:1.05rem; display:block; line-height:1.12; }
-    .m-tag { font-family: var(--mono); font-weight:700; font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; color: var(--ink-soft); display:block; margin-top:5px; }
-    .m-open { flex:none; width:40px; height:40px; border-radius:50%; border:var(--line); display:grid; place-items:center; background: var(--lime); color: var(--ink); transition: transform .2s var(--spring); }
-    .mission:hover .m-open { transform: rotate(20deg) scale(1.1); }
-    .m-open svg { width:16px; height:16px; }
-
-    /* ============================================================ PROOF */
-    .proof { background: var(--blue); color: var(--cream); border-block: var(--line); padding: var(--s-8) 0; text-align:center; }
-    .stars { display:inline-flex; gap:8px; margin-bottom: var(--s-3); color: var(--lime); }
-    .stars svg { width:26px; height:26px; }
-    .proof h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1.02; max-width:20ch; margin:0 auto; }
-    .proof h2 em { font-style:normal; color: var(--lime); }
-    .logos { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-top: var(--s-6); }
-    .logos span { font-family: var(--display); font-weight:700; font-size:0.95rem; padding:10px 18px; border:2px solid var(--cream); border-radius: var(--r-pill); transition: background .2s, color .2s; }
-    .logos span:hover { background: var(--cream); color: var(--blue); }
-
     /* ============================================================ COMPLETE / CTA */
     .complete { padding: var(--s-9) 0 var(--s-8); text-align:center; position:relative; background: radial-gradient(700px 500px at 50% 0%, rgba(255,122,26,0.25), transparent 60%); }
     .complete-badge { display:inline-flex; align-items:center; gap:10px; padding:10px 20px; border:var(--line); border-radius: var(--r-pill); background: var(--lime); color: var(--ink); font-family: var(--mono); font-weight:700; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom: var(--s-4); box-shadow: var(--pop-sm); transform: rotate(-2deg); }
@@ -404,14 +384,13 @@
     /* ============================================================ RESPONSIVE */
     @media (max-width: 960px) {
       .nav-levels { display:none; }
-      .missions-grid { grid-template-columns:1fr 1fr; }
       .categories-grid { grid-template-columns:1fr; }
       .stats { grid-template-columns:1fr 1fr; }
       .players { grid-template-columns:1fr; }
-      .m-open, .cat-open { width:44px; height:44px; }
+      .cat-open { width:44px; height:44px; }
     }
     @media (max-width: 560px) {
-      .missions-grid, .form-row { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
       .header-cta .btn span { display:none; }
       .header-cta .btn { padding:11px; }
       .site-header .bar { padding:8px 8px 8px 12px; }
@@ -551,7 +530,7 @@
         <a href="website-design.html" data-i18n="navProcess">Process</a>
         <a href="about.html" data-i18n="navAbout">About</a>
         <a href="website-design.html#offer" data-i18n="navPricing">Pricing</a>
-        <a href="#missions" data-i18n="navWork">Work</a>
+        <a href="website-design.html#missions" data-i18n="navWork">Work</a>
         <a href="#complete" data-i18n="navContact">Contact</a>
       </nav>
       <div class="header-cta">
@@ -559,7 +538,7 @@
           <button type="button" class="lang-pill" id="toggleEn" data-lang="en">EN</button>
           <button type="button" class="lang-pill" id="togglePt" data-lang="pt">PT</button>
         </div>
-        <a class="btn blue" href="#complete" data-magnetic><span data-i18n="headerCtaLabel">Start your site</span><span data-i18n-html="headerCtaPrice"> · $599</span>
+        <a class="btn blue" href="#complete" data-magnetic><span data-i18n="headerCtaLabel">Let's talk</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
         </a>
       </div>
@@ -579,12 +558,12 @@
           <a class="btn" href="#categories" data-magnetic><span data-i18n="ctaExplore">See what I build</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
           </a>
-          <a class="btn paper" href="#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
+          <a class="btn paper" href="website-design.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
         </div>
 
         <div class="stats">
           <div class="stat reveal"><div class="num"><span data-count="30" data-suffix="+">0</span></div><div class="cap" data-i18n="statSites">Projects launched</div></div>
-          <div class="stat reveal" style="--d:80ms"><div class="num"><span data-count="5" data-suffix="-day">0</span></div><div class="cap" data-i18n="statTurnaround">Website turnaround</div></div>
+          <div class="stat reveal" style="--d:80ms"><div class="num"><span data-count="24" data-suffix="h">0</span></div><div class="cap" data-i18n="statTurnaround">Avg. reply time</div></div>
           <div class="stat reveal" style="--d:160ms"><div class="num"><span data-count="4">0</span></div><div class="cap" data-i18n="statCategories">Creative categories</div></div>
           <div class="stat reveal" style="--d:240ms"><div class="num"><span data-count="100" data-suffix="%">0</span></div><div class="cap" data-i18n="statYours">Yours to keep</div></div>
         </div>
@@ -642,42 +621,13 @@
       </div>
     </section>
 
-    <!-- MISSIONS -->
-    <section class="missions" id="missions" aria-labelledby="missions-h">
-      <div class="wrap">
-        <span class="sticker reveal" style="margin-bottom:16px" data-i18n="missionsTag">◆ Completed missions</span>
-        <h2 id="missions-h" class="reveal" data-i18n-html="missionsH2">Real businesses. Real results. <em>Live sites.</em></h2>
-        <div class="missions-grid" id="missionsGrid"></div>
-      </div>
-    </section>
-
-    <!-- PROOF -->
-    <section class="proof" aria-labelledby="proof-h">
-      <div class="wrap reveal">
-        <div class="stars" aria-label="Five out of five stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-        </div>
-        <h2 id="proof-h" data-i18n-html="proofH2">30+ businesses launched. <em>Serving Atlanta, the U.S. & the whole world.</em></h2>
-        <div class="logos" aria-label="Selected clients">
-          <span>Atlanta Home Concierge</span>
-          <span>Sara Sarres</span>
-          <span>Peachtree Commodities</span>
-          <span>Sweet Shop by Claudia</span>
-        </div>
-      </div>
-    </section>
-
     <!-- COMPLETE / CTA -->
     <section class="complete" id="complete" aria-labelledby="complete-h">
       <div class="wrap">
         <div class="reveal">
           <span class="complete-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg> <span data-i18n="completeBadge">Mission complete</span></span>
-          <h2 id="complete-h" data-i18n-html="completeH2">Your website is now <em>live.</em></h2>
-          <p data-i18n="completeP">Now let's build yours. Tell me about your project and I'll come back with a plan - usually within a day.</p>
+          <h2 id="complete-h" data-i18n-html="completeH2">Let's create something <em>unforgettable.</em></h2>
+          <p data-i18n="completeP">Tell me about your project and I'll come back with a plan - usually within a day.</p>
         </div>
 
         <div class="form-card card reveal" style="--d:120ms">
@@ -732,7 +682,7 @@
               <a href="website-design.html" data-i18n="navProcess">Process</a>
               <a href="about.html" data-i18n="navAbout">About</a>
               <a href="website-design.html#offer" data-i18n="navPricing">Pricing</a>
-              <a href="#missions" data-i18n="navWork">Work</a>
+              <a href="website-design.html#missions" data-i18n="navWork">Work</a>
             </div>
             <div class="footer-col">
               <h5 data-i18n="footerConnect">Connect</h5>
@@ -767,7 +717,7 @@
     var I18N = {
       en: {
         navProcess: "Process", navAbout: "About", navPricing: "Pricing", navWork: "Work", navContact: "Contact",
-        headerCtaLabel: "Start your site", headerCtaPrice: " · $599",
+        headerCtaLabel: "Let's talk",
         heroEyebrow: "★ From Brazil · for the whole world 🌎",
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         heroLead: "Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results.",
@@ -777,44 +727,14 @@
         catBrandTitle: "Brand Identity", catBrandDesc: "Logo, color palette, typography - a brand people remember.",
         catSocialTitle: "Social Media", catSocialDesc: "Storytelling, layouts & campaigns people stop scrolling for.",
         catPrintTitle: "Print & Layout", catPrintDesc: "Banners, catalogs, eBooks & graphic materials, done right.",
-        badgeFlat: "$599 FLAT", badgeLive: "LIVE IN 5 DAYS", badgeYours: "100% YOURS",
-        statSites: "Projects launched", statTurnaround: "Website turnaround", statCategories: "Creative categories", statYours: "Yours to keep",
+        statSites: "Projects launched", statTurnaround: "Avg. reply time", statCategories: "Creative categories", statYours: "Yours to keep",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> 30+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
-        levelsTag: "◆ How we build it",
-        levelsH2: 'Six levels, one <span style="color:var(--magenta)">unforgettable</span> website.',
-        lv1Tag: "Level 01 - Discovery", lv1H3: "Understanding your business.",
-        lv1P: "Before a single pixel, we decode who you serve, what makes them buy, and the one action your site must drive.",
-        lv1Tag1: "Goals", lv1Tag2: "Audience", lv1Tag3: "Positioning", lv1Day: "◈ Day 1 - you share logo, copy & inspiration",
-        lv2Tag: "Level 02 - Strategy & UX", lv2H3: "Mapping the path that converts.",
-        lv2P: "We chart the journey from stranger to client - structure, hierarchy, and the exact flow that turns attention into action.",
-        lv2Tag1: "User flow", lv2Tag2: "Wireframes", lv2Tag3: "Conversion",
-        lv3Tag: "Level 03 - UI Design", lv3H3: "A custom interface, built for your brand.",
-        lv3P: "Not a template with your logo dropped in. Every type choice, color and detail is designed to feel unmistakably yours.",
-        lv3Tag1: "Visual identity", lv3Tag2: "Typography", lv3Tag3: "Motion",
-        lv4Tag: "Level 04 - Development", lv4H3: "Hand-built, fast, and responsive.",
-        lv4P: "Clean code, flawless on every screen. Built to load in a blink and scale as your business grows.",
-        lv4Tag1: "Responsive", lv4Tag2: "Clean code", lv4Tag3: "Scalable", lv4Day: "◈ Days 2-4 - I build the entire thing",
-        lv5Tag: "Level 05 - SEO & Performance", lv5H3: "Found on Google. Loads in a blink.",
-        lv5P: "Technical SEO, local optimization and Core Web Vitals baked in - so the right people actually find you.",
-        lv5Tag1: "Technical SEO", lv5Tag2: "Local search", lv5Tag3: "Web Vitals",
-        lv6Tag: "Level 06 - Launch 🎉", lv6H3: 'You go live. And you <span style="color:var(--magenta)">own</span> everything.',
-        lv6P: "Domain and hosting, 100% in your name. No lock-in, no monthly ransom to keep your own website.",
-        lv6Tag1: "Go live", lv6Tag2: "Full ownership", lv6Tag3: "Support", lv6Day: "◈ Day 5 - you shine",
-        offerTag: "◆ The loadout", offerH2: "One price. Everything in. <em>No hourly games.</em>",
-        offerP: 'Most agencies quote $3,000+ and take two months. I give you a premium, custom site for a flat <b>$599</b> - and you never pay me again to own it.',
-        priceMain: "<small>$</small>599", priceWas: "agencies: $3,000+", priceNote: "One flat price · no subscriptions",
-        offerLi1: "Custom design, built for your business", offerLi2: "Five-day delivery, guaranteed",
-        offerLi3: "Flawless on mobile, tablet & desktop", offerLi4: "SEO setup & local optimization",
-        offerLi5: "Full domain & hosting ownership", offerLi6: "Content setup & ongoing support",
-        offerCta: "Claim this loadout",
-        missionsTag: "◆ Completed missions", missionsH2: "Real businesses. Real results. <em>Live sites.</em>",
-        proofH2: "30+ businesses launched. <em>Serving Atlanta, the U.S. & the whole world.</em>",
-        completeBadge: "Mission complete", completeH2: "Your website is now <em>live.</em>",
-        completeP: "Now let's build yours. Tell me about your project and I'll come back with a plan - usually within a day.",
+        completeBadge: "Mission complete", completeH2: "Let's create something <em>unforgettable.</em>",
+        completeP: "Tell me about your project and I'll come back with a plan - usually within a day.",
         fieldName: 'Your name <span class="req">*</span>', fieldNamePh: "Jane Doe",
         fieldEmail: 'Email <span class="req">*</span>', fieldEmailPh: "jane@business.com",
         fieldBusiness: "Business / project", fieldBusinessPh: "What are we building?",
-        fieldMessage: 'Tell me about it <span class="req">*</span>', fieldMessagePh: "Your goals, timeline, and anything you love or hate in a website.",
+        fieldMessage: 'Tell me about it <span class="req">*</span>', fieldMessagePh: "Your goals, timeline, and anything you love or hate in your project.",
         fieldHelp: "No spam, ever. Your details are only used to reply to you.",
         formSubmit: "Begin the mission", formSuccessTitle: "Mission accepted!", formSuccessP: "Thanks - your message is in. I'll get back to you shortly. 🌎",
         footerMark: "Let's build something <em>unforgettable.</em>", footerExplore: "Explore", footerConnect: "Connect",
@@ -835,15 +755,13 @@
         party1: "You - The Visionary", party2: "Gabriella Costa - The Builder",
         partySub: "Ready to build something <em>unforgettable.</em>", enterSite: "Enter the mission",
         loaderLines: ["Initializing experience...", "Loading creativity...", "Compiling ideas...", "Optimizing performance...", "Ready."],
-        missionLive: "Live",
-        missionTags: { atlanta: "Home services · Atlanta", rk360: "Events · Photo booth", sara: "Brazilian actress · Personal brand", peachtree: "Trading · B2B", sweet: "Bakery · E-commerce", yours: "Next in queue" },
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
         formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.",
         formErrNetwork: "Network error. Please email gabip3@gmail.com."
       },
       pt: {
         navProcess: "Processo", navAbout: "Sobre", navPricing: "Preço", navWork: "Portfólio", navContact: "Contato",
-        headerCtaLabel: "Comece seu site", headerCtaPrice: " · R$3.000",
+        headerCtaLabel: "Vamos conversar",
         heroEyebrow: "★ Do Brasil · para o mundo inteiro 🌎",
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
         heroLead: "Sites, identidade visual, social media e impressos - tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
@@ -853,44 +771,14 @@
         catBrandTitle: "Identidade Visual", catBrandDesc: "Logo, paleta de cores, tipografia - uma marca que as pessoas lembram.",
         catSocialTitle: "Social Mídia", catSocialDesc: "Storytelling, layouts e campanhas que fazem parar de rolar o feed.",
         catPrintTitle: "Impressos & Diagramação", catPrintDesc: "Banners, catálogos, eBooks e materiais gráficos, feitos direito.",
-        badgeFlat: "R$3.000 À VISTA", badgeLive: "NO AR EM 5 DIAS", badgeYours: "100% SEU",
-        statSites: "Projetos lançados", statTurnaround: "Prazo do site", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
+        statSites: "Projetos lançados", statTurnaround: "Tempo médio de resposta", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> 30+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
-        levelsTag: "◆ Como eu construo",
-        levelsH2: 'Seis fases, um site <span style="color:var(--magenta)">inesquecível</span>.',
-        lv1Tag: "Fase 01 - Descoberta", lv1H3: "Entendendo seu negócio.",
-        lv1P: "Antes de qualquer pixel, eu decifro quem você atende, o que faz essas pessoas comprarem, e a única ação que seu site precisa gerar.",
-        lv1Tag1: "Objetivos", lv1Tag2: "Público", lv1Tag3: "Posicionamento", lv1Day: "◈ Dia 1 - você envia logo, textos e referências",
-        lv2Tag: "Fase 02 - Estratégia & UX", lv2H3: "Mapeando o caminho que converte.",
-        lv2P: "Eu traço a jornada de visitante desconhecido até cliente - estrutura, hierarquia e o fluxo exato que transforma atenção em ação.",
-        lv2Tag1: "Fluxo do usuário", lv2Tag2: "Wireframes", lv2Tag3: "Conversão",
-        lv3Tag: "Fase 03 - Design de Interface", lv3H3: "Uma interface sob medida, feita pra sua marca.",
-        lv3P: "Nada de template com sua logo enfiada no meio. Cada fonte, cor e detalhe é pensado pra parecer inconfundivelmente seu.",
-        lv3Tag1: "Identidade visual", lv3Tag2: "Tipografia", lv3Tag3: "Movimento",
-        lv4Tag: "Fase 04 - Desenvolvimento", lv4H3: "Construído à mão, rápido e responsivo.",
-        lv4P: "Código limpo, perfeito em qualquer tela. Feito pra carregar num piscar de olhos e crescer junto com seu negócio.",
-        lv4Tag1: "Responsivo", lv4Tag2: "Código limpo", lv4Tag3: "Escalável", lv4Day: "◈ Dias 2-4 - eu construo tudo",
-        lv5Tag: "Fase 05 - SEO & Performance", lv5H3: "Encontrado no Google. Carrega na hora.",
-        lv5P: "SEO técnico, otimização local e Core Web Vitals já embutidos - pra você ser encontrado pelas pessoas certas.",
-        lv5Tag1: "SEO técnico", lv5Tag2: "Busca local", lv5Tag3: "Web Vitals",
-        lv6Tag: "Fase 06 - Lançamento 🎉", lv6H3: 'Seu site vai ao ar. E você é dono de <span style="color:var(--magenta)">tudo</span>.',
-        lv6P: "Domínio e hospedagem 100% no seu nome. Sem amarras, sem mensalidade obrigatória pra manter o que é seu.",
-        lv6Tag1: "Vai ao ar", lv6Tag2: "Propriedade total", lv6Tag3: "Suporte", lv6Day: "◈ Dia 5 - é a sua vez de brilhar",
-        offerTag: "◆ O pacote", offerH2: "Um preço só. Tudo incluso. <em>Sem joguinho de hora.</em>",
-        offerP: 'A maioria das agências cobra US$3.000+ e leva dois meses. Eu entrego um site premium e personalizado por <b>R$3.000</b> fixos - e você nunca mais paga pra ser dono dele.',
-        priceMain: "<small>R$</small>3.000", priceWas: "agências: US$3.000+", priceNote: "Equivale a US$599 no câmbio atual · sem mensalidade",
-        offerLi1: "Design personalizado, feito pro seu negócio", offerLi2: "Entrega em cinco dias, garantida",
-        offerLi3: "Perfeito no celular, tablet e computador", offerLi4: "SEO configurado e otimização local",
-        offerLi5: "Domínio e hospedagem 100% seus", offerLi6: "Conteúdo configurado e suporte contínuo",
-        offerCta: "Quero esse pacote",
-        missionsTag: "◆ Missões concluídas", missionsH2: "Negócios reais. Resultados reais. <em>Sites no ar.</em>",
-        proofH2: "Mais de 30 negócios lançados. <em>Atendendo Atlanta, os EUA e o mundo inteiro.</em>",
-        completeBadge: "Missão cumprida", completeH2: "Seu site está <em>no ar.</em>",
-        completeP: "Agora vamos construir o seu. Me conta sobre seu projeto que eu volto com um plano - geralmente em até um dia.",
+        completeBadge: "Missão cumprida", completeH2: "Vamos criar algo <em>inesquecível.</em>",
+        completeP: "Me conta sobre seu projeto que eu volto com um plano - geralmente em até um dia.",
         fieldName: 'Seu nome <span class="req">*</span>', fieldNamePh: "Maria Silva",
         fieldEmail: 'E-mail <span class="req">*</span>', fieldEmailPh: "maria@negocio.com",
         fieldBusiness: "Negócio / projeto", fieldBusinessPh: "O que vamos construir?",
-        fieldMessage: 'Me conta sobre o projeto <span class="req">*</span>', fieldMessagePh: "Seus objetivos, prazo, e o que você ama ou odeia em um site.",
+        fieldMessage: 'Me conta sobre o projeto <span class="req">*</span>', fieldMessagePh: "Seus objetivos, prazo, e o que você ama ou odeia no seu projeto.",
         fieldHelp: "Sem spam, nunca. Seus dados só são usados pra te responder.",
         formSubmit: "Começar a missão", formSuccessTitle: "Missão aceita!", formSuccessP: "Obrigada - sua mensagem chegou. Já volto com uma resposta. 🌎",
         footerMark: "Vamos construir algo <em>inesquecível.</em>", footerExplore: "Explorar", footerConnect: "Contato",
@@ -911,8 +799,6 @@
         party1: "Você - O Visionário", party2: "Gabriella Costa - A Construtora",
         partySub: "Pronta pra construir algo <em>inesquecível.</em>", enterSite: "Entrar na missão",
         loaderLines: ["Inicializando experiência...", "Carregando criatividade...", "Compilando ideias...", "Otimizando performance...", "Pronto."],
-        missionLive: "No ar",
-        missionTags: { atlanta: "Serviços domésticos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Atriz brasileira · Marca pessoal", peachtree: "Trading · B2B", sweet: "Confeitaria · E-commerce", yours: "Próximo da fila" },
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
         formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.",
         formErrNetwork: "Erro de conexão. Me manda um e-mail: gabip3@gmail.com."
@@ -931,39 +817,7 @@
       $$("[data-i18n-ph]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-ph")] != null) el.placeholder = dict[el.getAttribute("data-i18n-ph")]; });
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-      renderMissions(lang);
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
-    }
-
-    /* PORTFOLIO */
-    var missionDefs = [
-      { key: "atlanta", name: "Atlanta Home Concierge", c: "#E8691A", url: "https://www.atlantahomeconcierge.com" },
-      { key: "rk360", name: "RK360 Photo Booth Rentals", c: "#DB3A8C", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.png" },
-      { key: "sara", name: "Sara Sarres", c: "#2856D6", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.png" },
-      { key: "peachtree", name: "Peachtree Commodities", c: "#6B32E0" },
-      { key: "sweet", name: "Sweet Shop by Claudia", c: "#A9CC3D" },
-      { key: "yours", name: "Your Business", c: "#DB3A8C" }
-    ];
-    var grid = document.getElementById("missionsGrid");
-    function renderMissions(lang) {
-      if (!grid) return;
-      var dict = I18N[lang] || I18N.en;
-      var wasEmpty = grid.childElementCount === 0;
-      grid.innerHTML = missionDefs.map(function (m, i) {
-        var thumb = "linear-gradient(150deg," + m.c + "," + m.c + "cc)";
-        var tag = m.url ? "a" : "article";
-        var attrs = m.url ? ' href="' + m.url + '" target="_blank" rel="noopener" aria-label="' + m.name + ' - open live site"' : "";
-        var tagText = dict.missionTags[m.key] || "";
-        return '<' + tag + ' class="mission reveal' + (wasEmpty ? "" : " in-view") + '"' + attrs + ' style="--d:' + (i * 60) + 'ms">' +
-          '<span class="m-thumb" style="background:' + thumb + '">' +
-          '<span class="m-live">● ' + dict.missionLive + '</span>' +
-          (m.shot ? '<img src="' + m.shot + '" alt="Screenshot of the ' + m.name + ' website" loading="lazy"/>' : '') +
-          '</span>' +
-          '<span class="m-cap"><span class="m-info"><span class="m-name">' + m.name + '</span><span class="m-tag">' + tagText + '</span></span>' +
-          (m.url ? '<span class="m-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>' : '') +
-          '</span></' + tag + '>';
-      }).join("");
-      if (wasEmpty) { $$(".mission", grid).forEach(function (el) { if (revObsRef) revObsRef.observe(el); }); }
     }
     var revObsRef = null;
 
@@ -997,7 +851,7 @@
     window.addEventListener("scroll", function () {
       var y = window.pageYOffset; header.classList.toggle("hide", y > lastY && y > 500); lastY = y;
     }, { passive: true });
-    var navMap = { "missions": $("#missions"), "complete": $("#complete") };
+    var navMap = { "complete": $("#complete") };
     if ("IntersectionObserver" in window) {
       var nObs = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); }); });
