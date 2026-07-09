@@ -64,11 +64,11 @@
       --ink:       #1A1330;   /* warm near-black, purple-tinted */
       --ink-soft:  #4A4266;
 
-      --magenta:   #FF3CA0;
-      --blue:      #2D6BFF;
-      --lime:      #C8FF3C;
-      --tangerine: #FF7A1A;
-      --violet:    #7C3AFF;
+      --magenta:   #DB3A8C;
+      --blue:      #2856D6;
+      --lime:      #A9CC3D;
+      --tangerine: #E8691A;
+      --violet:    #6B32E0;
 
       --display: "Unbounded", "Arial Black", system-ui, sans-serif;
       --body:    "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -127,7 +127,6 @@
         radial-gradient(560px 560px at 50% 108%, rgba(124,58,255,0.12), transparent 60%),
         var(--cream);
     }
-    #particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
     #confetti { position: fixed; inset: 0; z-index: var(--z-confetti); pointer-events: none; }
 
     /* CURSOR */
@@ -485,13 +484,12 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
       .reveal { opacity:1 !important; transform:none !important; }
-      #particles, #confetti, .intro-blob, .scroll-cue .arrow { display:none !important; }
+      #confetti, .intro-blob, .scroll-cue .arrow { display:none !important; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <canvas id="particles" aria-hidden="true"></canvas>
   <canvas id="confetti" aria-hidden="true"></canvas>
   <div class="cur-ring" aria-hidden="true"></div>
   <div class="cur-dot" aria-hidden="true"></div>
@@ -524,7 +522,7 @@
 
     <!-- Stage 1: Loader -->
     <div class="stage" id="stageLoader">
-      <p class="coin" data-i18n="coinInsert">Insert coin</p>
+      <p class="coin" data-i18n="coinInsert">Let's begin</p>
       <p class="loader-mark"><span class="g">Gabriella</span> <span class="c">Costa</span> <span class="d">Design</span></p>
       <p class="loader-status" id="loaderStatus" aria-live="polite"></p>
       <div class="loader-bar" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100"><i id="loaderFill"></i></div>
@@ -571,7 +569,7 @@
     <!-- Stage 4: Party Created -->
     <div class="stage" id="stageParty">
       <p class="coin" style="animation:none" data-i18n="coinParty">Mission started</p>
-      <h2 class="party-title" data-i18n-html="partyTitle">Party <em>created!</em></h2>
+      <h2 class="party-title" data-i18n-html="partyTitle">Team <em>assembled!</em></h2>
       <ul class="party-list" id="partyList">
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="party1">You - The Visionary</span></li>
         <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span> <span data-i18n="party2">Gabriella Costa - The Builder</span></li>
@@ -881,7 +879,7 @@
     var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    var palette = ["#FF3CA0", "#2D6BFF", "#C8FF3C", "#FF7A1A", "#7C3AFF"];
+    var palette = ["#DB3A8C", "#2856D6", "#A9CC3D", "#E8691A", "#6B32E0"];
 
     /* ==================================================== I18N (EN / PT-BR) */
     /* BRL price: Wise mid-market rate on 2026-07-09 was 1 USD = 5.116 BRL ($599 = R$3.064,48), rounded to a clean R$3.000 for display. */
@@ -937,7 +935,7 @@
         footerEmail: "Email", footerStart: "Start a project",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world',
         toTop: "Back to top", skipIntro: "Skip intro →",
-        coinInsert: "Insert coin", coinReady: "System ready",
+        coinInsert: "Let's begin", coinReady: "System ready",
         psTitle: 'Great sites aren\'t <span class="p">ordered.</span><br/>They\'re <span class="m">built together.</span>',
         pressStart: "Press Start", pressHint: "Enter · or click to begin",
         coinSelect: "Select your player", selectH2: "Every project is a two-player game.",
@@ -947,7 +945,7 @@
         p2Desc: "The designer & developer who turns your vision into a site that converts.", p2Cta: "Joins automatically",
         p1StatusReady: "Ready", p2StatusJoined: "Joined", p2CtaJoined: "Auto-joined the party",
         teamHint: "🤝 Great sites are built together.",
-        coinParty: "Mission started", partyTitle: "Party <em>created!</em>",
+        coinParty: "Mission started", partyTitle: "Team <em>assembled!</em>",
         party1: "You - The Visionary", party2: "Gabriella Costa - The Builder",
         partySub: "Ready to build something <em>unforgettable.</em>", enterSite: "Enter the mission",
         loaderLines: ["Initializing experience...", "Loading creativity...", "Compiling ideas...", "Optimizing performance...", "Ready."],
@@ -1008,7 +1006,7 @@
         footerEmail: "E-mail", footerStart: "Comece um projeto",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo',
         toTop: "Voltar ao topo", skipIntro: "Pular intro →",
-        coinInsert: "Insira a ficha", coinReady: "Sistema pronto",
+        coinInsert: "Vamos começar", coinReady: "Sistema pronto",
         psTitle: 'Grandes sites não são <span class="p">encomendados.</span><br/>São <span class="m">construídos juntos.</span>',
         pressStart: "Aperta o Start", pressHint: "Enter · ou clique pra começar",
         coinSelect: "Escolha seu jogador", selectH2: "Todo projeto é um jogo de dois jogadores.",
@@ -1018,7 +1016,7 @@
         p2Desc: "A designer e desenvolvedora que transforma sua visão em um site que converte.", p2Cta: "Entra automaticamente",
         p1StatusReady: "Pronto", p2StatusJoined: "Entrou", p2CtaJoined: "Entrou automaticamente no grupo",
         teamHint: "🤝 Grandes sites são construídos juntos.",
-        coinParty: "Missão iniciada", partyTitle: "Grupo <em>formado!</em>",
+        coinParty: "Missão iniciada", partyTitle: "Equipe <em>formada!</em>",
         party1: "Você - O Visionário", party2: "Gabriella Costa - A Construtora",
         partySub: "Pronta pra construir algo <em>inesquecível.</em>", enterSite: "Entrar na missão",
         loaderLines: ["Inicializando experiência...", "Carregando criatividade...", "Compilando ideias...", "Otimizando performance...", "Pronto."],
@@ -1059,12 +1057,12 @@
 
     /* PORTFOLIO */
     var missionDefs = [
-      { key: "atlanta", name: "Atlanta Home Concierge", c: "#FF7A1A", url: "https://www.atlantahomeconcierge.com" },
-      { key: "rk360", name: "RK360 Photo Booth Rentals", c: "#FF3CA0", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.png" },
-      { key: "sara", name: "Sara Sarres", c: "#2D6BFF", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.png" },
-      { key: "peachtree", name: "Peachtree Commodities", c: "#7C3AFF" },
-      { key: "sweet", name: "Sweet Shop by Claudia", c: "#C8FF3C" },
-      { key: "yours", name: "Your Business", c: "#FF3CA0" }
+      { key: "atlanta", name: "Atlanta Home Concierge", c: "#E8691A", url: "https://www.atlantahomeconcierge.com" },
+      { key: "rk360", name: "RK360 Photo Booth Rentals", c: "#DB3A8C", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.png" },
+      { key: "sara", name: "Sara Sarres", c: "#2856D6", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.png" },
+      { key: "peachtree", name: "Peachtree Commodities", c: "#6B32E0" },
+      { key: "sweet", name: "Sweet Shop by Claudia", c: "#A9CC3D" },
+      { key: "yours", name: "Your Business", c: "#DB3A8C" }
     ];
     var grid = document.getElementById("missionsGrid");
     function renderMissions(lang) {
@@ -1165,23 +1163,6 @@
       });
     }
 
-    /* PARTICLES (candy shapes) */
-    if (!reduce) {
-      var cv = document.getElementById("particles"), ctx = cv.getContext("2d"), W, H, dpr = Math.min(window.devicePixelRatio || 1, 2), parts = [], running = true;
-      function resize() {
-        W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; cv.style.width = innerWidth + "px"; cv.style.height = innerHeight + "px";
-        var count = innerWidth < 640 ? 12 : 26; parts = [];
-        for (var i = 0; i < count; i++) parts.push({ x: Math.random() * W, y: Math.random() * H, r: (Math.random() * 4 + 2) * dpr, vx: (Math.random() - 0.5) * 0.15 * dpr, vy: (Math.random() - 0.5) * 0.15 * dpr, c: palette[i % palette.length], a: Math.random() * 0.4 + 0.25 });
-      }
-      resize(); window.addEventListener("resize", resize);
-      document.addEventListener("visibilitychange", function () { running = !document.hidden; if (running) draw(); });
-      function draw() {
-        if (!running) return; ctx.clearRect(0, 0, W, H);
-        for (var i = 0; i < parts.length; i++) { var p = parts[i]; p.x += p.vx; p.y += p.vy; if (p.x < 0) p.x = W; if (p.x > W) p.x = 0; if (p.y < 0) p.y = H; if (p.y > H) p.y = 0; ctx.globalAlpha = p.a; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = p.c; ctx.fill(); }
-        ctx.globalAlpha = 1; requestAnimationFrame(draw);
-      }
-      draw();
-    }
 
     /* CONFETTI */
     function confetti() {

@@ -39,7 +39,7 @@
   <style>
     :root {
       --cream:#FDF6E9; --paper:#FFFFFF; --ink:#1A1330; --ink-soft:#4A4266;
-      --magenta:#FF3CA0; --blue:#2D6BFF; --lime:#C8FF3C; --tangerine:#FF7A1A; --violet:#7C3AFF;
+      --magenta:#DB3A8C; --blue:#2856D6; --lime:#A9CC3D; --tangerine:#E8691A; --violet:#6B32E0;
       --display:"Unbounded","Arial Black",system-ui,sans-serif;
       --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
       --mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -61,7 +61,6 @@
     ::selection{background:var(--lime);color:var(--ink);}
     :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px;}
     body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(520px 520px at 88% -6%,rgba(255,60,160,0.16),transparent 60%),radial-gradient(600px 600px at -8% 12%,rgba(45,107,255,0.12),transparent 60%),radial-gradient(560px 560px at 50% 108%,rgba(124,58,255,0.12),transparent 60%),var(--cream);}
-    #particles{position:fixed;inset:0;z-index:-1;pointer-events:none;}
     .cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;will-change:transform;}
     .cur-dot{width:8px;height:8px;background:var(--magenta);transform:translate(-50%,-50%);}
     .cur-ring{width:34px;height:34px;border:3px solid var(--ink);transform:translate(-50%,-50%);transition:width .25s var(--spring),height .25s var(--spring),background .2s,border-color .2s;}
@@ -159,13 +158,12 @@
 
     @media (prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;}
-      .reveal{opacity:1!important;transform:none!important;} #particles,.doodle{display:none!important;}
+      .reveal{opacity:1!important;transform:none!important;} .doodle{display:none!important;}
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <canvas id="particles" aria-hidden="true"></canvas>
   <div class="cur-ring" aria-hidden="true"></div>
   <div class="cur-dot" aria-hidden="true"></div>
 
@@ -311,15 +309,6 @@
       });
     }
 
-    if(!reduce){
-      var cv=document.getElementById("particles"),ctx=cv.getContext("2d"),W,H,dpr=Math.min(window.devicePixelRatio||1,2),parts=[],running=true;
-      var palette=["#FF3CA0","#2D6BFF","#C8FF3C","#FF7A1A","#7C3AFF"];
-      function resize(){W=cv.width=innerWidth*dpr;H=cv.height=innerHeight*dpr;cv.style.width=innerWidth+"px";cv.style.height=innerHeight+"px";var count=innerWidth<640?12:24;parts=[];for(var i=0;i<count;i++)parts.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*4+2)*dpr,vx:(Math.random()-0.5)*0.15*dpr,vy:(Math.random()-0.5)*0.15*dpr,c:palette[i%palette.length],a:Math.random()*0.4+0.25});}
-      resize();window.addEventListener("resize",resize);
-      document.addEventListener("visibilitychange",function(){running=!document.hidden;if(running)draw();});
-      function draw(){if(!running)return;ctx.clearRect(0,0,W,H);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.globalAlpha=p.a;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.fill();}ctx.globalAlpha=1;requestAnimationFrame(draw);}
-      draw();
-    }
   })();
   </script>
 </body>
