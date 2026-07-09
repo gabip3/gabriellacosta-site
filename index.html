@@ -449,9 +449,10 @@
         <span>Gabriella Costa<small>Web Design Studio</small></span>
       </a>
       <nav class="nav-levels" aria-label="Primary">
+        <a href="#top" data-i18n="navHome">Home</a>
         <a href="website-design.html" data-i18n="navProcess">Websites</a>
         <a href="about.html" data-i18n="navAbout">About</a>
-        <a href="website-design.html#missions" data-i18n="navWork">Work</a>
+        <a href="#categories" data-i18n="navServices">Services</a>
         <a href="#complete" data-i18n="navContact">Contact</a>
       </nav>
       <div class="header-cta">
@@ -620,9 +621,10 @@
           <div class="footer-links">
             <div class="footer-col">
               <h5 data-i18n="footerExplore">Explore</h5>
+              <a href="#top" data-i18n="navHome">Home</a>
               <a href="website-design.html" data-i18n="navProcess">Websites</a>
               <a href="about.html" data-i18n="navAbout">About</a>
-              <a href="website-design.html#missions" data-i18n="navWork">Work</a>
+              <a href="#categories" data-i18n="navServices">Services</a>
             </div>
             <div class="footer-col">
               <h5 data-i18n="footerConnect">Connect</h5>
@@ -656,7 +658,7 @@
     /* BRL price: Wise mid-market rate on 2026-07-09 was 1 USD = 5.116 BRL ($599 = R$3.064,48), rounded to a clean R$3.000 for display. */
     var I18N = {
       en: {
-        navProcess: "Websites", navAbout: "About", navWork: "Work", navContact: "Contact",
+        navHome: "Home", navProcess: "Websites", navAbout: "About", navServices: "Services", navContact: "Contact",
         headerCtaLabel: "Let's talk",
         heroEyebrow: "★ From Brazil · for the whole world 🌎",
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
@@ -690,7 +692,7 @@
         formErrNetwork: "Network error. Please email gabip3@gmail.com."
       },
       pt: {
-        navProcess: "Sites", navAbout: "Sobre", navWork: "Portfólio", navContact: "Contato",
+        navHome: "Início", navProcess: "Sites", navAbout: "Sobre", navServices: "Serviços", navContact: "Contato",
         headerCtaLabel: "Vamos conversar",
         heroEyebrow: "★ Do Brasil · para o mundo inteiro 🌎",
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
@@ -771,7 +773,7 @@
     window.addEventListener("scroll", function () {
       var y = window.pageYOffset; header.classList.toggle("hide", y > lastY && y > 500); lastY = y;
     }, { passive: true });
-    var navMap = { "complete": $("#complete") };
+    var navMap = { "categories": $("#categories"), "complete": $("#complete") };
     if ("IntersectionObserver" in window) {
       var nObs = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); }); });
