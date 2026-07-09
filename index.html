@@ -290,6 +290,15 @@
     .cat-card:hover .cat-open { transform: rotate(20deg) scale(1.1); }
     .cat-open svg { width:16px; height:16px; }
 
+    /* ============================================================ COMING SOON */
+    .coming-soon { padding: var(--s-8) 0; text-align:center; }
+    .coming-soon-wrap { max-width:640px; }
+    .coming-soon h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1.05; }
+    .coming-soon h2 em { font-style:normal; color: var(--magenta); }
+    .coming-soon p { color: var(--ink-soft); font-size: var(--fs-lead); margin-top: var(--s-3); }
+    .coming-soon-dots { display:flex; justify-content:center; gap:10px; margin-top: var(--s-5); }
+    .coming-soon-dots span { width:14px; height:14px; border-radius:50%; border:2px solid var(--ink); }
+
     /* ============================================================ COMPLETE / CTA */
     .complete { padding: var(--s-9) 0 var(--s-8); text-align:center; position:relative; background: radial-gradient(700px 500px at 50% 0%, rgba(255,122,26,0.25), transparent 60%); }
     .complete h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h1); line-height:0.94; letter-spacing:-0.03em; max-width:16ch; margin:0 auto var(--s-3); }
@@ -542,6 +551,22 @@
       </div>
     </section>
 
+    <!-- COMING SOON -->
+    <section class="coming-soon" aria-labelledby="coming-soon-h">
+      <div class="wrap coming-soon-wrap reveal">
+        <span class="sticker" style="margin-bottom:16px" data-i18n="comingSoonTag">◆ Coming this week</span>
+        <h2 id="coming-soon-h" data-i18n-html="comingSoonH2">New case studies & client stories, <em>landing soon.</em></h2>
+        <p data-i18n="comingSoonP">I'm adding real project photos and client testimonials across every category this week - check back soon, or reach out and I'll walk you through examples directly.</p>
+        <div class="coming-soon-dots" aria-hidden="true">
+          <span style="background:var(--magenta)"></span>
+          <span style="background:var(--violet)"></span>
+          <span style="background:var(--blue)"></span>
+          <span style="background:var(--tangerine)"></span>
+          <span style="background:var(--lime)"></span>
+        </div>
+      </div>
+    </section>
+
     <!-- COMPLETE / CTA -->
     <section class="complete" id="complete" aria-labelledby="complete-h">
       <div class="wrap">
@@ -662,6 +687,8 @@
         catAiTitle: "AI Creative", catAiDesc: "AI-generated videos, characters & mascots that bring your brand to life.",
         statSites: "Projects launched", statTurnaround: "Years of experience", statCategories: "Creative categories", statYours: "Yours to keep",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> AI CREATIVE <i class="star">★</i> 500+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
+        comingSoonTag: "◆ Coming this week", comingSoonH2: "New case studies &amp; client stories, <em>landing soon.</em>",
+        comingSoonP: "I'm adding real project photos and client testimonials across every category this week - check back soon, or reach out and I'll walk you through examples directly.",
         completeH2: "Let's create something <em>unforgettable.</em>",
         completeP: "Tell me about your project and I'll come back with a plan - usually within a day.",
         fieldName: 'Your name <span class="req">*</span>', fieldNamePh: "Jane Doe",
@@ -696,6 +723,8 @@
         catAiTitle: "Inteligência Artificial", catAiDesc: "Vídeos, personagens e mascotes com IA que dão vida à sua marca.",
         statSites: "Projetos lançados", statTurnaround: "Anos de experiência", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> INTELIGÊNCIA ARTIFICIAL <i class="star">★</i> 500+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
+        comingSoonTag: "◆ Chegando essa semana", comingSoonH2: "Novos cases &amp; depoimentos de clientes, <em>chegando em breve.</em>",
+        comingSoonP: "Essa semana vou adicionar fotos reais de projetos e depoimentos de clientes em cada categoria - volte em breve, ou me chama que te mostro exemplos direto.",
         completeH2: "Vamos criar algo <em>inesquecível.</em>",
         completeP: "Me conta sobre seu projeto que eu volto com um plano - geralmente em até um dia.",
         fieldName: 'Seu nome <span class="req">*</span>', fieldNamePh: "Maria Silva",
