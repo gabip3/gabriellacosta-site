@@ -9,7 +9,7 @@
   <title>Web Design, Branding & Creative Studio | Gabriella Costa</title>
   <meta name="description" content="Creative studio in São Paulo serving clients worldwide - websites, brand identity, social media & print design. Custom work that turns ideas into results." />
   <meta name="author" content="Gabriella Costa" />
-  <meta name="keywords" content="web design, brand identity, social media design, print design, creative studio, small business branding, web developer Atlanta" />
+  <meta name="keywords" content="web design, brand identity, social media design, print design, AI video creation, AI mascots, creative studio, small business branding, web developer Atlanta" />
   <link rel="canonical" href="https://gabriellacosta.design/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
@@ -54,7 +54,8 @@
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design", "url": "https://gabriellacosta.design/website-design.html" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Identity" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Design" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Print & Layout" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Print & Layout" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Creative - video, characters & mascots" } }
       ]
     },
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "30", "bestRating": "5" }
@@ -305,7 +306,7 @@
     .categories { padding: var(--s-8) 0; }
     .categories h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
     .categories h2 em { font-style:normal; color: var(--magenta); }
-    .categories-grid { display:grid; grid-template-columns: repeat(2,1fr); gap: var(--s-3); margin-top: var(--s-6); }
+    .categories-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-3); margin-top: var(--s-6); }
     .cat-card { position:relative; display:flex; flex-direction:column; border:var(--line); border-radius: var(--r-lg); overflow:hidden; background: var(--paper); box-shadow: var(--pop-sm); transition: transform .3s var(--spring), box-shadow .3s; color: var(--ink); text-decoration:none; }
     .cat-card:hover { transform: translateY(-6px); box-shadow: var(--pop-lg); }
     .cat-thumb { position:relative; aspect-ratio:16/9; display:grid; place-items:center; border-bottom:var(--line); }
@@ -331,9 +332,10 @@
     .field { margin-bottom: var(--s-3); }
     .field label { display:block; font-family: var(--mono); font-weight:700; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px; }
     .field label .req { color: var(--magenta); }
-    .field input, .field textarea { width:100%; padding:14px 16px; border:var(--line); border-radius: var(--r); background: var(--cream); color: var(--ink); font-family: var(--body); font-size:1rem; transition: box-shadow .15s, transform .15s; }
-    .field input:focus, .field textarea:focus { outline:none; box-shadow: var(--pop-sm); transform: translate(-2px,-2px); }
+    .field input, .field textarea, .field select { width:100%; padding:14px 16px; border:var(--line); border-radius: var(--r); background: var(--cream); color: var(--ink); font-family: var(--body); font-size:1rem; transition: box-shadow .15s, transform .15s; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline:none; box-shadow: var(--pop-sm); transform: translate(-2px,-2px); }
     .field textarea { resize:vertical; min-height:96px; }
+    .field select { appearance:none; -webkit-appearance:none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1330' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position: right 14px center; background-size:18px; padding-right:44px; }
     .field .help { font-size:0.8rem; color: var(--ink-soft); margin-top:6px; }
     .form-card .btn { width:100%; justify-content:center; margin-top: var(--s-1); }
     .form-status { font-family: var(--mono); font-weight:700; font-size:0.8rem; margin-top: var(--s-2); text-align:center; min-height:1.2em; }
@@ -564,7 +566,7 @@
         <div class="stats">
           <div class="stat reveal"><div class="num"><span data-count="30" data-suffix="+">0</span></div><div class="cap" data-i18n="statSites">Projects launched</div></div>
           <div class="stat reveal" style="--d:80ms"><div class="num"><span data-count="24" data-suffix="h">0</span></div><div class="cap" data-i18n="statTurnaround">Avg. reply time</div></div>
-          <div class="stat reveal" style="--d:160ms"><div class="num"><span data-count="4">0</span></div><div class="cap" data-i18n="statCategories">Creative categories</div></div>
+          <div class="stat reveal" style="--d:160ms"><div class="num"><span data-count="5">0</span></div><div class="cap" data-i18n="statCategories">Creative categories</div></div>
           <div class="stat reveal" style="--d:240ms"><div class="num"><span data-count="100" data-suffix="%">0</span></div><div class="cap" data-i18n="statYours">Yours to keep</div></div>
         </div>
       </div>
@@ -573,8 +575,8 @@
     <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ 30+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
-        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ 30+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
+        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ AI CREATIVE ★ 30+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
+        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ AI CREATIVE ★ 30+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
       </div>
     </div>
 
@@ -593,7 +595,7 @@
               <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
             </span>
           </a>
-          <a class="cat-card reveal" style="--d:70ms" href="#complete" data-magnetic>
+          <a class="cat-card reveal" style="--d:70ms" href="?service=brand#complete" data-magnetic>
             <span class="cat-thumb" style="background:linear-gradient(150deg,var(--violet),#4a1fa0)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20c1.5 0 2-1 2-2s-.5-1.5-.5-2.5 1-2 2.5-2H18a4 4 0 0 0 4-4 8 8 0 0 0-10-9.5Z"/><circle cx="7.5" cy="10.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="10.5" cy="7" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
             </span>
@@ -601,7 +603,7 @@
               <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
             </span>
           </a>
-          <a class="cat-card reveal" style="--d:140ms" href="#complete" data-magnetic>
+          <a class="cat-card reveal" style="--d:140ms" href="?service=social#complete" data-magnetic>
             <span class="cat-thumb" style="background:linear-gradient(150deg,var(--blue),#173d99)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="3"/><circle cx="12" cy="11.5" r="3.2"/><circle cx="17.5" cy="8" r="0.6" fill="currentColor" stroke="none"/></svg>
             </span>
@@ -609,11 +611,19 @@
               <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
             </span>
           </a>
-          <a class="cat-card reveal" style="--d:210ms" href="#complete" data-magnetic>
+          <a class="cat-card reveal" style="--d:210ms" href="?service=print#complete" data-magnetic>
             <span class="cat-thumb" style="background:linear-gradient(150deg,var(--tangerine),#a84a0f)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="1"/><path d="M6 14h12v7H6z"/></svg>
             </span>
             <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catPrintTitle">Print & Layout</span><span class="cat-desc" data-i18n="catPrintDesc">Banners, catalogs, eBooks & graphic materials, done right.</span></span>
+              <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
+            </span>
+          </a>
+          <a class="cat-card reveal" style="--d:280ms" href="?service=ai#complete" data-magnetic>
+            <span class="cat-thumb" style="background:linear-gradient(150deg,var(--lime),#6f8a1f)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+            </span>
+            <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catAiTitle">AI Creative</span><span class="cat-desc" data-i18n="catAiDesc">AI-generated videos, characters & mascots that bring your brand to life.</span></span>
               <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
             </span>
           </a>
@@ -651,6 +661,18 @@
             <div class="field">
               <label for="f-business" data-i18n="fieldBusiness">Business / project</label>
               <input id="f-business" name="business" type="text" autocomplete="organization" placeholder="What are we building?" data-i18n-ph="fieldBusinessPh" />
+            </div>
+            <div class="field">
+              <label for="f-service" data-i18n-html="fieldService">Which service? <span class="req">*</span></label>
+              <select id="f-service" name="service" required>
+                <option value="" data-i18n="fieldServiceChoose">Choose one...</option>
+                <option value="Site / Web Design" data-i18n="catWebTitle">Site / Web Design</option>
+                <option value="Brand Identity" data-i18n="catBrandTitle">Brand Identity</option>
+                <option value="Social Media" data-i18n="catSocialTitle">Social Media</option>
+                <option value="Print & Layout" data-i18n="catPrintTitle">Print & Layout</option>
+                <option value="AI Creative" data-i18n="catAiTitle">AI Creative</option>
+                <option value="Not sure yet" data-i18n="fieldServiceOther">Not sure yet</option>
+              </select>
             </div>
             <div class="field">
               <label for="f-message" data-i18n-html="fieldMessage">Tell me about it <span class="req">*</span></label>
@@ -727,13 +749,15 @@
         catBrandTitle: "Brand Identity", catBrandDesc: "Logo, color palette, typography - a brand people remember.",
         catSocialTitle: "Social Media", catSocialDesc: "Storytelling, layouts & campaigns people stop scrolling for.",
         catPrintTitle: "Print & Layout", catPrintDesc: "Banners, catalogs, eBooks & graphic materials, done right.",
+        catAiTitle: "AI Creative", catAiDesc: "AI-generated videos, characters & mascots that bring your brand to life.",
         statSites: "Projects launched", statTurnaround: "Avg. reply time", statCategories: "Creative categories", statYours: "Yours to keep",
-        marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> 30+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
+        marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> AI CREATIVE <i class="star">★</i> 30+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
         completeBadge: "Mission complete", completeH2: "Let's create something <em>unforgettable.</em>",
         completeP: "Tell me about your project and I'll come back with a plan - usually within a day.",
         fieldName: 'Your name <span class="req">*</span>', fieldNamePh: "Jane Doe",
         fieldEmail: 'Email <span class="req">*</span>', fieldEmailPh: "jane@business.com",
         fieldBusiness: "Business / project", fieldBusinessPh: "What are we building?",
+        fieldService: 'Which service? <span class="req">*</span>', fieldServiceChoose: "Choose one...", fieldServiceOther: "Not sure yet",
         fieldMessage: 'Tell me about it <span class="req">*</span>', fieldMessagePh: "Your goals, timeline, and anything you love or hate in your project.",
         fieldHelp: "No spam, ever. Your details are only used to reply to you.",
         formSubmit: "Begin the mission", formSuccessTitle: "Mission accepted!", formSuccessP: "Thanks - your message is in. I'll get back to you shortly. 🌎",
@@ -771,13 +795,15 @@
         catBrandTitle: "Identidade Visual", catBrandDesc: "Logo, paleta de cores, tipografia - uma marca que as pessoas lembram.",
         catSocialTitle: "Social Mídia", catSocialDesc: "Storytelling, layouts e campanhas que fazem parar de rolar o feed.",
         catPrintTitle: "Impressos & Diagramação", catPrintDesc: "Banners, catálogos, eBooks e materiais gráficos, feitos direito.",
+        catAiTitle: "Inteligência Artificial", catAiDesc: "Vídeos, personagens e mascotes com IA que dão vida à sua marca.",
         statSites: "Projetos lançados", statTurnaround: "Tempo médio de resposta", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
-        marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> 30+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
+        marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> INTELIGÊNCIA ARTIFICIAL <i class="star">★</i> 30+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
         completeBadge: "Missão cumprida", completeH2: "Vamos criar algo <em>inesquecível.</em>",
         completeP: "Me conta sobre seu projeto que eu volto com um plano - geralmente em até um dia.",
         fieldName: 'Seu nome <span class="req">*</span>', fieldNamePh: "Maria Silva",
         fieldEmail: 'E-mail <span class="req">*</span>', fieldEmailPh: "maria@negocio.com",
         fieldBusiness: "Negócio / projeto", fieldBusinessPh: "O que vamos construir?",
+        fieldService: 'Qual serviço? <span class="req">*</span>', fieldServiceChoose: "Escolha uma opção...", fieldServiceOther: "Ainda não sei",
         fieldMessage: 'Me conta sobre o projeto <span class="req">*</span>', fieldMessagePh: "Seus objetivos, prazo, e o que você ama ou odeia no seu projeto.",
         fieldHelp: "Sem spam, nunca. Seus dados só são usados pra te responder.",
         formSubmit: "Começar a missão", formSuccessTitle: "Missão aceita!", formSuccessP: "Obrigada - sua mensagem chegou. Já volto com uma resposta. 🌎",
@@ -959,6 +985,15 @@
     $$(".lang-pill").forEach(function (b) {
       b.addEventListener("click", function () { var l = b.getAttribute("data-lang"); saveLang(l); applyLang(l); });
     });
+
+    /* PRESELECT SERVICE FROM CATEGORY CARD */
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var serviceMap = { web: "Site / Web Design", brand: "Brand Identity", social: "Social Media", print: "Print & Layout", ai: "AI Creative" };
+      var picked = serviceMap[params.get("service")];
+      var serviceSelect = document.getElementById("f-service");
+      if (picked && serviceSelect) { serviceSelect.value = picked; }
+    })();
 
     /* FORM */
     var form = document.getElementById("missionForm");
