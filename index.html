@@ -348,6 +348,24 @@
     .loadout li .tick svg { width:14px; height:14px; }
     .loadout .btn { width:100%; justify-content:center; }
 
+    /* ============================================================ CATEGORIES */
+    .categories { padding: var(--s-8) 0; }
+    .categories h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
+    .categories h2 em { font-style:normal; color: var(--magenta); }
+    .categories-grid { display:grid; grid-template-columns: repeat(2,1fr); gap: var(--s-3); margin-top: var(--s-6); }
+    .cat-card { position:relative; display:flex; flex-direction:column; border:var(--line); border-radius: var(--r-lg); overflow:hidden; background: var(--paper); box-shadow: var(--pop-sm); transition: transform .3s var(--spring), box-shadow .3s; color: var(--ink); text-decoration:none; }
+    .cat-card:hover { transform: translateY(-6px); box-shadow: var(--pop-lg); }
+    .cat-thumb { position:relative; aspect-ratio:16/9; display:grid; place-items:center; border-bottom:var(--line); }
+    .cat-thumb svg { width:25%; height:25%; color: rgba(255,255,255,0.9); }
+    .cat-badge { position:absolute; top:12px; left:12px; z-index:2; font-family: var(--mono); font-weight:700; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; padding:5px 11px; border-radius: var(--r-pill); background: var(--ink); color: var(--lime); }
+    .cat-body { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 20px; }
+    .cat-info { display:block; min-width:0; }
+    .cat-name { font-family: var(--display); font-weight:800; font-size:1.15rem; display:block; line-height:1.12; }
+    .cat-desc { font-size:0.86rem; color: var(--ink-soft); display:block; margin-top:6px; max-width:32ch; }
+    .cat-open { flex:none; width:40px; height:40px; border-radius:50%; border:var(--line); display:grid; place-items:center; background: var(--lime); color: var(--ink); transition: transform .2s var(--spring); }
+    .cat-card:hover .cat-open { transform: rotate(20deg) scale(1.1); }
+    .cat-open svg { width:16px; height:16px; }
+
     /* ============================================================ MISSIONS */
     .missions { padding: var(--s-8) 0; }
     .missions h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
@@ -445,9 +463,10 @@
       .level:nth-child(even) .level-num { order:0; text-align:left; }
       .level-num { font-size: clamp(4rem,22vw,8rem); }
       .missions-grid { grid-template-columns:1fr 1fr; }
+      .categories-grid { grid-template-columns:1fr; }
       .stats { grid-template-columns:1fr 1fr; }
       .players { grid-template-columns:1fr; }
-      .m-open { width:44px; height:44px; }
+      .m-open, .cat-open { width:44px; height:44px; }
     }
     @media (max-width: 560px) {
       .missions-grid, .form-row { grid-template-columns:1fr; }
@@ -616,24 +635,19 @@
     <section class="hero" aria-labelledby="hero-h1">
       <div class="wrap">
         <span class="sticker hero-eyebrow" data-i18n="heroEyebrow">★ From Brazil · for the whole world 🌎</span>
-        <h1 id="hero-h1" class="reveal" data-i18n-html="heroH1">Websites that turn <span class="clk">clicks</span> into <span class="u cli">clients<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.</h1>
-        <p class="hero-lead reveal" style="--d:100ms" data-i18n="heroLead">Custom, high-converting websites for small businesses & creators - built to get you found, win trust, and turn visitors into paying customers.</p>
+        <h1 id="hero-h1" class="reveal" data-i18n-html="heroH1">Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.</h1>
+        <p class="hero-lead reveal" style="--d:100ms" data-i18n="heroLead">Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results.</p>
         <div class="hero-actions reveal" style="--d:180ms">
-          <a class="btn" href="#complete" data-magnetic><span data-i18n="ctaStartSite">Start your site</span>
+          <a class="btn" href="#categories" data-magnetic><span data-i18n="ctaExplore">See what I build</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
           </a>
           <a class="btn paper" href="#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
         </div>
-        <div class="hero-badges reveal" style="--d:260ms">
-          <span class="badge-pop m" data-i18n-html="badgeFlat">$599 FLAT</span>
-          <span class="badge-pop b" data-i18n="badgeLive">LIVE IN 5 DAYS</span>
-          <span class="badge-pop l" data-i18n="badgeYours">100% YOURS</span>
-        </div>
 
         <div class="stats">
-          <div class="stat reveal"><div class="num"><span data-count="30" data-suffix="+">0</span></div><div class="cap" data-i18n="statSites">Sites launched</div></div>
-          <div class="stat reveal" style="--d:80ms"><div class="num"><span data-count="5" data-suffix="-day">0</span></div><div class="cap" data-i18n="statTurnaround">Turnaround, guaranteed</div></div>
-          <div class="stat reveal" style="--d:160ms"><div class="num" id="statPriceNum">$<span data-count="599">0</span></div><div class="cap" data-i18n="statPrice">One flat price</div></div>
+          <div class="stat reveal"><div class="num"><span data-count="30" data-suffix="+">0</span></div><div class="cap" data-i18n="statSites">Projects launched</div></div>
+          <div class="stat reveal" style="--d:80ms"><div class="num"><span data-count="5" data-suffix="-day">0</span></div><div class="cap" data-i18n="statTurnaround">Website turnaround</div></div>
+          <div class="stat reveal" style="--d:160ms"><div class="num"><span data-count="4">0</span></div><div class="cap" data-i18n="statCategories">Creative categories</div></div>
           <div class="stat reveal" style="--d:240ms"><div class="num"><span data-count="100" data-suffix="%">0</span></div><div class="cap" data-i18n="statYours">Yours to keep</div></div>
         </div>
       </div>
@@ -642,10 +656,53 @@
     <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span data-i18n-html="marqueeContent">★ $599 FLAT ★ LIVE IN 5 DAYS ★ 100% YOURS ★ NO HOURLY GAMES ★ 30+ SITES LAUNCHED ★ CLIENTS WORLDWIDE</span>
-        <span data-i18n-html="marqueeContent">★ $599 FLAT ★ LIVE IN 5 DAYS ★ 100% YOURS ★ NO HOURLY GAMES ★ 30+ SITES LAUNCHED ★ CLIENTS WORLDWIDE</span>
+        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ 30+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
+        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ 30+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
       </div>
     </div>
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories" aria-labelledby="categories-h">
+      <div class="wrap">
+        <span class="sticker reveal" style="margin-bottom:16px" data-i18n="categoriesTag">◆ What I can build for you</span>
+        <h2 id="categories-h" class="reveal" data-i18n-html="categoriesH2">Pick your <em>mission.</em></h2>
+        <div class="categories-grid">
+          <a class="cat-card reveal" href="#levels" data-magnetic>
+            <span class="cat-thumb" style="background:linear-gradient(150deg,var(--magenta),#a82866)">
+              <span class="cat-badge" data-i18n-html="catWebBadge">$599 · 5 DAYS</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="8.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catWebTitle">Site / Web Design</span><span class="cat-desc" data-i18n="catWebDesc">Custom, high-converting websites - flat price, live in 5 days.</span></span>
+              <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
+            </span>
+          </a>
+          <a class="cat-card reveal" style="--d:70ms" href="#complete" data-magnetic>
+            <span class="cat-thumb" style="background:linear-gradient(150deg,var(--violet),#4a1fa0)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20c1.5 0 2-1 2-2s-.5-1.5-.5-2.5 1-2 2.5-2H18a4 4 0 0 0 4-4 8 8 0 0 0-10-9.5Z"/><circle cx="7.5" cy="10.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="10.5" cy="7" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catBrandTitle">Brand Identity</span><span class="cat-desc" data-i18n="catBrandDesc">Logo, color palette, typography - a brand people remember.</span></span>
+              <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
+            </span>
+          </a>
+          <a class="cat-card reveal" style="--d:140ms" href="#complete" data-magnetic>
+            <span class="cat-thumb" style="background:linear-gradient(150deg,var(--blue),#173d99)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="3"/><circle cx="12" cy="11.5" r="3.2"/><circle cx="17.5" cy="8" r="0.6" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catSocialTitle">Social Media</span><span class="cat-desc" data-i18n="catSocialDesc">Storytelling, layouts & campaigns people stop scrolling for.</span></span>
+              <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
+            </span>
+          </a>
+          <a class="cat-card reveal" style="--d:210ms" href="#complete" data-magnetic>
+            <span class="cat-thumb" style="background:linear-gradient(150deg,var(--tangerine),#a84a0f)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="1"/><path d="M6 14h12v7H6z"/></svg>
+            </span>
+            <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catPrintTitle">Print & Layout</span><span class="cat-desc" data-i18n="catPrintDesc">Banners, catalogs, eBooks & graphic materials, done right.</span></span>
+              <span class="cat-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- LEVELS -->
     <section id="levels" aria-label="The build process, level by level">
@@ -888,12 +945,17 @@
         navProcess: "Process", navAbout: "About", navPricing: "Pricing", navWork: "Work", navContact: "Contact",
         headerCtaLabel: "Start your site", headerCtaPrice: " · $599",
         heroEyebrow: "★ From Brazil · for the whole world 🌎",
-        heroH1: 'Websites that turn <span class="clk">clicks</span> into <span class="u cli">clients<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
-        heroLead: "Custom, high-converting websites for small businesses & creators - built to get you found, win trust, and turn visitors into paying customers.",
-        ctaStartSite: "Start your site", ctaSeeWork: "See the work",
+        heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
+        heroLead: "Sites, brand identity, social media & print - all designed to get you noticed, win trust, and turn attention into results.",
+        ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
+        categoriesTag: "◆ What I can build for you", categoriesH2: "Pick your <em>mission.</em>",
+        catWebBadge: "$599 · 5 DAYS", catWebTitle: "Site / Web Design", catWebDesc: "Custom, high-converting websites - flat price, live in 5 days.",
+        catBrandTitle: "Brand Identity", catBrandDesc: "Logo, color palette, typography - a brand people remember.",
+        catSocialTitle: "Social Media", catSocialDesc: "Storytelling, layouts & campaigns people stop scrolling for.",
+        catPrintTitle: "Print & Layout", catPrintDesc: "Banners, catalogs, eBooks & graphic materials, done right.",
         badgeFlat: "$599 FLAT", badgeLive: "LIVE IN 5 DAYS", badgeYours: "100% YOURS",
-        statSites: "Sites launched", statTurnaround: "Turnaround, guaranteed", statPrice: "One flat price", statYours: "Yours to keep",
-        marqueeContent: '<i class="star">★</i> $599 FLAT <i class="star">★</i> LIVE IN 5 DAYS <i class="star">★</i> 100% YOURS <i class="star">★</i> NO HOURLY GAMES <i class="star">★</i> 30+ SITES LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
+        statSites: "Projects launched", statTurnaround: "Website turnaround", statCategories: "Creative categories", statYours: "Yours to keep",
+        marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> 30+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
         levelsTag: "◆ How we build it",
         levelsH2: 'Six levels, one <span style="color:var(--magenta)">unforgettable</span> website.',
         lv1Tag: "Level 01 - Discovery", lv1H3: "Understanding your business.",
@@ -959,12 +1021,17 @@
         navProcess: "Processo", navAbout: "Sobre", navPricing: "Preço", navWork: "Portfólio", navContact: "Contato",
         headerCtaLabel: "Comece seu site", headerCtaPrice: " · R$3.000",
         heroEyebrow: "★ Do Brasil · para o mundo inteiro 🌎",
-        heroH1: 'Sites que transformam <span class="clk">cliques</span> em <span class="u cli">clientes<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
-        heroLead: "Sites personalizados e de alta conversão para pequenos negócios e criadores de conteúdo - feitos pra você ser encontrado, ganhar confiança e transformar visitantes em clientes pagantes.",
-        ctaStartSite: "Comece seu site", ctaSeeWork: "Veja o portfólio",
+        heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
+        heroLead: "Sites, identidade visual, social media e impressos - tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
+        ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
+        categoriesTag: "◆ O que eu posso construir pra você", categoriesH2: "Escolha sua <em>missão.</em>",
+        catWebBadge: "$599 · 5 DIAS", catWebTitle: "Site / Web Design", catWebDesc: "Sites personalizados e de alta conversão - preço fixo, no ar em 5 dias.",
+        catBrandTitle: "Identidade Visual", catBrandDesc: "Logo, paleta de cores, tipografia - uma marca que as pessoas lembram.",
+        catSocialTitle: "Social Mídia", catSocialDesc: "Storytelling, layouts e campanhas que fazem parar de rolar o feed.",
+        catPrintTitle: "Impressos & Diagramação", catPrintDesc: "Banners, catálogos, eBooks e materiais gráficos, feitos direito.",
         badgeFlat: "R$3.000 À VISTA", badgeLive: "NO AR EM 5 DIAS", badgeYours: "100% SEU",
-        statSites: "Sites lançados", statTurnaround: "Prazo garantido", statPrice: "Preço único", statYours: "É seu pra sempre",
-        marqueeContent: '<i class="star">★</i> R$3.000 À VISTA <i class="star">★</i> NO AR EM 5 DIAS <i class="star">★</i> 100% SEU <i class="star">★</i> SEM JOGUINHO DE HORA <i class="star">★</i> 30+ SITES LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
+        statSites: "Projetos lançados", statTurnaround: "Prazo do site", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
+        marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> 30+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
         levelsTag: "◆ Como eu construo",
         levelsH2: 'Seis fases, um site <span style="color:var(--magenta)">inesquecível</span>.',
         lv1Tag: "Fase 01 - Descoberta", lv1H3: "Entendendo seu negócio.",
@@ -1032,16 +1099,6 @@
 
     function saveLang(lang) { LANG = lang; try { localStorage.setItem("gc_lang", lang); } catch (e) {} }
 
-    function updateStatPrice(lang) {
-      var numEl = document.getElementById("statPriceNum");
-      if (!numEl) return;
-      var span = numEl.querySelector("[data-count]");
-      numEl.firstChild.textContent = lang === "pt" ? "R$" : "$";
-      var target = lang === "pt" ? "3000" : "599";
-      span.setAttribute("data-count", target);
-      if (span.textContent !== "0") span.textContent = target;
-    }
-
     function applyLang(lang) {
       var dict = I18N[lang] || I18N.en;
       document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
@@ -1050,7 +1107,6 @@
       $$("[data-i18n-ph]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-ph")] != null) el.placeholder = dict[el.getAttribute("data-i18n-ph")]; });
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-      updateStatPrice(lang);
       renderMissions(lang);
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
     }
