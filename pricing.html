@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FDF6E9" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <title>Full Price List | Gabriella Costa - Creative Studio</title>
+  <meta name="description" content="Complete pricing menu for web design, brand identity, social media, print, AI creative & video, editorial and event design services by Gabriella Costa." />
+  <link rel="canonical" href="https://gabriellacosta.design/pricing.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Full Price List | Gabriella Costa" />
+  <meta property="og:description" content="Complete pricing menu across web, branding, social media, print, AI creative, editorial and events." />
+  <meta property="og:url" content="https://gabriellacosta.design/pricing.html" />
+  <meta property="og:image" content="https://gabriellacosta.design/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800&family=Hanken+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PriceSpecification",
+    "name": "Gabriella Costa Creative Studio - Full Price List",
+    "url": "https://gabriellacosta.design/pricing.html",
+    "priceCurrency": "USD"
+  }
+  </script>
+
+  <style>
+    :root {
+      --cream:#FDF6E9; --paper:#FFFFFF; --ink:#1A1330; --ink-soft:#4A4266;
+      --magenta:#DB3A8C; --blue:#2856D6; --lime:#A9CC3D; --tangerine:#E8691A; --violet:#6B32E0;
+      --display:"Unbounded","Arial Black",system-ui,sans-serif;
+      --body:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      --mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+      --fs-hud:clamp(0.66rem,0.6rem + 0.3vw,0.78rem);
+      --fs-body:clamp(1rem,0.96rem + 0.2vw,1.14rem);
+      --fs-lead:clamp(1.15rem,1rem + 0.7vw,1.55rem);
+      --fs-h3:clamp(1.5rem,1.1rem + 1.6vw,2.4rem);
+      --fs-h2:clamp(2rem,1.4rem + 3vw,3.6rem);
+      --fs-h1:clamp(2.7rem,1.4rem + 6.4vw,5.4rem);
+      --s-1:8px;--s-2:16px;--s-3:24px;--s-4:32px;--s-5:48px;--s-6:64px;--s-7:96px;--s-8:128px;
+      --r:18px;--r-lg:30px;--r-pill:999px;
+      --line:3px solid var(--ink); --pop:5px 5px 14px rgba(26,19,48,0.16); --pop-sm:3px 3px 9px rgba(26,19,48,0.14); --pop-lg:8px 8px 22px rgba(26,19,48,0.2);
+      --maxw:1220px; --ease:cubic-bezier(0.22,1,0.36,1); --spring:cubic-bezier(0.34,1.56,0.64,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;} *{margin:0;padding:0;}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100svh;display:flex;flex-direction:column;}
+    img,svg{display:block;max-width:100%;} a{color:inherit;text-decoration:none;}
+    button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+    ::selection{background:var(--lime);color:var(--ink);}
+    :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px;}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(520px 520px at 88% -6%,rgba(255,60,160,0.16),transparent 60%),radial-gradient(600px 600px at -8% 12%,rgba(45,107,255,0.12),transparent 60%),radial-gradient(560px 560px at 50% 108%,rgba(124,58,255,0.12),transparent 60%),var(--cream);}
+    .cur-dot,.cur-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;will-change:transform;}
+    .cur-dot{width:8px;height:8px;background:var(--magenta);transform:translate(-50%,-50%);}
+    .cur-ring{width:34px;height:34px;border:3px solid var(--ink);transform:translate(-50%,-50%);transition:width .25s var(--spring),height .25s var(--spring),background .2s,border-color .2s;}
+    .cur-ring.hot{width:58px;height:58px;background:rgba(200,255,60,0.35);border-color:var(--violet);}
+    @media (hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none;}}
+    .skip-link{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:8px;z-index:1200;font-weight:700;transition:top .2s;}
+    .skip-link:focus{top:12px;}
+    .wrap{width:min(100% - 2*var(--s-3),var(--maxw));margin-inline:auto;}
+    .hud{font-family:var(--mono);font-size:var(--fs-hud);letter-spacing:0.22em;text-transform:uppercase;font-weight:700;}
+    .sticker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border:var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);box-shadow:var(--pop-sm);}
+    .card{background:var(--paper);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop);}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--spring);transition-delay:var(--d,0ms);}
+    .reveal.in-view{opacity:1;transform:none;}
+    .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border:var(--line);border-radius:var(--r-pill);font-family:var(--display);font-weight:700;font-size:0.92rem;letter-spacing:-0.01em;background:var(--lime);color:var(--ink);box-shadow:var(--pop);transition:transform .15s var(--ease),box-shadow .15s var(--ease),background .2s;}
+    .btn:hover{transform:translate(-2px,-2px);box-shadow:var(--pop-lg);background:var(--magenta);color:var(--paper);}
+    .btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
+    .btn svg{width:18px;height:18px;transition:transform .2s var(--ease);}
+    .btn:hover svg{transform:translate(3px,-3px) rotate(8deg);}
+
+    /* HEADER */
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,4vw,36px);transition:transform .35s var(--ease);}
+    .site-header .bar{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 12px 10px 18px;border:var(--line);border-radius:var(--r-pill);background:rgba(253,246,233,0.8);backdrop-filter:blur(10px);box-shadow:var(--pop-sm);}
+    .site-header.hide{transform:translateY(-140%);}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.05rem;}
+    .brand .monogram{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:var(--magenta);color:var(--cream);border:2px solid var(--ink);font-family:var(--display);font-weight:800;font-size:0.85rem;transform:rotate(-4deg);}
+    .brand small{display:block;font-family:var(--mono);font-weight:700;font-size:0.54rem;letter-spacing:0.18em;color:var(--ink-soft);text-transform:uppercase;}
+    .nav-levels{display:flex;align-items:center;gap:6px;}
+    .nav-levels a{font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);padding:8px 14px;border-radius:var(--r-pill);transition:background .2s,color .2s;}
+    .nav-levels a:hover,.nav-levels a.active{background:var(--ink);color:var(--cream);}
+    .header-cta{display:flex;align-items:center;gap:10px;}
+    .header-cta .btn{padding:11px 20px;font-size:0.8rem;box-shadow:var(--pop-sm);}
+    @media (max-width:860px){.nav-levels{display:none;}}
+    @media (max-width:560px){
+      .header-cta .btn span{display:none;}
+      .header-cta .btn{padding:11px;}
+      .site-header .bar{padding:8px 8px 8px 12px;}
+      .brand{gap:8px;font-size:0.86rem;}
+      .brand small{display:none;}
+    }
+
+    /* HERO */
+    main{flex:1;}
+    .price-hero{padding:clamp(120px,18vh,170px) 0 var(--s-6);text-align:center;}
+    .price-hero h1{font-family:var(--display);font-weight:800;font-size:var(--fs-h1);line-height:0.98;letter-spacing:-0.03em;max-width:16ch;margin:0 auto;}
+    .price-hero h1 em{font-style:normal;color:var(--magenta);}
+    .price-hero p{color:var(--ink-soft);font-size:var(--fs-lead);max-width:56ch;margin:var(--s-3) auto 0;}
+    .price-hero .sticker{margin-bottom:var(--s-3);}
+
+    /* PRICE GRID */
+    .price-menu{padding:0 0 var(--s-8);}
+    .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-4);align-items:start;}
+    .price-section{padding:var(--s-4) var(--s-4) var(--s-5);}
+    .price-section-head{display:flex;align-items:center;gap:12px;margin-bottom:var(--s-3);}
+    .price-dot{width:14px;height:14px;border-radius:50%;flex:none;border:2px solid var(--ink);}
+    .price-section h2{font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-0.01em;}
+    .price-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
+    .price-row{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dashed rgba(26,19,48,0.16);}
+    .price-row:last-child{border-bottom:none;}
+    .price-name{font-weight:500;}
+    .price-leader{flex:1;border-bottom:2px dotted rgba(26,19,48,0.22);height:0;transform:translateY(-4px);}
+    .price-val{font-family:var(--mono);font-weight:700;font-size:0.92rem;white-space:nowrap;color:var(--ink);}
+    .price-row.flagship{background:rgba(200,255,60,0.22);margin:2px -14px;padding:11px 14px;border-radius:12px;border-bottom:none;}
+    .price-row.flagship .price-val{color:var(--magenta);font-size:1.05rem;}
+    .price-row.flagship .price-name{font-weight:800;}
+    .price-flag{font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:var(--ink);color:var(--lime);padding:2px 8px;border-radius:var(--r-pill);margin-left:6px;}
+    .price-note{text-align:center;color:var(--ink-soft);font-size:0.92rem;margin-top:var(--s-6);}
+    .price-cta{display:flex;justify-content:center;margin-top:var(--s-4);}
+
+    @media (max-width:860px){
+      .price-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width:560px){
+      .price-section{padding:var(--s-3);}
+      .price-row.flagship{margin:2px -8px;padding:11px 8px;}
+    }
+
+    /* FOOTER */
+    .site-footer{background:var(--ink);color:var(--cream);border-top:var(--line);padding:var(--s-6) 0 var(--s-4);}
+    .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s-2);}
+    .footer-bottom p{font-family:var(--mono);font-weight:700;font-size:0.68rem;color:rgba(253,246,233,0.6);}
+    .to-top{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;}
+    .to-top:hover{color:var(--lime);}
+
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;}
+      .reveal{opacity:1!important;transform:none!important;}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cur-ring" aria-hidden="true"></div>
+  <div class="cur-dot" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <div class="bar">
+      <a class="brand" href="index.html" aria-label="Gabriella Costa home">
+        <span class="monogram">GC</span>
+        <span>Gabriella Costa<small>Web Design Studio</small></span>
+      </a>
+      <nav class="nav-levels" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="website-design.html">Websites</a>
+        <a href="about.html">About</a>
+        <a href="index.html#categories">Services</a>
+        <a href="index.html#complete">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn" href="index.html#complete" data-magnetic><span>Let's talk</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="price-hero">
+      <div class="wrap">
+        <span class="sticker reveal">◆ Full price list</span>
+        <h1 class="reveal" style="--d:60ms">Every service, <em>one honest menu.</em></h1>
+        <p class="reveal" style="--d:120ms">All prices are starting points in USD - final quotes depend on scope, timeline and complexity. Custom package? Just ask.</p>
+      </div>
+    </section>
+
+    <section class="price-menu">
+      <div class="wrap price-grid">
+
+        <div class="price-section card reveal">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--magenta)"></span><h2>Websites</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Link-in-bio site</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">Landing page (single page)</span><span class="price-leader"></span><span class="price-val">$380</span></li>
+            <li class="price-row flagship"><span class="price-name">Custom Website (5 pages, live in 5 days)<span class="price-flag">Most popular</span></span><span class="price-leader"></span><span class="price-val">$599</span></li>
+            <li class="price-row"><span class="price-name">WordPress website</span><span class="price-leader"></span><span class="price-val">$750</span></li>
+            <li class="price-row"><span class="price-name">Institutional website (multi-page)</span><span class="price-leader"></span><span class="price-val">$950</span></li>
+            <li class="price-row"><span class="price-name">Digital menu (QR code)</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+          </ul>
+        </div>
+
+        <div class="price-section card reveal" style="--d:60ms">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--violet)"></span><h2>Brand Identity</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Logo design</span><span class="price-leader"></span><span class="price-val">$280</span></li>
+            <li class="price-row"><span class="price-name">Basic visual identity</span><span class="price-leader"></span><span class="price-val">$500</span></li>
+            <li class="price-row"><span class="price-name">Complete visual identity</span><span class="price-leader"></span><span class="price-val">$1,400</span></li>
+          </ul>
+        </div>
+
+        <div class="price-section card reveal" style="--d:120ms">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--blue)"></span><h2>Social Media</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Single post</span><span class="price-leader"></span><span class="price-val">$35</span></li>
+            <li class="price-row"><span class="price-name">Story</span><span class="price-leader"></span><span class="price-val">$25</span></li>
+            <li class="price-row"><span class="price-name">Carousel post</span><span class="price-leader"></span><span class="price-val">$75</span></li>
+            <li class="price-row"><span class="price-name">Online banner</span><span class="price-leader"></span><span class="price-val">$55</span></li>
+            <li class="price-row"><span class="price-name">WhatsApp post</span><span class="price-leader"></span><span class="price-val">$25</span></li>
+            <li class="price-row"><span class="price-name">Facebook / YouTube cover</span><span class="price-leader"></span><span class="price-val">$45</span></li>
+            <li class="price-row"><span class="price-name">Infographic</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">Editable presentation (per slide)</span><span class="price-leader"></span><span class="price-val">$6</span></li>
+            <li class="price-row"><span class="price-name">PDF presentation (per slide)</span><span class="price-leader"></span><span class="price-val">$6</span></li>
+            <li class="price-row"><span class="price-name">Newsletter</span><span class="price-leader"></span><span class="price-val">$95</span></li>
+            <li class="price-row"><span class="price-name">Ebook (digital)</span><span class="price-leader"></span><span class="price-val">$270</span></li>
+            <li class="price-row"><span class="price-name">Profile photo retouch</span><span class="price-leader"></span><span class="price-val">$30</span></li>
+          </ul>
+        </div>
+
+        <div class="price-section card reveal" style="--d:180ms">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--tangerine)"></span><h2>Print & Layout</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Business card</span><span class="price-leader"></span><span class="price-val">$55</span></li>
+            <li class="price-row"><span class="price-name">Flyer</span><span class="price-leader"></span><span class="price-val">$85</span></li>
+            <li class="price-row"><span class="price-name">Printed banner</span><span class="price-leader"></span><span class="price-val">$95</span></li>
+            <li class="price-row"><span class="price-name">Info sheet / handout</span><span class="price-leader"></span><span class="price-val">$100</span></li>
+            <li class="price-row"><span class="price-name">Folder / brochure</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">Letterhead</span><span class="price-leader"></span><span class="price-val">$45</span></li>
+            <li class="price-row"><span class="price-name">Envelope layout</span><span class="price-leader"></span><span class="price-val">$45</span></li>
+            <li class="price-row"><span class="price-name">Invitation</span><span class="price-leader"></span><span class="price-val">$75</span></li>
+            <li class="price-row"><span class="price-name">Wedding invitation</span><span class="price-leader"></span><span class="price-val">$195</span></li>
+            <li class="price-row"><span class="price-name">Badge / ID card</span><span class="price-leader"></span><span class="price-val">$45</span></li>
+            <li class="price-row"><span class="price-name">Printed menu</span><span class="price-leader"></span><span class="price-val">$110</span></li>
+            <li class="price-row"><span class="price-name">Bookmark</span><span class="price-leader"></span><span class="price-val">$35</span></li>
+            <li class="price-row"><span class="price-name">School planner</span><span class="price-leader"></span><span class="price-val">$190</span></li>
+            <li class="price-row"><span class="price-name">T-shirt / uniform design</span><span class="price-leader"></span><span class="price-val">$85</span></li>
+            <li class="price-row"><span class="price-name">Signage / lettering</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">Car wrap design</span><span class="price-leader"></span><span class="price-val">$190</span></li>
+            <li class="price-row"><span class="price-name">Billboard</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">Magazine ad</span><span class="price-leader"></span><span class="price-val">$110</span></li>
+          </ul>
+        </div>
+
+        <div class="price-section card reveal" style="--d:60ms">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--lime)"></span><h2>AI Creative & Video</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Reels editing</span><span class="price-leader"></span><span class="price-val">$55</span></li>
+            <li class="price-row"><span class="price-name">YouTube video</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">Institutional video</span><span class="price-leader"></span><span class="price-val">$195</span></li>
+            <li class="price-row"><span class="price-name">Animated digital menu</span><span class="price-leader"></span><span class="price-val">$130</span></li>
+            <li class="price-row"><span class="price-name">AI profile photo</span><span class="price-leader"></span><span class="price-val">$65</span></li>
+            <li class="price-row"><span class="price-name">AI illustration</span><span class="price-leader"></span><span class="price-val">$55</span></li>
+            <li class="price-row"><span class="price-name">AI mascot design</span><span class="price-leader"></span><span class="price-val">$135</span></li>
+          </ul>
+        </div>
+
+        <div class="price-section card reveal" style="--d:120ms">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--ink)"></span><h2>Editorial</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Ebook layout & design</span><span class="price-leader"></span><span class="price-val">$270</span></li>
+            <li class="price-row"><span class="price-name">Kindle book formatting</span><span class="price-leader"></span><span class="price-val">$195</span></li>
+            <li class="price-row"><span class="price-name">Print book layout</span><span class="price-leader"></span><span class="price-val">$750</span></li>
+            <li class="price-row"><span class="price-name">Magazine layout</span><span class="price-leader"></span><span class="price-val">$650</span></li>
+          </ul>
+        </div>
+
+        <div class="price-section card reveal" style="--d:180ms">
+          <div class="price-section-head"><span class="price-dot" style="background:var(--ink-soft)"></span><h2>Events & Environments</h2></div>
+          <ul class="price-list">
+            <li class="price-row"><span class="price-name">Event booth / stand design</span><span class="price-leader"></span><span class="price-val">$320</span></li>
+            <li class="price-row"><span class="price-name">Event art direction</span><span class="price-leader"></span><span class="price-val">$750</span></li>
+            <li class="price-row"><span class="price-name">Mapped projection design</span><span class="price-leader"></span><span class="price-val">$1,100</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="price-note reveal">Don't see exactly what you need, or want a bundle across categories? I put together custom packages all the time.</p>
+      <div class="price-cta reveal">
+        <a class="btn" href="index.html#complete" data-magnetic><span>Get a custom quote</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-bottom">
+      <p>© <span id="year">2026</span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world</p>
+      <a class="to-top" href="index.html">← Back home</a>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    "use strict";
+    var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var fine=window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var $=function(s,c){return (c||document).querySelector(s);};
+    var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+    document.getElementById("year").textContent=new Date().getFullYear();
+
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in-view");io.unobserve(e.target);}});},{threshold:0.1});
+      $$(".reveal").forEach(function(el){io.observe(el);});
+    } else { $$(".reveal").forEach(function(el){el.classList.add("in-view");}); }
+
+    var header=document.getElementById("header"),lastY=0;
+    window.addEventListener("scroll",function(){var y=window.pageYOffset;header.classList.toggle("hide",y>lastY&&y>300);lastY=y;},{passive:true});
+
+    if(fine && !reduce){
+      var dot=$(".cur-dot"),ring=$(".cur-ring"),mx=0,my=0,rx=0,ry=0;
+      window.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.transform="translate("+mx+"px,"+my+"px) translate(-50%,-50%)";});
+      (function loop(){rx+=(mx-rx)*0.18;ry+=(my-ry)*0.18;ring.style.transform="translate("+rx+"px,"+ry+"px) translate(-50%,-50%)";requestAnimationFrame(loop);})();
+      $$("a,button").forEach(function(el){el.addEventListener("mouseenter",function(){ring.classList.add("hot");});el.addEventListener("mouseleave",function(){ring.classList.remove("hot");});});
+      $$("[data-magnetic]").forEach(function(el){
+        el.addEventListener("mousemove",function(e){var r=el.getBoundingClientRect();el.style.transform="translate("+(e.clientX-r.left-r.width/2)*0.22+"px,"+(e.clientY-r.top-r.height/2)*0.3+"px)";});
+        el.addEventListener("mouseleave",function(){el.style.transform="";});
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

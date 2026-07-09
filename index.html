@@ -276,6 +276,8 @@
     .categories h2 { font-family: var(--display); font-weight:800; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
     .categories h2 em { font-style:normal; color: var(--magenta); }
     .categories-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-3); margin-top: var(--s-6); }
+    .price-list-link a { font-family: var(--mono); font-weight:700; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; padding:12px 22px; border:var(--line); border-radius: var(--r-pill); background: var(--paper); box-shadow: var(--pop-sm); display:inline-flex; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+    .price-list-link a:hover { transform: translate(-2px,-2px); box-shadow: var(--pop-lg); background: var(--lime); }
     .cat-card { position:relative; display:flex; flex-direction:column; border:var(--line); border-radius: var(--r-lg); overflow:hidden; background: var(--paper); box-shadow: var(--pop-sm); transition: transform .3s var(--spring), box-shadow .3s; color: var(--ink); text-decoration:none; }
     .cat-card:hover { transform: translateY(-6px); box-shadow: var(--pop-lg); }
     .cat-thumb { position:relative; aspect-ratio:16/9; display:grid; place-items:center; border-bottom:var(--line); }
@@ -544,6 +546,7 @@
             </span>
           </a>
         </div>
+        <p class="price-list-link reveal" style="text-align:center;margin-top:var(--s-5)"><a href="pricing.html" data-magnetic>See the full price list →</a></p>
       </div>
     </section>
 
