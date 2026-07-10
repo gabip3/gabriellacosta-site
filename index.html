@@ -124,8 +124,24 @@
     }
 
     /* ============================================================ CLEAN MODE */
-    :root.clean-mode { --display: Arial, Helvetica, "Inter", system-ui, sans-serif; --cream: #FFFFFF; }
+    :root.clean-mode {
+      --display: Arial, Helvetica, "Inter", system-ui, sans-serif;
+      --cream: #FFFFFF;
+      --magenta: #A8517A; --blue: #3D5A99; --lime: #8FA363; --tangerine: #C17D4A; --violet: #6B5B95;
+      --line: 1px solid rgba(26,19,48,0.12);
+      --pop: 0 10px 28px rgba(26,19,48,0.07);
+      --pop-sm: 0 3px 12px rgba(26,19,48,0.06);
+      --pop-lg: 0 18px 44px rgba(26,19,48,0.09);
+    }
     .clean-mode body::before, .clean-mode .intro-blob { display: none; }
+    .clean-mode h1, .clean-mode h2, .clean-mode h3, .clean-mode .display, .clean-mode .cat-name { font-weight:600 !important; }
+    .clean-mode .sticker, .clean-mode .cat-badge, .clean-mode .hero-eyebrow { transform:none !important; animation:none !important; }
+    .clean-mode .marquee { background:#F5F5F6 !important; }
+    .clean-mode .marquee-track .star { opacity:0.35; }
+    .clean-mode .cat-thumb { background:#EFEFF1 !important; }
+    .clean-mode .cat-thumb svg { color: var(--ink-soft) !important; }
+    .clean-mode .complete { background:none !important; }
+    .clean-mode .btn:hover { transform: translateY(-2px); }
     .clean-toggle { font-family: var(--mono); font-weight:700; font-size:0.72rem; letter-spacing:0.04em; display:inline-flex; align-items:center; gap:6px; padding:9px 14px; border:2px solid var(--ink); border-radius: var(--r-pill); background: var(--paper); box-shadow: var(--pop-sm); transition: background .2s, transform .2s, box-shadow .2s; }
     .clean-toggle:hover { background: var(--lime); transform: translate(-1px,-1px); }
     img, svg { display: block; max-width: 100%; }
