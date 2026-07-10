@@ -325,13 +325,13 @@
     }
     (function () {
       var on = false;
-      try { on = localStorage.getItem("gc_clean") === "1"; } catch (e) {}
+      try { on = sessionStorage.getItem("gc_clean") === "1"; } catch (e) {}
       document.documentElement.classList.toggle("clean-mode", on);
       if (cleanBtn) {
         cleanBtn.addEventListener("click", function () {
           var next = !document.documentElement.classList.contains("clean-mode");
           document.documentElement.classList.toggle("clean-mode", next);
-          try { localStorage.setItem("gc_clean", next ? "1" : "0"); } catch (e) {}
+          try { sessionStorage.setItem("gc_clean", next ? "1" : "0"); } catch (e) {}
           updateCleanToggle();
         });
       }
