@@ -250,6 +250,7 @@
     .lang-btn { text-align:center; display:flex; flex-direction:column; align-items:center; padding: var(--s-5) var(--s-3); }
     .lang-btn .p-avatar { width:56px; height:44px; border-radius:10px; overflow:hidden; }
     .lang-btn .p-avatar svg { width:100%; height:100%; }
+    .mood-emoji { width:auto; height:auto; font-size:2.6rem; line-height:1; border-radius:0; overflow:visible; }
     .lang-btn .p-name { font-size:1.5rem; margin-top: var(--s-2); }
     .lang-btn .p-cta { margin-top: var(--s-2); }
 
@@ -450,6 +451,24 @@
           <span class="p-avatar" aria-hidden="true"><svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.5 22 8l-10 5.5L2 8z" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg></span>
           <span class="p-name">Português</span>
           <span class="p-cta">Continuar <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Stage 0.5: Mood pick -->
+    <div class="stage" id="stageMood">
+      <p class="coin" style="animation:none" data-i18n="coinMood">How are you feeling today?</p>
+      <h2 class="ps-title" style="font-size:clamp(1.8rem,6vw,3rem)" data-i18n="moodH2">Pick your mood.</h2>
+      <div class="players mood-players">
+        <button class="player lang-btn" id="moodFun" data-selectable type="button" aria-label="I'm feeling fun today">
+          <span class="p-avatar mood-emoji" aria-hidden="true">🎉</span>
+          <span class="p-name" data-i18n="moodFunLabel">Feeling fun</span>
+          <span class="p-cta" data-i18n="moodFunCta">See the creative side</span>
+        </button>
+        <button class="player lang-btn two" id="moodSerious" data-selectable type="button" aria-label="I'm feeling serious today">
+          <span class="p-avatar mood-emoji" aria-hidden="true">🧐</span>
+          <span class="p-name" data-i18n="moodSeriousLabel">Feeling serious</span>
+          <span class="p-cta" data-i18n="moodSeriousCta">See the professional side</span>
         </button>
       </div>
     </div>
@@ -732,6 +751,9 @@
         footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world',
         toTop: "Back to top", skipIntro: "Skip intro →",
         coinInsert: "Let's begin",
+        coinMood: "How are you feeling today?", moodH2: "Pick your mood.",
+        moodFunLabel: "Feeling fun", moodFunCta: "See the creative side",
+        moodSeriousLabel: "Feeling serious", moodSeriousCta: "See the professional side",
         loaderLines: ["Initializing experience...", "Loading creativity...", "Compiling ideas...", "Optimizing performance...", "Ready."],
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
         formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.",
@@ -768,6 +790,9 @@
         footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo',
         toTop: "Voltar ao topo", skipIntro: "Pular intro →",
         coinInsert: "Vamos começar",
+        coinMood: "Como você tá se sentindo hoje?", moodH2: "Escolha seu humor.",
+        moodFunLabel: "Tô me sentindo fun", moodFunCta: "Ver o lado criativo",
+        moodSeriousLabel: "Tô séria", moodSeriousCta: "Ver o lado profissional",
         loaderLines: ["Inicializando experiência...", "Carregando criatividade...", "Compilando ideias...", "Otimizando performance...", "Pronto."],
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
         formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.",
@@ -923,12 +948,25 @@
         saveLang(lang); applyLang(lang);
         document.getElementById("langEn").removeEventListener("click", onEn);
         document.getElementById("langPt").removeEventListener("click", onPt);
-        showStage("stageLoader"); startLoader();
+        showStage("stageMood");
       }
       function onEn() { pickLang("en"); }
       function onPt() { pickLang("pt"); }
       document.getElementById("langEn").addEventListener("click", onEn);
       document.getElementById("langPt").addEventListener("click", onPt);
+
+      function pickMood(serious) {
+        document.getElementById("moodFun").removeEventListener("click", onFun);
+        document.getElementById("moodSerious").removeEventListener("click", onSerious);
+        document.documentElement.classList.toggle("clean-mode", serious);
+        try { sessionStorage.setItem("gc_clean", serious ? "1" : "0"); } catch (e) {}
+        updateCleanToggle();
+        showStage("stageLoader"); startLoader();
+      }
+      function onFun() { pickMood(false); }
+      function onSerious() { pickMood(true); }
+      document.getElementById("moodFun").addEventListener("click", onFun);
+      document.getElementById("moodSerious").addEventListener("click", onSerious);
     }
 
     /* LANGUAGE TOGGLE (header, always available) */
