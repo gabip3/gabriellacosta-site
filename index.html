@@ -465,10 +465,10 @@
           <span class="p-name" data-i18n="moodFunLabel">Fun Mode</span>
           <span class="p-cta" data-i18n="moodFunCta">See the creative side</span>
         </button>
-        <button class="player lang-btn two" id="moodSerious" data-selectable type="button" aria-label="I'm feeling serious today">
-          <span class="p-avatar mood-emoji" aria-hidden="true">🧐</span>
-          <span class="p-name" data-i18n="moodSeriousLabel">Serious Mode</span>
-          <span class="p-cta" data-i18n="moodSeriousCta">See the professional side</span>
+        <button class="player lang-btn two" id="moodSerious" data-selectable type="button" aria-label="See the simple, standard version">
+          <span class="p-avatar mood-emoji" aria-hidden="true">📄</span>
+          <span class="p-name" data-i18n="moodSeriousLabel">Simple version</span>
+          <span class="p-cta" data-i18n="moodSeriousCta">A clean, standard portfolio</span>
         </button>
       </div>
     </div>
@@ -753,7 +753,7 @@
         coinInsert: "Let's begin",
         coinMood: "How are you feeling today?", moodH2: "Pick your mood.",
         moodFunLabel: "Fun Mode", moodFunCta: "See the creative side",
-        moodSeriousLabel: "Serious Mode", moodSeriousCta: "See the professional side",
+        moodSeriousLabel: "Simple version", moodSeriousCta: "A clean, standard portfolio",
         loaderLines: ["Initializing experience...", "Loading creativity...", "Compiling ideas...", "Optimizing performance...", "Ready."],
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
         formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.",
@@ -792,7 +792,7 @@
         coinInsert: "Vamos começar",
         coinMood: "Como você tá se sentindo hoje?", moodH2: "Escolha seu humor.",
         moodFunLabel: "Modo Divertido", moodFunCta: "Ver o lado criativo",
-        moodSeriousLabel: "Modo Sério", moodSeriousCta: "Ver o lado profissional",
+        moodSeriousLabel: "Versão Simples", moodSeriousCta: "Um portfólio limpo e tradicional",
         loaderLines: ["Inicializando experiência...", "Carregando criatividade...", "Compilando ideias...", "Otimizando performance...", "Pronto."],
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
         formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.",
@@ -958,9 +958,13 @@
       function pickMood(serious) {
         document.getElementById("moodFun").removeEventListener("click", onFun);
         document.getElementById("moodSerious").removeEventListener("click", onSerious);
-        document.documentElement.classList.toggle("clean-mode", serious);
-        try { sessionStorage.setItem("gc_clean", serious ? "1" : "0"); } catch (e) {}
-        updateCleanToggle();
+        if (serious) {
+          var lng = "en";
+          try { lng = localStorage.getItem("gc_lang") || "en"; } catch (e) {}
+          try { sessionStorage.setItem("gc_intro_v3", "1"); } catch (e) {}
+          window.location.href = "portfolio.html?lang=" + lng;
+          return;
+        }
         showStage("stageLoader"); startLoader();
       }
       function onFun() { pickMood(false); }

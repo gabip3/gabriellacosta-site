@@ -585,7 +585,7 @@
         formSubmit: "Begin the mission", formSuccessTitle: "Mission accepted!", formSuccessP: "Thanks - your message is in. I'll get back to you shortly. 🌎",
         missionsTag: "◆ Completed missions", missionsH2: "Real businesses. Real results. <em>Live sites.</em>",
         missionLive: "Live",
-        missionTags: { atlanta: "Home services · Atlanta", rk360: "Events · Photo booth", sara: "Brazilian actress · Personal brand", siding: "Home services · Siding & exteriors", peachtree: "Trading · B2B", sweet: "Bakery · E-commerce", fila: "Spanish citizenship · Queue tracker", yours: "Next in queue" },
+        missionTags: { atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Brazilian actress · Personal brand", siding: "Home services · Siding & exteriors", kings: "Artisan sourdough bakery", fila: "Spanish citizenship · Queue tracker", peachtree: "Trading · B2B", sweet: "Bakery · E-commerce", yours: "Next in queue" },
         proofH2: "30+ businesses launched. <em>From São Paulo to the world.</em>",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world', backHome: "← Back home",
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet - add your Web3Forms access key.",
@@ -637,7 +637,7 @@
         formSubmit: "Começar a missão", formSuccessTitle: "Missão aceita!", formSuccessP: "Obrigada - sua mensagem chegou. Já volto com uma resposta. 🌎",
         missionsTag: "◆ Missões concluídas", missionsH2: "Negócios reais. Resultados reais. <em>Sites no ar.</em>",
         missionLive: "No ar",
-        missionTags: { atlanta: "Serviços domésticos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Atriz brasileira · Marca pessoal", siding: "Serviços domésticos · Revestimentos", peachtree: "Trading · B2B", sweet: "Confeitaria · E-commerce", fila: "Cidadania espanhola · Acompanhamento de fila", yours: "Próximo da fila" },
+        missionTags: { atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Atriz brasileira · Marca pessoal", siding: "Serviços domésticos · Revestimentos", kings: "Padaria artesanal · sourdough", fila: "Cidadania espanhola · Acompanhamento de fila", peachtree: "Trading · B2B", sweet: "Confeitaria · E-commerce", yours: "Próximo da fila" },
         proofH2: "Mais de 30 negócios lançados. <em>De São Paulo para o mundo.</em>",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo', backHome: "← Voltar ao início",
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado - adicione sua chave do Web3Forms.",
@@ -685,13 +685,18 @@
 
     /* PORTFOLIO */
     var missionDefs = [
-      { key: "atlanta", name: "Atlanta Home Concierge", c: "#E8691A", url: "https://www.atlantahomeconcierge.com" },
+      { key: "atlanta", name: "Atlanta Home Concierge", c: "#E8691A", url: "https://www.atlantahomeconcierge.com", shot: "assets/atlanta-home-concierge.jpg" },
+      { key: "christmas", name: "Christmas Lights Atlanta", c: "#2856D6", url: "https://www.christmaslights-atlanta.com", shot: "assets/christmas-lights-atlanta.jpg" },
+      { key: "butterfly", name: "Butterfly Cleaning", c: "#DB3A8C", url: "https://www.butterflycleaning.company/", shot: "assets/butterfly-cleaning.jpg" },
+      { key: "bestchoice", name: "Best Choice 4U", c: "#6B32E0", url: "https://bestchoice4uservices.com/", shot: "assets/best-choice-4u.jpg" },
+      { key: "dparty", name: "D'Party", c: "#E8691A", url: "https://www.dpartyatlanta.com", shot: "assets/dparty-atlanta.jpg" },
       { key: "rk360", name: "RK360 Photo Booth Rentals", c: "#DB3A8C", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.jpg" },
       { key: "sara", name: "Sara Sarres", c: "#2856D6", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.jpg" },
       { key: "siding", name: "Siding by Lucas", c: "#A9CC3D", url: "https://www.sidingbylucas.com", shot: "assets/siding-by-lucas.jpg" },
+      { key: "kings", name: "King's Table Sourdough", c: "#A9CC3D", url: "https://www.kingstablesourdough.com", shot: "assets/kings-table-sourdough.jpg" },
+      { key: "fila", name: "Onde Eu Tô Na Fila", c: "#E8691A", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg" },
       { key: "peachtree", name: "Peachtree Commodities", c: "#6B32E0" },
       { key: "sweet", name: "Sweet Shop by Claudia", c: "#DB3A8C" },
-      { key: "fila", name: "Onde Eu Tô Na Fila", c: "#E8691A", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg" },
       { key: "yours", name: "Your Business", c: "#2856D6" }
     ];
     var missionsGrid = document.getElementById("missionsGrid");
