@@ -420,7 +420,36 @@
       *, *::before, *::after { animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
       .reveal { opacity:1 !important; transform:none !important; }
       #confetti, .intro-blob, .scroll-cue .arrow { display:none !important; }
+      .mk-dot, .mk-plus, .ba .ba-before { animation:none !important; }
     }
+
+    /* ===== WEBSITE MAKEOVER HIGHLIGHT ===== */
+    .makeover-hl { position:relative; padding: var(--s-7) 0; }
+    .mk-inner { display:grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px,5vw,60px); align-items:center; }
+    @media (max-width: 860px){ .mk-inner { grid-template-columns:1fr; } }
+    .mk-copy h2 { font-size: clamp(2rem, 1.3rem + 3vw, 3.4rem); line-height:1.02; margin-bottom:16px; }
+    .mk-copy h2 em { font-style:normal; color: var(--magenta); }
+    .mk-copy p { color: var(--ink-soft); max-width: 34ch; margin-bottom: 26px; font-size: 1.08rem; }
+    .mk-dot { width:9px; height:9px; border-radius:50%; background:#E11D2E; animation: mkblink 1.15s steps(1,end) infinite; }
+    .mk-cross { position:absolute; top:20px; right: clamp(16px, 4vw, 40px); width:58px; height:58px; border-radius:16px; background:var(--paper); border:var(--line); box-shadow:var(--pop); display:grid; place-items:center; z-index:3; }
+    .mk-plus { position:relative; width:30px; height:30px; animation: mkblink 1.15s steps(1,end) infinite; }
+    .mk-plus::before,.mk-plus::after { content:""; position:absolute; background:#E11D2E; border-radius:3px; }
+    .mk-plus::before { left:10px; top:0; width:10px; height:30px; }
+    .mk-plus::after { top:10px; left:0; height:10px; width:30px; }
+    @keyframes mkblink { 0%,60%{opacity:1;} 61%,100%{opacity:0.2;} }
+
+    .ba-shell { width:100%; }
+    .ba { position:relative; aspect-ratio:16/10; border:var(--line); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--pop-lg); background:var(--cream-2); touch-action:pan-y; --pos:50%; cursor:ew-resize; }
+    .ba img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top left; pointer-events:none; -webkit-user-drag:none; user-select:none; }
+    .ba .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); z-index:2; }
+    .ba-tag { position:absolute; top:14px; z-index:4; font-family:var(--mono); font-weight:700; font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; padding:6px 12px; border-radius:var(--r-pill); color:#fff; }
+    .ba-tag.before { left:14px; background:#E11D2E; }
+    .ba-tag.after { right:14px; background:var(--violet); }
+    .ba-handle { position:absolute; top:0; bottom:0; left:var(--pos); width:0; z-index:5; transform:translateX(-50%); }
+    .ba-line { position:absolute; top:0; bottom:0; left:50%; width:4px; transform:translateX(-50%); background:var(--paper); box-shadow:0 0 0 2px var(--ink); }
+    .ba-grip { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:54px; height:54px; border-radius:50%; background:var(--paper); border:var(--line); box-shadow:var(--pop); display:grid; place-items:center; color:var(--ink); cursor:ew-resize; touch-action:none; }
+    .ba-grip svg { width:24px; height:24px; }
+    .ba-grip:active { transform:translate(-50%,-50%) scale(0.94); }
   </style>
 </head>
 <body>
@@ -494,6 +523,7 @@
       <nav class="nav-levels" aria-label="Primary">
         <a href="#top" data-i18n="navHome">Home</a>
         <a href="website-design.html" data-i18n="navProcess">Websites</a>
+        <a href="makeover.html" data-i18n="navMakeover">Makeover</a>
         <a href="about.html" data-i18n="navAbout">About</a>
         <a href="#categories" data-i18n="navServices">Services</a>
         <a href="pricing.html" data-i18n="navPricing">Pricing</a>
@@ -595,6 +625,33 @@
           </a>
         </div>
         <p class="price-list-link reveal" style="text-align:center;margin-top:var(--s-5)"><a href="pricing.html" data-magnetic>See the full price list →</a></p>
+      </div>
+    </section>
+
+    <!-- WEBSITE MAKEOVER HIGHLIGHT -->
+    <section class="makeover-hl reveal" id="makeover" aria-labelledby="makeover-h">
+      <span class="mk-cross" aria-hidden="true"><span class="mk-plus"></span></span>
+      <div class="wrap mk-inner">
+        <div class="mk-copy">
+          <span class="sticker" style="margin-bottom:18px"><span class="mk-dot" aria-hidden="true"></span> Website Makeover</span>
+          <h2 id="makeover-h" class="display" data-i18n-html="makeoverH2">From invisible to <em>unforgettable.</em></h2>
+          <p data-i18n="makeoverP">Drag the slider and see what happens when an outdated website gets a complete makeover.</p>
+          <a class="btn" href="makeover.html" data-magnetic data-i18n="makeoverCta">View transformations →</a>
+        </div>
+        <div class="ba-shell">
+          <div class="ba" id="baHome">
+            <img class="ba-after" src="assets/makeover-after.svg" alt="After: a clean, modern website redesign" />
+            <img class="ba-before" src="assets/makeover-before.svg" alt="Before: an outdated, cluttered website" />
+            <span class="ba-tag before" aria-hidden="true">Before</span>
+            <span class="ba-tag after" aria-hidden="true">After</span>
+            <div class="ba-handle">
+              <span class="ba-line" aria-hidden="true"></span>
+              <button class="ba-grip" type="button" role="slider" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6L3 12l6 6M15 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -721,7 +778,7 @@
     /* BRL price: Wise mid-market rate on 2026-07-09 was 1 USD = 5.116 BRL ($599 = R$3.064,48), rounded to a clean R$3.000 for display. */
     var I18N = {
       en: {
-        navHome: "Home", navProcess: "Websites", navAbout: "About", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
+        navHome: "Home", navProcess: "Websites", navMakeover: "Makeover", navAbout: "About", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
         headerCtaLabel: "Let's talk",
         cleanOff: "Tired eyes?", cleanOn: "Switch to Creative Mode",
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
@@ -735,6 +792,7 @@
         catAiTitle: "AI Creative", catAiDesc: "AI-generated videos, characters & mascots that bring your brand to life.",
         statSites: "Projects launched", statTurnaround: "Years of experience", statCategories: "Creative categories", statYours: "Yours to keep",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> AI CREATIVE <i class="star">★</i> 500+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
+        makeoverH2: "From invisible to <em>unforgettable.</em>", makeoverP: "Drag the slider and see what happens when an outdated website gets a complete makeover.", makeoverCta: "View transformations →",
         comingSoonTag: "◆ Coming this week", comingSoonH2: "New case studies &amp; client stories, <em>landing soon.</em>",
         comingSoonP: "I'm adding real project photos and client testimonials across every category this week, check back soon, or reach out and I'll walk you through examples directly.",
         completeH2: "Let's create something <em>great.</em>",
@@ -760,7 +818,7 @@
         formErrNetwork: "Network error. Please email gabip3@gmail.com."
       },
       pt: {
-        navHome: "Início", navProcess: "Sites", navAbout: "Sobre", navServices: "Serviços", navPricing: "Preço", navContact: "Contato",
+        navHome: "Início", navProcess: "Sites", navMakeover: "Makeover", navAbout: "Sobre", navServices: "Serviços", navPricing: "Preço", navContact: "Contato",
         headerCtaLabel: "Vamos conversar",
         cleanOff: "Tá com os olhos cansados?", cleanOn: "Ativar Modo Criativo",
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
@@ -774,6 +832,7 @@
         catAiTitle: "Inteligência Artificial", catAiDesc: "Vídeos, personagens e mascotes com IA que dão vida à sua marca.",
         statSites: "Projetos lançados", statTurnaround: "Anos de experiência", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> INTELIGÊNCIA ARTIFICIAL <i class="star">★</i> 500+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
+        makeoverH2: "Do invisível ao <em>inesquecível.</em>", makeoverP: "Arraste o slider e veja o que acontece quando um site ultrapassado ganha uma reforma completa.", makeoverCta: "Ver transformações →",
         comingSoonTag: "◆ Chegando essa semana", comingSoonH2: "Novos cases &amp; depoimentos de clientes, <em>chegando em breve.</em>",
         comingSoonP: "Essa semana vou adicionar fotos reais de projetos e depoimentos de clientes em cada categoria, volte em breve, ou me chama que te mostro exemplos direto.",
         completeH2: "Vamos criar algo <em>incrível.</em>",
@@ -1010,6 +1069,36 @@
       a.addEventListener("click", function (e) { var id = a.getAttribute("href"); if (id.length < 2) return; var el = document.querySelector(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } });
     });
   })();
+  </script>
+
+  <!-- Before/After makeover slider -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function initBA(el) {
+        var grip = el.querySelector(".ba-grip");
+        var pos = 50, dragging = false;
+        function set(p) { pos = Math.max(0, Math.min(100, p)); el.style.setProperty("--pos", pos + "%"); if (grip) grip.setAttribute("aria-valuenow", Math.round(pos)); }
+        function fromX(x) { var r = el.getBoundingClientRect(); set(((x - r.left) / r.width) * 100); }
+        el.addEventListener("pointerdown", function (e) { dragging = true; try { el.setPointerCapture(e.pointerId); } catch (err) {} fromX(e.clientX); });
+        el.addEventListener("pointermove", function (e) { if (dragging) fromX(e.clientX); });
+        el.addEventListener("pointerup", function () { dragging = false; });
+        el.addEventListener("pointercancel", function () { dragging = false; });
+        if (grip) grip.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") { set(pos - 4); e.preventDefault(); }
+          else if (e.key === "ArrowRight") { set(pos + 4); e.preventDefault(); }
+          else if (e.key === "Home") { set(0); e.preventDefault(); }
+          else if (e.key === "End") { set(100); e.preventDefault(); }
+        });
+        set(50);
+        if (!reduce) setTimeout(function () {
+          var t0 = null, dur = 1100;
+          function anim(t) { if (!t0) t0 = t; var k = Math.min((t - t0) / dur, 1); var e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; set(50 + Math.sin(e * Math.PI) * 22); if (k < 1) requestAnimationFrame(anim); else set(50); }
+          requestAnimationFrame(anim);
+        }, 900);
+      }
+      Array.prototype.forEach.call(document.querySelectorAll(".ba"), initBA);
+    })();
   </script>
 </body>
 </html>
