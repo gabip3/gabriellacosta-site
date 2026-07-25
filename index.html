@@ -431,11 +431,6 @@
     .mk-copy h2 em { font-style:normal; color: var(--magenta); }
     .mk-copy p { color: var(--ink-soft); max-width: 34ch; margin-bottom: 26px; font-size: 1.08rem; }
     .mk-dot { width:9px; height:9px; border-radius:50%; background:#E11D2E; }
-    .mk-cross { position:absolute; top:20px; right: clamp(16px, 4vw, 40px); width:58px; height:58px; border-radius:16px; background:var(--paper); border:var(--line); box-shadow:var(--pop); display:grid; place-items:center; z-index:3; }
-    .mk-plus { position:relative; width:30px; height:30px; }
-    .mk-plus::before,.mk-plus::after { content:""; position:absolute; background:#E11D2E; border-radius:3px; }
-    .mk-plus::before { left:10px; top:0; width:10px; height:30px; }
-    .mk-plus::after { top:10px; left:0; height:10px; width:30px; }
     @keyframes mkblink { 0%,60%{opacity:1;} 61%,100%{opacity:0.2;} }
 
     .ba-shell { width:100%; }
@@ -650,7 +645,6 @@
 
     <!-- WEBSITE MAKEOVER HIGHLIGHT -->
     <section class="makeover-hl reveal" id="makeover" aria-labelledby="makeover-h">
-      <span class="mk-cross" aria-hidden="true"><span class="mk-plus"></span></span>
       <div class="wrap mk-inner">
         <div class="mk-copy">
           <span class="sticker" style="margin-bottom:18px"><span class="mk-dot" aria-hidden="true"></span> Website Makeover</span>
