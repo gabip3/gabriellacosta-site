@@ -133,7 +133,8 @@
       box-shadow: var(--shadow); transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s;
     }
     .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--line-2); }
-    .shot { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; object-position: top center; background: var(--surface); border-bottom: 1px solid var(--line); }
+    .thumb { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface); border-bottom: 1px solid var(--line); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
     .card-cat { font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
     .card-name { font-size: 1.16rem; font-weight: 700; letter-spacing: -.01em; }
@@ -377,7 +378,7 @@
         var visit = (I18N[lang] || I18N.en).visit;
         grid.innerHTML = PROJECTS.map(function (p) {
           return '<a class="card rv" href="' + p.url + '" target="_blank" rel="noopener" aria-label="' + p.name + ', open live site">' +
-            '<img class="shot" src="' + p.shot + '" alt="' + p.name + ' website" loading="lazy" width="1200" height="750" />' +
+            '<span class="thumb"><img src="' + p.shot + '" alt="' + p.name + ' website" loading="lazy" /></span>' +
             '<div class="card-body">' +
               '<span class="card-cat">' + (p.cat[lang] || p.cat.en) + '</span>' +
               '<span class="card-name">' + p.name + '</span>' +
