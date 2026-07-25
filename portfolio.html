@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#141220" media="(prefers-color-scheme: dark)" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <title>Gabriella Costa — Web &amp; Brand Designer</title>
+  <title>Gabriella Costa, Web &amp; Brand Designer</title>
   <meta name="description" content="Gabriella Costa is a web and brand designer based in São Paulo, working with clients worldwide. Selected work, about, and contact." />
   <meta name="author" content="Gabriella Costa" />
   <link rel="canonical" href="https://gabriellacosta.design/portfolio.html" />
@@ -15,7 +15,7 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Gabriella Costa" />
-  <meta property="og:title" content="Gabriella Costa — Web &amp; Brand Designer" />
+  <meta property="og:title" content="Gabriella Costa, Web &amp; Brand Designer" />
   <meta property="og:description" content="Selected web and brand design work. Based in São Paulo, working worldwide." />
   <meta property="og:url" content="https://gabriellacosta.design/portfolio.html" />
   <meta property="og:image" content="https://gabriellacosta.design/og-image.jpg" />
@@ -123,7 +123,8 @@
     .sec-head p { margin-top: 10px; color: var(--muted); font-size: 1.05rem; }
 
     /* WORK GRID */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 26px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) { .grid { grid-template-columns: 1fr; gap: 22px; } }
     .card {
       display: flex; flex-direction: column;
@@ -148,10 +149,29 @@
     .stat .num { font-size: clamp(1.9rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -.02em; line-height: 1; }
     .stat .lab { margin-top: 7px; font-size: .9rem; color: var(--muted); }
 
-    /* CONTACT */
-    .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(32px, 6vw, 56px); text-align: center; }
+    /* CONTACT + FORM */
+    .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: clamp(30px, 6vw, 56px); max-width: 720px; }
     .contact-card h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; }
-    .contact-card p { margin: 12px auto 26px; color: var(--muted); max-width: 46ch; font-size: 1.06rem; }
+    .contact-card > p { margin: 12px 0 28px; color: var(--muted); max-width: 48ch; font-size: 1.06rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    .field label { font-size: .9rem; font-weight: 600; color: var(--ink-2); }
+    .field .req { color: var(--accent); }
+    .field input, .field textarea { font: inherit; font-size: 1rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line-2); border-radius: 10px; padding: 12px 14px; width: 100%; transition: border-color .18s, box-shadow .18s; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+    .field textarea { min-height: 132px; resize: vertical; }
+    .help { font-size: .82rem; color: var(--muted); }
+    .hp { position: absolute; left: -9999px; }
+    .form-status { margin-top: 14px; font-size: .92rem; font-weight: 500; min-height: 1.1em; color: var(--muted); }
+    .form-status.err { color: #d64545; }
+    .form-success { display: none; text-align: center; padding: 10px 0; }
+    .form-success.show { display: block; }
+    .form-success .check { display: inline-grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: var(--accent); color: var(--on-accent); margin-bottom: 14px; }
+    .form-success .check svg { width: 26px; height: 26px; }
+    .form-success h3 { font-size: 1.4rem; font-weight: 700; letter-spacing: -.01em; }
+    .form-success p { margin-top: 8px; color: var(--muted); }
+    .or-mail { margin-top: 22px; font-size: .92rem; color: var(--muted); }
     .mail { font-weight: 600; color: var(--accent); }
 
     /* FOOTER */
@@ -193,7 +213,7 @@
       <div class="wrap">
         <p class="eyebrow" data-i18n="eyebrow">Web &amp; Brand Designer</p>
         <h1 data-i18n="heroH1">Websites and brands that help small businesses look bigger.</h1>
-        <p class="lead" data-i18n="heroLead">I'm Gabriella Costa, a designer and developer based in São Paulo — working with clients from São Paulo to the world.</p>
+        <p class="lead" data-i18n="heroLead">I'm Gabriella Costa, a designer and developer based in São Paulo, working with clients from São Paulo to the world.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#work" data-i18n="ctaWork">View work</a>
           <a class="btn btn-ghost" href="#contact" data-i18n="ctaContact">Get in touch</a>
@@ -217,7 +237,7 @@
           <div class="sec-head" style="margin-bottom:22px">
             <h2 data-i18n="aboutH2">About</h2>
           </div>
-          <p data-i18n="aboutP1">I've spent 15+ years designing websites, brand identities, social media and print for small businesses and creators. My work is custom, clean, and built to get results — never a template with your logo dropped in.</p>
+          <p data-i18n="aboutP1">I've spent 15+ years designing websites, brand identities, social media and print for small businesses and creators. My work is custom, clean, and built to get results, never a template with your logo dropped in.</p>
           <p data-i18n="aboutP2">Based in São Paulo, I work with clients across Brazil, the U.S. and beyond. Every project is designed to help you get noticed, win trust, and turn attention into customers.</p>
         </div>
         <div class="stats" aria-label="At a glance">
@@ -233,9 +253,36 @@
       <div class="wrap">
         <div class="contact-card">
           <h2 data-i18n="contactH2">Let's work together</h2>
-          <p data-i18n="contactP">Tell me about your project and I'll get back to you — usually within a day.</p>
-          <a class="btn btn-primary" href="mailto:gabip3@gmail.com" data-i18n="contactBtn">Email me</a>
-          <p style="margin-top:20px;font-size:.95rem"><a class="mail" href="mailto:gabip3@gmail.com">gabip3@gmail.com</a></p>
+          <p data-i18n="contactP">Tell me about your project and I'll get back to you, usually within a day.</p>
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="3410c514-2783-40bb-8985-234c821ad80e" />
+            <input type="hidden" name="subject" value="New inquiry from portfolio page" />
+            <input type="hidden" name="from_name" value="Gabriella Costa Portfolio" />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="form-row">
+              <div class="field">
+                <label for="c-name" data-i18n-html="fieldName">Your name <span class="req">*</span></label>
+                <input id="c-name" name="name" type="text" required autocomplete="name" data-i18n-ph="fieldNamePh" placeholder="Jane Doe" />
+              </div>
+              <div class="field">
+                <label for="c-email" data-i18n-html="fieldEmail">Email <span class="req">*</span></label>
+                <input id="c-email" name="email" type="email" required autocomplete="email" inputmode="email" data-i18n-ph="fieldEmailPh" placeholder="jane@business.com" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="c-message" data-i18n-html="fieldMessage">Message <span class="req">*</span></label>
+              <textarea id="c-message" name="message" required data-i18n-ph="fieldMessagePh" placeholder="Tell me about your project, goals, and timeline."></textarea>
+              <p class="help" data-i18n="fieldHelp">No spam, ever. Your details are only used to reply to you.</p>
+            </div>
+            <button class="btn btn-primary" type="submit" id="contactSubmit"><span data-i18n="formSubmit">Send message</span></button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span>
+            <h3 data-i18n="formSuccessTitle">Message sent!</h3>
+            <p data-i18n="formSuccessP">Thanks, your message is in. I'll get back to you shortly.</p>
+          </div>
+          <p class="or-mail"><span data-i18n="orEmail">Or email me directly:</span> <a class="mail" href="mailto:gabip3@gmail.com">gabip3@gmail.com</a></p>
         </div>
       </div>
     </section>
@@ -251,6 +298,7 @@
   <script>
     (function () {
       var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+      var CUR = "en";
 
       var PROJECTS = [
         { name: "Atlanta Home Concierge", url: "https://www.atlantahomeconcierge.com", shot: "assets/atlanta-home-concierge.jpg", cat: { en: "Home services · Atlanta", pt: "Serviços domésticos · Atlanta" } },
@@ -261,6 +309,7 @@
         { name: "RK360 Photo Booth Rentals", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.jpg", cat: { en: "Events · Photo booth", pt: "Eventos · Cabine de fotos" } },
         { name: "Sara Sarres", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.jpg", cat: { en: "Personal brand", pt: "Marca pessoal" } },
         { name: "Siding by Lucas", url: "https://www.sidingbylucas.com", shot: "assets/siding-by-lucas.jpg", cat: { en: "Home services · Siding", pt: "Serviços domésticos · Revestimentos" } },
+        { name: "Art Floor ATL", url: "https://www.artflooratl.com", shot: "assets/art-floor-atl.jpg", cat: { en: "Tile & stone · Atlanta", pt: "Azulejos e pedras · Atlanta" } },
         { name: "King's Table Sourdough", url: "https://www.kingstablesourdough.com", shot: "assets/kings-table-sourdough.jpg", cat: { en: "Artisan bakery · Sourdough", pt: "Padaria artesanal · Sourdough" } },
         { name: "Onde Eu Tô Na Fila", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg", cat: { en: "Web app · Queue tracker", pt: "Web app · Acompanhamento de fila" } }
       ];
@@ -272,17 +321,24 @@
           switchCreative: "✦ Creative version", footCreative: "✦ See the creative version",
           eyebrow: "Web & Brand Designer",
           heroH1: "Websites and brands that help small businesses look bigger.",
-          heroLead: "I'm Gabriella Costa, a designer and developer based in São Paulo — working with clients from São Paulo to the world.",
+          heroLead: "I'm Gabriella Costa, a designer and developer based in São Paulo, working with clients from São Paulo to the world.",
           ctaWork: "View work", ctaContact: "Get in touch",
           workH2: "Selected work",
           workP: "A few of the 500+ projects I've delivered. Click any project to visit the live site.",
           aboutH2: "About",
-          aboutP1: "I've spent 15+ years designing websites, brand identities, social media and print for small businesses and creators. My work is custom, clean, and built to get results — never a template with your logo dropped in.",
+          aboutP1: "I've spent 15+ years designing websites, brand identities, social media and print for small businesses and creators. My work is custom, clean, and built to get results, never a template with your logo dropped in.",
           aboutP2: "Based in São Paulo, I work with clients across Brazil, the U.S. and beyond. Every project is designed to help you get noticed, win trust, and turn attention into customers.",
           statProjects: "Projects delivered", statYears: "Years of experience", statCats: "Creative categories", statOwn: "Yours to keep",
           contactH2: "Let's work together",
-          contactP: "Tell me about your project and I'll get back to you — usually within a day.",
-          contactBtn: "Email me",
+          contactP: "Tell me about your project and I'll get back to you, usually within a day.",
+          fieldName: 'Your name <span class="req">*</span>', fieldNamePh: "Jane Doe",
+          fieldEmail: 'Email <span class="req">*</span>', fieldEmailPh: "jane@business.com",
+          fieldMessage: 'Message <span class="req">*</span>', fieldMessagePh: "Tell me about your project, goals, and timeline.",
+          fieldHelp: "No spam, ever. Your details are only used to reply to you.",
+          formSubmit: "Send message", formSuccessTitle: "Message sent!", formSuccessP: "Thanks, your message is in. I'll get back to you shortly.",
+          orEmail: "Or email me directly:",
+          formErrRequired: "Please fill in the required fields.", formSending: "Sending…",
+          formErrGeneric: "Something went wrong. Please email me directly.", formErrNetwork: "Network error. Please email gabip3@gmail.com.",
           visit: "Visit site",
           footCopy: '© <span id="year"></span> Gabriella Costa · Made in São Paulo, serving the world.'
         },
@@ -292,17 +348,24 @@
           switchCreative: "✦ Versão criativa", footCreative: "✦ Ver a versão criativa",
           eyebrow: "Designer de Sites e Marcas",
           heroH1: "Sites e marcas que fazem pequenos negócios parecerem maiores.",
-          heroLead: "Sou a Gabriella Costa, designer e desenvolvedora em São Paulo — atendendo clientes de São Paulo para o mundo.",
+          heroLead: "Sou a Gabriella Costa, designer e desenvolvedora em São Paulo, atendendo clientes de São Paulo para o mundo.",
           ctaWork: "Ver trabalhos", ctaContact: "Entrar em contato",
           workH2: "Trabalhos selecionados",
           workP: "Alguns dos mais de 500 projetos que já entreguei. Clique em qualquer um para visitar o site no ar.",
           aboutH2: "Sobre",
-          aboutP1: "São mais de 15 anos criando sites, identidades visuais, social media e materiais impressos para pequenos negócios e criadores. Meu trabalho é personalizado, limpo e feito pra dar resultado — nunca um template com a sua logo enfiada no meio.",
+          aboutP1: "São mais de 15 anos criando sites, identidades visuais, social media e materiais impressos para pequenos negócios e criadores. Meu trabalho é personalizado, limpo e feito pra dar resultado, nunca um template com a sua logo enfiada no meio.",
           aboutP2: "De São Paulo, atendo clientes no Brasil, nos EUA e além. Cada projeto é pensado pra você ser encontrado, ganhar confiança e transformar atenção em clientes.",
           statProjects: "Projetos entregues", statYears: "Anos de experiência", statCats: "Categorias criativas", statOwn: "Seu pra sempre",
           contactH2: "Vamos trabalhar juntos",
-          contactP: "Me conta sobre seu projeto que eu respondo — geralmente em até um dia.",
-          contactBtn: "Me enviar e-mail",
+          contactP: "Me conta sobre seu projeto que eu respondo, geralmente em até um dia.",
+          fieldName: 'Seu nome <span class="req">*</span>', fieldNamePh: "Maria Silva",
+          fieldEmail: 'E-mail <span class="req">*</span>', fieldEmailPh: "maria@negocio.com",
+          fieldMessage: 'Mensagem <span class="req">*</span>', fieldMessagePh: "Me conta sobre seu projeto, objetivos e prazo.",
+          fieldHelp: "Sem spam, nunca. Seus dados só são usados pra te responder.",
+          formSubmit: "Enviar mensagem", formSuccessTitle: "Mensagem enviada!", formSuccessP: "Obrigada, sua mensagem chegou. Já te respondo em breve.",
+          orEmail: "Ou me manda um e-mail direto:",
+          formErrRequired: "Preencha os campos obrigatórios.", formSending: "Enviando…",
+          formErrGeneric: "Algo deu errado. Me manda um e-mail direto.", formErrNetwork: "Erro de conexão. Me manda um e-mail: gabip3@gmail.com.",
           visit: "Visitar site",
           footCopy: '© <span id="year"></span> Gabriella Costa · Feito em São Paulo, para o mundo.'
         }
@@ -313,7 +376,7 @@
         if (!grid) return;
         var visit = (I18N[lang] || I18N.en).visit;
         grid.innerHTML = PROJECTS.map(function (p) {
-          return '<a class="card rv" href="' + p.url + '" target="_blank" rel="noopener" aria-label="' + p.name + ' — open live site">' +
+          return '<a class="card rv" href="' + p.url + '" target="_blank" rel="noopener" aria-label="' + p.name + ', open live site">' +
             '<img class="shot" src="' + p.shot + '" alt="' + p.name + ' website" loading="lazy" width="1200" height="750" />' +
             '<div class="card-body">' +
               '<span class="card-cat">' + (p.cat[lang] || p.cat.en) + '</span>' +
@@ -326,11 +389,13 @@
 
       function applyLang(lang) {
         if (lang !== "en" && lang !== "pt") lang = "en";
+        CUR = lang;
         var dict = I18N[lang];
         document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
         try { localStorage.setItem("gc_lang", lang); } catch (e) {}
         $$("[data-i18n]").forEach(function (el) { var k = el.getAttribute("data-i18n"); if (dict[k] != null) el.textContent = dict[k]; });
         $$("[data-i18n-html]").forEach(function (el) { var k = el.getAttribute("data-i18n-html"); if (dict[k] != null) el.innerHTML = dict[k]; });
+        $$("[data-i18n-ph]").forEach(function (el) { var k = el.getAttribute("data-i18n-ph"); if (dict[k] != null) el.placeholder = dict[k]; });
         renderWork(lang);
         var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
         $$(".langs button").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
@@ -346,7 +411,32 @@
         items.forEach(function (el) { io.observe(el); });
       }
 
-      // initial language: ?lang= param → saved → default en
+      // contact form (Web3Forms)
+      var form = document.getElementById("contactForm");
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var dict = I18N[CUR] || I18N.en;
+          var status = document.getElementById("formStatus"), btn = document.getElementById("contactSubmit");
+          if (!form.checkValidity()) { status.className = "form-status err"; status.textContent = dict.formErrRequired; var fi = form.querySelector(":invalid"); if (fi) fi.focus(); return; }
+          btn.style.opacity = "0.6"; btn.style.pointerEvents = "none"; status.className = "form-status"; status.textContent = dict.formSending;
+          var data = Object.fromEntries(new FormData(form).entries());
+          fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+            .then(function (r) { return r.json(); })
+            .then(function (j) {
+              if (j.success) { form.style.display = "none"; document.getElementById("formSuccess").classList.add("show"); }
+              else { status.className = "form-status err"; status.textContent = j.message || dict.formErrGeneric; btn.style.opacity = ""; btn.style.pointerEvents = ""; }
+            })
+            .catch(function () { status.className = "form-status err"; status.textContent = dict.formErrNetwork; btn.style.opacity = ""; btn.style.pointerEvents = ""; });
+        });
+      }
+
+      // smooth in-page anchors
+      $$('a[href^="#"]').forEach(function (a) {
+        a.addEventListener("click", function (e) { var id = a.getAttribute("href"); if (id.length < 2) return; var el = document.querySelector(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: "smooth", block: "start" }); } });
+      });
+
+      // initial language: ?lang= param -> saved -> default en
       var initial = "en";
       try {
         var qs = new URLSearchParams(location.search).get("lang");
