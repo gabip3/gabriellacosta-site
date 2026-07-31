@@ -132,10 +132,10 @@
     .whatsapp-fab svg{width:30px;height:30px;fill:#fff;}
     @media (max-width:560px){.whatsapp-fab{width:52px;height:52px;left:16px;bottom:16px;}.whatsapp-fab svg{width:25px;height:25px;}}
 
-    /* HERO — full-bleed before/after */
-    .hero-full{position:relative;width:100%;height:calc(100svh - 88px);min-height:500px;margin-top:88px;overflow:hidden;background:var(--cream-2);}
-    .ba.ba-full{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;}
-    .hero-card{position:absolute;z-index:6;left:clamp(16px,4vw,52px);top:50%;transform:translateY(-50%);width:min(430px,calc(100% - 32px));background:var(--cream);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop-lg);padding:clamp(22px,3vw,34px);}
+    /* HERO — before/after image, card sits below (never over the photo) */
+    .hero-full{position:relative;width:100%;margin-top:88px;background:var(--cream-2);}
+    .ba.ba-full{position:relative;inset:auto;width:100%;height:64svh;min-height:380px;max-height:620px;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;}
+    .hero-card{position:relative;z-index:2;width:min(760px,calc(100% - 32px));margin:28px auto 0;background:var(--cream);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop-lg);padding:clamp(22px,3vw,34px);text-align:center;}
     .hero-card .sticker{margin-bottom:16px;}
     .hero-card .sticker .dot{width:9px;height:9px;border-radius:50%;background:var(--red);}
     .hero-card h1{font-size:clamp(2.1rem,1.3rem + 2.8vw,3.6rem);line-height:1.02;margin-bottom:12px;}
@@ -143,9 +143,9 @@
     .hero-card .lead{font-size:clamp(1rem,0.95rem + 0.4vw,1.2rem);color:var(--ink-soft);}
     .drag-hint{margin-top:14px;font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--violet);}
     @media (max-width:960px){
-      .hero-full{height:auto;margin-top:80px;background:none;}
-      .ba.ba-full{position:relative;inset:auto;height:58svh;min-height:340px;}
-      .hero-card{position:relative;top:auto;transform:none;left:auto;width:auto;margin:-52px 14px 0;}
+      .hero-full{margin-top:80px;}
+      .ba.ba-full{height:52svh;min-height:300px;}
+      .hero-card{margin:20px 14px 0;width:auto;}
     }
 
     /* BEFORE / AFTER SLIDER */
