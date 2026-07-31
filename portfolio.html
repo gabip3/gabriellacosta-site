@@ -150,18 +150,17 @@
     .card {
       display: flex; flex-direction: column; justify-content: center;
       aspect-ratio: 16 / 10; padding: 26px 24px;
-      background: var(--card); border: 1px solid var(--line);
+      background: #0c0c10; border: 2px solid var(--card-c, var(--accent));
       border-radius: var(--r-lg);
       box-shadow: var(--shadow);
-      transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s, background .25s var(--ease);
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease);
     }
-    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--accent); background: var(--accent); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px var(--card-c, var(--accent)), var(--shadow-hover); }
     .card-body { display: flex; flex-direction: column; gap: 5px; }
-    .card-cat { font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); transition: color .2s; }
-    .card-name { font-size: 1.24rem; font-weight: 700; letter-spacing: -.01em; transition: color .2s; }
-    .card-link { margin-top: 16px; font-size: .9rem; font-weight: 600; color: var(--on-accent); display: inline-flex; align-items: center; gap: 6px; opacity: 0; transform: translateY(6px); transition: opacity .22s var(--ease), transform .22s var(--ease); }
+    .card-cat { font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--card-c, var(--accent)); }
+    .card-name { font-size: 1.24rem; font-weight: 700; letter-spacing: -.01em; color: #fff; }
+    .card-link { margin-top: 16px; font-size: .9rem; font-weight: 600; color: #fff; display: inline-flex; align-items: center; gap: 6px; opacity: 0; transform: translateY(6px); transition: opacity .22s var(--ease), transform .22s var(--ease); }
     .card:hover .card-link { opacity: 1; transform: translateY(0); }
-    .card:hover .card-cat, .card:hover .card-name { color: var(--on-accent); }
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: start; }
@@ -344,20 +343,20 @@
       }
 
       var PROJECTS = [
-        { name: "SS Renovations Group", url: "https://ssrenovationsgroup.com/", shot: "assets/ss-renovations-group.jpg", cat: { en: "Home renovations", pt: "Reforma residencial" } },
-        { name: "NK Acupuntura", url: "https://acupunturaemgoiania.com.br/", shot: "assets/acupuntura-em-goiania.jpg", cat: { en: "Acupuncture · Goiânia, Brazil", pt: "Acupuntura · Goiânia" } },
-        { name: "Peachtree Commodities", url: "https://www.peachtreecommodities.com/", shot: "assets/peachtree-commodities.jpg", cat: { en: "Trading · B2B", pt: "Trading · B2B" } },
-        { name: "Atlanta Home Concierge", url: "https://www.atlantahomeconcierge.com", shot: "assets/atlanta-home-concierge.jpg", cat: { en: "Home services · Atlanta", pt: "Serviços domésticos · Atlanta" } },
-        { name: "Christmas Lights Atlanta", url: "https://www.christmaslights-atlanta.com", shot: "assets/christmas-lights-atlanta.jpg", cat: { en: "Holiday light installation · Atlanta", pt: "Instalação de luzes de Natal · Atlanta" } },
-        { name: "Butterfly Cleaning", url: "https://www.butterflycleaning.company/", shot: "assets/butterfly-cleaning.jpg", cat: { en: "Cleaning services · Atlanta", pt: "Serviços de limpeza · Atlanta" } },
-        { name: "Best Choice 4U", url: "https://bestchoice4uservices.com/", shot: "assets/best-choice-4u.jpg", cat: { en: "Cleaning services · Richmond, VA", pt: "Serviços de limpeza · Richmond, VA" } },
-        { name: "D'Party", url: "https://www.dpartyatlanta.com", shot: "assets/dparty-atlanta.jpg", cat: { en: "Dessert catering · Atlanta events", pt: "Doces para eventos · Atlanta" } },
-        { name: "RK360 Photo Booth Rentals", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.jpg", cat: { en: "Events · Photo booth", pt: "Eventos · Cabine de fotos" } },
-        { name: "Sara Sarres", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.jpg", cat: { en: "Personal brand", pt: "Marca pessoal" } },
-        { name: "Siding by Lucas", url: "https://www.sidingbylucas.com", shot: "assets/siding-by-lucas.jpg", cat: { en: "Home services · Siding", pt: "Serviços domésticos · Revestimentos" } },
-        { name: "Art Floor ATL", url: "https://www.artflooratl.com", shot: "assets/art-floor-atl.jpg", cat: { en: "Tile & stone · Atlanta", pt: "Azulejos e pedras · Atlanta" } },
-        { name: "King's Table Sourdough", url: "https://www.kingstablesourdough.com", shot: "assets/kings-table-sourdough.jpg", cat: { en: "Artisan bakery · Sourdough", pt: "Padaria artesanal · Sourdough" } },
-        { name: "Onde Eu Tô Na Fila", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg", cat: { en: "Web app · Queue tracker", pt: "Web app · Acompanhamento de fila" } }
+        { name: "SS Renovations Group", url: "https://ssrenovationsgroup.com/", shot: "assets/ss-renovations-group.jpg", c: "#E8691A", cat: { en: "Home renovations", pt: "Reforma residencial" } },
+        { name: "NK Acupuntura", url: "https://acupunturaemgoiania.com.br/", shot: "assets/acupuntura-em-goiania.jpg", c: "#A9CC3D", cat: { en: "Acupuncture · Goiânia, Brazil", pt: "Acupuntura · Goiânia" } },
+        { name: "Peachtree Commodities", url: "https://www.peachtreecommodities.com/", shot: "assets/peachtree-commodities.jpg", c: "#2856D6", cat: { en: "Trading · B2B", pt: "Trading · B2B" } },
+        { name: "Atlanta Home Concierge", url: "https://www.atlantahomeconcierge.com", shot: "assets/atlanta-home-concierge.jpg", c: "#E8691A", cat: { en: "Home services · Atlanta", pt: "Serviços domésticos · Atlanta" } },
+        { name: "Christmas Lights Atlanta", url: "https://www.christmaslights-atlanta.com", shot: "assets/christmas-lights-atlanta.jpg", c: "#6B32E0", cat: { en: "Holiday light installation · Atlanta", pt: "Instalação de luzes de Natal · Atlanta" } },
+        { name: "Butterfly Cleaning", url: "https://www.butterflycleaning.company/", shot: "assets/butterfly-cleaning.jpg", c: "#2856D6", cat: { en: "Cleaning services · Atlanta", pt: "Serviços de limpeza · Atlanta" } },
+        { name: "Best Choice 4U", url: "https://bestchoice4uservices.com/", shot: "assets/best-choice-4u.jpg", c: "#2856D6", cat: { en: "Cleaning services · Richmond, VA", pt: "Serviços de limpeza · Richmond, VA" } },
+        { name: "D'Party", url: "https://www.dpartyatlanta.com", shot: "assets/dparty-atlanta.jpg", c: "#6B32E0", cat: { en: "Dessert catering · Atlanta events", pt: "Doces para eventos · Atlanta" } },
+        { name: "RK360 Photo Booth Rentals", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.jpg", c: "#6B32E0", cat: { en: "Events · Photo booth", pt: "Eventos · Cabine de fotos" } },
+        { name: "Sara Sarres", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.jpg", c: "#DB3A8C", cat: { en: "Personal brand", pt: "Marca pessoal" } },
+        { name: "Siding by Lucas", url: "https://www.sidingbylucas.com", shot: "assets/siding-by-lucas.jpg", c: "#E8691A", cat: { en: "Home services · Siding", pt: "Serviços domésticos · Revestimentos" } },
+        { name: "Art Floor ATL", url: "https://www.artflooratl.com", shot: "assets/art-floor-atl.jpg", c: "#E8691A", cat: { en: "Tile & stone · Atlanta", pt: "Azulejos e pedras · Atlanta" } },
+        { name: "King's Table Sourdough", url: "https://www.kingstablesourdough.com", shot: "assets/kings-table-sourdough.jpg", c: "#A9CC3D", cat: { en: "Artisan bakery · Sourdough", pt: "Padaria artesanal · Sourdough" } },
+        { name: "Onde Eu Tô Na Fila", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg", c: "#2856D6", cat: { en: "Web app · Queue tracker", pt: "Web app · Acompanhamento de fila" } }
       ];
 
       var I18N = {
@@ -422,7 +421,7 @@
         if (!grid) return;
         var visit = (I18N[lang] || I18N.en).visit;
         grid.innerHTML = PROJECTS.map(function (p) {
-          return '<a class="card rv" href="' + p.url + '" target="_blank" rel="noopener" aria-label="' + p.name + ', open live site">' +
+          return '<a class="card rv" href="' + p.url + '" target="_blank" rel="noopener" aria-label="' + p.name + ', open live site" style="--card-c:' + p.c + '">' +
             '<div class="card-body">' +
               '<span class="card-cat">' + (p.cat[lang] || p.cat.en) + '</span>' +
               '<span class="card-name">' + p.name + '</span>' +
