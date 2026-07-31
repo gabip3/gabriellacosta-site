@@ -172,14 +172,9 @@
     ::selection { background: var(--lime); color: var(--ink); }
     :focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
 
-    /* Halftone dot backdrop */
     body::before {
       content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-      background:
-        radial-gradient(rgba(26,19,48,0.14) 1.6px, transparent 1.6px) 0 0/24px 24px,
-        var(--cream);
-      mask-image: radial-gradient(120% 90% at 82% 0%, #000 45%, transparent 92%);
-      -webkit-mask-image: radial-gradient(120% 90% at 82% 0%, #000 45%, transparent 92%);
+      background: var(--cream);
     }
     #confetti { position: fixed; inset: 0; z-index: var(--z-confetti); pointer-events: none; }
 
@@ -299,8 +294,6 @@
     .hero { position:relative; min-height: 100svh; display:flex; align-items:center; padding: var(--s-9) 0 var(--s-6); }
     .hero h1 { font-family: var(--display); font-weight:800; font-size: var(--fs-h1); line-height:1.05; letter-spacing:-0.03em; max-width:16ch; }
     .hero h1 .clk { color: var(--magenta); } .hero h1 .cli { color: var(--blue); }
-    .hero h1 .u { position:relative; white-space:nowrap; }
-    .hero h1 .u svg { position:absolute; left:0; right:0; bottom:-0.18em; width:100%; height:0.24em; color: var(--lime); }
     .hero-lead { font-size: var(--fs-lead); color: var(--ink-soft); max-width:46ch; margin: var(--s-4) 0 var(--s-5); }
     .hero-actions { display:flex; flex-wrap:wrap; gap: var(--s-2); align-items:center; }
 
@@ -597,7 +590,7 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-h1">
       <div class="wrap">
-        <h1 id="hero-h1" class="reveal" data-i18n-html="heroH1">Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.</h1>
+        <h1 id="hero-h1" class="reveal" data-i18n-html="heroH1">Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.</h1>
         <p class="hero-lead reveal" style="--d:100ms" data-i18n="heroLead">Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.</p>
         <div class="hero-actions reveal" style="--d:180ms">
           <a class="btn" href="#categories" data-magnetic><span data-i18n="ctaExplore">See what I build</span>
@@ -827,7 +820,7 @@
         navHome: "Home", navProcess: "Websites", navMakeover: "Makeover", navAbout: "About", navServices: "Services", navPricing: "Pricing", navContact: "Contact",
         headerCtaLabel: "Let's talk",
         cleanOff: "Tired eyes?", cleanOn: "Switch to Creative Mode",
-        heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="u cli">results<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
+        heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
         categoriesTag: "◆ Services", categoriesH2: "What I can <em>create.</em>",
@@ -867,7 +860,7 @@
         navHome: "Início", navProcess: "Sites", navMakeover: "Makeover", navAbout: "Sobre", navServices: "Serviços", navPricing: "Preço", navContact: "Contato",
         headerCtaLabel: "Vamos conversar",
         cleanOff: "Tá com os olhos cansados?", cleanOn: "Ativar Modo Criativo",
-        heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="u cli">resultado<svg viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="6" aria-hidden="true"><path d="M4 8c40-6 152-6 192 0" stroke-linecap="round"/></svg></span>.',
+        heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
         categoriesTag: "◆ Serviços", categoriesH2: "O que eu posso <em>criar.</em>",
