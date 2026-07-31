@@ -150,7 +150,7 @@
     .card {
       display: flex; flex-direction: column; justify-content: center;
       aspect-ratio: 16 / 10; padding: 26px 24px;
-      background: #0c0c10; border: 2px solid var(--card-c, var(--accent));
+      background: var(--card); border: 2px solid var(--card-c, var(--accent));
       border-radius: var(--r-lg);
       box-shadow: var(--shadow);
       transition: transform .22s var(--ease), box-shadow .22s var(--ease);
@@ -158,8 +158,8 @@
     .card:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px var(--card-c, var(--accent)), var(--shadow-hover); }
     .card-body { display: flex; flex-direction: column; gap: 5px; }
     .card-cat { font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--card-c, var(--accent)); }
-    .card-name { font-size: 1.24rem; font-weight: 700; letter-spacing: -.01em; color: #fff; }
-    .card-link { margin-top: 16px; font-size: .9rem; font-weight: 600; color: #fff; display: inline-flex; align-items: center; gap: 6px; opacity: 0; transform: translateY(6px); transition: opacity .22s var(--ease), transform .22s var(--ease); }
+    .card-name { font-size: 1.24rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+    .card-link { margin-top: 16px; font-size: .9rem; font-weight: 600; color: var(--card-c, var(--accent)); display: inline-flex; align-items: center; gap: 6px; opacity: 0; transform: translateY(6px); transition: opacity .22s var(--ease), transform .22s var(--ease); }
     .card:hover .card-link { opacity: 1; transform: translateY(0); }
 
     /* ABOUT */
