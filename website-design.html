@@ -90,8 +90,9 @@
     .clean-mode body::before{display:none;}
     .clean-mode h1,.clean-mode h2,.clean-mode h3,.clean-mode .display,.clean-mode .faq-q{font-weight:600!important;}
     .clean-mode .sticker,.clean-mode .lv-tag,.clean-mode .faq-num{transform:none!important;animation:none!important;}
-    .clean-mode .m-thumb{background:#EFEFF1!important;}
-    .clean-mode .m-name,.clean-mode .m-tag{color:var(--ink)!important;}
+    .clean-mode .mission{background:#EFEFF1!important;border-color:var(--ink)!important;}
+    .clean-mode .m-name{color:var(--ink)!important;}
+    .clean-mode .m-tag{color:var(--ink-soft)!important;}
     .clean-mode .m-open{border-color:var(--ink)!important;color:var(--ink)!important;}
     .clean-mode .offer{background:#F7F7F8!important;color:var(--ink)!important;}
     .clean-mode .offer-copy p{color:var(--ink-soft)!important;}
@@ -217,13 +218,13 @@
     .missions h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);letter-spacing:-0.03em;max-width:18ch;line-height:1;}
     .missions h2 em{font-style:normal;color:var(--tangerine);}
     .missions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-3);margin-top:var(--s-6);}
-    .mission{position:relative;display:flex;flex-direction:column;border:var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--paper);box-shadow:var(--pop-sm);transition:transform .3s var(--spring),box-shadow .3s;color:var(--ink);text-decoration:none;}
-    .mission:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:var(--pop-lg);}
+    .mission{position:relative;display:flex;flex-direction:column;border:2px solid var(--mission-c,var(--violet));border-radius:var(--r-lg);overflow:hidden;background:#0c0c10;box-shadow:var(--pop-sm);transition:transform .3s var(--spring),box-shadow .3s;color:var(--ink);text-decoration:none;}
+    .mission:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 0 0 1px var(--mission-c,var(--violet)),var(--pop-lg);}
     .m-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:22px;}
-    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:rgba(26,19,48,0.35);color:#fff;}
+    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:rgba(255,255,255,0.1);color:#fff;}
     .m-name{font-family:var(--display);font-weight:800;font-size:1.2rem;color:#fff;line-height:1.15;}
-    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.85);}
-    .m-open{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,0.65);display:grid;place-items:center;color:#fff;opacity:0;transform:translateY(8px) scale(0.85);transition:opacity .25s var(--spring),transform .25s var(--spring);}
+    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mission-c,var(--violet));}
+    .m-open{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;border:2px solid var(--mission-c,var(--violet));display:grid;place-items:center;color:#fff;opacity:0;transform:translateY(8px) scale(0.85);transition:opacity .25s var(--spring),transform .25s var(--spring);}
     .mission:hover .m-open{opacity:1;transform:translateY(0) scale(1);}
     .m-open svg{width:16px;height:16px;}
 
@@ -773,12 +774,11 @@
       var dict = I18N[lang] || I18N.en;
       var wasEmpty = missionsGrid.childElementCount === 0;
       missionsGrid.innerHTML = missionDefs.map(function (m, i) {
-        var thumb = "linear-gradient(150deg," + m.c + "," + m.c + "cc)";
         var tag = m.url ? "a" : "article";
         var attrs = m.url ? ' href="' + m.url + '" target="_blank" rel="noopener" aria-label="' + m.name + ', open live site"' : "";
         var tagText = dict.missionTags[m.key] || "";
-        return '<' + tag + ' class="mission reveal' + (wasEmpty ? "" : " in-view") + '"' + attrs + ' style="--d:' + (i * 60) + 'ms">' +
-          '<span class="m-thumb" style="background:' + thumb + '">' +
+        return '<' + tag + ' class="mission reveal' + (wasEmpty ? "" : " in-view") + '"' + attrs + ' style="--d:' + (i * 60) + 'ms;--mission-c:' + m.c + '">' +
+          '<span class="m-thumb">' +
           '<span class="m-live">● ' + dict.missionLive + '</span>' +
           '<span class="m-name">' + m.name + '</span>' +
           '<span class="m-tag">' + tagText + '</span>' +
