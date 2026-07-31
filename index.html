@@ -172,14 +172,14 @@
     ::selection { background: var(--lime); color: var(--ink); }
     :focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
 
-    /* Playful ambient blobs */
+    /* Halftone dot backdrop */
     body::before {
       content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
       background:
-        radial-gradient(520px 520px at 88% -6%, rgba(255,60,160,0.16), transparent 60%),
-        radial-gradient(600px 600px at -8% 12%, rgba(45,107,255,0.12), transparent 60%),
-        radial-gradient(560px 560px at 50% 108%, rgba(124,58,255,0.12), transparent 60%),
+        radial-gradient(rgba(26,19,48,0.14) 1.6px, transparent 1.6px) 0 0/24px 24px,
         var(--cream);
+      mask-image: radial-gradient(120% 90% at 82% 0%, #000 45%, transparent 92%);
+      -webkit-mask-image: radial-gradient(120% 90% at 82% 0%, #000 45%, transparent 92%);
     }
     #confetti { position: fixed; inset: 0; z-index: var(--z-confetti); pointer-events: none; }
 
