@@ -91,6 +91,8 @@
     .clean-mode h1,.clean-mode h2,.clean-mode h3,.clean-mode .display,.clean-mode .faq-q{font-weight:600!important;}
     .clean-mode .sticker,.clean-mode .lv-tag,.clean-mode .faq-num{transform:none!important;animation:none!important;}
     .clean-mode .m-thumb{background:#EFEFF1!important;}
+    .clean-mode .m-name,.clean-mode .m-tag{color:var(--ink)!important;}
+    .clean-mode .m-open{border-color:var(--ink)!important;color:var(--ink)!important;}
     .clean-mode .offer{background:#F7F7F8!important;color:var(--ink)!important;}
     .clean-mode .offer-copy p{color:var(--ink-soft)!important;}
     .clean-mode .proof{background:#F7F7F8!important;color:var(--ink)!important;}
@@ -217,15 +219,12 @@
     .missions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-3);margin-top:var(--s-6);}
     .mission{position:relative;display:flex;flex-direction:column;border:var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--paper);box-shadow:var(--pop-sm);transition:transform .3s var(--spring),box-shadow .3s;color:var(--ink);text-decoration:none;}
     .mission:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:var(--pop-lg);}
-    .m-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:var(--line);}
-    .m-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:var(--ink);color:var(--lime);}
-    .m-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;}
-    .m-info{display:block;}
-    .m-name{font-family:var(--display);font-weight:800;font-size:1.05rem;display:block;line-height:1.12;}
-    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:5px;}
-    .m-open{flex:none;width:40px;height:40px;border-radius:50%;border:var(--line);display:grid;place-items:center;background:var(--lime);color:var(--ink);transition:transform .2s var(--spring);}
-    .mission:hover .m-open{transform:rotate(20deg) scale(1.1);}
+    .m-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:22px;}
+    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:rgba(26,19,48,0.35);color:#fff;}
+    .m-name{font-family:var(--display);font-weight:800;font-size:1.2rem;color:#fff;line-height:1.15;}
+    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.85);}
+    .m-open{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,0.65);display:grid;place-items:center;color:#fff;opacity:0;transform:translateY(8px) scale(0.85);transition:opacity .25s var(--spring),transform .25s var(--spring);}
+    .mission:hover .m-open{opacity:1;transform:translateY(0) scale(1);}
     .m-open svg{width:16px;height:16px;}
 
     /* PROOF */
@@ -781,9 +780,8 @@
         return '<' + tag + ' class="mission reveal' + (wasEmpty ? "" : " in-view") + '"' + attrs + ' style="--d:' + (i * 60) + 'ms">' +
           '<span class="m-thumb" style="background:' + thumb + '">' +
           '<span class="m-live">● ' + dict.missionLive + '</span>' +
-          (m.shot ? '<img src="' + m.shot + '" alt="Screenshot of the ' + m.name + ' website" loading="lazy"/>' : '') +
-          '</span>' +
-          '<span class="m-cap"><span class="m-info"><span class="m-name">' + m.name + '</span><span class="m-tag">' + tagText + '</span></span>' +
+          '<span class="m-name">' + m.name + '</span>' +
+          '<span class="m-tag">' + tagText + '</span>' +
           (m.url ? '<span class="m-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></span>' : '') +
           '</span></' + tag + '>';
       }).join("");
