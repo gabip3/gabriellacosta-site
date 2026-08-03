@@ -33,7 +33,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Website Makeover — From invisible to unforgettable." />
+  <meta property="og:title" content="Website Makeover: From invisible to unforgettable." />
   <meta property="og:description" content="Drag the slider and see the transformation. Outdated websites, given a second chance." />
   <meta property="og:url" content="https://gabriellacosta.design/makeover.html" />
   <meta property="og:image" content="https://gabriellacosta.design/og-image.jpg" />
@@ -151,8 +151,11 @@
     /* BEFORE / AFTER SLIDER */
     .ba-shell{margin:var(--s-5) auto 0;max-width:1060px;}
     .ba{position:relative;aspect-ratio:16/10;border:var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--pop-lg);background:var(--cream-2);touch-action:pan-y;--pos:50%;cursor:ew-resize;}
-    .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;pointer-events:none;-webkit-user-drag:none;user-select:none;}
+    .ba img,.ba video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;pointer-events:none;-webkit-user-drag:none;user-select:none;}
     .ba .ba-before{clip-path:inset(0 calc(100% - var(--pos)) 0 0);z-index:2;}
+    .ba.ba-video{aspect-ratio:16/9;background:#000;}
+    .ba-mute{position:absolute;bottom:14px;right:14px;z-index:6;width:40px;height:40px;border-radius:50%;background:var(--paper);border:var(--line);box-shadow:var(--pop-sm);display:grid;place-items:center;color:var(--ink);cursor:pointer;}
+    .ba-mute svg{width:18px;height:18px;}
     .ba-tag{position:absolute;top:14px;z-index:4;font-family:var(--mono);font-weight:700;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;border-radius:var(--r-pill);color:#fff;}
     .ba-tag.before{left:14px;background:var(--red);}
     .ba-tag.after{right:14px;background:var(--violet);}
@@ -175,15 +178,6 @@
     .symptom .ico{width:44px;height:44px;border-radius:12px;background:var(--cream-2);border:var(--line);display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px;}
     .symptom h3{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:6px;}
     .symptom p{font-size:0.95rem;color:var(--ink-soft);}
-
-    /* VIDEO EXAMPLE */
-    .video-shell{max-width:900px;margin:0 auto;}
-    .video-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:var(--s-3);}
-    .video-tab{font-family:var(--mono);font-weight:700;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;padding:10px 22px;border:var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);box-shadow:var(--pop-sm);cursor:pointer;transition:background .2s,color .2s,transform .15s;}
-    .video-tab:hover{transform:translate(-1px,-1px);}
-    .video-tab.active{background:var(--violet);color:#fff;}
-    .video-frame{position:relative;border:var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--pop-lg);background:#000;aspect-ratio:16/9;}
-    .video-frame video{width:100%;height:100%;display:block;object-fit:contain;background:#000;}
 
     /* CTA BAND */
     .cta{background:var(--violet);color:var(--cream);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop-lg);padding:clamp(32px,6vw,64px);text-align:center;margin-bottom:var(--s-7);}
@@ -229,7 +223,7 @@
   </style>
 </head>
 <body>
-  <a class="cross" href="#treat" aria-label="Website Hospital — get your site checked">
+  <a class="cross" href="#treat" aria-label="Website Hospital, get your site checked">
     <span class="plus" aria-hidden="true"></span>
     <span class="tip" data-i18n="crossTip">Website Hospital</span>
   </a>
@@ -313,17 +307,22 @@
         <div class="sec-head">
           <span class="sticker" style="margin-bottom:16px" data-i18n="vidTag">◆ See it in motion</span>
           <h2 class="display" data-i18n-html="vidH2">Another site, <em>another transformation.</em></h2>
-          <p data-i18n="vidP">NK Acupuntura, before and after — walk through both.</p>
+          <p data-i18n="vidP">NK Acupuntura, before and after. Drag to compare.</p>
         </div>
-        <div class="video-shell">
-          <div class="video-tabs" role="tablist">
-            <button class="video-tab active" type="button" data-video="before" role="tab" aria-selected="true" data-i18n="baBefore">Before</button>
-            <button class="video-tab" type="button" data-video="after" role="tab" aria-selected="false" data-i18n="baAfter">After</button>
+        <div class="ba-shell">
+          <div class="ba ba-video" id="ba2">
+            <video class="ba-after" src="assets/nk-acupuntura-after.mp4" muted loop playsinline autoplay preload="auto"></video>
+            <video class="ba-before" src="assets/nk-acupuntura-before.mp4" muted loop playsinline autoplay preload="auto"></video>
+            <span class="ba-tag before" aria-hidden="true" data-i18n="baBefore">Before</span>
+            <span class="ba-tag after" aria-hidden="true" data-i18n="baAfter">After</span>
+            <div class="ba-handle">
+              <span class="ba-line" aria-hidden="true"></span>
+              <button class="ba-grip" type="button" role="slider" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6L3 12l6 6M15 6l6 6-6 6"/></svg>
+              </button>
+            </div>
           </div>
-          <div class="video-frame">
-            <video id="videoBefore" controls playsinline preload="metadata" src="assets/nk-acupuntura-before.mp4"></video>
-            <video id="videoAfter" controls playsinline preload="metadata" src="assets/nk-acupuntura-after.mp4" style="display:none"></video>
-          </div>
+          <p class="drag-hint" data-i18n="dragHint">← Drag · Before / After · Drag →</p>
         </div>
       </div>
     </section>
@@ -409,7 +408,7 @@
           sym3H:"Stuck in 2010", sym3P:"The design quietly costs you trust.",
           sym4H:"Invisible on Google", sym4P:"Great business, nobody can find it.",
           vidTag:"◆ See it in motion", vidH2:"Another site, <em>another transformation.</em>",
-          vidP:"NK Acupuntura, before and after — walk through both.",
+          vidP:"NK Acupuntura, before and after. Drag to compare.",
           ctaH2:"Your website deserves a <em>second chance.</em>",
           ctaP:"See what happens when an outdated website gets a complete makeover. Flat price, live in 5 days, 100% yours to keep.",
           ctaBtn:"Start your makeover →",
@@ -440,7 +439,7 @@
           sym3H:"Parado em 2010", sym3P:"O visual antigo custa confiança sem você ver.",
           sym4H:"Invisível no Google", sym4P:"Negócio ótimo, e ninguém consegue achar.",
           vidTag:"◆ Veja em ação", vidH2:"Outro site, <em>outra transformação.</em>",
-          vidP:"NK Acupuntura, antes e depois — veja os dois na prática.",
+          vidP:"NK Acupuntura, antes e depois. Arraste pra comparar.",
           ctaH2:"Seu site merece uma <em>segunda chance.</em>",
           ctaP:"Veja o que acontece quando um site ultrapassado ganha uma reforma completa. Preço fixo, no ar em 5 dias, 100% seu.",
           ctaBtn:"Começar minha reforma →",
@@ -535,17 +534,6 @@
         }, 800);
       }
       $$(".ba").forEach(initBA);
-
-      // video before/after tabs
-      var videoBefore = document.getElementById("videoBefore"), videoAfter = document.getElementById("videoAfter");
-      $$(".video-tab").forEach(function (tab) {
-        tab.addEventListener("click", function () {
-          var showAfter = tab.getAttribute("data-video") === "after";
-          $$(".video-tab").forEach(function (t) { t.classList.toggle("active", t === tab); t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
-          if (videoBefore) { videoBefore.style.display = showAfter ? "none" : "block"; videoBefore.pause(); }
-          if (videoAfter) { videoAfter.style.display = showAfter ? "block" : "none"; videoAfter.pause(); }
-        });
-      });
 
       // contact form (Web3Forms)
       var mform = document.getElementById("makeoverForm");
