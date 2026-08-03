@@ -185,6 +185,27 @@
     .cta .btn{background:var(--lime);color:var(--ink);}
     .cta .btn:hover{background:var(--paper);}
 
+    /* CONTACT FORM */
+    .contact-card{max-width:620px;margin:0 auto;background:var(--paper);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop-lg);padding:clamp(26px,4vw,44px);}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2);}
+    .field{margin-bottom:var(--s-3);}
+    .field label{display:block;font-family:var(--mono);font-weight:700;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+    .field label .req{color:var(--magenta);}
+    .field input,.field textarea{width:100%;padding:14px 16px;border:var(--line);border-radius:var(--r);background:var(--cream);color:var(--ink);font-family:var(--body);font-size:1rem;transition:box-shadow .15s,transform .15s;}
+    .field input:focus,.field textarea:focus{outline:none;box-shadow:var(--pop-sm);transform:translate(-2px,-2px);}
+    .field textarea{resize:vertical;min-height:96px;}
+    .field .help{font-size:0.8rem;color:var(--ink-soft);margin-top:6px;}
+    .contact-card .btn{width:100%;justify-content:center;margin-top:var(--s-1);}
+    .form-status{font-family:var(--mono);font-weight:700;font-size:0.8rem;margin-top:var(--s-2);text-align:center;min-height:1.2em;}
+    .form-status.err{color:#d62d2d;}
+    .form-success{display:none;text-align:center;padding:var(--s-4) 0;}
+    .form-success.show{display:block;}
+    .form-success .check{width:56px;height:56px;margin:0 auto var(--s-3);border-radius:50%;background:var(--lime);display:grid;place-items:center;border:2px solid var(--ink);}
+    .form-success .check svg{width:26px;height:26px;}
+    .form-success h3{font-family:var(--display);font-weight:800;font-size:1.6rem;}
+    .form-success p{color:var(--ink-soft);margin-top:8px;}
+    @media (max-width:560px){.form-row{grid-template-columns:1fr;}}
+
     /* FOOTER */
     footer{border-top:var(--line);padding:var(--s-5) 0;}
     .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
@@ -221,7 +242,7 @@
         <a href="about.html" data-i18n="navAbout">About</a>
         <a href="index.html#categories" data-i18n="navServices">Services</a>
         <a href="pricing.html" data-i18n="navPricing">Pricing</a>
-        <a href="index.html#complete" data-i18n="navContact">Contact</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
       <div class="header-cta">
         <button type="button" class="clean-toggle" id="cleanToggle" aria-pressed="false">
@@ -231,7 +252,7 @@
           <button type="button" class="lang-pill" data-lang="en">EN</button>
           <button type="button" class="lang-pill" data-lang="pt">PT</button>
         </div>
-        <a class="btn" href="website-design.html#contact"><span data-i18n="headerCta">Let's talk</span>
+        <a class="btn" href="#contact"><span data-i18n="headerCta">Let's talk</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
         </a>
       </div>
@@ -282,7 +303,51 @@
       <div class="cta">
         <h2 class="display" data-i18n-html="ctaH2">Your website deserves a <em>second chance.</em></h2>
         <p data-i18n="ctaP">See what happens when an outdated website gets a complete makeover. Flat price, live in 5 days, 100% yours to keep.</p>
-        <a class="btn" href="website-design.html#contact" data-i18n="ctaBtn">Start your makeover →</a>
+        <a class="btn" href="#contact" data-i18n="ctaBtn">Start your makeover →</a>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sticker" style="margin-bottom:16px" data-i18n="contactTag">◆ Get started</span>
+          <h2 class="display" data-i18n-html="contactH2">Let's fix your <em>website.</em></h2>
+          <p data-i18n="contactP">Tell me about your site and I'll come back with a plan, usually within a day.</p>
+        </div>
+        <div class="contact-card">
+          <form id="makeoverForm" novalidate>
+            <input type="hidden" name="access_key" value="3410c514-2783-40bb-8985-234c821ad80e" />
+            <input type="hidden" name="subject" value="New website makeover inquiry - $399 flat rate" />
+            <input type="hidden" name="from_name" value="Gabriella Costa Website" />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
+            <div class="form-row">
+              <div class="field">
+                <label for="m-name" data-i18n-html="fieldName">Your name <span class="req">*</span></label>
+                <input id="m-name" name="name" type="text" required autocomplete="name" placeholder="Jane Doe" data-i18n-ph="fieldNamePh" />
+              </div>
+              <div class="field">
+                <label for="m-email" data-i18n-html="fieldEmail">Email <span class="req">*</span></label>
+                <input id="m-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="jane@business.com" data-i18n-ph="fieldEmailPh" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="m-website" data-i18n="fieldWebsite">Your current website</label>
+              <input id="m-website" name="website" type="url" autocomplete="url" inputmode="url" placeholder="yourbusiness.com" data-i18n-ph="fieldWebsitePh" />
+            </div>
+            <div class="field">
+              <label for="m-message" data-i18n-html="fieldMessage">What's wrong with it? <span class="req">*</span></label>
+              <textarea id="m-message" name="message" required placeholder="Slow, outdated, broken on mobile... tell me what's bugging you." data-i18n-ph="fieldMessagePh"></textarea>
+              <p class="help" data-i18n="fieldHelp">No spam, ever. Your details are only used to reply to you.</p>
+            </div>
+            <button class="btn" type="submit" id="formSubmit" data-i18n="formSubmit">Send message</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></span>
+            <h3 data-i18n="formSuccessTitle">Message sent!</h3>
+            <p data-i18n="formSuccessP">Thanks, your message is in. I'll get back to you shortly.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -317,6 +382,16 @@
           ctaH2:"Your website deserves a <em>second chance.</em>",
           ctaP:"See what happens when an outdated website gets a complete makeover. Flat price, live in 5 days, 100% yours to keep.",
           ctaBtn:"Start your makeover →",
+          contactTag:"◆ Get started", contactH2:"Let's fix your <em>website.</em>",
+          contactP:"Tell me about your site and I'll come back with a plan, usually within a day.",
+          fieldName:'Your name <span class="req">*</span>', fieldNamePh:"Jane Doe",
+          fieldEmail:'Email <span class="req">*</span>', fieldEmailPh:"jane@business.com",
+          fieldWebsite:"Your current website", fieldWebsitePh:"yourbusiness.com",
+          fieldMessage:'What\'s wrong with it? <span class="req">*</span>', fieldMessagePh:"Slow, outdated, broken on mobile... tell me what's bugging you.",
+          fieldHelp:"No spam, ever. Your details are only used to reply to you.",
+          formSubmit:"Send message", formSuccessTitle:"Message sent!", formSuccessP:"Thanks, your message is in. I'll get back to you shortly.",
+          formErrRequired:"Please fill in the required fields.", formSending:"Sending…",
+          formErrGeneric:"Something went wrong. Please email me directly.", formErrNetwork:"Network error. Please email gabip3@gmail.com.",
           footCopy:'© <span id="year"></span> Gabriella Costa · Web Design Studio', backHome:"← Back home"
         },
         pt: {
@@ -336,6 +411,16 @@
           ctaH2:"Seu site merece uma <em>segunda chance.</em>",
           ctaP:"Veja o que acontece quando um site ultrapassado ganha uma reforma completa. Preço fixo, no ar em 5 dias, 100% seu.",
           ctaBtn:"Começar minha reforma →",
+          contactTag:"◆ Comece agora", contactH2:"Vamos consertar seu <em>site.</em>",
+          contactP:"Me conta sobre seu site que eu volto com um plano, geralmente em até um dia.",
+          fieldName:'Seu nome <span class="req">*</span>', fieldNamePh:"Maria Silva",
+          fieldEmail:'E-mail <span class="req">*</span>', fieldEmailPh:"maria@negocio.com",
+          fieldWebsite:"Seu site atual", fieldWebsitePh:"seunegocio.com",
+          fieldMessage:'O que tá errado nele? <span class="req">*</span>', fieldMessagePh:"Lento, ultrapassado, quebrado no celular... me conta o que te incomoda.",
+          fieldHelp:"Sem spam, nunca. Seus dados só são usados pra te responder.",
+          formSubmit:"Enviar mensagem", formSuccessTitle:"Mensagem enviada!", formSuccessP:"Obrigada, sua mensagem chegou. Já te respondo em breve.",
+          formErrRequired:"Preencha os campos obrigatórios.", formSending:"Enviando…",
+          formErrGeneric:"Algo deu errado. Me manda um e-mail direto.", formErrNetwork:"Erro de conexão. Me manda um e-mail: gabip3@gmail.com.",
           footCopy:'© <span id="year"></span> Gabriella Costa · Estúdio de Web Design', backHome:"← Voltar ao início"
         }
       };
@@ -417,6 +502,26 @@
         }, 800);
       }
       $$(".ba").forEach(initBA);
+
+      // contact form (Web3Forms)
+      var mform = document.getElementById("makeoverForm");
+      if (mform) {
+        mform.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var dict = I18N[LANG] || I18N.en;
+          var status = document.getElementById("formStatus"), btn = document.getElementById("formSubmit");
+          if (!mform.checkValidity()) { status.className = "form-status err"; status.textContent = dict.formErrRequired; var fi = mform.querySelector(":invalid"); if (fi) fi.focus(); return; }
+          btn.style.opacity = "0.6"; btn.style.pointerEvents = "none"; status.className = "form-status"; status.textContent = dict.formSending;
+          var data = Object.fromEntries(new FormData(mform).entries());
+          fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+            .then(function (r) { return r.json(); })
+            .then(function (j) {
+              if (j.success) { mform.style.display = "none"; document.getElementById("formSuccess").classList.add("show"); if (typeof gtag === "function") gtag("event", "conversion", { send_to: "AW-17625323125/PP2TCN_OoNccEPWstNRB" }); }
+              else { status.className = "form-status err"; status.textContent = j.message || dict.formErrGeneric; btn.style.opacity = ""; btn.style.pointerEvents = ""; }
+            })
+            .catch(function () { status.className = "form-status err"; status.textContent = dict.formErrNetwork; btn.style.opacity = ""; btn.style.pointerEvents = ""; });
+        });
+      }
 
       $$('a[href^="#"]').forEach(function (a) {
         a.addEventListener("click", function (e) { var id = a.getAttribute("href"); if (id.length < 2) return; var el = document.querySelector(id); if (el) { e.preventDefault(); el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } });
