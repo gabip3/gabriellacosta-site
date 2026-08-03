@@ -134,7 +134,7 @@
 
     /* HERO — contained before/after image, card sits below with a real gap */
     .hero-full{position:relative;width:100%;padding:calc(88px + var(--s-6)) 0 var(--s-6);background:var(--cream-2);}
-    .ba.ba-full{width:100%;aspect-ratio:16/11;max-height:74vh;}
+    .ba.ba-full{width:100%;aspect-ratio:16/9;max-height:74vh;}
     .hero-card{position:relative;z-index:2;width:min(760px,calc(100% - 32px));margin:var(--s-5) auto 0;background:var(--cream);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop-lg);padding:clamp(22px,3vw,34px);text-align:center;}
     .hero-card .sticker{margin-bottom:16px;}
     .hero-card .sticker .dot{width:9px;height:9px;border-radius:50%;background:var(--red);}
@@ -144,7 +144,7 @@
     .drag-hint{margin-top:14px;font-family:var(--mono);font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--violet);}
     @media (max-width:960px){
       .hero-full{padding:calc(80px + var(--s-4)) 0 var(--s-5);}
-      .ba.ba-full{aspect-ratio:4/5;max-height:64vh;}
+      .ba.ba-full{aspect-ratio:16/9;max-height:50vh;}
       .hero-card{margin:var(--s-4) auto 0;width:auto;}
     }
 
@@ -266,8 +266,8 @@
     <section class="hero-full">
       <div class="wrap">
         <div class="ba ba-full" id="ba1">
-          <video class="ba-after" src="assets/georgia-after.mp4" muted loop playsinline autoplay preload="auto" aria-label="After: the redesigned Georgia Plaster & Tile website"></video>
-          <video class="ba-before" src="assets/georgia-before.mp4" muted loop playsinline autoplay preload="auto" aria-label="Before: the old Georgia Plaster & Tile website"></video>
+          <video class="ba-after" src="assets/georgia-after.mp4" muted loop playsinline preload="none" aria-label="After: the redesigned Georgia Plaster & Tile website"></video>
+          <video class="ba-before" src="assets/georgia-before.mp4" muted loop playsinline preload="none" aria-label="Before: the old Georgia Plaster & Tile website"></video>
           <span class="ba-tag before" aria-hidden="true" data-i18n="baBefore">Before</span>
           <span class="ba-tag after" aria-hidden="true" data-i18n="baAfter">After</span>
           <div class="ba-handle">
@@ -311,8 +311,8 @@
         </div>
         <div class="ba-shell">
           <div class="ba ba-video" id="ba2">
-            <video class="ba-after" src="assets/nk-acupuntura-after.mp4" muted loop playsinline autoplay preload="auto"></video>
-            <video class="ba-before" src="assets/nk-acupuntura-before.mp4" muted loop playsinline autoplay preload="auto"></video>
+            <video class="ba-after" src="assets/nk-acupuntura-after.mp4" muted loop playsinline preload="none"></video>
+            <video class="ba-before" src="assets/nk-acupuntura-before.mp4" muted loop playsinline preload="none"></video>
             <span class="ba-tag before" aria-hidden="true" data-i18n="baBefore">Before</span>
             <span class="ba-tag after" aria-hidden="true" data-i18n="baAfter">After</span>
             <div class="ba-handle">
@@ -534,6 +534,25 @@
         }, 800);
       }
       $$(".ba").forEach(initBA);
+
+      // lazy-load & lazy-play the before/after videos only once they're on screen
+      var lazyVideos = $$(".ba video");
+      if (lazyVideos.length) {
+        if ("IntersectionObserver" in window) {
+          var vio = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                var vids = $$("video", entry.target);
+                vids.forEach(function (v) { if (v.preload !== "auto") v.preload = "auto"; v.play().catch(function () {}); });
+                vio.unobserve(entry.target);
+              }
+            });
+          }, { rootMargin: "200px 0px" });
+          $$(".ba").forEach(function (el) { if (el.querySelector("video")) vio.observe(el); });
+        } else {
+          lazyVideos.forEach(function (v) { v.preload = "auto"; v.play().catch(function () {}); });
+        }
+      }
 
       // contact form (Web3Forms)
       var mform = document.getElementById("makeoverForm");
