@@ -176,6 +176,15 @@
     .symptom h3{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:6px;}
     .symptom p{font-size:0.95rem;color:var(--ink-soft);}
 
+    /* VIDEO EXAMPLE */
+    .video-shell{max-width:900px;margin:0 auto;}
+    .video-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:var(--s-3);}
+    .video-tab{font-family:var(--mono);font-weight:700;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;padding:10px 22px;border:var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);box-shadow:var(--pop-sm);cursor:pointer;transition:background .2s,color .2s,transform .15s;}
+    .video-tab:hover{transform:translate(-1px,-1px);}
+    .video-tab.active{background:var(--violet);color:#fff;}
+    .video-frame{position:relative;border:var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--pop-lg);background:#000;aspect-ratio:16/9;}
+    .video-frame video{width:100%;height:100%;display:block;object-fit:contain;background:#000;}
+
     /* CTA BAND */
     .cta{background:var(--violet);color:var(--cream);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop-lg);padding:clamp(32px,6vw,64px);text-align:center;margin-bottom:var(--s-7);}
     .cta h2{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.2rem);color:#fff;}
@@ -299,6 +308,26 @@
       </div>
     </section>
 
+    <section class="section" id="video-example">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sticker" style="margin-bottom:16px" data-i18n="vidTag">◆ See it in motion</span>
+          <h2 class="display" data-i18n-html="vidH2">Another site, <em>another transformation.</em></h2>
+          <p data-i18n="vidP">NK Acupuntura, before and after — walk through both.</p>
+        </div>
+        <div class="video-shell">
+          <div class="video-tabs" role="tablist">
+            <button class="video-tab active" type="button" data-video="before" role="tab" aria-selected="true" data-i18n="baBefore">Before</button>
+            <button class="video-tab" type="button" data-video="after" role="tab" aria-selected="false" data-i18n="baAfter">After</button>
+          </div>
+          <div class="video-frame">
+            <video id="videoBefore" controls playsinline preload="metadata" src="assets/nk-acupuntura-before.mp4"></video>
+            <video id="videoAfter" controls playsinline preload="metadata" src="assets/nk-acupuntura-after.mp4" style="display:none"></video>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="wrap">
       <div class="cta">
         <h2 class="display" data-i18n-html="ctaH2">Your website deserves a <em>second chance.</em></h2>
@@ -379,6 +408,8 @@
           sym2H:"Breaks on mobile", sym2P:"Half your traffic pinches and squints.",
           sym3H:"Stuck in 2010", sym3P:"The design quietly costs you trust.",
           sym4H:"Invisible on Google", sym4P:"Great business, nobody can find it.",
+          vidTag:"◆ See it in motion", vidH2:"Another site, <em>another transformation.</em>",
+          vidP:"NK Acupuntura, before and after — walk through both.",
           ctaH2:"Your website deserves a <em>second chance.</em>",
           ctaP:"See what happens when an outdated website gets a complete makeover. Flat price, live in 5 days, 100% yours to keep.",
           ctaBtn:"Start your makeover →",
@@ -408,6 +439,8 @@
           sym2H:"Quebra no celular", sym2P:"Metade dos visitantes tem que dar zoom.",
           sym3H:"Parado em 2010", sym3P:"O visual antigo custa confiança sem você ver.",
           sym4H:"Invisível no Google", sym4P:"Negócio ótimo, e ninguém consegue achar.",
+          vidTag:"◆ Veja em ação", vidH2:"Outro site, <em>outra transformação.</em>",
+          vidP:"NK Acupuntura, antes e depois — veja os dois na prática.",
           ctaH2:"Seu site merece uma <em>segunda chance.</em>",
           ctaP:"Veja o que acontece quando um site ultrapassado ganha uma reforma completa. Preço fixo, no ar em 5 dias, 100% seu.",
           ctaBtn:"Começar minha reforma →",
@@ -502,6 +535,17 @@
         }, 800);
       }
       $$(".ba").forEach(initBA);
+
+      // video before/after tabs
+      var videoBefore = document.getElementById("videoBefore"), videoAfter = document.getElementById("videoAfter");
+      $$(".video-tab").forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          var showAfter = tab.getAttribute("data-video") === "after";
+          $$(".video-tab").forEach(function (t) { t.classList.toggle("active", t === tab); t.setAttribute("aria-selected", t === tab ? "true" : "false"); });
+          if (videoBefore) { videoBefore.style.display = showAfter ? "none" : "block"; videoBefore.pause(); }
+          if (videoAfter) { videoAfter.style.display = showAfter ? "block" : "none"; videoAfter.pause(); }
+        });
+      });
 
       // contact form (Web3Forms)
       var mform = document.getElementById("makeoverForm");
