@@ -128,7 +128,7 @@
     .btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink);}
     .btn svg{width:18px;height:18px;transition:transform .2s var(--ease);}
     .btn:hover svg{transform:translate(3px,-3px) rotate(8deg);}
-    .btn.paper{background:var(--paper);} .btn.paper:hover{background:var(--lime);color:var(--cream);}
+    .btn.paper{background:var(--paper);color:var(--ink);} .btn.paper:hover{background:var(--lime);color:var(--cream);}
     @keyframes stageIn { from { opacity:0; transform: translateY(24px) scale(.98);} to { opacity:1; transform:none; } }
 
     /* HEADER */
@@ -200,9 +200,9 @@
     .offer{background:var(--violet);color:var(--cream);border-block:var(--line);padding:var(--s-8) 0;}
     .offer-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-6);align-items:center;}
     .offer-copy h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);line-height:1;letter-spacing:-0.03em;}
-    .offer-copy h2 em{font-style:normal;color:var(--lime);}
+    .offer-copy h2 em{font-style:normal;color:var(--cream);text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:4px;text-underline-offset:4px;}
     .offer-copy p{color:rgba(21,17,31,0.9);font-size:var(--fs-lead);margin-top:var(--s-3);max-width:44ch;}
-    .offer-copy b{color:var(--lime);}
+    .offer-copy b{color:var(--cream);text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:3px;text-underline-offset:3px;}
     .loadout{padding:var(--s-5);color:var(--ink);position:relative;}
     .loadout .price-row{display:flex;align-items:baseline;gap:14px;}
     .loadout .price{font-family:var(--display);font-weight:800;font-size:clamp(3rem,9vw,5rem);letter-spacing:-0.03em;}
@@ -224,9 +224,9 @@
     .mission{position:relative;display:flex;flex-direction:column;border:2px solid var(--mission-c,var(--violet));border-radius:var(--r-lg);overflow:hidden;background:var(--paper);box-shadow:var(--pop-sm);transition:transform .3s var(--spring),box-shadow .3s;color:var(--ink);text-decoration:none;}
     .mission:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 0 0 1px var(--mission-c,var(--violet)),var(--pop-lg);}
     .m-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:22px;}
-    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:var(--ink);color:var(--lime);}
+    .m-live{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-weight:700;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-pill);background:var(--ink);color:var(--cream);}
     .m-name{font-family:var(--display);font-weight:800;font-size:1.2rem;color:var(--ink);line-height:1.15;}
-    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--mission-c,var(--violet));}
+    .m-tag{font-family:var(--mono);font-weight:700;font-size:0.64rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);}
     .m-open{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;border:2px solid var(--mission-c,var(--violet));display:grid;place-items:center;color:var(--mission-c,var(--violet));opacity:0;transform:translateY(8px) scale(0.85);transition:opacity .25s var(--spring),transform .25s var(--spring);}
     .mission:hover .m-open{opacity:1;transform:translateY(0) scale(1);}
     .m-open svg{width:16px;height:16px;}
@@ -236,7 +236,7 @@
     .stars{display:inline-flex;gap:8px;margin-bottom:var(--s-3);color:var(--lime);}
     .stars svg{width:26px;height:26px;}
     .proof h2{font-family:var(--display);font-weight:800;font-size:var(--fs-h2);letter-spacing:-0.03em;line-height:1.02;max-width:20ch;margin:0 auto;}
-    .proof h2 em{font-style:normal;color:var(--lime);}
+    .proof h2 em{font-style:normal;color:var(--cream);text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:3px;text-underline-offset:4px;}
     .logos{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:var(--s-6);}
     .logos span{font-family:var(--display);font-weight:700;font-size:0.95rem;padding:10px 18px;border:2px solid var(--cream);border-radius:var(--r-pill);transition:background .2s,color .2s;}
     .logos span:hover{background:var(--cream);color:var(--blue);}
