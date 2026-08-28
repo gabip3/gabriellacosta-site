@@ -326,7 +326,7 @@
     .showcase-nav button { width:44px; height:44px; border-radius:50%; border:1px solid var(--line-c); background: var(--surface); color: var(--text); display:grid; place-items:center; transition: background .2s, color .2s, border-color .2s; }
     .showcase-nav button:hover { background: var(--accent); color:#fff; border-color: var(--accent); }
     .showcase-nav button svg { width:18px; height:18px; }
-    .cf-stage { position:relative; width: min(90vw, 640px); height: calc(min(90vw, 640px) * 9 / 16); perspective:1400px; margin:0 auto; }
+    .cf-stage { position:relative; width: min(90vw, 640px); height: calc(min(90vw, 640px) * 9 / 16); perspective:1400px; margin:0 auto; overflow:hidden; }
     .cf-track { position:relative; width:100%; height:100%; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; }
     .cf-track.grabbing { cursor:grabbing; }
     .cf-card { position:absolute; left:50%; top:0; width: min(90vw, 640px); aspect-ratio:16/9; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line-c); box-shadow: var(--shadow); background: var(--surface); will-change:transform,opacity; }
@@ -1038,38 +1038,6 @@
       }
       track.addEventListener("pointerup", endDrag);
       track.addEventListener("pointercancel", endDrag);
-
-      /* HOVER-SCRUB: on desktop, just moving the mouse across the stage browses the carousel */
-      if (fine && !reduce) {
-        var hoverOn = false, hoverX = 0.5, hoverRaf = null, lastActive = -1;
-        function hoverLoop() {
-          if (!hoverOn || dragging) { hoverRaf = null; return; }
-          var deadzone = 0.16;
-          var dir = 0;
-          if (hoverX < 0.5 - deadzone) dir = -(0.5 - deadzone - hoverX) / (0.5 - deadzone);
-          else if (hoverX > 0.5 + deadzone) dir = (hoverX - 0.5 - deadzone) / (0.5 - deadzone);
-          dir = Math.max(-1, Math.min(1, dir));
-          if (Math.abs(dir) > 0.03) {
-            target += dir * 0.05;
-            pos += (target - pos) * 0.25;
-            paint();
-            var idx = ((Math.round(pos) % count) + count) % count;
-            if (idx !== lastActive) { lastActive = idx; updateActive(idx); }
-          }
-          hoverRaf = requestAnimationFrame(hoverLoop);
-        }
-        stage.addEventListener("mousemove", function (e) {
-          if (dragging) return;
-          var r = stage.getBoundingClientRect();
-          hoverX = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
-          if (!hoverOn) { hoverOn = true; hoverLoop(); }
-        });
-        stage.addEventListener("mouseleave", function () {
-          hoverOn = false;
-          if (hoverRaf !== null) { cancelAnimationFrame(hoverRaf); hoverRaf = null; }
-          settle(Math.round(pos));
-        });
-      }
     })();
 
     /* REVEAL + ACTIVE */
