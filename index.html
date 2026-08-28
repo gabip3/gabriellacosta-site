@@ -339,18 +339,19 @@
 
     /* ============================================================ SHOWCASE (coverflow) */
     .showcase { padding: var(--s-7) 0 var(--s-8); }
-    .showcase-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap: var(--s-3); margin-bottom: var(--s-5); }
-    .showcase h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1; max-width:16ch; }
+    .showcase-head { display:flex; flex-direction:column; align-items:center; text-align:center; gap: var(--s-3); margin-bottom: var(--s-5); }
+    .showcase h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1.05; }
+    .showcase h2 span { display:block; }
     .showcase h2 em { font-style:normal; color: var(--accent); }
     .showcase-nav { display:flex; gap:10px; }
     .showcase-nav button { width:44px; height:44px; border-radius:50%; border:1px solid var(--line-c); background: var(--surface); color: var(--text); display:grid; place-items:center; transition: background .2s, color .2s, border-color .2s; }
     .showcase-nav button:hover { background: var(--accent); color:#fff; border-color: var(--accent); }
     .showcase-nav button svg { width:18px; height:18px; }
-    .cf-stage { position:relative; height:min(42vw,300px); perspective:1400px; margin:0 auto; }
+    .cf-stage { position:relative; width: min(90vw, 640px); height: calc(min(90vw, 640px) * 9 / 16); perspective:1400px; margin:0 auto; }
     .cf-track { position:relative; width:100%; height:100%; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; }
     .cf-track.grabbing { cursor:grabbing; }
-    .cf-card { position:absolute; left:50%; top:0; width:min(58vw,300px); height:100%; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line-c); box-shadow: var(--shadow); background: var(--surface); will-change:transform,opacity; }
-    .cf-card img { width:100%; height:100%; object-fit:cover; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+    .cf-card { position:absolute; left:50%; top:0; width: min(90vw, 640px); aspect-ratio:16/9; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line-c); box-shadow: var(--shadow); background: var(--surface); will-change:transform,opacity; }
+    .cf-card img { width:100%; height:100%; object-fit:cover; object-position:top center; pointer-events:none; user-select:none; -webkit-user-drag:none; }
     .cf-dot { position:absolute; top:12px; left:12px; width:10px; height:10px; border-radius:50%; box-shadow:0 0 0 3px rgba(0,0,0,0.25); }
     .cf-tag { position:absolute; left:0; right:0; bottom:0; padding:14px 16px; background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent); color:#fff; }
     .cf-name { font-family: var(--display); font-weight:700; font-size:1rem; display:block; }
@@ -358,7 +359,7 @@
     .showcase-dots { display:flex; justify-content:center; gap:8px; margin-top: var(--s-4); }
     .showcase-dots button { width:8px; height:8px; border-radius:50%; background: var(--line-strong); transition: background .2s, transform .2s; }
     .showcase-dots button.active { background: var(--accent); transform:scale(1.35); }
-    @media (max-width:700px) { .cf-stage { height:min(66vw,260px); } .cf-card { width:min(74vw,260px); } }
+    @media (max-width:700px) { .cf-stage { width:min(84vw,420px); height:calc(min(84vw,420px) * 9 / 16); } .cf-card { width:min(84vw,420px); } }
 
     /* ============================================================ CATEGORIES */
     .categories { padding: var(--s-8) 0; }
@@ -645,7 +646,7 @@
     <section class="showcase reveal" id="showcase" aria-labelledby="showcase-h">
       <div class="wrap">
         <div class="showcase-head">
-          <h2 id="showcase-h" data-i18n-html="showcaseH2">Real businesses. <em>Real websites.</em></h2>
+          <h2 id="showcase-h" data-i18n-html="showcaseH2"><span>Real businesses.</span><span><em>Real websites.</em></span></h2>
           <div class="showcase-nav">
             <button type="button" id="cfPrev" aria-label="Previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button>
             <button type="button" id="cfNext" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -874,7 +875,7 @@
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
-        showcaseH2: "Real businesses. <em>Real websites.</em>",
+        showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>",
         showcaseCats: { ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID" },
         categoriesTag: "◆ Services", categoriesH2: "What I can <em>create.</em>",
         catWebBadge: "$600 · 5 DAYS", catWebTitle: "Site / Web Design", catWebDesc: "Custom, high-converting websites, flat price, live in 5 days.",
@@ -916,7 +917,7 @@
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
-        showcaseH2: "Negócios reais. <em>Sites reais.</em>",
+        showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>",
         showcaseCats: { ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID" },
         categoriesTag: "◆ Serviços", categoriesH2: "O que eu posso <em>criar.</em>",
         catWebBadge: "$600 · 5 DIAS", catWebTitle: "Site / Web Design", catWebDesc: "Sites personalizados e de alta conversão, preço fixo, no ar em 5 dias.",
