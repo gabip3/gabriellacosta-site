@@ -196,7 +196,6 @@
     .clean-mode body::before, .clean-mode .intro-blob { display: none; }
     .clean-mode h1, .clean-mode h2, .clean-mode h3, .clean-mode .display, .clean-mode .cat-name { font-weight:600 !important; }
     .clean-mode .sticker, .clean-mode .cat-badge, .clean-mode .hero-eyebrow { transform:none !important; animation:none !important; }
-    .clean-mode .marquee-track .star { opacity:0.6; }
     .clean-mode .complete { background:none !important; }
     .clean-mode .btn:hover { transform: translateY(-2px); }
     .clean-toggle { font-family: var(--mono); font-weight:700; font-size:0.72rem; letter-spacing:0.04em; display:inline-flex; align-items:center; gap:6px; padding:9px 14px; border:1px solid var(--line-strong); border-radius: var(--r-pill); background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); transition: background .2s, transform .2s, box-shadow .2s; }
@@ -250,14 +249,6 @@
 
     /* Card */
     .card { background: var(--surface); border: 1px solid var(--line-c); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-
-    /* ============================================================ MARQUEE */
-    .marquee { border-block: 1px solid var(--line-c); background: var(--bg-2); color: var(--text); overflow: hidden; padding: 14px 0; }
-    .marquee-track { display:flex; gap: 0; white-space:nowrap; width: max-content; animation: marquee 26s linear infinite; }
-    .marquee-track span { font-family: var(--display); font-weight:700; font-size: clamp(1rem,3vw,1.6rem); padding: 0 22px; display:inline-flex; align-items:center; gap: 22px; }
-    .marquee-track .star { color: var(--accent); }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    @keyframes marquee { to { transform: translateX(-50%); } }
 
     /* ============================================================ INTRO (arcade cabinet) */
     .intro { position:fixed; inset:0; z-index: var(--z-intro); display:grid; place-items:center; text-align:center; color: var(--ink); overflow:hidden;
@@ -353,9 +344,14 @@
     .cf-card { position:absolute; left:50%; top:0; width: min(90vw, 640px); aspect-ratio:16/9; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line-c); box-shadow: var(--shadow); background: var(--surface); will-change:transform,opacity; }
     .cf-card img { width:100%; height:100%; object-fit:cover; object-position:top center; pointer-events:none; user-select:none; -webkit-user-drag:none; }
     .cf-dot { position:absolute; top:12px; left:12px; width:10px; height:10px; border-radius:50%; box-shadow:0 0 0 3px rgba(0,0,0,0.25); }
-    .cf-tag { position:absolute; left:0; right:0; bottom:0; padding:14px 16px; background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent); color:#fff; }
-    .cf-name { font-family: var(--display); font-weight:700; font-size:1rem; display:block; }
-    .cf-cat { font-family: var(--mono); font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; opacity:0.82; display:block; margin-top:3px; }
+    .showcase-caption { text-align:center; margin-top: var(--s-4); cursor:default; }
+    .sc-name { font-family: var(--display); font-weight:700; font-size:1.5rem; letter-spacing:-0.01em; }
+    .sc-cat { font-family: var(--mono); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color: var(--text-soft); margin-top:6px; }
+    .sc-extra { margin-top:14px; max-height:0; opacity:0; overflow:hidden; transition: opacity .25s var(--ease), max-height .25s var(--ease), margin-top .25s var(--ease); }
+    .showcase-caption:hover .sc-extra, .showcase-caption:focus-within .sc-extra { max-height:60px; opacity:1; }
+    .sc-extra a { display:inline-flex; align-items:center; gap:8px; font-family: var(--mono); font-weight:700; font-size:0.76rem; letter-spacing:0.04em; text-transform:uppercase; color: var(--accent); }
+    .sc-extra a svg { width:14px; height:14px; transition: transform .2s var(--ease); }
+    .sc-extra a:hover svg { transform: translate(3px,-3px); }
     .showcase-dots { display:flex; justify-content:center; gap:8px; margin-top: var(--s-4); }
     .showcase-dots button { width:8px; height:8px; border-radius:50%; background: var(--line-strong); transition: background .2s, transform .2s; }
     .showcase-dots button.active { background: var(--accent); transform:scale(1.35); }
@@ -380,15 +376,6 @@
     .cat-open { flex:none; width:40px; height:40px; border-radius:50%; border:1px solid var(--line-c); display:grid; place-items:center; background: var(--text); color: var(--bg); transition: transform .2s var(--spring), background .2s, color .2s; }
     .cat-card:hover .cat-open { transform: rotate(20deg) scale(1.1); background: var(--accent); color: #fff; }
     .cat-open svg { width:16px; height:16px; }
-
-    /* ============================================================ COMING SOON */
-    .coming-soon { padding: var(--s-8) 0; text-align:center; }
-    .coming-soon-wrap { max-width:640px; }
-    .coming-soon h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1.05; }
-    .coming-soon h2 em { font-style:normal; color: var(--accent); }
-    .coming-soon p { color: var(--text-soft); font-size: var(--fs-lead); margin-top: var(--s-3); }
-    .coming-soon-dots { display:flex; justify-content:center; gap:10px; margin-top: var(--s-5); }
-    .coming-soon-dots span { width:14px; height:14px; border-radius:50%; border:1px solid var(--line-strong); }
 
     /* ============================================================ COMPLETE / CTA */
     .complete { padding: var(--s-9) 0 var(--s-8); text-align:center; position:relative; background: radial-gradient(700px 500px at 50% 0%, rgba(255,45,95,0.14), transparent 60%); }
@@ -655,17 +642,18 @@
         <div class="cf-stage">
           <div class="cf-track" id="cfTrack"></div>
         </div>
+        <div class="showcase-caption" id="cfCaption" tabindex="0">
+          <span class="sc-name" id="cfName"></span>
+          <span class="sc-cat" id="cfCat" data-showcase-cat=""></span>
+          <div class="sc-extra">
+            <a id="cfLink" href="#" target="_blank" rel="noopener"><span data-i18n="showcaseVisit">Visit live site</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+          </div>
+        </div>
         <div class="showcase-dots" id="cfDots"></div>
       </div>
     </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ AI CREATIVE ★ 500+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
-        <span data-i18n-html="marqueeContent">★ WEB DESIGN ★ BRAND IDENTITY ★ SOCIAL MEDIA ★ PRINT & LAYOUT ★ AI CREATIVE ★ 500+ PROJECTS LAUNCHED ★ CLIENTS WORLDWIDE</span>
-      </div>
-    </div>
 
     <!-- CATEGORIES -->
     <section class="categories" id="categories" aria-labelledby="categories-h">
@@ -741,22 +729,6 @@
               </button>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMING SOON -->
-    <section class="coming-soon" aria-labelledby="coming-soon-h">
-      <div class="wrap coming-soon-wrap reveal">
-        <span class="sticker" style="margin-bottom:16px" data-i18n="comingSoonTag">◆ Coming this week</span>
-        <h2 id="coming-soon-h" data-i18n-html="comingSoonH2">New case studies & client stories, <em>landing soon.</em></h2>
-        <p data-i18n="comingSoonP">I'm adding real project photos and client testimonials across every category this week, check back soon, or reach out and I'll walk you through examples directly.</p>
-        <div class="coming-soon-dots" aria-hidden="true">
-          <span style="background:var(--pastel-pink);border-color:var(--pastel-pink)"></span>
-          <span style="background:var(--pastel-violet);border-color:var(--pastel-violet)"></span>
-          <span style="background:var(--pastel-blue);border-color:var(--pastel-blue)"></span>
-          <span style="background:var(--pastel-tangerine);border-color:var(--pastel-tangerine)"></span>
-          <span style="background:var(--pastel-lime);border-color:var(--pastel-lime)"></span>
         </div>
       </div>
     </section>
@@ -875,7 +847,7 @@
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
-        showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>",
+        showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>", showcaseVisit: "Visit live site",
         showcaseCats: { ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID" },
         categoriesTag: "◆ Services", categoriesH2: "What I can <em>create.</em>",
         catWebBadge: "$600 · 5 DAYS", catWebTitle: "Site / Web Design", catWebDesc: "Custom, high-converting websites, flat price, live in 5 days.",
@@ -886,8 +858,6 @@
         statSites: "Projects launched", statTurnaround: "Years of experience", statCategories: "Creative categories", statYours: "Yours to keep",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> BRAND IDENTITY <i class="star">★</i> SOCIAL MEDIA <i class="star">★</i> PRINT &amp; LAYOUT <i class="star">★</i> AI CREATIVE <i class="star">★</i> 500+ PROJECTS LAUNCHED <i class="star">★</i> CLIENTS WORLDWIDE',
         makeoverH2: "From invisible to <em>unforgettable.</em>", makeoverP: "Drag the slider and see what happens when an outdated website gets a complete makeover.", makeoverCta: "View transformations →", hospTip: "Sick website? Free check-up",
-        comingSoonTag: "◆ Coming this week", comingSoonH2: "New case studies &amp; client stories, <em>landing soon.</em>",
-        comingSoonP: "I'm adding real project photos and client testimonials across every category this week, check back soon, or reach out and I'll walk you through examples directly.",
         completeH2: "Let's create something <em>great.</em>",
         completeP: "Tell me about your project and I'll come back with a plan, usually within a day.",
         fieldName: 'Your name <span class="req">*</span>', fieldNamePh: "Jane Doe",
@@ -917,7 +887,7 @@
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
-        showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>",
+        showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>", showcaseVisit: "Ver site no ar",
         showcaseCats: { ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID" },
         categoriesTag: "◆ Serviços", categoriesH2: "O que eu posso <em>criar.</em>",
         catWebBadge: "$600 · 5 DIAS", catWebTitle: "Site / Web Design", catWebDesc: "Sites personalizados e de alta conversão, preço fixo, no ar em 5 dias.",
@@ -928,8 +898,6 @@
         statSites: "Projetos lançados", statTurnaround: "Anos de experiência", statCategories: "Categorias criativas", statYours: "É seu pra sempre",
         marqueeContent: '<i class="star">★</i> WEB DESIGN <i class="star">★</i> IDENTIDADE VISUAL <i class="star">★</i> SOCIAL MÍDIA <i class="star">★</i> IMPRESSOS &amp; DIAGRAMAÇÃO <i class="star">★</i> INTELIGÊNCIA ARTIFICIAL <i class="star">★</i> 500+ PROJETOS LANÇADOS <i class="star">★</i> CLIENTES NO MUNDO TODO',
         makeoverH2: "Do invisível ao <em>inesquecível.</em>", makeoverP: "Arraste o slider e veja o que acontece quando um site ultrapassado ganha uma reforma completa.", makeoverCta: "Ver transformações →", hospTip: "Site doente? Check-up grátis",
-        comingSoonTag: "◆ Chegando essa semana", comingSoonH2: "Novos cases &amp; depoimentos de clientes, <em>chegando em breve.</em>",
-        comingSoonP: "Essa semana vou adicionar fotos reais de projetos e depoimentos de clientes em cada categoria, volte em breve, ou me chama que te mostro exemplos direto.",
         completeH2: "Vamos criar algo <em>incrível.</em>",
         completeP: "Me conta sobre seu projeto que eu volto com um plano, geralmente em até um dia.",
         fieldName: 'Seu nome <span class="req">*</span>', fieldNamePh: "Maria Silva",
@@ -1037,12 +1005,12 @@
         return '<div class="cf-card" data-url="' + d.url + '">' +
           '<img src="' + d.shot + '" alt="' + d.name + '" loading="lazy" />' +
           '<span class="cf-dot" style="background:var(--' + tints[i % tints.length] + ')"></span>' +
-          '<span class="cf-tag"><span class="cf-name">' + d.name + '</span><span class="cf-cat" data-showcase-cat="' + d.key + '"></span></span>' +
           '</div>';
       }).join("");
       dotsWrap.innerHTML = defs.map(function (d, i) { return '<button type="button" aria-label="Go to ' + d.name + '" data-i="' + i + '"></button>'; }).join("");
 
       var cards = $$(".cf-card", track), dots = $$("button", dotsWrap);
+      var nameEl = document.getElementById("cfName"), catEl = document.getElementById("cfCat"), linkEl = document.getElementById("cfLink");
       var pos = 0, target = 0, width = 0, raf = null, dragging = false;
       var ROTATE = 42, DEPTH = 0.55, FALLOFF = 0.6, FADE = 0.16, GAP = 0.16;
 
@@ -1062,10 +1030,19 @@
           card.style.zIndex = String(100 - Math.round(distance));
         });
       }
-      function updateDots(i) { dots.forEach(function (b, k) { b.classList.toggle("active", k === i); }); }
+      function updateActive(i) {
+        dots.forEach(function (b, k) { b.classList.toggle("active", k === i); });
+        var d = defs[i];
+        if (!d) return;
+        nameEl.textContent = d.name;
+        catEl.setAttribute("data-showcase-cat", d.key);
+        var dict = I18N[LANG] || I18N.en;
+        if (dict.showcaseCats && dict.showcaseCats[d.key] != null) catEl.textContent = dict.showcaseCats[d.key];
+        linkEl.href = d.url;
+      }
       function settle(t) {
         target = t;
-        updateDots(((Math.round(t) % count) + count) % count);
+        updateActive(((Math.round(t) % count) + count) % count);
         if (raf !== null) cancelAnimationFrame(raf);
         (function step() {
           var remaining = target - pos;
