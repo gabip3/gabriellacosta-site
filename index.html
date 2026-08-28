@@ -112,6 +112,11 @@
       --text: #FFFFFF;
       --text-soft: #9C9BA3;
       --accent: #FF2D5F;
+      --pastel-pink: #FF8FCB;
+      --pastel-blue: #93B8FF;
+      --pastel-lime: #CDEB7E;
+      --pastel-tangerine: #FFB27A;
+      --pastel-violet: #B7A1FF;
       --line-c: rgba(255,255,255,0.14);
       --line-strong: rgba(255,255,255,0.28);
       --radius: 10px;
@@ -177,6 +182,7 @@
       --text: #0B0B0D;
       --text-soft: #5B5A63;
       --accent: #D6265D;
+      --pastel-pink: #C24E8E; --pastel-blue: #4A6FBF; --pastel-lime: #6E8A3C; --pastel-tangerine: #B15E22; --pastel-violet: #6B54B5;
       --line-c: rgba(11,11,13,0.12);
       --line-strong: rgba(11,11,13,0.26);
       --line: 1px solid rgba(11,11,13,0.12);
@@ -331,6 +337,29 @@
     .scroll-cue .arrow { width:34px; height:34px; border:1px solid var(--line-c); border-radius:50%; display:grid; place-items:center; background: var(--surface); box-shadow: var(--shadow-sm); animation: bob 1.8s var(--ease) infinite; }
     .scroll-cue .arrow svg { width:16px; height:16px; }
 
+    /* ============================================================ SHOWCASE (coverflow) */
+    .showcase { padding: var(--s-7) 0 var(--s-8); }
+    .showcase-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap: var(--s-3); margin-bottom: var(--s-5); }
+    .showcase h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1; max-width:16ch; }
+    .showcase h2 em { font-style:normal; color: var(--accent); }
+    .showcase-nav { display:flex; gap:10px; }
+    .showcase-nav button { width:44px; height:44px; border-radius:50%; border:1px solid var(--line-c); background: var(--surface); color: var(--text); display:grid; place-items:center; transition: background .2s, color .2s, border-color .2s; }
+    .showcase-nav button:hover { background: var(--accent); color:#fff; border-color: var(--accent); }
+    .showcase-nav button svg { width:18px; height:18px; }
+    .cf-stage { position:relative; height:min(42vw,300px); perspective:1400px; margin:0 auto; }
+    .cf-track { position:relative; width:100%; height:100%; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; }
+    .cf-track.grabbing { cursor:grabbing; }
+    .cf-card { position:absolute; left:50%; top:0; width:min(58vw,300px); height:100%; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line-c); box-shadow: var(--shadow); background: var(--surface); will-change:transform,opacity; }
+    .cf-card img { width:100%; height:100%; object-fit:cover; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+    .cf-dot { position:absolute; top:12px; left:12px; width:10px; height:10px; border-radius:50%; box-shadow:0 0 0 3px rgba(0,0,0,0.25); }
+    .cf-tag { position:absolute; left:0; right:0; bottom:0; padding:14px 16px; background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent); color:#fff; }
+    .cf-name { font-family: var(--display); font-weight:700; font-size:1rem; display:block; }
+    .cf-cat { font-family: var(--mono); font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; opacity:0.82; display:block; margin-top:3px; }
+    .showcase-dots { display:flex; justify-content:center; gap:8px; margin-top: var(--s-4); }
+    .showcase-dots button { width:8px; height:8px; border-radius:50%; background: var(--line-strong); transition: background .2s, transform .2s; }
+    .showcase-dots button.active { background: var(--accent); transform:scale(1.35); }
+    @media (max-width:700px) { .cf-stage { height:min(66vw,260px); } .cf-card { width:min(74vw,260px); } }
+
     /* ============================================================ CATEGORIES */
     .categories { padding: var(--s-8) 0; }
     .categories h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
@@ -341,7 +370,7 @@
     .cat-card { position:relative; display:flex; flex-direction:column; border:1px solid var(--line-c); border-radius: var(--radius-lg); overflow:hidden; background: var(--surface); box-shadow: var(--shadow-sm); transition: transform .3s var(--spring), box-shadow .3s; color: var(--text); text-decoration:none; }
     .cat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
     .cat-thumb { position:relative; aspect-ratio:16/9; display:grid; place-items:center; border-bottom:1px solid var(--line-c); background: var(--bg-2); }
-    .cat-thumb svg { width:22%; height:22%; color: var(--text-soft); }
+    .cat-thumb svg { width:22%; height:22%; color: var(--tint, var(--text-soft)); }
     .cat-badge { position:absolute; top:12px; left:12px; z-index:2; font-family: var(--mono); font-weight:700; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; padding:5px 11px; border-radius: var(--r-pill); background: var(--text); color: var(--bg); }
     .cat-body { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 20px; }
     .cat-info { display:block; min-width:0; }
@@ -612,6 +641,23 @@
       </div>
     </section>
 
+    <!-- SHOWCASE -->
+    <section class="showcase reveal" id="showcase" aria-labelledby="showcase-h">
+      <div class="wrap">
+        <div class="showcase-head">
+          <h2 id="showcase-h" data-i18n-html="showcaseH2">Real businesses. <em>Real websites.</em></h2>
+          <div class="showcase-nav">
+            <button type="button" id="cfPrev" aria-label="Previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button type="button" id="cfNext" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="cf-stage">
+          <div class="cf-track" id="cfTrack"></div>
+        </div>
+        <div class="showcase-dots" id="cfDots"></div>
+      </div>
+    </section>
+
     <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
@@ -627,7 +673,7 @@
         <h2 id="categories-h" class="reveal" data-i18n-html="categoriesH2">What I can <em>create.</em></h2>
         <div class="categories-grid">
           <a class="cat-card reveal" href="website-design.html" data-magnetic>
-            <span class="cat-thumb">
+            <span class="cat-thumb" style="--tint:var(--pastel-pink)">
               <span class="cat-badge" data-i18n-html="catWebBadge">$600 · 5 DAYS</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.6" fill="currentColor" stroke="none"/><circle cx="8.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
             </span>
@@ -636,7 +682,7 @@
             </span>
           </a>
           <a class="cat-card reveal" style="--d:70ms" href="?service=brand#complete" data-magnetic>
-            <span class="cat-thumb">
+            <span class="cat-thumb" style="--tint:var(--pastel-violet)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20c1.5 0 2-1 2-2s-.5-1.5-.5-2.5 1-2 2.5-2H18a4 4 0 0 0 4-4 8 8 0 0 0-10-9.5Z"/><circle cx="7.5" cy="10.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="10.5" cy="7" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="7.5" r="1.1" fill="currentColor" stroke="none"/></svg>
             </span>
             <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catBrandTitle">Brand Identity</span><span class="cat-desc" data-i18n="catBrandDesc">Logo, color palette, typography, a brand people remember.</span></span>
@@ -644,7 +690,7 @@
             </span>
           </a>
           <a class="cat-card reveal" style="--d:140ms" href="?service=social#complete" data-magnetic>
-            <span class="cat-thumb">
+            <span class="cat-thumb" style="--tint:var(--pastel-blue)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="3"/><circle cx="12" cy="11.5" r="3.2"/><circle cx="17.5" cy="8" r="0.6" fill="currentColor" stroke="none"/></svg>
             </span>
             <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catSocialTitle">Social Media</span><span class="cat-desc" data-i18n="catSocialDesc">Storytelling, layouts & campaigns people stop scrolling for.</span></span>
@@ -652,7 +698,7 @@
             </span>
           </a>
           <a class="cat-card reveal" style="--d:210ms" href="?service=print#complete" data-magnetic>
-            <span class="cat-thumb">
+            <span class="cat-thumb" style="--tint:var(--pastel-tangerine)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="1"/><path d="M6 14h12v7H6z"/></svg>
             </span>
             <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catPrintTitle">Print & Layout</span><span class="cat-desc" data-i18n="catPrintDesc">Banners, catalogs, eBooks & graphic materials, done right.</span></span>
@@ -660,7 +706,7 @@
             </span>
           </a>
           <a class="cat-card reveal" style="--d:280ms" href="?service=ai#complete" data-magnetic>
-            <span class="cat-thumb">
+            <span class="cat-thumb" style="--tint:var(--pastel-lime)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
             </span>
             <span class="cat-body"><span class="cat-info"><span class="cat-name" data-i18n="catAiTitle">AI Creative</span><span class="cat-desc" data-i18n="catAiDesc">AI-generated videos, characters & mascots that bring your brand to life.</span></span>
@@ -705,11 +751,11 @@
         <h2 id="coming-soon-h" data-i18n-html="comingSoonH2">New case studies & client stories, <em>landing soon.</em></h2>
         <p data-i18n="comingSoonP">I'm adding real project photos and client testimonials across every category this week, check back soon, or reach out and I'll walk you through examples directly.</p>
         <div class="coming-soon-dots" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span style="background:var(--accent);border-color:var(--accent)"></span>
-          <span></span>
+          <span style="background:var(--pastel-pink);border-color:var(--pastel-pink)"></span>
+          <span style="background:var(--pastel-violet);border-color:var(--pastel-violet)"></span>
+          <span style="background:var(--pastel-blue);border-color:var(--pastel-blue)"></span>
+          <span style="background:var(--pastel-tangerine);border-color:var(--pastel-tangerine)"></span>
+          <span style="background:var(--pastel-lime);border-color:var(--pastel-lime)"></span>
         </div>
       </div>
     </section>
@@ -828,6 +874,8 @@
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
+        showcaseH2: "Real businesses. <em>Real websites.</em>",
+        showcaseCats: { ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID" },
         categoriesTag: "◆ Services", categoriesH2: "What I can <em>create.</em>",
         catWebBadge: "$600 · 5 DAYS", catWebTitle: "Site / Web Design", catWebDesc: "Custom, high-converting websites, flat price, live in 5 days.",
         catBrandTitle: "Brand Identity", catBrandDesc: "Logo, color palette, typography, a brand people remember.",
@@ -868,6 +916,8 @@
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
+        showcaseH2: "Negócios reais. <em>Sites reais.</em>",
+        showcaseCats: { ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID" },
         categoriesTag: "◆ Serviços", categoriesH2: "O que eu posso <em>criar.</em>",
         catWebBadge: "$600 · 5 DIAS", catWebTitle: "Site / Web Design", catWebDesc: "Sites personalizados e de alta conversão, preço fixo, no ar em 5 dias.",
         catBrandTitle: "Identidade Visual", catBrandDesc: "Logo, paleta de cores, tipografia, uma marca que as pessoas lembram.",
@@ -923,6 +973,7 @@
       $$("[data-i18n]").forEach(function (el) { if (dict[el.getAttribute("data-i18n")] != null) el.textContent = dict[el.getAttribute("data-i18n")]; });
       $$("[data-i18n-html]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-html")] != null) el.innerHTML = dict[el.getAttribute("data-i18n-html")]; });
       $$("[data-i18n-ph]").forEach(function (el) { if (dict[el.getAttribute("data-i18n-ph")] != null) el.placeholder = dict[el.getAttribute("data-i18n-ph")]; });
+      $$("[data-showcase-cat]").forEach(function (el) { var k = el.getAttribute("data-showcase-cat"); if (dict.showcaseCats && dict.showcaseCats[k] != null) el.textContent = dict.showcaseCats[k]; });
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
@@ -956,6 +1007,108 @@
     var revObsRef = null;
 
     var navLinks = $$(".nav-levels a");
+
+    /* SHOWCASE (coverflow of real client work) */
+    (function () {
+      var track = document.getElementById("cfTrack"), dotsWrap = document.getElementById("cfDots");
+      if (!track) return;
+      var tints = ["pastel-pink", "pastel-blue", "pastel-lime", "pastel-tangerine", "pastel-violet"];
+      var defs = [
+        { key: "ssgroup", name: "SS Renovations Group", url: "https://ssrenovationsgroup.com/", shot: "assets/ss-renovations-group.jpg" },
+        { key: "nkacu", name: "NK Acupuntura", url: "https://acupunturaemgoiania.com.br/", shot: "assets/acupuntura-em-goiania.jpg" },
+        { key: "peachtree", name: "Peachtree Commodities", url: "https://www.peachtreecommodities.com/", shot: "assets/peachtree-commodities.jpg" },
+        { key: "atlanta", name: "Atlanta Home Concierge", url: "https://www.atlantahomeconcierge.com", shot: "assets/atlanta-home-concierge.jpg" },
+        { key: "christmas", name: "Christmas Lights Atlanta", url: "https://www.christmaslights-atlanta.com", shot: "assets/christmas-lights-atlanta.jpg" },
+        { key: "butterfly", name: "Butterfly Cleaning", url: "https://www.butterflycleaning.company/", shot: "assets/butterfly-cleaning.jpg" },
+        { key: "bestchoice", name: "Best Choice 4U", url: "https://bestchoice4uservices.com/", shot: "assets/best-choice-4u.jpg" },
+        { key: "dparty", name: "D'Party", url: "https://www.dpartyatlanta.com", shot: "assets/dparty-atlanta.jpg" },
+        { key: "rk360", name: "RK360 Photo Booth Rentals", url: "https://www.rk360photoboothrentals.com/", shot: "assets/rk360.jpg" },
+        { key: "sara", name: "Sara Sarres", url: "https://www.sarasarres.com/", shot: "assets/sara-sarres.jpg" },
+        { key: "siding", name: "Siding by Lucas", url: "https://www.sidingbylucas.com", shot: "assets/siding-by-lucas.jpg" },
+        { key: "artfloor", name: "Art Floor ATL", url: "https://www.artflooratl.com", shot: "assets/art-floor-atl.jpg" },
+        { key: "kings", name: "King's Table Sourdough", url: "https://www.kingstablesourdough.com", shot: "assets/kings-table-sourdough.jpg" },
+        { key: "fila", name: "Onde Eu Tô Na Fila", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg" },
+        { key: "ksplumbing", name: "KS Plumbing", url: "https://ksplumbingidaho.com/", shot: "assets/ks-plumbing.jpg" }
+      ];
+      var count = defs.length;
+
+      track.innerHTML = defs.map(function (d, i) {
+        return '<div class="cf-card" data-url="' + d.url + '">' +
+          '<img src="' + d.shot + '" alt="' + d.name + '" loading="lazy" />' +
+          '<span class="cf-dot" style="background:var(--' + tints[i % tints.length] + ')"></span>' +
+          '<span class="cf-tag"><span class="cf-name">' + d.name + '</span><span class="cf-cat" data-showcase-cat="' + d.key + '"></span></span>' +
+          '</div>';
+      }).join("");
+      dotsWrap.innerHTML = defs.map(function (d, i) { return '<button type="button" aria-label="Go to ' + d.name + '" data-i="' + i + '"></button>'; }).join("");
+
+      var cards = $$(".cf-card", track), dots = $$("button", dotsWrap);
+      var pos = 0, target = 0, width = 0, raf = null, dragging = false;
+      var ROTATE = 42, DEPTH = 0.55, FALLOFF = 0.6, FADE = 0.16, GAP = 0.16;
+
+      function measure() { if (cards[0]) width = cards[0].getBoundingClientRect().width; }
+      function paint() {
+        var pitch = width * (1 + GAP);
+        cards.forEach(function (card, i) {
+          var offset = i - pos;
+          offset = ((offset % count) + count) % count;
+          if (offset > count / 2) offset -= count;
+          var distance = Math.abs(offset);
+          var ramp = Math.pow(distance, FALLOFF);
+          var tilt = Math.min(ROTATE * ramp, 80) * Math.sign(offset);
+          card.style.transform = "translateX(-50%) translateX(" + (offset * pitch) + "px) translateZ(" + (-DEPTH * width * ramp) + "px) rotateY(" + (-tilt) + "deg)";
+          var edge = Math.min(1, Math.max(0, count / 2 - distance));
+          card.style.opacity = String(Math.max(0, 1 - FADE * distance) * edge);
+          card.style.zIndex = String(100 - Math.round(distance));
+        });
+      }
+      function updateDots(i) { dots.forEach(function (b, k) { b.classList.toggle("active", k === i); }); }
+      function settle(t) {
+        target = t;
+        updateDots(((Math.round(t) % count) + count) % count);
+        if (raf !== null) cancelAnimationFrame(raf);
+        (function step() {
+          var remaining = target - pos;
+          if (Math.abs(remaining) < 0.001) { pos = target; paint(); raf = null; return; }
+          pos += remaining * (reduce ? 1 : 0.18);
+          paint();
+          raf = requestAnimationFrame(step);
+        })();
+      }
+      function goTo(i) { settle(i + Math.round((target - i) / count) * count); }
+
+      var stage = track.parentElement;
+      if ("ResizeObserver" in window) { new ResizeObserver(function () { measure(); paint(); }).observe(stage); }
+      measure();
+      settle(0);
+
+      document.getElementById("cfPrev").addEventListener("click", function () { settle(Math.round(target) - 1); });
+      document.getElementById("cfNext").addEventListener("click", function () { settle(Math.round(target) + 1); });
+      dots.forEach(function (b) { b.addEventListener("click", function () { goTo(+b.getAttribute("data-i")); }); });
+
+      var startX = 0, startPos = 0, moved = 0, downCard = null;
+      track.addEventListener("pointerdown", function (e) {
+        dragging = true; track.classList.add("grabbing");
+        startX = e.clientX; startPos = pos; moved = 0; downCard = e.target.closest(".cf-card");
+        if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+        try { track.setPointerCapture(e.pointerId); } catch (err) {}
+      });
+      track.addEventListener("pointermove", function (e) {
+        if (!dragging || !width) return;
+        var dx = e.clientX - startX;
+        moved = Math.abs(dx);
+        pos = startPos - dx / (width * (1 + GAP));
+        target = pos;
+        paint();
+      });
+      function endDrag(e) {
+        if (!dragging) return;
+        dragging = false; track.classList.remove("grabbing");
+        if (moved < 6 && downCard) { window.open(downCard.getAttribute("data-url"), "_blank", "noopener"); }
+        else { settle(Math.round(pos)); }
+      }
+      track.addEventListener("pointerup", endDrag);
+      track.addEventListener("pointercancel", endDrag);
+    })();
 
     /* REVEAL + ACTIVE */
     if ("IntersectionObserver" in window) {
