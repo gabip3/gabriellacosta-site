@@ -266,17 +266,6 @@
     .intro-skip { position:absolute; top:max(20px,env(safe-area-inset-top)); right:22px; z-index:5; font-family: var(--mono); font-weight:700; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--ink); padding:9px 16px; border:2px solid rgba(244,239,250,0.4); border-radius: var(--r-pill); transition: background .2s, border-color .2s; }
     .intro-skip:hover { background: rgba(244,239,250,0.14); border-color: var(--lime); }
 
-    .coin { font-family: var(--mono); font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color: var(--lime); font-size:0.8rem; margin-bottom: var(--s-4); animation: blink 1.2s steps(2) infinite; }
-    @keyframes blink { 50% { opacity:0.25; } }
-    .loader-mark { font-family: var(--display); font-weight:800; font-size: clamp(2.1rem,7.5vw,5rem); margin-bottom: var(--s-4); animation: markGlow 2.4s var(--ease) infinite; }
-    .loader-mark .g { color: var(--magenta); } .loader-mark .c { color: var(--lime); } .loader-mark .d { color: var(--ink); opacity:0.85; }
-    @keyframes markGlow { 0%,100% { filter: drop-shadow(0 0 0 transparent); } 50% { filter: drop-shadow(0 0 18px rgba(200,255,60,0.45)); } }
-    .loader-status { font-family: var(--mono); font-weight:700; font-size:0.84rem; letter-spacing:0.08em; min-height:1.4em; margin-bottom: var(--s-3); color: var(--ink); }
-    .loader-status .tick { color: var(--lime); }
-    .loader-bar { width:min(80vw,460px); height:16px; margin:0 auto; background: rgba(244,239,250,0.12); border:2px solid var(--ink); border-radius: var(--r-pill); overflow:hidden; padding:2px; }
-    .loader-bar > i { display:block; height:100%; width:0%; border-radius: var(--r-pill); background: linear-gradient(90deg, var(--lime), var(--magenta), var(--blue)); transition: width .25s var(--ease); }
-    .loader-pct { font-family: var(--mono); font-weight:700; font-size:0.78rem; letter-spacing:0.25em; color: var(--ink); margin-top: var(--s-2); }
-
     .ps-title { font-family: var(--display); font-weight:800; font-size: clamp(2.4rem,8vw,5.4rem); line-height:1; margin-bottom: var(--s-5); }
     @keyframes bob { 0%,100%{transform: translateY(0)} 50%{transform: translateY(-8px)} }
 
@@ -293,7 +282,6 @@
     .lang-btn { text-align:center; display:flex; flex-direction:column; align-items:center; padding: var(--s-5) var(--s-3); }
     .lang-btn .p-avatar { width:56px; height:44px; border-radius:10px; overflow:hidden; }
     .lang-btn .p-avatar svg { width:100%; height:100%; }
-    .mood-emoji { width:auto; height:auto; font-size:2.6rem; line-height:1; border-radius:0; overflow:visible; }
     .lang-btn .p-name { font-size:1.5rem; margin-top: var(--s-2); }
     .lang-btn .p-cta { margin-top: var(--s-2); }
 
@@ -549,33 +537,6 @@
           <span class="p-cta">Continuar <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </button>
       </div>
-    </div>
-
-    <!-- Stage 0.5: Mood pick -->
-    <div class="stage" id="stageMood">
-      <p class="coin" style="animation:none" data-i18n="coinMood">How are you feeling today?</p>
-      <h2 class="ps-title" style="font-size:clamp(1.8rem,6vw,3rem)" data-i18n="moodH2">Pick your mood.</h2>
-      <div class="players mood-players">
-        <button class="player lang-btn" id="moodFun" data-selectable type="button" aria-label="I'm feeling fun today">
-          <span class="p-avatar mood-emoji" aria-hidden="true">🎉</span>
-          <span class="p-name" data-i18n="moodFunLabel">Fun Mode</span>
-          <span class="p-cta" data-i18n="moodFunCta">See the creative side</span>
-        </button>
-        <button class="player lang-btn two" id="moodSerious" data-selectable type="button" aria-label="See the simple, standard version">
-          <span class="p-avatar mood-emoji" aria-hidden="true">📄</span>
-          <span class="p-name" data-i18n="moodSeriousLabel">Simple version</span>
-          <span class="p-cta" data-i18n="moodSeriousCta">A clean, standard portfolio</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Stage 1: Loader -->
-    <div class="stage" id="stageLoader">
-      <p class="coin" data-i18n="coinInsert">Let's begin</p>
-      <p class="loader-mark"><span class="g">Gabriella</span> <span class="c">Costa</span> <span class="d">Design</span></p>
-      <p class="loader-status" id="loaderStatus" aria-live="polite"></p>
-      <div class="loader-bar" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100"><i id="loaderFill"></i></div>
-      <p class="loader-pct" id="loaderPct">00%</p>
     </div>
 
   </div>
@@ -871,11 +832,6 @@
         footerEmail: "Email", footerStart: "Start a project",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Web Design Studio · Made in São Paulo, serving the world',
         toTop: "Back to top", skipIntro: "Skip intro →",
-        coinInsert: "Let's begin",
-        coinMood: "How are you feeling today?", moodH2: "Pick your mood.",
-        moodFunLabel: "Fun Mode", moodFunCta: "See the creative side",
-        moodSeriousLabel: "Simple version", moodSeriousCta: "A clean, standard portfolio",
-        loaderLines: ["Initializing experience...", "Loading creativity...", "Compiling ideas...", "Optimizing performance...", "Ready."],
         formErrRequired: "Please fill in the required fields.", formErrNotConnected: "Form not connected yet, add your Web3Forms access key.",
         formSending: "Sending…", formErrGeneric: "Something went wrong. Please email me directly.",
         formErrNetwork: "Network error. Please email gabip3@gmail.com."
@@ -911,11 +867,6 @@
         footerEmail: "E-mail", footerStart: "Comece um projeto",
         footerCopy: '© <span id="year"></span> Gabriella Costa · Estúdio de Web Design · Feito em São Paulo, para o mundo',
         toTop: "Voltar ao topo", skipIntro: "Pular intro →",
-        coinInsert: "Vamos começar",
-        coinMood: "Como você tá se sentindo hoje?", moodH2: "Escolha seu humor.",
-        moodFunLabel: "Modo Divertido", moodFunCta: "Ver o lado criativo",
-        moodSeriousLabel: "Versão Simples", moodSeriousCta: "Um portfólio limpo e tradicional",
-        loaderLines: ["Inicializando experiência...", "Carregando criatividade...", "Compilando ideias...", "Otimizando performance...", "Pronto."],
         formErrRequired: "Preencha os campos obrigatórios.", formErrNotConnected: "Formulário ainda não conectado, adicione sua chave do Web3Forms.",
         formSending: "Enviando…", formErrGeneric: "Algo deu errado. Me manda um e-mail direto.",
         formErrNetwork: "Erro de conexão. Me manda um e-mail: gabip3@gmail.com."
@@ -1176,47 +1127,18 @@
     document.addEventListener("keydown", function (e) { if (!intro.hidden && e.key === "Escape") endIntro(false); });
     function showStage(id) { $$(".stage", intro).forEach(function (s) { s.classList.remove("active"); }); var s = document.getElementById(id); if (s) s.classList.add("active"); }
 
-    function startLoader() {
-      var lines = (I18N[LANG] || I18N.en).loaderLines;
-      var statusEl = document.getElementById("loaderStatus"), fill = document.getElementById("loaderFill"), pctEl = document.getElementById("loaderPct");
-      var pct = 0, li = 0; statusEl.innerHTML = '<span class="tick">▸</span> ' + lines[0];
-      var lineTimer = setInterval(function () { li++; if (li < lines.length) statusEl.innerHTML = '<span class="tick">▸</span> ' + lines[li]; }, 620);
-      var prog = setInterval(function () {
-        pct += Math.random() * 9 + 4;
-        if (pct >= 100) { pct = 100; clearInterval(prog); clearInterval(lineTimer); statusEl.innerHTML = '<span class="tick">▸</span> ' + lines[lines.length - 1]; confetti(); setTimeout(function () { endIntro(false); }, 480); }
-        fill.style.width = pct + "%"; pctEl.textContent = String(Math.floor(pct)).padStart(2, "0") + "%"; $(".loader-bar").setAttribute("aria-valuenow", Math.floor(pct));
-      }, 185);
-    }
-
     function runIntro() {
       showStage("stageLang");
       function pickLang(lang) {
         saveLang(lang); applyLang(lang);
         document.getElementById("langEn").removeEventListener("click", onEn);
         document.getElementById("langPt").removeEventListener("click", onPt);
-        showStage("stageMood");
+        endIntro(false);
       }
       function onEn() { pickLang("en"); }
       function onPt() { pickLang("pt"); }
       document.getElementById("langEn").addEventListener("click", onEn);
       document.getElementById("langPt").addEventListener("click", onPt);
-
-      function pickMood(serious) {
-        document.getElementById("moodFun").removeEventListener("click", onFun);
-        document.getElementById("moodSerious").removeEventListener("click", onSerious);
-        if (serious) {
-          var lng = "en";
-          try { lng = localStorage.getItem("gc_lang") || "en"; } catch (e) {}
-          try { sessionStorage.setItem("gc_intro_v3", "1"); } catch (e) {}
-          window.location.href = "portfolio.html?lang=" + lng;
-          return;
-        }
-        showStage("stageLoader"); startLoader();
-      }
-      function onFun() { pickMood(false); }
-      function onSerious() { pickMood(true); }
-      document.getElementById("moodFun").addEventListener("click", onFun);
-      document.getElementById("moodSerious").addEventListener("click", onSerious);
     }
 
     /* LANGUAGE TOGGLE (header, always available) */
