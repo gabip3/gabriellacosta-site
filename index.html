@@ -54,7 +54,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Permanent+Marker&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Caveat:wght@600;700&display=swap" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -133,7 +133,7 @@
       --display: "Poppins", "Century Gothic", "Avenir Next", system-ui, sans-serif;
       --body:    "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       --mono:    "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-      --script:  "Permanent Marker", "Segoe Script", cursive;
+      --script:  "Caveat", "Segoe Script", cursive;
 
       --fs-hud:  clamp(0.66rem, 0.6rem + 0.3vw, 0.78rem);
       --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.14rem);
@@ -223,7 +223,7 @@
     /* HELPERS */
     .wrap { width: min(100% - 2*var(--s-3), var(--maxw)); margin-inline: auto; }
     .hud { font-family: var(--mono); font-size: var(--fs-hud); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; }
-    .display { font-family: var(--display); font-weight: 700; line-height: 0.98; letter-spacing: -0.02em; }
+    .display { font-family: var(--display); font-weight: 600; line-height: 0.98; letter-spacing: -0.02em; }
     .skip-link { position:absolute; left:12px; top:-60px; background: var(--accent); color: #fff; padding:10px 16px; border-radius:8px; z-index:1200; font-weight:700; transition: top .2s; }
     .skip-link:focus { top:12px; }
 
@@ -318,8 +318,8 @@
 
     /* ============================================================ HERO */
     .hero { position:relative; min-height: 100svh; display:flex; align-items:center; padding: var(--s-9) 0 var(--s-6); }
-    .hero h1 { font-family: var(--display); font-weight:700; font-size: var(--fs-h1); line-height:1.05; letter-spacing:-0.03em; max-width:16ch; }
-    .hero h1 .clk, .hero h1 .cli { font-family: var(--script); font-weight:400; letter-spacing:normal; color: var(--accent); }
+    .hero h1 { font-family: var(--display); font-weight:600; font-size: var(--fs-h1); line-height:1.05; letter-spacing:-0.03em; max-width:16ch; }
+    .hero h1 .clk, .hero h1 .cli { font-family: var(--script); font-weight:600; letter-spacing:normal; color: var(--accent); }
     .hero-lead { font-size: var(--fs-lead); color: var(--text-soft); max-width:46ch; margin: var(--s-4) 0 var(--s-5); }
     .hero-actions { display:flex; flex-wrap:wrap; gap: var(--s-2); align-items:center; }
 
@@ -331,9 +331,9 @@
     /* ============================================================ SHOWCASE (coverflow) */
     .showcase { padding: var(--s-7) 0 var(--s-8); }
     .showcase-head { display:flex; flex-direction:column; align-items:center; text-align:center; gap: var(--s-3); margin-bottom: var(--s-5); }
-    .showcase h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1.05; }
+    .showcase h2 { font-family: var(--display); font-weight:600; font-size: var(--fs-h2); letter-spacing:-0.03em; line-height:1.05; }
     .showcase h2 span { display:block; }
-    .showcase h2 em { font-style:normal; font-family: var(--script); font-weight:400; letter-spacing:normal; color: var(--accent); }
+    .showcase h2 em { font-style:normal; font-family: var(--script); font-weight:600; letter-spacing:normal; color: var(--accent); }
     .showcase-nav { display:flex; gap:10px; }
     .showcase-nav button { width:44px; height:44px; border-radius:50%; border:1px solid var(--line-c); background: var(--surface); color: var(--text); display:grid; place-items:center; transition: background .2s, color .2s, border-color .2s; }
     .showcase-nav button:hover { background: var(--accent); color:#fff; border-color: var(--accent); }
@@ -359,8 +359,8 @@
 
     /* ============================================================ CATEGORIES */
     .categories { padding: var(--s-8) 0; }
-    .categories h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
-    .categories h2 em { font-style:normal; font-family: var(--script); font-weight:400; letter-spacing:normal; color: var(--accent); }
+    .categories h2 { font-family: var(--display); font-weight:600; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
+    .categories h2 em { font-style:normal; font-family: var(--script); font-weight:600; letter-spacing:normal; color: var(--accent); }
     .categories-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: var(--s-3); margin-top: var(--s-6); }
     .price-list-link a { font-family: var(--mono); font-weight:700; font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; padding:12px 22px; border:1px solid var(--line-c); border-radius: var(--r-pill); background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); display:inline-flex; transition: transform .2s var(--ease), box-shadow .2s var(--ease), background .2s, color .2s; }
     .price-list-link a:hover { transform: translateY(-2px); box-shadow: var(--shadow); background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -379,8 +379,8 @@
 
     /* ============================================================ COMPLETE / CTA */
     .complete { padding: var(--s-9) 0 var(--s-8); text-align:center; position:relative; background: radial-gradient(700px 500px at 50% 0%, rgba(255,45,95,0.14), transparent 60%); }
-    .complete h2 { font-family: var(--display); font-weight:700; font-size: var(--fs-h1); line-height:1.05; letter-spacing:-0.03em; max-width:16ch; margin:0 auto var(--s-3); }
-    .complete h2 em { font-style:normal; font-family: var(--script); font-weight:400; letter-spacing:normal; color: var(--accent); }
+    .complete h2 { font-family: var(--display); font-weight:600; font-size: var(--fs-h1); line-height:1.05; letter-spacing:-0.03em; max-width:16ch; margin:0 auto var(--s-3); }
+    .complete h2 em { font-style:normal; font-family: var(--script); font-weight:600; letter-spacing:normal; color: var(--accent); }
     .complete > .wrap > .reveal > p { color: var(--text-soft); font-size: var(--fs-lead); max-width:42ch; margin:0 auto var(--s-6); }
 
     .form-card { max-width:620px; margin:0 auto; padding: var(--s-5); text-align:left; }
@@ -408,8 +408,8 @@
     /* ============================================================ FOOTER */
     .site-footer { background: var(--bg-2); color: var(--text); border-top: 1px solid var(--line-c); padding: var(--s-7) 0 var(--s-4); }
     .footer-top { display:flex; flex-wrap:wrap; justify-content:space-between; gap: var(--s-5); align-items:flex-start; }
-    .footer-mark { font-family: var(--display); font-weight:700; font-size: clamp(2rem,6vw,3.6rem); line-height:1.15; max-width:16ch; }
-    .footer-mark em { font-style:normal; font-family: var(--script); font-weight:400; letter-spacing:normal; color: var(--accent); }
+    .footer-mark { font-family: var(--display); font-weight:600; font-size: clamp(2rem,6vw,3.6rem); line-height:1.15; max-width:16ch; }
+    .footer-mark em { font-style:normal; font-family: var(--script); font-weight:600; letter-spacing:normal; color: var(--accent); }
     .footer-links { display:flex; gap: var(--s-6); flex-wrap:wrap; }
     .footer-col h5 { font-family: var(--mono); font-weight:700; font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color: var(--text-soft); margin-bottom: var(--s-2); }
     .footer-col a { display:block; color: var(--text-soft); padding:5px 0; transition: color .2s; }
@@ -470,7 +470,7 @@
     .mk-inner { display:grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px,5vw,60px); align-items:center; }
     @media (max-width: 860px){ .mk-inner { grid-template-columns:1fr; } }
     .mk-copy h2 { font-size: clamp(2rem, 1.3rem + 3vw, 3.4rem); line-height:1.02; margin-bottom:16px; }
-    .mk-copy h2 em { font-style:normal; font-family: var(--script); font-weight:400; letter-spacing:normal; color: var(--accent); }
+    .mk-copy h2 em { font-style:normal; font-family: var(--script); font-weight:600; letter-spacing:normal; color: var(--accent); }
     .mk-copy p { color: var(--text-soft); max-width: 34ch; margin-bottom: 26px; font-size: 1.08rem; }
     .mk-dot { width:9px; height:9px; border-radius:50%; background:#E11D2E; }
     @keyframes mkblink { 0%,60%{opacity:1;} 61%,100%{opacity:0.2;} }
