@@ -326,7 +326,8 @@
     .showcase-nav button { width:44px; height:44px; border-radius:50%; border:1px solid var(--line-c); background: var(--surface); color: var(--text); display:grid; place-items:center; transition: background .2s, color .2s, border-color .2s; }
     .showcase-nav button:hover { background: var(--accent); color:#fff; border-color: var(--accent); }
     .showcase-nav button svg { width:18px; height:18px; }
-    .cf-stage { position:relative; width: min(90vw, 640px); height: calc(min(90vw, 640px) * 9 / 16); perspective:1400px; margin:0 auto; overflow:hidden; }
+    .cf-clip { width: min(90vw, 640px); height: calc(min(90vw, 640px) * 9 / 16); margin:0 auto; overflow:hidden; }
+    .cf-stage { position:relative; width:100%; height:100%; perspective:1400px; }
     .cf-track { position:relative; width:100%; height:100%; transform-style:preserve-3d; cursor:grab; touch-action:pan-y; }
     .cf-track.grabbing { cursor:grabbing; }
     .cf-card { position:absolute; left:50%; top:0; width: min(90vw, 640px); aspect-ratio:16/9; border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--line-c); box-shadow: var(--shadow); background: var(--surface); will-change:transform,opacity; }
@@ -343,7 +344,7 @@
     .showcase-dots { display:flex; justify-content:center; gap:8px; margin-top: var(--s-4); }
     .showcase-dots button { width:8px; height:8px; border-radius:50%; background: var(--line-strong); transition: background .2s, transform .2s; }
     .showcase-dots button.active { background: var(--accent); transform:scale(1.35); }
-    @media (max-width:700px) { .cf-stage { width:min(84vw,420px); height:calc(min(84vw,420px) * 9 / 16); } .cf-card { width:min(84vw,420px); } }
+    @media (max-width:700px) { .cf-clip { width:min(84vw,420px); height:calc(min(84vw,420px) * 9 / 16); } .cf-card { width:min(84vw,420px); } }
 
     /* ============================================================ CATEGORIES */
     .categories { padding: var(--s-8) 0; }
@@ -600,8 +601,10 @@
             <button type="button" id="cfNext" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
           </div>
         </div>
-        <div class="cf-stage">
-          <div class="cf-track" id="cfTrack"></div>
+        <div class="cf-clip">
+          <div class="cf-stage">
+            <div class="cf-track" id="cfTrack"></div>
+          </div>
         </div>
         <div class="showcase-caption" id="cfCaption" tabindex="0">
           <span class="sc-name" id="cfName"></span>
