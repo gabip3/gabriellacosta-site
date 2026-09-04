@@ -1036,7 +1036,7 @@
       function endDrag(e) {
         if (!dragging) return;
         dragging = false; track.classList.remove("grabbing");
-        if (moved < 6 && downCard) { window.open(downCard.getAttribute("data-url"), "_blank", "noopener"); }
+        if (moved < 20 && downCard) { window.open(downCard.getAttribute("data-url"), "_blank", "noopener"); }
         else { settle(Math.round(pos)); }
       }
       track.addEventListener("pointerup", endDrag);
