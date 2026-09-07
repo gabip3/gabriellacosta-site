@@ -250,46 +250,94 @@
     /* Card */
     .card { background: var(--surface); border: 1px solid var(--line-c); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 
-    /* ============================================================ INTRO (arcade cabinet) */
-    .intro { position:fixed; inset:0; z-index: var(--z-intro); display:grid; place-items:center; text-align:center; color: var(--ink); overflow:hidden;
-      background: radial-gradient(1000px 700px at 50% 20%, rgba(124,58,255,0.55), transparent 60%), radial-gradient(700px 700px at 85% 90%, rgba(255,60,160,0.4), transparent 60%), #180a3a; }
+    /* ============================================================ FRAME 00 — THE ACT OF ENTERING */
+    .intro { position:fixed; inset:0; z-index: var(--z-intro); display:grid; place-items:center; text-align:center;
+      background: var(--bg); color: var(--text); overflow:hidden; }
     .intro[hidden] { display:none; }
-    .intro.leaving { animation: introLeave 1s var(--ease) forwards; }
-    @keyframes introLeave { to { opacity:0; transform: scale(1.08); filter: blur(10px); visibility:hidden; } }
-    .intro-crt { position:absolute; inset:0; pointer-events:none; opacity:0.25; background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0,0,0,0.5) 3px 4px); }
-    .intro-blob { position:absolute; border-radius:50%; filter: blur(4px); opacity:0.9; animation: floaty 8s var(--ease) infinite; }
-    .stage { position:relative; z-index:3; display:none; width:min(92vw,960px); padding:0 20px; }
-    .stage.active { display:block; animation: stageIn .7s var(--spring) both; }
-    @keyframes stageIn { from { opacity:0; transform: translateY(24px) scale(.98);} to { opacity:1; transform:none; } }
-    @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
 
-    .intro-skip { position:absolute; top:max(20px,env(safe-area-inset-top)); right:22px; z-index:5; font-family: var(--mono); font-weight:700; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--ink); padding:9px 16px; border:2px solid rgba(244,239,250,0.4); border-radius: var(--r-pill); transition: background .2s, border-color .2s; }
-    .intro-skip:hover { background: rgba(244,239,250,0.14); border-color: var(--lime); }
+    /* the mark sits exactly where the hero mark sits, so it survives the cut */
+    .in-mark { position:fixed; top:104px; left:50%; transform:translateX(-50%);
+      font-family: var(--display); font-weight:600; text-transform:uppercase; letter-spacing:0.02em;
+      font-size: clamp(0.8rem, 0.7rem + 0.4vw, 0.95rem); color: var(--text); opacity:0;
+      animation: inFade 1.2s var(--ease) .15s forwards; }
+    @keyframes inFade { to { opacity:.7; } }
 
-    .ps-title { font-family: var(--display); font-weight:800; font-size: clamp(2.4rem,8vw,5.4rem); line-height:1; margin-bottom: var(--s-5); }
+    .stage { position:relative; z-index:3; display:none; width:min(92vw,1100px); padding:0 20px; }
+    .stage.active { display:block; }
+
+    .in-q { font-family: var(--display); font-weight:600; text-transform:uppercase;
+      font-size: clamp(1.9rem, 0.9rem + 4.6vw, 4.6rem); line-height:1.02; letter-spacing:-0.025em;
+      display:grid; gap:.06em; }
+    .in-q span { display:block; opacity:0; transform:translateY(14px); animation: inRise .9s var(--ease) forwards; }
+    .in-q span:nth-child(1) { animation-delay:.5s; }
+    .in-q span:nth-child(2) { animation-delay:.66s; }
+    @keyframes inRise { to { opacity:1; transform:none; } }
+
+    .in-choices { margin-top: clamp(2.6rem, 2rem + 3.4vw, 5rem); display:flex; align-items:baseline;
+      justify-content:center; gap: clamp(1.4rem, 1rem + 2.4vw, 3.4rem);
+      opacity:0; animation: inRise 1s var(--ease) 1.05s forwards; }
+    .in-choice { appearance:none; background:none; border:0; padding:14px 6px; cursor:pointer;
+      font-family: var(--display); font-weight:600; letter-spacing:0.01em;
+      font-size: clamp(1.05rem, 0.85rem + 1.1vw, 1.8rem); color: var(--text-soft);
+      transition: color .45s var(--ease), letter-spacing .55s var(--ease), opacity .45s var(--ease); }
+    .in-choice:hover, .in-choice:focus-visible { color: var(--text); letter-spacing:0.07em; outline:none; }
+    .in-choice:focus-visible { text-decoration: underline; text-underline-offset:8px; text-decoration-thickness:1px; }
+    .intro[data-hover] .in-choice:not(:hover):not(:focus-visible) { opacity:.3; }
+    .in-slash { color: var(--line-strong); font-family: var(--display); font-weight:400;
+      font-size: clamp(1rem, 0.8rem + 1vw, 1.6rem); user-select:none; }
+
+    /* glimpses of what is coming next */
+    .in-ghosts { position:absolute; inset:0; pointer-events:none; z-index:1; }
+    .in-ghost { position:absolute; white-space:nowrap; font-family: var(--display); font-weight:600;
+      text-transform:uppercase; letter-spacing:-0.03em; line-height:1; color: var(--text);
+      opacity:0; filter: blur(7px); transform: translateY(16px);
+      transition: opacity .9s var(--ease), filter .9s var(--ease), transform .9s var(--ease); }
+    .in-ghost.g1 { top:14%;  left:5%;   font-size: clamp(2rem, 1rem + 6.4vw, 6.4rem); }
+    .in-ghost.g2 { top:44%;  right:4%;  font-size: clamp(1.6rem, 1rem + 4.6vw, 4.6rem); transition-delay:.1s; }
+    .in-ghost.g3 { bottom:11%; left:11%; font-size: clamp(1.8rem, 1rem + 5.4vw, 5.4rem); transition-delay:.2s; }
+    .intro[data-hover="pt"] .in-ghost[data-lang="pt"],
+    .intro[data-hover="en"] .in-ghost[data-lang="en"] { opacity:.1; filter:blur(0); transform:none; }
+
+    .intro-skip { position:absolute; bottom:max(24px,env(safe-area-inset-bottom)); right:26px; z-index:5;
+      background:none; border:0; padding:6px; cursor:pointer;
+      font-family: var(--mono); font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+      color: var(--text-soft); opacity:0; animation: inFade 1s var(--ease) 1.6s forwards;
+      transition: color .3s var(--ease); }
+    .intro-skip:hover, .intro-skip:focus-visible { color: var(--text); outline:none; }
+
+    /* the door opening: the picked word leaves, the black stays, the mark hands over */
+    .intro.leaving { background: transparent; pointer-events:none; transition: background .9s var(--ease) .25s; }
+    .intro.leaving .in-q, .intro.leaving .in-slash, .intro.leaving .intro-skip,
+    .intro.leaving .in-ghost { opacity:0 !important; transition: opacity .45s var(--ease); }
+    .intro.leaving .in-choice { opacity:0; transform:translateY(-10px); transition: opacity .4s var(--ease), transform .4s var(--ease); }
+    .intro.leaving .in-choice.is-picked { opacity:1; transform:none; color: var(--text); animation: pickedOut 1s var(--ease) .12s forwards; }
+    @keyframes pickedOut {
+      0%   { opacity:1; transform: translateY(0) scale(1); filter: blur(0); }
+      45%  { opacity:1; transform: translateY(-4px) scale(1.05); }
+      100% { opacity:0; transform: translateY(-26px) scale(1.16); filter: blur(4px); }
+    }
+    .intro.leaving .in-mark { opacity:.7; animation:none; }
+
+    @media (max-width:700px) { .in-mark { top:88px; } }
+
+    /* reduced motion: the composition still holds, it simply arrives already resolved */
+    @media (prefers-reduced-motion: reduce) {
+      .in-mark { opacity:.7; }
+      .in-q span, .in-choices, .intro-skip { opacity:1; transform:none; }
+      .in-mark, .in-q span, .in-choices, .intro-skip { animation:none !important; }
+      .in-ghost { transition:none !important; }
+      .intro.leaving .in-choice.is-picked { animation:none !important; opacity:0; }
+    }
+
     @keyframes bob { 0%,100%{transform: translateY(0)} 50%{transform: translateY(-8px)} }
-
-    .players { display:grid; grid-template-columns:1fr 1fr; gap: var(--s-3); }
-    .player { position:relative; padding: var(--s-4) var(--s-3); border:3px solid var(--ink); border-radius: var(--r-lg); background: rgba(244,239,250,0.06); text-align:left; overflow:hidden; transition: transform .3s var(--spring), background .3s, box-shadow .3s; }
-    .player[data-selectable] { cursor:pointer; }
-    .player[data-selectable]:hover { transform: translateY(-8px) rotate(-1deg); background: rgba(200,255,60,0.12); box-shadow: 10px 10px 0 var(--magenta); }
-    .player .p-avatar { width:64px; height:64px; border-radius:16px; margin: var(--s-2) 0; display:grid; place-items:center; background: linear-gradient(140deg, var(--violet), var(--magenta)); border:2px solid var(--ink); }
-    .player.two .p-avatar { background: linear-gradient(140deg, var(--blue), var(--lime)); }
-    .player .p-avatar svg { width:32px; height:32px; color: var(--ink); }
-    .player .p-name { display:block; font-family: var(--display); font-weight:800; font-size:1.35rem; }
-    .player .p-cta { margin-top: var(--s-3); font-family: var(--mono); font-weight:700; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color: var(--lime); display:inline-flex; align-items:center; gap:8px; }
-
-    .lang-btn { text-align:center; display:flex; flex-direction:column; align-items:center; padding: var(--s-5) var(--s-3); }
-    .lang-btn .p-avatar { width:56px; height:44px; border-radius:10px; overflow:hidden; }
-    .lang-btn .p-avatar svg { width:100%; height:100%; }
-    .lang-btn .p-name { font-size:1.5rem; margin-top: var(--s-2); }
-    .lang-btn .p-cta { margin-top: var(--s-2); }
 
     .check { width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background: var(--lime); color: var(--cream); flex:none; border:2px solid var(--ink); }
     .check svg { width:15px; height:15px; }
 
     /* ============================================================ HEADER */
-    .site-header { position:fixed; top:0; left:0; right:0; z-index: var(--z-header); display:flex; align-items:center; justify-content:space-between; padding:16px clamp(16px,4vw,36px); transition: transform .35s var(--ease); }
+    .site-header { position:fixed; top:0; left:0; right:0; z-index: var(--z-header); display:flex; align-items:center; justify-content:space-between; padding:16px clamp(16px,4vw,36px); transition: transform .35s var(--ease), opacity .9s var(--ease); }
+    /* the chrome stays out of the way until the opening sequence has resolved */
+    body.seq-on .site-header, body.seq-on .whatsapp-fab, body.seq-on .hosp-cross { opacity:0; pointer-events:none; }
     .site-header .bar { display:flex; align-items:center; justify-content:space-between; width:100%; padding:10px 12px 10px 18px; border:1px solid var(--line-c); border-radius: var(--r-pill); background: color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); }
     .site-header.hide { transform: translateY(-140%); }
     .brand { display:flex; align-items:center; gap:12px; font-family: var(--display); font-weight:700; font-size:1.05rem; }
@@ -304,101 +352,118 @@
     .lang-pill { font-family: var(--mono); font-weight:700; font-size:0.68rem; letter-spacing:0.08em; padding:8px 12px; color: var(--text-soft); transition: background .2s, color .2s; }
     .lang-pill.active { background: var(--text); color: var(--bg); }
 
-    /* ============================================================ HERO — opening sequence */
+    /* ============================================================ FRAME 01 — THE OPENING */
     .hero.ho { position:relative; min-height:100svh; height:100svh; display:flex; align-items:center; justify-content:center; padding:0; overflow:hidden; }
-    .ho-stage { position:relative; width:100%; max-width:var(--maxw); padding:0 var(--s-3); display:grid; place-items:center; text-align:center; transform: translate(calc(var(--mx, 0) * 10px), calc(var(--my, 0) * 6px)); transition: transform .3s var(--ease); }
-    .ho-stage > * { grid-area:1/1; }
 
+    /* the name: carried in from Frame 00, it becomes the title card at the end */
     .ho-mark {
-      font-family: var(--display); font-weight:600; letter-spacing:0.02em; text-transform:uppercase;
-      font-size: clamp(1.4rem, 1rem + 2.6vw, 2.6rem);
-      position:fixed; left:50%; top:50%; z-index:5;
-      opacity:0; transform: translate(-50%,-50%) scale(.94);
-      transition: opacity .8s var(--ease), transform .8s var(--ease), top .8s var(--ease), font-size .9s var(--ease);
-      will-change: transform;
+      position:absolute; left:50%; top:104px; z-index:6;
+      font-family: var(--display); font-weight:600; text-transform:uppercase; letter-spacing:0.02em;
+      font-size: clamp(0.8rem, 0.7rem + 0.4vw, 0.95rem); color: var(--text); opacity:.7;
+      transform: translateX(-50%);
+      transition: top 1.1s var(--ease), font-size 1.1s var(--ease), letter-spacing 1.1s var(--ease),
+                  opacity .8s var(--ease), transform 1.1s var(--ease);
     }
 
-    .ho-statement {
-      font-family: var(--display); font-weight:600; line-height:1.04; letter-spacing:-0.02em; text-transform:uppercase;
-      font-size: var(--fs-h1); max-width:18ch;
-      opacity:0; transform: translateY(18px);
-      transition: opacity .8s var(--ease) .05s, transform .8s var(--ease) .05s;
-      pointer-events:none;
-    }
-    .ho-trigger { position:relative; display:inline-grid; vertical-align:top; text-align:left; }
-    .ho-trigger .ho-word { grid-area:1/1; opacity:0; white-space:nowrap; }
-    .ho-word.is-active { opacity:1; }
+    .ho-stage { position:relative; z-index:3; width:100%; max-width:var(--maxw); padding:0 var(--s-3); text-align:center;
+      transform: translate(calc(var(--mx, 0) * 8px), calc(var(--my, 0) * 5px)); transition: transform .5s var(--ease); }
 
-    .ho-w0.is-active { animation: hoFadeIn .7s var(--ease) forwards; }
-    .ho-w0.is-prev    { animation: hoFragmentOut .65s var(--ease) forwards; }
-    .ho-w1.is-active  { animation: hoCurtainIn .7s var(--ease) forwards; }
-    .ho-w1.is-prev    { animation: hoSlideUpOut .5s var(--ease) forwards; }
-    .ho-w2.is-active  { animation: hoScaleBlurIn .75s var(--ease) forwards; }
-    .ho-w2.is-prev    { animation: hoScaleOut .5s var(--ease) forwards; }
-    .ho-w3.is-active  { animation: hoSkewIn .7s var(--ease) forwards; }
-    .ho-w3.is-prev    { animation: hoFadeOut .5s var(--ease) forwards; }
+    .ho-statement { font-family: var(--display); font-weight:600; text-transform:uppercase;
+      font-size: var(--fs-h1); line-height:1.02; letter-spacing:-0.025em;
+      display:grid; justify-items:center; gap:.02em; }
+    .ho-statement .ho-l1, .ho-statement .ho-l2 { display:block; opacity:0; transform:translateY(22px);
+      transition: opacity .9s var(--ease), transform 1s var(--ease); }
+    .ho-statement .ho-l2 { position:relative; display:inline-grid; }
+    .ho-l2 .ho-w { grid-area:1/1; white-space:nowrap; }
+    .ho-l2 .ho-w1 { opacity:0; clip-path: inset(0 100% 0 0); }
+    .ho-cut { position:absolute; left:-4%; top:50%; width:108%; height:2px; background: var(--text);
+      transform-origin:left center; transform: scaleX(0); opacity:0; }
 
-    @keyframes hoFadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes hoFadeOut { from { opacity:1; } to { opacity:0; } }
-    @keyframes hoFragmentOut {
-      0%   { opacity:1; transform:scale(1) translateY(0); text-shadow: 0 0 0 rgba(244,239,250,0); filter: blur(0); }
-      45%  { opacity:1; transform:scale(1.06) translateY(-2px); text-shadow: -16px -8px 0 rgba(244,239,250,.32), 16px 8px 0 rgba(244,239,250,.22); }
-      100% { opacity:0; transform:scale(1.22) translateY(-16px); text-shadow: -46px -22px 0 rgba(244,239,250,0), 46px 22px 0 rgba(244,239,250,0); filter: blur(2px); }
-    }
-    @keyframes hoCurtainIn { from { opacity:0; clip-path: inset(0 0 100% 0); } to { opacity:1; clip-path: inset(0 0 0% 0); } }
-    @keyframes hoSlideUpOut { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-22px); } }
-    @keyframes hoScaleBlurIn { from { opacity:0; transform:scale(.55); filter:blur(7px); } to { opacity:1; transform:scale(1); filter:blur(0); } }
-    @keyframes hoScaleOut { from { opacity:1; transform:scale(1); } to { opacity:0; transform:scale(.7); } }
-    @keyframes hoSkewIn { from { opacity:0; transform:translateX(48px) skewX(-10deg); } to { opacity:1; transform:translateX(0) skewX(0deg); } }
+    .ho-aside { margin-top: clamp(2.6rem, 2rem + 3.4vw, 5rem); font-family: var(--script);
+      font-size: clamp(1.3rem, 1rem + 1.5vw, 2rem); color: var(--text-soft);
+      opacity:0; transform: translateY(10px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease); }
 
-    .ho-aside {
-      grid-row:2; margin-top: clamp(3.4rem, 2.4rem + 4.2vw, 6.2rem);
-      font-family: var(--script); font-size: clamp(1.3rem, 1rem + 1.4vw, 1.9rem); color: var(--text-soft);
-      opacity:0; transform: translateY(8px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
-    }
+    /* full-bleed scenes: the composition escapes the grid */
+    .ho-scene { position:absolute; inset:0; z-index:4; display:grid; place-items:center; pointer-events:none;
+      opacity:0; transition: opacity .28s var(--ease); }
+    .ho-scene span { display:block; font-family: var(--display); font-weight:600; text-transform:uppercase;
+      line-height:.82; white-space:nowrap; will-change: transform; }
+    .sc-worlds span { font-size: clamp(8rem, 40vw, 34rem); letter-spacing:-0.04em; }
+    .sc-exp span    { font-size: clamp(6rem, 27vw, 24rem); letter-spacing:-0.04em; }
 
-    .ho-final { display:grid; gap: var(--s-3); place-items:center; opacity:0; transform: translateY(14px); pointer-events:none; transition: opacity .9s var(--ease), transform .9s var(--ease); }
-    .ho-final-mark { font-family: var(--display); font-weight:600; letter-spacing:0.02em; text-transform:uppercase; font-size: clamp(1.8rem, 1.2rem + 3.4vw, 3.4rem); }
-    .ho-final-tag { font-family: var(--body); font-size: var(--fs-lead); color: var(--text-soft); }
-    .ho-final .hero-actions { display:flex; flex-wrap:wrap; gap: var(--s-2); align-items:center; justify-content:center; margin-top: var(--s-2); }
+    /* title card */
+    .ho-title { position:absolute; left:50%; top:calc(50% + clamp(28px, 4vh, 46px)); transform:translateX(-50%);
+      z-index:6; text-align:center; opacity:0; transition: opacity 1s var(--ease) .35s; }
+    .ho-title-role { font-family: var(--mono); font-size: clamp(0.62rem, 0.56rem + 0.24vw, 0.74rem);
+      letter-spacing:0.26em; text-transform:uppercase; color: var(--text-soft); }
 
-    /* ---- stage choreography ---- */
-    .ho[data-stage="mark"] .ho-mark { opacity:1; top:50%; transform: translate(-50%,-50%) scale(1); }
+    .ho-scroll { position:absolute; z-index:6; bottom:max(28px, env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%);
+      display:grid; justify-items:center; gap:10px; background:none; border:0; padding:8px 10px; cursor:pointer;
+      font-family: var(--mono); font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase;
+      color: var(--text-soft); opacity:0; transition: opacity 1s var(--ease) .8s, color .3s var(--ease); }
+    .ho-scroll:hover, .ho-scroll:focus-visible { color: var(--text); outline:none; }
+    .ho-scroll i { display:block; width:1px; height:34px; background: linear-gradient(to bottom, var(--line-strong), transparent); }
 
-    .ho[data-stage="statement"] .ho-mark,
-    .ho[data-stage="aside"] .ho-mark,
-    .ho[data-stage="cycle"] .ho-mark {
-      opacity:.7; font-size: clamp(0.8rem, 0.7rem + 0.4vw, 0.95rem);
-      top:104px; transform: translate(-50%,0) scale(1);
-    }
-    .ho[data-stage="statement"] .ho-statement,
-    .ho[data-stage="aside"] .ho-statement,
-    .ho[data-stage="cycle"] .ho-statement { opacity:1; transform: translateY(0); pointer-events:auto; }
+    /* ---------- choreography ---------- */
+    /* hold: only the name, inherited from Frame 00 */
+    .ho[data-stage="statement"] .ho-l1,
+    .ho[data-stage="aside"] .ho-l1, .ho[data-stage="aside"] .ho-l2,
+    .ho[data-stage="stories"] .ho-l1, .ho[data-stage="stories"] .ho-l2,
+    .ho[data-stage="statement"] .ho-l2 { opacity:1; transform:none; }
+    .ho[data-stage="statement"] .ho-l2 { transition-delay:.12s; }
 
     .ho[data-stage="aside"] .ho-aside,
-    .ho[data-stage="cycle"] .ho-aside { opacity:1; transform: translateY(0); }
+    .ho[data-stage="stories"] .ho-aside { opacity:1; transform:none; }
 
-    .ho[data-stage="final"] .ho-mark { opacity:0; top:104px; transform: translate(-50%,0) scale(.9); }
-    .ho[data-stage="final"] .ho-final { opacity:1; transform: translateY(0); pointer-events:auto; }
+    /* STORIES — it cuts into the sentence and takes its place */
+    .ho[data-stage="stories"] .ho-w0 { animation: wOut .8s var(--ease) forwards; }
+    .ho[data-stage="stories"] .ho-w1 { animation: wIn .9s var(--ease) .16s forwards; }
+    .ho[data-stage="stories"] .ho-cut { animation: cut .9s var(--ease) forwards; }
+    @keyframes wOut { to { opacity:.12; clip-path: inset(0 0 0 100%); } }
+    @keyframes wIn  { from { opacity:0; clip-path: inset(0 100% 0 0); letter-spacing:.04em; }
+                      to   { opacity:1; clip-path: inset(0 0 0 0); letter-spacing:-0.025em; } }
+    @keyframes cut  { 0% { transform:scaleX(0); opacity:0; }
+                      35% { transform:scaleX(1); opacity:1; }
+                      100% { transform:scaleX(1); opacity:0; transform-origin:right center; } }
 
-    .ho-scroll { position:absolute; bottom:26px; left:50%; margin:0; opacity:0; transition: opacity .7s var(--ease) .2s; background:none; border:0; cursor:pointer; font:inherit; color:inherit; }
-    .ho[data-stage="final"] .ho-scroll { opacity:1; }
+    /* the statement dissolves as the scenes take over */
+    .ho[data-stage="worlds"] .ho-stage,
+    .ho[data-stage="experiences"] .ho-stage,
+    .ho[data-stage="title"] .ho-stage { opacity:0; transition: opacity .8s var(--ease); }
+
+    /* WORLDS — bigger than the browser; we travel through it */
+    .ho[data-stage="worlds"] .sc-worlds { opacity:1; transition: opacity .5s var(--ease) .24s; }
+    .ho[data-stage="worlds"] .sc-worlds span { animation: worldsDrift 2.6s linear forwards; }
+    @keyframes worldsDrift { from { transform: translateX(13%) scale(1.04); } to { transform: translateX(-13%) scale(1.14); } }
+
+    /* EXPERIENCES — the payoff: felt before it is read */
+    .ho[data-stage="experiences"] .sc-exp { opacity:1; transition: opacity .5s var(--ease) .24s; }
+    .ho[data-stage="experiences"] .sc-exp span { animation: expIn 2.3s var(--ease) forwards; }
+    @keyframes expIn { 0% { transform: scale(2.5); } 100% { transform: scale(1); } }
+
+    /* title card: the name comes back to the centre, small */
+    .ho[data-stage="title"] .ho-mark { top:50%; transform: translate(-50%,-50%);
+      font-size: clamp(1rem, 0.85rem + 0.7vw, 1.35rem); letter-spacing:0.16em; opacity:1; }
+    .ho[data-stage="title"] .ho-title { opacity:1; }
+    .ho[data-stage="title"] .ho-scroll { opacity:1; }
 
     @media (max-width:700px) {
-      .ho-statement { font-size: clamp(2.1rem, 1.6rem + 5vw, 2.8rem); max-width:13ch; }
-      .ho[data-stage="statement"] .ho-mark,
-      .ho[data-stage="aside"] .ho-mark,
-      .ho[data-stage="cycle"] .ho-mark { top:88px; transform: translate(-50%,0) scale(1); }
-      .ho-aside { margin-top: clamp(2.4rem, 1.8rem + 3vw, 3.6rem); }
-      .ho[data-stage="statement"] .ho-stage,
-      .ho[data-stage="aside"] .ho-stage,
-      .ho[data-stage="cycle"] .ho-stage { margin-top:-16vh; }
-      .ho[data-stage="final"] .ho-final { margin-top:-8vh; }
+      .ho-mark { top:88px; }
+      .ho-statement { font-size: clamp(2.2rem, 1.5rem + 6vw, 3.2rem); }
+      .ho-stage { transform:none; }
+      .ho-aside { margin-top: clamp(2rem, 1.6rem + 2.4vw, 3rem); }
+      .sc-worlds span { font-size: 46vw; }
+      .sc-exp span { font-size: 34vw; }
+      @keyframes worldsDrift { from { transform: translateX(20%) scale(1.02); } to { transform: translateX(-20%) scale(1.1); } }
+      @keyframes expIn { 0% { transform: scale(2.1); } 100% { transform: scale(1); } }
+      .ho[data-stage="title"] .ho-mark { letter-spacing:0.12em; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ho-mark, .ho-statement, .ho-aside, .ho-final, .ho-scroll, .ho-word { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+      .ho-mark, .ho-stage, .ho-statement .ho-l1, .ho-statement .ho-l2, .ho-aside, .ho-scene, .ho-title, .ho-scroll
+        { transition-duration:.01ms !important; }
+      .ho-scene span, .ho-l2 .ho-w, .ho-cut { animation:none !important; }
     }
 
     .hero-actions { display:flex; flex-wrap:wrap; gap: var(--s-2); align-items:center; }
@@ -607,31 +672,28 @@
   </a>
 
   <!-- ========================================================= INTRO -->
-  <div class="intro" id="intro" role="dialog" aria-label="Interactive intro" aria-modal="true">
-    <div class="intro-crt" aria-hidden="true"></div>
-    <span class="intro-blob" style="width:120px;height:120px;background:var(--magenta);top:14%;left:12%;" aria-hidden="true"></span>
-    <span class="intro-blob" style="width:80px;height:80px;background:var(--lime);top:70%;left:82%;animation-delay:1.5s;" aria-hidden="true"></span>
-    <span class="intro-blob" style="width:60px;height:60px;background:var(--blue);top:22%;left:80%;animation-delay:.8s;" aria-hidden="true"></span>
-    <button class="intro-skip" id="introSkip" type="button" data-i18n="skipIntro">Skip intro →</button>
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introQ">
+    <p class="in-mark">Gabriella Costa</p>
 
-    <!-- Stage 0: Language pick -->
+    <div class="in-ghosts" aria-hidden="true">
+      <span class="in-ghost g1" data-lang="pt">Histórias</span>
+      <span class="in-ghost g2" data-lang="pt">Mundos</span>
+      <span class="in-ghost g3" data-lang="pt">Experiências</span>
+      <span class="in-ghost g1" data-lang="en">Stories</span>
+      <span class="in-ghost g2" data-lang="en">Worlds</span>
+      <span class="in-ghost g3" data-lang="en">Experiences</span>
+    </div>
+
     <div class="stage" id="stageLang">
-      <p class="coin" style="animation:none">Select your language · Escolha seu idioma</p>
-      <h2 class="ps-title" style="font-size:clamp(1.8rem,6vw,3rem)">Choose your language<br/>Escolha seu idioma</h2>
-      <div class="players lang-players">
-        <button class="player lang-btn" id="langEn" data-selectable type="button" aria-label="Continue in English">
-          <span class="p-avatar" aria-hidden="true"><svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#B22234"/><rect y="1.23" width="24" height="1.23" fill="#fff"/><rect y="3.69" width="24" height="1.23" fill="#fff"/><rect y="6.15" width="24" height="1.23" fill="#fff"/><rect y="8.62" width="24" height="1.23" fill="#fff"/><rect y="11.08" width="24" height="1.23" fill="#fff"/><rect y="13.54" width="24" height="1.23" fill="#fff"/><rect width="10.3" height="8.62" fill="#3C3B6E"/></svg></span>
-          <span class="p-name">English</span>
-          <span class="p-cta">Continue <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </button>
-        <button class="player lang-btn two" id="langPt" data-selectable type="button" aria-label="Continuar em Português">
-          <span class="p-avatar" aria-hidden="true"><svg viewBox="0 0 24 16"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.5 22 8l-10 5.5L2 8z" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg></span>
-          <span class="p-name">Português</span>
-          <span class="p-cta">Continuar <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </button>
+      <h1 class="in-q" id="introQ"><span>How do you want</span><span>to enter?</span></h1>
+      <div class="in-choices">
+        <button class="in-choice" id="langPt" type="button" lang="pt-BR" data-lang="pt">Português</button>
+        <span class="in-slash" aria-hidden="true">/</span>
+        <button class="in-choice" id="langEn" type="button" lang="en" data-lang="en">English</button>
       </div>
     </div>
 
+    <button class="intro-skip" id="introSkip" type="button">Skip</button>
   </div>
 
   <!-- ========================================================= HEADER -->
@@ -668,38 +730,32 @@
   <main id="main">
     <span id="top"></span>
 
-    <!-- HERO -->
-    <section class="hero ho" id="hero" aria-labelledby="hero-h1" data-stage="mark">
-      <p class="ho-mark" id="hoMark" data-i18n="heroMark">GABRIELLA COSTA</p>
+    <!-- FRAME 01 -->
+    <section class="hero ho" id="hero" aria-labelledby="hero-h1" data-stage="hold">
+      <p class="ho-mark" id="hoMark">Gabriella Costa</p>
 
       <div class="ho-stage" id="hoStage">
         <h1 id="hero-h1" class="ho-statement">
-          <span data-i18n="heroLeadIn">I design</span>
-          <span class="ho-trigger" id="hoTrigger">
-            <span class="ho-word ho-w0 is-active" data-i18n="heroWord0">websites.</span>
-            <span class="ho-word ho-w1" data-i18n="heroWord1">stories.</span>
-            <span class="ho-word ho-w2" data-i18n="heroWord2">worlds.</span>
-            <span class="ho-word ho-w3" data-i18n="heroWord3">experiences.</span>
+          <span class="ho-l1" data-i18n="heroLeadIn">I design</span>
+          <span class="ho-l2">
+            <span class="ho-w ho-w0" data-i18n="heroWord0">websites.</span>
+            <span class="ho-w ho-w1" aria-hidden="true" data-i18n="heroWord1">stories.</span>
+            <i class="ho-cut" aria-hidden="true"></i>
           </span>
         </h1>
-
-        <p class="ho-aside" id="hoAside" data-i18n="heroAside">and sometimes&hellip;</p>
-
-        <div class="ho-final" id="hoFinal">
-          <p class="ho-final-mark" data-i18n="heroMark">GABRIELLA COSTA</p>
-          <p class="ho-final-tag" data-i18n="heroTag">Designer &amp; Creative Technologist</p>
-          <div class="hero-actions">
-            <a class="btn" href="#categories" data-magnetic><span data-i18n="ctaExplore">See what I build</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
-            </a>
-            <a class="btn paper" href="website-design.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
-          </div>
-        </div>
+        <p class="ho-aside" data-i18n="heroAside">and sometimes&hellip;</p>
       </div>
 
-      <button type="button" class="scroll-cue ho-scroll" id="hoScroll" aria-label="Scroll to see more">
-        <span class="hud" data-i18n="heroScroll">Scroll</span>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 4v16M6 14l6 6 6-6"/></svg></span>
+      <div class="ho-scene sc-worlds" aria-hidden="true"><span data-i18n="heroWord2">worlds.</span></div>
+      <div class="ho-scene sc-exp" aria-hidden="true"><span data-i18n="heroWord3">experiences.</span></div>
+
+      <div class="ho-title" id="hoTitle">
+        <p class="ho-title-role" data-i18n="heroRole">Designer / Creative Technologist</p>
+      </div>
+
+      <button type="button" class="ho-scroll" id="hoScroll">
+        <i aria-hidden="true"></i>
+        <span data-i18n="heroScroll">Scroll to enter</span>
       </button>
     </section>
 
@@ -923,7 +979,7 @@
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         heroMark: "Gabriella Costa", heroLeadIn: "I design", heroWord0: "websites.", heroWord1: "stories.", heroWord2: "worlds.", heroWord3: "experiences.",
-        heroAside: "and sometimes…", heroTag: "Designer & Creative Technologist", heroScroll: "Scroll",
+        heroAside: "and sometimes…", heroRole: "Designer / Creative Technologist", heroScroll: "Scroll to enter",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
         showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>", showcaseVisit: "Visit live site",
         showcaseCats: { providentia: "Life insurance & financial planning · Brazilians in the US", ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID", roberta: "Brazilian actress · Personal brand", georgia: "Plaster & tile · Georgia, USA", revive: "Home remodeling · Atlanta", espanhol: "Spanish lessons · Online", michelle: "Aesthetic clinic · Goiânia, Brazil", totallux: "Epoxy flooring · Atlanta" },
@@ -960,7 +1016,7 @@
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         heroMark: "Gabriella Costa", heroLeadIn: "Eu crio", heroWord0: "sites.", heroWord1: "histórias.", heroWord2: "mundos.", heroWord3: "experiências.",
-        heroAside: "e às vezes…", heroTag: "Designer & Tecnóloga Criativa", heroScroll: "Role",
+        heroAside: "e às vezes…", heroRole: "Designer / Tecnóloga Criativa", heroScroll: "Role para entrar",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
         showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>", showcaseVisit: "Ver site no ar",
         showcaseCats: { providentia: "Seguro de vida e planejamento financeiro · Brasileiros nos EUA", ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID", roberta: "Atriz brasileira · Marca pessoal", georgia: "Reboco e azulejos · Geórgia, EUA", revive: "Reforma residencial · Atlanta", espanhol: "Aulas de espanhol · Online", michelle: "Estética facial e corporal · Goiânia", totallux: "Piso epóxi · Atlanta" },
@@ -1249,49 +1305,70 @@
       if (instant) { intro.hidden = true; return; }
       intro.classList.add("leaving"); setTimeout(function () { intro.hidden = true; }, 1000);
     }
-    if (seen || reduce) { endIntro(true); } else { lock(true); runIntro(); }
+    /* reduced motion removes the movement, never the choice */
+    if (seen) { endIntro(true); } else { lock(true); runIntro(); }
     document.getElementById("introSkip").addEventListener("click", function () { endIntro(false); });
     document.addEventListener("keydown", function (e) { if (!intro.hidden && e.key === "Escape") endIntro(false); });
     function showStage(id) { $$(".stage", intro).forEach(function (s) { s.classList.remove("active"); }); var s = document.getElementById(id); if (s) s.classList.add("active"); }
 
-    /* HERO OPENING SEQUENCE (Frame 01) */
+    /* ============================================================ FRAME 01 — typographic choreography */
     var heroOpenStarted = false;
+    var SEQ_SEEN = "gc_seq_v1";
     function startHeroOpen() {
       if (heroOpenStarted) return;
       heroOpenStarted = true;
+
       var hero = document.getElementById("hero");
       if (!hero) return;
 
-      if (reduce) { hero.setAttribute("data-stage", "final"); return; }
-
-      var words = [
-        hero.querySelector(".ho-w0"),
-        hero.querySelector(".ho-w1"),
-        hero.querySelector(".ho-w2"),
-        hero.querySelector(".ho-w3")
-      ];
-      var cur = 0;
-
-      function swapWord(nextIndex) {
-        var outgoing = words[cur], incoming = words[nextIndex];
-        if (outgoing) { outgoing.classList.remove("is-active"); outgoing.classList.add("is-prev"); }
-        if (incoming) { incoming.classList.remove("is-prev"); incoming.classList.add("is-active"); }
-        cur = nextIndex;
+      function settle() {
+        hero.setAttribute("data-stage", "title");
+        document.body.classList.remove("seq-on");
+        try { sessionStorage.setItem(SEQ_SEEN, "1"); } catch (e) {}
       }
 
-      var t = 0;
-      function at(ms, fn) { setTimeout(fn, ms); }
+      var alreadySeen = false;
+      try { alreadySeen = sessionStorage.getItem(SEQ_SEEN) === "1"; } catch (e) {}
+      if (reduce || alreadySeen) { settle(); return; }
+      document.body.classList.add("seq-on");
 
-      hero.setAttribute("data-stage", "mark");
-      at(t += 900, function () { hero.setAttribute("data-stage", "statement"); });
-      at(t += 1150, function () { hero.setAttribute("data-stage", "aside"); });
-      at(t += 700, function () { hero.setAttribute("data-stage", "cycle"); swapWord(1); });
-      at(t += 850, function () { swapWord(2); });
-      at(t += 850, function () { swapWord(3); });
-      at(t += 950, function () { hero.setAttribute("data-stage", "final"); });
+      /* rhythm: motion, then stillness. every value is a hold, not a duration. */
+      var score = [
+        [700,  "statement"],    /* the confident claim, left alone to breathe */
+        [2300, "aside"],        /* and sometimes... */
+        [3300, "stories"],      /* the first crack in the grid */
+        [4800, "worlds"],       /* bigger than the browser */
+        [6700, "experiences"],  /* the payoff */
+        [8800, "title"]         /* the name, small, after everything was enormous */
+      ];
+
+      var timers = score.map(function (cue) {
+        return setTimeout(function () {
+          if (cue[1] === "title") settle(); else hero.setAttribute("data-stage", cue[1]);
+        }, cue[0]);
+      });
+
+      /* the visitor is never trapped inside the sequence */
+      function skip() {
+        timers.forEach(clearTimeout);
+        settle();
+        remove();
+      }
+      function onKey(e) { if (e.key === "Escape" || e.key === " " || e.key === "Enter") skip(); }
+      function remove() {
+        window.removeEventListener("wheel", skip);
+        window.removeEventListener("touchmove", skip);
+        document.removeEventListener("keydown", onKey);
+        hero.removeEventListener("click", skip);
+      }
+      window.addEventListener("wheel", skip, { passive: true, once: true });
+      window.addEventListener("touchmove", skip, { passive: true, once: true });
+      document.addEventListener("keydown", onKey);
+      hero.addEventListener("click", skip);
+      setTimeout(remove, 9200);
     }
 
-    /* HERO — subtle mouse parallax */
+    /* HERO — a whisper of parallax, never a cursor playground */
     (function () {
       var hero = document.getElementById("hero");
       if (!hero || reduce) return;
@@ -1302,18 +1379,16 @@
         hero.style.setProperty("--my", my.toFixed(3));
       }
       hero.addEventListener("pointermove", function (e) {
+        if (e.pointerType !== "mouse") return;
         var r = hero.getBoundingClientRect();
         mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
         my = ((e.clientY - r.top) / r.height - 0.5) * 2;
         if (!raf) raf = requestAnimationFrame(apply);
       });
-      hero.addEventListener("pointerleave", function () {
-        mx = 0; my = 0;
-        if (!raf) raf = requestAnimationFrame(apply);
-      });
+      hero.addEventListener("pointerleave", function () { mx = 0; my = 0; if (!raf) raf = requestAnimationFrame(apply); });
     })();
 
-    /* HERO — soft fade as the visitor scrolls into the next scene */
+    /* HERO — dissolve into the next scene on scroll */
     (function () {
       var hero = document.getElementById("hero");
       if (!hero || reduce) return;
@@ -1323,23 +1398,43 @@
         var h = hero.offsetHeight || 1;
         var p = Math.max(0, Math.min(1, window.scrollY / h));
         hero.style.opacity = String(1 - p * 0.9);
-        hero.style.transform = "scale(" + (1 - p * 0.06) + ")";
+        hero.style.transform = "scale(" + (1 - p * 0.05) + ")";
       }
       window.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(onScroll); }, { passive: true });
     })();
 
+    var scrollCue = document.getElementById("hoScroll");
+    if (scrollCue) {
+      scrollCue.addEventListener("click", function () {
+        var next = document.getElementById("showcase");
+        if (next) next.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      });
+    }
+
+    /* ============================================================ FRAME 00 — the act of entering */
     function runIntro() {
       showStage("stageLang");
-      function pickLang(lang) {
+      var choices = $$(".in-choice", intro);
+
+      function hover(lang) { if (lang) intro.setAttribute("data-hover", lang); else intro.removeAttribute("data-hover"); }
+
+      function pick(btn) {
+        var lang = btn.getAttribute("data-lang");
         saveLang(lang); applyLang(lang);
-        document.getElementById("langEn").removeEventListener("click", onEn);
-        document.getElementById("langPt").removeEventListener("click", onPt);
+        choices.forEach(function (b) { b.classList.toggle("is-picked", b === btn); b.disabled = true; });
+        hover(null);
         endIntro(false);
       }
-      function onEn() { pickLang("en"); }
-      function onPt() { pickLang("pt"); }
-      document.getElementById("langEn").addEventListener("click", onEn);
-      document.getElementById("langPt").addEventListener("click", onPt);
+
+      try { choices[0].focus({ preventScroll: true }); } catch (e) {}
+
+      choices.forEach(function (btn) {
+        btn.addEventListener("mouseenter", function () { hover(btn.getAttribute("data-lang")); });
+        btn.addEventListener("mouseleave", function () { hover(null); });
+        btn.addEventListener("focus", function () { hover(btn.getAttribute("data-lang")); });
+        btn.addEventListener("blur", function () { hover(null); });
+        btn.addEventListener("click", function () { pick(btn); });
+      });
     }
 
     /* LANGUAGE TOGGLE (header, always available) */
