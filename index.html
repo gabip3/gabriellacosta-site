@@ -304,11 +304,103 @@
     .lang-pill { font-family: var(--mono); font-weight:700; font-size:0.68rem; letter-spacing:0.08em; padding:8px 12px; color: var(--text-soft); transition: background .2s, color .2s; }
     .lang-pill.active { background: var(--text); color: var(--bg); }
 
-    /* ============================================================ HERO */
-    .hero { position:relative; min-height: 100svh; display:flex; align-items:center; padding: var(--s-9) 0 var(--s-6); }
-    .hero h1 { font-family: var(--display); font-weight:600; font-size: var(--fs-h1); line-height:1.05; letter-spacing:-0.03em; max-width:16ch; }
-    .hero h1 .clk, .hero h1 .cli { font-family: var(--script); font-weight:600; font-size:1.1em; letter-spacing:normal; color: var(--accent); }
-    .hero-lead { font-size: var(--fs-lead); color: var(--text-soft); max-width:46ch; margin: var(--s-4) 0 var(--s-5); }
+    /* ============================================================ HERO — opening sequence */
+    .hero.ho { position:relative; min-height:100svh; height:100svh; display:flex; align-items:center; justify-content:center; padding:0; overflow:hidden; }
+    .ho-stage { position:relative; width:100%; max-width:var(--maxw); padding:0 var(--s-3); display:grid; place-items:center; text-align:center; transform: translate(calc(var(--mx, 0) * 10px), calc(var(--my, 0) * 6px)); transition: transform .3s var(--ease); }
+    .ho-stage > * { grid-area:1/1; }
+
+    .ho-mark {
+      font-family: var(--display); font-weight:600; letter-spacing:0.02em; text-transform:uppercase;
+      font-size: clamp(1.4rem, 1rem + 2.6vw, 2.6rem);
+      position:fixed; left:50%; top:50%; z-index:5;
+      opacity:0; transform: translate(-50%,-50%) scale(.94);
+      transition: opacity .8s var(--ease), transform .8s var(--ease), top .8s var(--ease), font-size .9s var(--ease);
+      will-change: transform;
+    }
+
+    .ho-statement {
+      font-family: var(--display); font-weight:600; line-height:1.04; letter-spacing:-0.02em; text-transform:uppercase;
+      font-size: var(--fs-h1); max-width:18ch;
+      opacity:0; transform: translateY(18px);
+      transition: opacity .8s var(--ease) .05s, transform .8s var(--ease) .05s;
+      pointer-events:none;
+    }
+    .ho-trigger { position:relative; display:inline-grid; vertical-align:top; text-align:left; }
+    .ho-trigger .ho-word { grid-area:1/1; opacity:0; white-space:nowrap; }
+    .ho-word.is-active { opacity:1; }
+
+    .ho-w0.is-active { animation: hoFadeIn .7s var(--ease) forwards; }
+    .ho-w0.is-prev    { animation: hoFragmentOut .65s var(--ease) forwards; }
+    .ho-w1.is-active  { animation: hoCurtainIn .7s var(--ease) forwards; }
+    .ho-w1.is-prev    { animation: hoSlideUpOut .5s var(--ease) forwards; }
+    .ho-w2.is-active  { animation: hoScaleBlurIn .75s var(--ease) forwards; }
+    .ho-w2.is-prev    { animation: hoScaleOut .5s var(--ease) forwards; }
+    .ho-w3.is-active  { animation: hoSkewIn .7s var(--ease) forwards; }
+    .ho-w3.is-prev    { animation: hoFadeOut .5s var(--ease) forwards; }
+
+    @keyframes hoFadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes hoFadeOut { from { opacity:1; } to { opacity:0; } }
+    @keyframes hoFragmentOut {
+      0%   { opacity:1; transform:scale(1) translateY(0); text-shadow: 0 0 0 rgba(244,239,250,0); filter: blur(0); }
+      45%  { opacity:1; transform:scale(1.06) translateY(-2px); text-shadow: -16px -8px 0 rgba(244,239,250,.32), 16px 8px 0 rgba(244,239,250,.22); }
+      100% { opacity:0; transform:scale(1.22) translateY(-16px); text-shadow: -46px -22px 0 rgba(244,239,250,0), 46px 22px 0 rgba(244,239,250,0); filter: blur(2px); }
+    }
+    @keyframes hoCurtainIn { from { opacity:0; clip-path: inset(0 0 100% 0); } to { opacity:1; clip-path: inset(0 0 0% 0); } }
+    @keyframes hoSlideUpOut { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-22px); } }
+    @keyframes hoScaleBlurIn { from { opacity:0; transform:scale(.55); filter:blur(7px); } to { opacity:1; transform:scale(1); filter:blur(0); } }
+    @keyframes hoScaleOut { from { opacity:1; transform:scale(1); } to { opacity:0; transform:scale(.7); } }
+    @keyframes hoSkewIn { from { opacity:0; transform:translateX(48px) skewX(-10deg); } to { opacity:1; transform:translateX(0) skewX(0deg); } }
+
+    .ho-aside {
+      grid-row:2; margin-top: clamp(3.4rem, 2.4rem + 4.2vw, 6.2rem);
+      font-family: var(--script); font-size: clamp(1.3rem, 1rem + 1.4vw, 1.9rem); color: var(--text-soft);
+      opacity:0; transform: translateY(8px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+
+    .ho-final { display:grid; gap: var(--s-3); place-items:center; opacity:0; transform: translateY(14px); pointer-events:none; transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .ho-final-mark { font-family: var(--display); font-weight:600; letter-spacing:0.02em; text-transform:uppercase; font-size: clamp(1.8rem, 1.2rem + 3.4vw, 3.4rem); }
+    .ho-final-tag { font-family: var(--body); font-size: var(--fs-lead); color: var(--text-soft); }
+    .ho-final .hero-actions { display:flex; flex-wrap:wrap; gap: var(--s-2); align-items:center; justify-content:center; margin-top: var(--s-2); }
+
+    /* ---- stage choreography ---- */
+    .ho[data-stage="mark"] .ho-mark { opacity:1; top:50%; transform: translate(-50%,-50%) scale(1); }
+
+    .ho[data-stage="statement"] .ho-mark,
+    .ho[data-stage="aside"] .ho-mark,
+    .ho[data-stage="cycle"] .ho-mark {
+      opacity:.7; font-size: clamp(0.8rem, 0.7rem + 0.4vw, 0.95rem);
+      top:104px; transform: translate(-50%,0) scale(1);
+    }
+    .ho[data-stage="statement"] .ho-statement,
+    .ho[data-stage="aside"] .ho-statement,
+    .ho[data-stage="cycle"] .ho-statement { opacity:1; transform: translateY(0); pointer-events:auto; }
+
+    .ho[data-stage="aside"] .ho-aside,
+    .ho[data-stage="cycle"] .ho-aside { opacity:1; transform: translateY(0); }
+
+    .ho[data-stage="final"] .ho-mark { opacity:0; top:104px; transform: translate(-50%,0) scale(.9); }
+    .ho[data-stage="final"] .ho-final { opacity:1; transform: translateY(0); pointer-events:auto; }
+
+    .ho-scroll { position:absolute; bottom:26px; left:50%; margin:0; opacity:0; transition: opacity .7s var(--ease) .2s; background:none; border:0; cursor:pointer; font:inherit; color:inherit; }
+    .ho[data-stage="final"] .ho-scroll { opacity:1; }
+
+    @media (max-width:700px) {
+      .ho-statement { font-size: clamp(2.1rem, 1.6rem + 5vw, 2.8rem); max-width:13ch; }
+      .ho[data-stage="statement"] .ho-mark,
+      .ho[data-stage="aside"] .ho-mark,
+      .ho[data-stage="cycle"] .ho-mark { top:88px; transform: translate(-50%,0) scale(1); }
+      .ho-aside { margin-top: clamp(2.4rem, 1.8rem + 3vw, 3.6rem); }
+      .ho[data-stage="statement"] .ho-stage,
+      .ho[data-stage="aside"] .ho-stage,
+      .ho[data-stage="cycle"] .ho-stage { margin-top:-16vh; }
+      .ho[data-stage="final"] .ho-final { margin-top:-8vh; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ho-mark, .ho-statement, .ho-aside, .ho-final, .ho-scroll, .ho-word { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+    }
+
     .hero-actions { display:flex; flex-wrap:wrap; gap: var(--s-2); align-items:center; }
 
     .scroll-cue { position:absolute; bottom:26px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; }
@@ -577,18 +669,38 @@
     <span id="top"></span>
 
     <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-h1">
-      <div class="wrap">
-        <h1 id="hero-h1" class="reveal" data-i18n-html="heroH1">Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.</h1>
-        <p class="hero-lead reveal" style="--d:100ms" data-i18n="heroLead">Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.</p>
-        <div class="hero-actions reveal" style="--d:180ms">
-          <a class="btn" href="#categories" data-magnetic><span data-i18n="ctaExplore">See what I build</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
-          </a>
-          <a class="btn paper" href="website-design.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
-        </div>
+    <section class="hero ho" id="hero" aria-labelledby="hero-h1" data-stage="mark">
+      <p class="ho-mark" id="hoMark" data-i18n="heroMark">GABRIELLA COSTA</p>
 
+      <div class="ho-stage" id="hoStage">
+        <h1 id="hero-h1" class="ho-statement">
+          <span data-i18n="heroLeadIn">I design</span>
+          <span class="ho-trigger" id="hoTrigger">
+            <span class="ho-word ho-w0 is-active" data-i18n="heroWord0">websites.</span>
+            <span class="ho-word ho-w1" data-i18n="heroWord1">stories.</span>
+            <span class="ho-word ho-w2" data-i18n="heroWord2">worlds.</span>
+            <span class="ho-word ho-w3" data-i18n="heroWord3">experiences.</span>
+          </span>
+        </h1>
+
+        <p class="ho-aside" id="hoAside" data-i18n="heroAside">and sometimes&hellip;</p>
+
+        <div class="ho-final" id="hoFinal">
+          <p class="ho-final-mark" data-i18n="heroMark">GABRIELLA COSTA</p>
+          <p class="ho-final-tag" data-i18n="heroTag">Designer &amp; Creative Technologist</p>
+          <div class="hero-actions">
+            <a class="btn" href="#categories" data-magnetic><span data-i18n="ctaExplore">See what I build</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+            </a>
+            <a class="btn paper" href="website-design.html#missions" data-magnetic data-i18n="ctaSeeWork">See the work</a>
+          </div>
+        </div>
       </div>
+
+      <button type="button" class="scroll-cue ho-scroll" id="hoScroll" aria-label="Scroll to see more">
+        <span class="hud" data-i18n="heroScroll">Scroll</span>
+        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 4v16M6 14l6 6 6-6"/></svg></span>
+      </button>
     </section>
 
     <!-- SHOWCASE -->
@@ -810,9 +922,11 @@
         cleanOff: "Tired eyes?", cleanOn: "Switch to Creative Mode",
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
+        heroMark: "Gabriella Costa", heroLeadIn: "I design", heroWord0: "websites.", heroWord1: "stories.", heroWord2: "worlds.", heroWord3: "experiences.",
+        heroAside: "and sometimes…", heroTag: "Designer & Creative Technologist", heroScroll: "Scroll",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
         showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>", showcaseVisit: "Visit live site",
-        showcaseCats: { providentia: "Life insurance & financial planning · Brazilians in the US", ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID" },
+        showcaseCats: { providentia: "Life insurance & financial planning · Brazilians in the US", ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID", roberta: "Brazilian actress · Personal brand", georgia: "Plaster & tile · Georgia, USA", revive: "Home remodeling · Atlanta", espanhol: "Spanish lessons · Online", michelle: "Aesthetic clinic · Goiânia, Brazil", totallux: "Epoxy flooring · Atlanta" },
         categoriesTag: "◆ Services", categoriesH2: "What I can <em>create.</em>",
         catWebBadge: "$299 · 5 DAYS", catWebTitle: "Site / Web Design", catWebDesc: "Custom, high-converting websites, flat price, live in 5 days.",
         catBrandTitle: "Brand Identity", catBrandDesc: "Logo, color palette, typography, a brand people remember.",
@@ -845,9 +959,11 @@
         cleanOff: "Tá com os olhos cansados?", cleanOn: "Ativar Modo Criativo",
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
+        heroMark: "Gabriella Costa", heroLeadIn: "Eu crio", heroWord0: "sites.", heroWord1: "histórias.", heroWord2: "mundos.", heroWord3: "experiências.",
+        heroAside: "e às vezes…", heroTag: "Designer & Tecnóloga Criativa", heroScroll: "Role",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
         showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>", showcaseVisit: "Ver site no ar",
-        showcaseCats: { providentia: "Seguro de vida e planejamento financeiro · Brasileiros nos EUA", ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID" },
+        showcaseCats: { providentia: "Seguro de vida e planejamento financeiro · Brasileiros nos EUA", ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID", roberta: "Atriz brasileira · Marca pessoal", georgia: "Reboco e azulejos · Geórgia, EUA", revive: "Reforma residencial · Atlanta", espanhol: "Aulas de espanhol · Online", michelle: "Estética facial e corporal · Goiânia", totallux: "Piso epóxi · Atlanta" },
         categoriesTag: "◆ Serviços", categoriesH2: "O que eu posso <em>criar.</em>",
         catWebBadge: "$299 · 5 DIAS", catWebTitle: "Site / Web Design", catWebDesc: "Sites personalizados e de alta conversão, preço fixo, no ar em 5 dias.",
         catBrandTitle: "Identidade Visual", catBrandDesc: "Logo, paleta de cores, tipografia, uma marca que as pessoas lembram.",
@@ -952,7 +1068,13 @@
         { key: "artfloor", name: "Art Floor ATL", url: "https://www.artflooratl.com", shot: "assets/art-floor-atl.jpg" },
         { key: "kings", name: "King's Table Sourdough", url: "https://www.kingstablesourdough.com", shot: "assets/kings-table-sourdough.jpg" },
         { key: "fila", name: "Onde Eu Tô Na Fila", url: "https://www.ondeeutonafila.com.br", shot: "assets/onde-eu-to-na-fila.jpg" },
-        { key: "ksplumbing", name: "KS Plumbing", url: "https://ksplumbingidaho.com/", shot: "assets/ks-plumbing.jpg" }
+        { key: "ksplumbing", name: "KS Plumbing", url: "https://ksplumbingidaho.com/", shot: "assets/ks-plumbing.jpg" },
+        { key: "roberta", name: "Roberta Jafet", url: "https://www.robertajafet.com", shot: "assets/roberta-jafet.jpg" },
+        { key: "georgia", name: "Georgia Plaster & Tile", url: "https://www.georgiaplasterandtile.com/", shot: "assets/georgia-plaster-and-tile.jpg" },
+        { key: "revive", name: "R&R Construction", url: "https://reviveandremodeling.com", shot: "assets/r-r-construction.jpg" },
+        { key: "espanhol", name: "Espanhol com Claudia", url: "https://www.espanholcomclaudia.com.br", shot: "assets/espanhol-com-claudia.jpg" },
+        { key: "michelle", name: "Michelle Bioestética", url: "https://www.michellebioestetica.com.br/", shot: "assets/michelle-bioestetica.jpg" },
+        { key: "totallux", name: "TotalLux Finishes", url: "https://www.totalluxfinishes.com/", shot: "assets/totallux-finishes.jpg" }
       ];
       var count = defs.length;
 
@@ -1123,6 +1245,7 @@
     function endIntro(instant) {
       try { sessionStorage.setItem(SEEN, "1"); } catch (e) {}
       lock(false);
+      startHeroOpen();
       if (instant) { intro.hidden = true; return; }
       intro.classList.add("leaving"); setTimeout(function () { intro.hidden = true; }, 1000);
     }
@@ -1130,6 +1253,80 @@
     document.getElementById("introSkip").addEventListener("click", function () { endIntro(false); });
     document.addEventListener("keydown", function (e) { if (!intro.hidden && e.key === "Escape") endIntro(false); });
     function showStage(id) { $$(".stage", intro).forEach(function (s) { s.classList.remove("active"); }); var s = document.getElementById(id); if (s) s.classList.add("active"); }
+
+    /* HERO OPENING SEQUENCE (Frame 01) */
+    var heroOpenStarted = false;
+    function startHeroOpen() {
+      if (heroOpenStarted) return;
+      heroOpenStarted = true;
+      var hero = document.getElementById("hero");
+      if (!hero) return;
+
+      if (reduce) { hero.setAttribute("data-stage", "final"); return; }
+
+      var words = [
+        hero.querySelector(".ho-w0"),
+        hero.querySelector(".ho-w1"),
+        hero.querySelector(".ho-w2"),
+        hero.querySelector(".ho-w3")
+      ];
+      var cur = 0;
+
+      function swapWord(nextIndex) {
+        var outgoing = words[cur], incoming = words[nextIndex];
+        if (outgoing) { outgoing.classList.remove("is-active"); outgoing.classList.add("is-prev"); }
+        if (incoming) { incoming.classList.remove("is-prev"); incoming.classList.add("is-active"); }
+        cur = nextIndex;
+      }
+
+      var t = 0;
+      function at(ms, fn) { setTimeout(fn, ms); }
+
+      hero.setAttribute("data-stage", "mark");
+      at(t += 900, function () { hero.setAttribute("data-stage", "statement"); });
+      at(t += 1150, function () { hero.setAttribute("data-stage", "aside"); });
+      at(t += 700, function () { hero.setAttribute("data-stage", "cycle"); swapWord(1); });
+      at(t += 850, function () { swapWord(2); });
+      at(t += 850, function () { swapWord(3); });
+      at(t += 950, function () { hero.setAttribute("data-stage", "final"); });
+    }
+
+    /* HERO — subtle mouse parallax */
+    (function () {
+      var hero = document.getElementById("hero");
+      if (!hero || reduce) return;
+      var mx = 0, my = 0, raf = null;
+      function apply() {
+        raf = null;
+        hero.style.setProperty("--mx", mx.toFixed(3));
+        hero.style.setProperty("--my", my.toFixed(3));
+      }
+      hero.addEventListener("pointermove", function (e) {
+        var r = hero.getBoundingClientRect();
+        mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        my = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+      hero.addEventListener("pointerleave", function () {
+        mx = 0; my = 0;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+    })();
+
+    /* HERO — soft fade as the visitor scrolls into the next scene */
+    (function () {
+      var hero = document.getElementById("hero");
+      if (!hero || reduce) return;
+      var raf = null;
+      function onScroll() {
+        raf = null;
+        var h = hero.offsetHeight || 1;
+        var p = Math.max(0, Math.min(1, window.scrollY / h));
+        hero.style.opacity = String(1 - p * 0.9);
+        hero.style.transform = "scale(" + (1 - p * 0.06) + ")";
+      }
+      window.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(onScroll); }, { passive: true });
+    })();
 
     function runIntro() {
       showStage("stageLang");
