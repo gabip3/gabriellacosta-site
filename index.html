@@ -490,6 +490,112 @@
     .showcase-dots button.active { background: var(--accent); transform:scale(1.35); }
     @media (max-width:700px) { .cf-stage { width:min(84vw,420px); height:calc(min(84vw,420px) * 9 / 16); } .cf-card { width:min(84vw,420px); } }
 
+    /* ============================================================ FRAME 02 — THE RANGE
+       A printed page slipped into the black book: it starts immaculate,
+       loses patience with its own grid, then breaks open. --p is scroll
+       progress, --d the disobedience, --b the breakout. */
+    .f2 { position:relative; height:340svh; background:#F2F2F0; color:#0B0B0D; --p:0; --d:0; --b:0;
+      transition: background .35s var(--ease), color .35s var(--ease); }
+    .f2-sticky { position:sticky; top:0; height:100svh; overflow:hidden; display:grid; align-content:center; }
+    .f2.is-dark { background: var(--bg); color: var(--text); }
+    /* scene 01 belongs to the ordered world — it leaves when the system breaks */
+    .f2-head { opacity: calc(1 - var(--b)); }
+
+    .f2-wrap { width:min(100% - 2*var(--s-3), var(--maxw)); margin-inline:auto; position:relative; z-index:2; }
+
+    /* the ruled page */
+    .f2-rules { position:absolute; inset:0; z-index:1; pointer-events:none; }
+    .f2-rules i { position:absolute; top:0; bottom:0; width:1px; background:currentColor; opacity:.14;
+      transform: translateX(calc(var(--d) * var(--rx, 0) * 1px)) rotate(calc(var(--d) * var(--rr, 0) * 1deg));
+      transform-origin: top center; }
+    .f2-rules i:nth-child(1) { left:25%; --rx:-9; --rr:.35; }
+    .f2-rules i:nth-child(2) { left:50%; --rx:6;  --rr:-.5; }
+    .f2-rules i:nth-child(3) { left:75%; --rx:-14; --rr:.7; }
+
+    /* scene 01 — control */
+    .f2-head { display:grid; grid-template-columns: 1fr auto; align-items:start; gap: var(--s-3);
+      padding-bottom: clamp(1.6rem, 1.2rem + 2vw, 3rem); }
+    .f2-scene { font-family: var(--mono); font-size:0.62rem; letter-spacing:0.24em; text-transform:uppercase; opacity:.55;
+      transform: translateX(calc(var(--d) * 26px)); }
+    .f2-claim { font-family: var(--display); font-weight:600; text-transform:uppercase; letter-spacing:-0.025em;
+      font-size: clamp(1.9rem, 1rem + 3.6vw, 3.6rem); line-height:1; display:grid; }
+    .f2-claim span:last-child { transform: translateX(calc(var(--d) * 38px)); }
+    .f2-note { grid-column:1 / -1; font-family: var(--mono); font-size:0.66rem; letter-spacing:0.16em;
+      text-transform:uppercase; opacity:.5; margin-top:.6rem; }
+
+    /* the disciplined grid */
+    .f2-grid { list-style:none; display:grid; grid-template-columns:repeat(3, 1fr);
+      gap: clamp(1rem, .6rem + 1.6vw, 2.2rem); }
+    .f2-item { position:relative;
+      transform:
+        translate(calc(var(--d) * var(--dx, 0) * 1px + var(--b) * var(--bx, 0) * 1vw),
+                  calc(var(--d) * var(--dy, 0) * 1px + var(--b) * var(--by, 0) * 1vh))
+        rotate(calc(var(--d) * var(--dr, 0) * 1deg))
+        scale(calc(1 + var(--d) * var(--ds, 0) - var(--b) * .18));
+      opacity: calc(1 - var(--b) * .78);
+      z-index: var(--z, 1);
+      will-change: transform; }
+    .f2-item figure { margin:0; }
+    .f2-item img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top center;
+      border:1px solid rgba(11,11,13,.14); }
+    .f2.is-dark .f2-item img { border-color: var(--line-c); }
+    .f2-cap { display:flex; gap:.7rem; align-items:baseline; margin-top:.7rem;
+      font-family: var(--mono); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase;
+      transform: translateX(calc(var(--d) * var(--cx, 0) * 1px)); }
+    .f2-cap b { font-weight:400; opacity:.6; }
+    .f2-cap span { opacity:.75; }
+
+    /* who misbehaves, and how */
+    .f2-item:nth-child(1) { --dx:-6;  --dy:4;   --dr:-.4; --ds:0;    --bx:-46; --by:-18; }
+    .f2-item:nth-child(2) { --dx:0;   --dy:-14; --dr:0;   --ds:.16; --z:4; --bx:0;   --by:-58; }
+    .f2-item:nth-child(3) { --dx:10;  --dy:2;   --dr:.5;  --ds:0;    --bx:48;  --by:-16; }
+    .f2-item:nth-child(4) { --dx:-22; --dy:-10; --dr:-.8; --ds:.05; --bx:-54; --by:26; }
+    .f2-item:nth-child(5) { --dx:4;   --dy:6;   --dr:.3;  --ds:0;   --cx:64;  --bx:6;   --by:62; }
+    .f2-item:nth-child(6) { --dx:18;  --dy:-4;  --dr:.9;  --ds:.08; --bx:52;  --by:30; }
+
+    /* scene 03 — breakout */
+    .f2-fun { position:absolute; inset:0; z-index:5; display:grid; place-content:center; text-align:center;
+      pointer-events:none; opacity: var(--b);
+      font-family: var(--display); font-weight:600; text-transform:uppercase; letter-spacing:-0.03em;
+      line-height:.9; font-size: clamp(2.4rem, 9.4vw, 8.6rem);
+      transform: scale(calc(.86 + var(--b) * .14)); }
+    .f2-fun span { display:block; }
+    .f2-fun span:nth-child(2) { transform: translateX(calc(var(--b) * 6%)); }
+    .f2-fun span:nth-child(3) { transform: translateX(calc(var(--b) * -9%)); }
+
+    /* the doorway into whatever comes next */
+    .f2-hook { position:absolute; left:50%; bottom:clamp(20px, 4vh, 40px); z-index:6; display:grid; justify-items:center; gap:10px;
+      transform:translateX(-50%); opacity: calc(var(--b) * .8);
+      font-family: var(--mono); font-size:0.58rem; letter-spacing:0.24em; text-transform:uppercase; }
+    .f2-hook i { display:block; width:1px; height:clamp(28px, 5vh, 52px); background: currentColor; opacity:.4; }
+
+    @media (max-width:860px) {
+      .f2-grid { grid-template-columns:repeat(2, 1fr); }
+      .f2-item:nth-child(5), .f2-item:nth-child(6) { display:none; }
+    }
+    @media (max-width:700px) {
+      .f2 { height:300svh; }
+      .f2-head { grid-template-columns:1fr; }
+      .f2-scene { order:-1; transform:none; }
+      .f2-claim span:last-child { transform: translateX(calc(var(--d) * 18px)); }
+      .f2-rules i:nth-child(3) { display:none; }
+      /* less travel, same intent */
+      .f2-item { --ds:0; }
+      .f2-item:nth-child(1) { --bx:-60; --by:-14; }
+      .f2-item:nth-child(2) { --bx:34;  --by:-46; }
+      .f2-item:nth-child(3) { --bx:-38; --by:44; }
+      .f2-item:nth-child(4) { --bx:56;  --by:22; }
+      .f2-fun { font-size: clamp(2.1rem, 12vw, 4rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .f2 { height:auto; }
+      .f2-sticky { position:static; height:auto; padding: var(--s-7) 0; }
+      .f2-item, .f2-cap, .f2-scene, .f2-claim span, .f2-rules i, .f2-fun { transform:none !important; opacity:1 !important; }
+      .f2-fun { position:static; margin-top: var(--s-6); }
+      .f2-hook { position:static; transform:none; opacity:.7 !important; margin-top: var(--s-4); }
+    }
+
     /* ============================================================ CATEGORIES */
     .categories { padding: var(--s-8) 0; }
     .categories h2 { font-family: var(--display); font-weight:600; font-size: var(--fs-h2); letter-spacing:-0.03em; max-width:18ch; line-height:1; }
@@ -745,6 +851,72 @@
       </button>
     </section>
 
+    <!-- FRAME 02 — the range -->
+    <section class="f2" id="frame02" aria-labelledby="f2-h">
+      <div class="f2-sticky">
+        <div class="f2-rules" aria-hidden="true"><i></i><i></i><i></i></div>
+
+        <div class="f2-wrap">
+          <div class="f2-head">
+            <h2 id="f2-h" class="f2-claim">
+              <span data-i18n="f2Claim1">Yes.</span>
+              <span data-i18n="f2Claim2">I can behave.</span>
+            </h2>
+            <p class="f2-scene" data-i18n="f2Scene">Scene 01 — Control</p>
+            <p class="f2-note" data-i18n="f2Note">Briefs, deadlines, business goals. Delivered.</p>
+          </div>
+
+          <ol class="f2-grid">
+            <li class="f2-item">
+              <figure>
+                <img src="assets/atlanta-home-concierge.jpg" alt="Atlanta Home Concierge website" loading="lazy" decoding="async" />
+                <figcaption class="f2-cap"><b>01</b><span>Atlanta Home Concierge</span></figcaption>
+              </figure>
+            </li>
+            <li class="f2-item">
+              <figure>
+                <img src="assets/peachtree-commodities.jpg" alt="Peachtree Commodities website" loading="lazy" decoding="async" />
+                <figcaption class="f2-cap"><b>02</b><span>Peachtree Commodities</span></figcaption>
+              </figure>
+            </li>
+            <li class="f2-item">
+              <figure>
+                <img src="assets/butterfly-cleaning.jpg" alt="Butterfly Cleaning website" loading="lazy" decoding="async" />
+                <figcaption class="f2-cap"><b>03</b><span>Butterfly Cleaning</span></figcaption>
+              </figure>
+            </li>
+            <li class="f2-item">
+              <figure>
+                <img src="assets/ks-plumbing.jpg" alt="KS Plumbing website" loading="lazy" decoding="async" />
+                <figcaption class="f2-cap"><b>04</b><span>KS Plumbing</span></figcaption>
+              </figure>
+            </li>
+            <li class="f2-item">
+              <figure>
+                <img src="assets/totallux-finishes.jpg" alt="TotalLux Finishes website" loading="lazy" decoding="async" />
+                <figcaption class="f2-cap"><b>05</b><span>TotalLux Finishes</span></figcaption>
+              </figure>
+            </li>
+            <li class="f2-item">
+              <figure>
+                <img src="assets/best-choice-4u.jpg" alt="Best Choice 4U website" loading="lazy" decoding="async" />
+                <figcaption class="f2-cap"><b>06</b><span>Best Choice 4U</span></figcaption>
+              </figure>
+            </li>
+          </ol>
+        </div>
+
+        <p class="f2-fun" aria-hidden="true">
+          <span data-i18n="f2Fun1">But where&rsquo;s</span>
+          <span data-i18n="f2Fun2">the fun</span>
+          <span data-i18n="f2Fun3">in that?</span>
+        </p>
+
+        <p class="f2-hook" aria-hidden="true"><i></i><span data-i18n="f2Next">Keep going</span></p>
+      </div>
+    </section>
+
+
     <!-- SHOWCASE -->
     <section class="showcase reveal" id="showcase" aria-labelledby="showcase-h">
       <div class="wrap">
@@ -966,6 +1138,9 @@
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         heroMark: "Gabriella Costa", heroLeadIn: "I design", heroWord0: "websites.", heroWord1: "stories.", heroWord2: "worlds.", heroWord3: "experiences.",
         heroRole: "Designer / Creative Technologist", heroScroll: "Scroll to enter",
+        f2Scene: "Scene 01 — Control", f2Claim1: "Yes.", f2Claim2: "I can behave.",
+        f2Note: "Briefs, deadlines, business goals. Delivered.",
+        f2Fun1: "But where’s", f2Fun2: "the fun", f2Fun3: "in that?", f2Next: "Keep going",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
         showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>", showcaseVisit: "Visit live site",
         showcaseCats: { providentia: "Life insurance & financial planning · Brazilians in the US", ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID", roberta: "Brazilian actress · Personal brand", georgia: "Plaster & tile · Georgia, USA", revive: "Home remodeling · Atlanta", espanhol: "Spanish lessons · Online", michelle: "Aesthetic clinic · Goiânia, Brazil", totallux: "Epoxy flooring · Atlanta" },
@@ -1003,6 +1178,9 @@
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         heroMark: "Gabriella Costa", heroLeadIn: "Eu crio", heroWord0: "sites.", heroWord1: "histórias.", heroWord2: "mundos.", heroWord3: "experiências.",
         heroRole: "Designer / Tecnóloga Criativa", heroScroll: "Role para entrar",
+        f2Scene: "Cena 01 — Controle", f2Claim1: "Sim.", f2Claim2: "Eu sei me comportar.",
+        f2Note: "Briefing, prazo, meta de negócio. Entregue.",
+        f2Fun1: "Mas onde está", f2Fun2: "a graça", f2Fun3: "nisso?", f2Next: "Continue",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
         showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>", showcaseVisit: "Ver site no ar",
         showcaseCats: { providentia: "Seguro de vida e planejamento financeiro · Brasileiros nos EUA", ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID", roberta: "Atriz brasileira · Marca pessoal", georgia: "Reboco e azulejos · Geórgia, EUA", revive: "Reforma residencial · Atlanta", espanhol: "Aulas de espanhol · Online", michelle: "Estética facial e corporal · Goiânia", totallux: "Piso epóxi · Atlanta" },
@@ -1353,6 +1531,28 @@
       hero.addEventListener("click", skip);
       setTimeout(remove, 9200);
     }
+
+    /* ============================================================ FRAME 02 — the visitor is the one losing control
+       One scroll value drives everything: --p progress, --d disobedience, --b breakout. */
+    (function () {
+      var f2 = document.getElementById("frame02");
+      if (!f2 || reduce) return;
+      var raf = null;
+      function range(v, a, b) { return Math.max(0, Math.min(1, (v - a) / (b - a))); }
+      function onScroll() {
+        raf = null;
+        var span = f2.offsetHeight - window.innerHeight;
+        if (span <= 0) return;
+        var p = Math.max(0, Math.min(1, -f2.getBoundingClientRect().top / span));
+        f2.style.setProperty("--p", p.toFixed(4));
+        f2.style.setProperty("--d", range(p, 0.30, 0.74).toFixed(4)); /* the grid gets impatient */
+        f2.style.setProperty("--b", range(p, 0.74, 0.96).toFixed(4)); /* and then it goes */
+        f2.classList.toggle("is-dark", p > 0.80);
+      }
+      window.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(onScroll); }, { passive: true });
+      window.addEventListener("resize", function () { if (!raf) raf = requestAnimationFrame(onScroll); });
+      onScroll();
+    })();
 
     /* the big words fill the frame edge to edge — enormous, never truncated */
     function fitScenes() {
