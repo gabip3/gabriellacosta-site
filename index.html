@@ -389,8 +389,8 @@
       opacity:0; transition: opacity .28s var(--ease); }
     .ho-scene span { display:block; font-family: var(--display); font-weight:600; text-transform:uppercase;
       line-height:.82; white-space:nowrap; will-change: transform; }
-    .sc-worlds span { font-size: clamp(8rem, 40vw, 34rem); letter-spacing:-0.04em; }
-    .sc-exp span    { font-size: clamp(6rem, 27vw, 24rem); letter-spacing:-0.04em; }
+    /* sized by script to fill the frame edge to edge without ever losing a letter */
+    .sc-worlds span, .sc-exp span { font-size: 12vw; letter-spacing:-0.04em; }
 
     /* title card */
     .ho-title { position:absolute; left:50%; top:calc(50% + clamp(28px, 4vh, 46px)); transform:translateX(-50%);
@@ -435,12 +435,12 @@
     /* WORLDS — bigger than the browser; we travel through it */
     .ho[data-stage="worlds"] .sc-worlds { opacity:1; transition: opacity .5s var(--ease) .24s; }
     .ho[data-stage="worlds"] .sc-worlds span { animation: worldsDrift 2.6s linear forwards; }
-    @keyframes worldsDrift { from { transform: translateX(13%) scale(1.04); } to { transform: translateX(-13%) scale(1.14); } }
+    @keyframes worldsDrift { from { transform: translateX(2.5%) scale(1); } to { transform: translateX(-2.5%) scale(1.05); } }
 
     /* EXPERIENCES — the payoff: felt before it is read */
     .ho[data-stage="experiences"] .sc-exp { opacity:1; transition: opacity .5s var(--ease) .24s; }
     .ho[data-stage="experiences"] .sc-exp span { animation: expIn 2.3s var(--ease) forwards; }
-    @keyframes expIn { 0% { transform: scale(2.5); } 100% { transform: scale(1); } }
+    @keyframes expIn { 0% { transform: scale(1.16); opacity:.85; } 100% { transform: scale(1); opacity:1; } }
 
     /* title card: the name comes back to the centre, small */
     .ho[data-stage="title"] .ho-mark { top:50%; transform: translate(-50%,-50%);
@@ -453,10 +453,7 @@
       .ho-statement { font-size: clamp(2.2rem, 1.5rem + 6vw, 3.2rem); }
       .ho-stage { transform:none; }
       .ho-aside { margin-top: clamp(2rem, 1.6rem + 2.4vw, 3rem); }
-      .sc-worlds span { font-size: 46vw; }
-      .sc-exp span { font-size: 34vw; }
-      @keyframes worldsDrift { from { transform: translateX(20%) scale(1.02); } to { transform: translateX(-20%) scale(1.1); } }
-      @keyframes expIn { 0% { transform: scale(2.1); } 100% { transform: scale(1); } }
+      .sc-worlds span, .sc-exp span { font-size: 18vw; }
       .ho[data-stage="title"] .ho-mark { letter-spacing:0.12em; }
     }
 
@@ -1072,6 +1069,7 @@
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
       $$(".lang-pill").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-lang") === lang); });
+      if (typeof fitScenes === "function") fitScenes();
       updateCleanToggle();
       updateWA(lang);
     }
@@ -1368,6 +1366,26 @@
       setTimeout(remove, 9200);
     }
 
+    /* the big words fill the frame edge to edge — enormous, never truncated */
+    function fitScenes() {
+      var words = $$(".ho-scene span");
+      if (!words.length) return;
+      var maxW = window.innerWidth * 0.9;
+      var maxH = window.innerHeight * 0.6;
+      words.forEach(function (el) {
+        el.style.fontSize = "100px";
+        var w = el.getBoundingClientRect().width;
+        if (!w) return;
+        el.style.fontSize = Math.min(100 * (maxW / w), maxH).toFixed(1) + "px";
+      });
+    }
+    fitScenes();
+    var fitRaf = null;
+    window.addEventListener("resize", function () {
+      if (fitRaf) cancelAnimationFrame(fitRaf);
+      fitRaf = requestAnimationFrame(fitScenes);
+    });
+
     /* HERO — a whisper of parallax, never a cursor playground */
     (function () {
       var hero = document.getElementById("hero");
@@ -1423,6 +1441,7 @@
         saveLang(lang); applyLang(lang);
         choices.forEach(function (b) { b.classList.toggle("is-picked", b === btn); b.disabled = true; });
         hover(null);
+        confetti(palette); /* the door opens with a party */
         endIntro(false);
       }
 
