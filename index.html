@@ -379,10 +379,6 @@
     .ho-cut { position:absolute; left:-4%; top:50%; width:108%; height:2px; background: var(--text);
       transform-origin:left center; transform: scaleX(0); opacity:0; }
 
-    .ho-aside { margin-top: clamp(2.6rem, 2rem + 3.4vw, 5rem); font-family: var(--script);
-      font-size: clamp(1.3rem, 1rem + 1.5vw, 2rem); color: var(--text-soft);
-      opacity:0; transform: translateY(10px);
-      transition: opacity .9s var(--ease), transform .9s var(--ease); }
 
     /* full-bleed scenes: the composition escapes the grid */
     .ho-scene { position:absolute; inset:0; z-index:4; display:grid; place-items:center; pointer-events:none;
@@ -407,14 +403,9 @@
 
     /* ---------- choreography ---------- */
     /* hold: only the name, inherited from Frame 00 */
-    .ho[data-stage="statement"] .ho-l1,
-    .ho[data-stage="aside"] .ho-l1, .ho[data-stage="aside"] .ho-l2,
-    .ho[data-stage="stories"] .ho-l1, .ho[data-stage="stories"] .ho-l2,
-    .ho[data-stage="statement"] .ho-l2 { opacity:1; transform:none; }
+    .ho[data-stage="statement"] .ho-l1, .ho[data-stage="statement"] .ho-l2,
+    .ho[data-stage="stories"] .ho-l1, .ho[data-stage="stories"] .ho-l2 { opacity:1; transform:none; }
     .ho[data-stage="statement"] .ho-l2 { transition-delay:.12s; }
-
-    .ho[data-stage="aside"] .ho-aside,
-    .ho[data-stage="stories"] .ho-aside { opacity:1; transform:none; }
 
     /* STORIES — it cuts into the sentence and takes its place */
     .ho[data-stage="stories"] .ho-w0 { animation: wOut .8s var(--ease) forwards; }
@@ -452,13 +443,12 @@
       .ho-mark { top:88px; }
       .ho-statement { font-size: clamp(2.2rem, 1.5rem + 6vw, 3.2rem); }
       .ho-stage { transform:none; }
-      .ho-aside { margin-top: clamp(2rem, 1.6rem + 2.4vw, 3rem); }
       .sc-worlds span, .sc-exp span { font-size: 18vw; }
       .ho[data-stage="title"] .ho-mark { letter-spacing:0.12em; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ho-mark, .ho-stage, .ho-statement .ho-l1, .ho-statement .ho-l2, .ho-aside, .ho-scene, .ho-title, .ho-scroll
+      .ho-mark, .ho-stage, .ho-statement .ho-l1, .ho-statement .ho-l2, .ho-scene, .ho-title, .ho-scroll
         { transition-duration:.01ms !important; }
       .ho-scene span, .ho-l2 .ho-w, .ho-cut { animation:none !important; }
     }
@@ -740,7 +730,6 @@
             <i class="ho-cut" aria-hidden="true"></i>
           </span>
         </h1>
-        <p class="ho-aside" data-i18n="heroAside">and sometimes&hellip;</p>
       </div>
 
       <div class="ho-scene sc-worlds" aria-hidden="true"><span data-i18n="heroWord2">worlds.</span></div>
@@ -976,7 +965,7 @@
         heroH1: 'Creative work that turns <span class="clk">ideas</span> into <span class="cli">results</span>.',
         heroLead: "Sites, brand identity, social media & print, all designed to get you noticed, win trust, and turn attention into results.",
         heroMark: "Gabriella Costa", heroLeadIn: "I design", heroWord0: "websites.", heroWord1: "stories.", heroWord2: "worlds.", heroWord3: "experiences.",
-        heroAside: "and sometimes…", heroRole: "Designer / Creative Technologist", heroScroll: "Scroll to enter",
+        heroRole: "Designer / Creative Technologist", heroScroll: "Scroll to enter",
         ctaStartSite: "Start your site", ctaExplore: "See what I build", ctaSeeWork: "See the work",
         showcaseH2: "<span>Real businesses.</span><span><em>Real websites.</em></span>", showcaseVisit: "Visit live site",
         showcaseCats: { providentia: "Life insurance & financial planning · Brazilians in the US", ssgroup: "Home renovations", nkacu: "Acupuncture · Goiânia, Brazil", peachtree: "Trading · B2B", atlanta: "Home services · Atlanta", christmas: "Holiday light installation · Atlanta", butterfly: "Cleaning services · Atlanta", bestchoice: "Cleaning services · Richmond, VA", dparty: "Dessert catering · Atlanta events", rk360: "Events · Photo booth", sara: "Personal brand", siding: "Home services · Siding", artfloor: "Tile & stone · Atlanta", kings: "Artisan bakery · Sourdough", fila: "Web app · Queue tracker", ksplumbing: "Plumbing services · Boise, ID", roberta: "Brazilian actress · Personal brand", georgia: "Plaster & tile · Georgia, USA", revive: "Home remodeling · Atlanta", espanhol: "Spanish lessons · Online", michelle: "Aesthetic clinic · Goiânia, Brazil", totallux: "Epoxy flooring · Atlanta" },
@@ -1013,7 +1002,7 @@
         heroH1: 'Trabalho criativo que transforma <span class="clk">ideias</span> em <span class="cli">resultado</span>.',
         heroLead: "Sites, identidade visual, social media e impressos, tudo pensado pra você ser visto, ganhar confiança e transformar atenção em resultado.",
         heroMark: "Gabriella Costa", heroLeadIn: "Eu crio", heroWord0: "sites.", heroWord1: "histórias.", heroWord2: "mundos.", heroWord3: "experiências.",
-        heroAside: "e às vezes…", heroRole: "Designer / Tecnóloga Criativa", heroScroll: "Role para entrar",
+        heroRole: "Designer / Tecnóloga Criativa", heroScroll: "Role para entrar",
         ctaStartSite: "Comece seu site", ctaExplore: "Veja o que eu construo", ctaSeeWork: "Veja o portfólio",
         showcaseH2: "<span>Negócios reais.</span><span><em>Sites reais.</em></span>", showcaseVisit: "Ver site no ar",
         showcaseCats: { providentia: "Seguro de vida e planejamento financeiro · Brasileiros nos EUA", ssgroup: "Reforma residencial", nkacu: "Acupuntura · Goiânia", peachtree: "Trading · B2B", atlanta: "Serviços domésticos · Atlanta", christmas: "Instalação de luzes de Natal · Atlanta", butterfly: "Serviços de limpeza · Atlanta", bestchoice: "Serviços de limpeza · Richmond, VA", dparty: "Doces para eventos · Atlanta", rk360: "Eventos · Cabine de fotos", sara: "Marca pessoal", siding: "Serviços domésticos · Revestimentos", artfloor: "Azulejos e pedras · Atlanta", kings: "Padaria artesanal · Sourdough", fila: "Web app · Fila", ksplumbing: "Serviços de encanamento · Boise, ID", roberta: "Atriz brasileira · Marca pessoal", georgia: "Reboco e azulejos · Geórgia, EUA", revive: "Reforma residencial · Atlanta", espanhol: "Aulas de espanhol · Online", michelle: "Estética facial e corporal · Goiânia", totallux: "Piso epóxi · Atlanta" },
@@ -1332,12 +1321,11 @@
 
       /* rhythm: motion, then stillness. every value is a hold, not a duration. */
       var score = [
-        [700,  "statement"],    /* the confident claim, left alone to breathe */
-        [2300, "aside"],        /* and sometimes... */
-        [3300, "stories"],      /* the first crack in the grid */
-        [4800, "worlds"],       /* bigger than the browser */
-        [6700, "experiences"],  /* the payoff */
-        [8800, "title"]         /* the name, small, after everything was enormous */
+        [700,  "statement"],    /* the confident claim, then a long silence */
+        [3100, "stories"],      /* the first crack in the grid */
+        [4700, "worlds"],       /* bigger than the browser */
+        [6600, "experiences"],  /* the payoff */
+        [8700, "title"]         /* the name, small, after everything was enormous */
       ];
 
       var timers = score.map(function (cue) {
