@@ -118,9 +118,12 @@
     .mpanel .lang button { font-size: .95rem; padding: 9px 16px; }
     @media (max-width: 760px) {
       .burger { display: grid; }
-      .top .lang { display: none; }
+      /* mark and language side by side on the left, clear of the menu button */
+      .top { justify-content: flex-start; gap: 14px; padding-right: 74px; }
+      .mpanel .lang { display: none; }
       /* fingers need room: nothing under 44px to tap */
       .hero .lead { white-space: normal; }
+      .eyebrow br.mb, .hero br.mb { display: inline; }
       .xp-cta, .store, .ct-ways a, .xp-phone .open, .xp-item .go, .xp-credits a { min-height: 44px; display: inline-flex; align-items: center; }
       .ct .send { padding: 16px 32px; }
       .foot nav a { padding: 11px 0; display: inline-block; }
@@ -166,6 +169,7 @@
       position: absolute; z-index: 3; pointer-events: none;
       left: clamp(20px, 6vw, 88px); bottom: clamp(28px, 9vh, 96px);
     }
+    br.mb { display: none; }
     .eyebrow, .xp-label {
       font-family: var(--hand); font-weight: 600; letter-spacing: 0; line-height: 1;
       font-size: clamp(1.9rem, 1.5rem + 1.2vw, 2.9rem);
@@ -227,6 +231,9 @@
     .xp-stage { position: relative; width: 100%; height: min(88vh, 56.25vw); min-height: 440px; margin-top: clamp(48px, 8vh, 88px);
       overflow: hidden; isolation: isolate; background: #0B1930; --x: 50%; --y: 50%; --r: 0px; }
     .xp-stage img { position: absolute; display: block; pointer-events: none; user-select: none; }
+    /* a cena inteira leva para a experiencia, e o gelo continua derretendo por baixo */
+    .xp-go { position: absolute; inset: 0; z-index: 4; cursor: pointer; }
+    .xp-go:focus-visible { outline: 2px solid #EAF7FF; outline-offset: -6px; }
     .xp-bg, .xp-iceb, .xp-icef { inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .xp-iceb { opacity: .9; }
     /* frozen: she is there, blurred behind the ice, never gone (her project: blur 7px, saturate .8) */
@@ -273,6 +280,10 @@
     .biz-bar button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(244,239,250,.2); background: none;
       color: var(--text); font-size: 1.1rem; cursor: pointer; transition: border-color .2s, color .2s; }
     .biz-bar button:hover, .biz-bar button:focus-visible { border-color: var(--hc); color: var(--hc); outline: none; }
+    @media (max-width: 760px) {
+      .biz-bar { justify-content: center; gap: 18px; margin-bottom: 18px; }
+      .biz-bar button { width: 60px; height: 60px; font-size: 1.7rem; border-color: rgba(244,239,250,.32); }
+    }
     .biz-rail { list-style: none; display: flex; gap: clamp(16px, 2vw, 28px); overflow-x: auto; overscroll-behavior-x: contain;
       scroll-snap-type: x mandatory; scroll-padding: 0 clamp(20px, 6vw, 88px);
       padding: 4px clamp(20px, 6vw, 88px) 18px; scrollbar-width: thin; scrollbar-color: rgba(244,239,250,.2) transparent; cursor: grab; }
@@ -573,7 +584,7 @@
     <p class="cap" id="cap" aria-hidden="true">brainstorming.</p>
 
     <div class="copy">
-      <p class="eyebrow rise" data-en="creative studio, from São Paulo to the world">estúdio criativo, de São Paulo para o mundo</p>
+      <p class="eyebrow rise" data-en-html="creative studio, from São Paulo<br class='mb' /> to the world">estúdio criativo, de São Paulo<br class="mb" /> para o mundo</p>
       <h1 id="who"><span class="rise">Gabriella</span><span class="rise">Costa</span></h1>
       <p class="lead rise" data-en="Websites, brands and digital experiences.">Sites, marcas e experiências digitais.</p>
     </div>
@@ -604,6 +615,8 @@
         <img class="l1" src="assets/mariah-logo.webp" alt="Mariah Carey" loading="lazy" decoding="async" />
         <img class="l2" src="assets/mariah-logo_christmas.webp" alt="Christmas Time" loading="lazy" decoding="async" />
       </div>
+      <a class="xp-go" href="https://gabip3.github.io/mariah-christmas-time/" target="_blank" rel="noopener" draggable="false"
+         aria-label="Ver a experiência Mariah&apos;s Christmas Time" data-en-label="View the Mariah&apos;s Christmas Time experience"></a>
       <p class="xp-touch" aria-hidden="true"><span class="t-mouse" data-en="hover to melt the ice">passe o mouse para derreter o gelo</span><span class="t-touch" data-en="touch to melt the ice">toque para derreter o gelo</span></p>
     </div>
 
