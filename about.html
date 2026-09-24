@@ -132,6 +132,18 @@
     .pill.p1 { top: 2%; left: 0; background: #CDEB7E; }
     .pill.p2 { bottom: 4%; right: 0; background: #93B8FF; animation-delay: 1s; }
 
+    /* say hello to Cora: she pops out of her own pill */
+    .pill.p2 { cursor: pointer; }
+    .pill .cora { position: absolute; right: 4px; bottom: calc(100% + 12px);
+      width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; background: #fff;
+      box-shadow: 0 0 0 3px #93B8FF, 0 14px 30px -14px rgba(0,0,0,.85);
+      transform-origin: 80% 100%; transform: scale(.25) translateY(14px); opacity: 0;
+      transition: transform .34s cubic-bezier(.3, 1.5, .5, 1), opacity .16s linear; }
+    .pill.p2:hover .cora, .pill.p2:focus-visible .cora, .pill.p2.on .cora { transform: none; opacity: 1; }
+    .pill.p2:focus-visible { outline: 2px solid #93B8FF; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { .pill .cora { transition: opacity .2s linear; transform: none; } }
+    @media (max-width: 860px) { .pill .cora { width: 78px; height: 78px; } }
+
     .label { font-family: var(--hand); font-weight: 600; line-height: 1; color: #CDEB7E;
       font-size: clamp(1.9rem, 1.5rem + 1.2vw, 2.9rem); display: inline-block;
       transform: rotate(-1.6deg); transform-origin: left bottom; margin-bottom: clamp(14px, 2vh, 22px); }
@@ -207,15 +219,16 @@
           <span class="fl spark" aria-hidden="true">&#10024;</span>
           <span class="fl palette" aria-hidden="true">&#127912;</span>
           <span class="pill p1" data-en="Designer &amp; Developer">Designer &amp; Developer</span>
-          <span class="pill p2" aria-hidden="true">&#128062; com a Cora</span>
+          <span class="pill p2" tabindex="0" role="img" aria-label="Cora, a cachorrinha da Gabriella">&#128062; com a Cora
+            <img class="cora" src="assets/cora.webp" alt="" width="96" height="96" loading="lazy" decoding="async" />
+          </span>
         </div>
       </div>
 
       <div class="about-text">
-        <p class="label" data-en="about me">sobre mim</p>
         <h1><span data-en="Hi! I'm">Oi! Eu sou a</span><span>Gabriella.</span></h1>
-        <p data-en="A proud Brazilian digital experience designer, language lover by soul, and completely fascinated by Asian culture. With more than a decade serving the North American market, I've built a deep understanding of international business needs and global design standards.">Uma designer de experiências digitais brasileira e orgulhosa disso, apaixonada por idiomas, e completamente fascinada pela cultura asiática. Com mais de uma década atendendo o mercado norte-americano, desenvolvi um entendimento profundo das necessidades de negócios internacionais e dos padrões globais de design.</p>
-        <p data-en-html="I build high-end websites designed to convert visitors into paying clients. My little sidekick, &lt;b&gt;Cora&lt;/b&gt;, keeps me company through every creative afternoon. I love traveling, exploring authentic cultures, and above all, I hold Jesus close to my heart as my personal Savior.">Eu construo sites de alto padrão feitos pra transformar visitantes em clientes pagantes. Minha companheirinha, <b>Cora</b>, fica comigo em cada tarde criativa. Amo viajar, explorar culturas autênticas, e acima de tudo, guardo Jesus no coração como meu Salvador pessoal.</p>
+        <p data-en="A proud Brazilian designer, in love with languages, cultures, and with making things that have personality. With more than a decade serving the North American market, I learned what a business needs in order to work in two countries and two languages at once.">Uma designer brasileira e orgulhosa disso, apaixonada por idiomas, culturas e por criar coisas que tenham personalidade. Com mais de uma década atendendo o mercado norte-americano, aprendi o que um negócio precisa pra funcionar em dois países e dois idiomas ao mesmo tempo.</p>
+        <p data-en-html="I build websites designed to convert visitors into paying clients. My little sidekick, &lt;b&gt;Cora&lt;/b&gt;, keeps me company through every creative afternoon. I love traveling and discovering new places, and my faith in Jesus is an essential part of who I am and how I choose to live.">Eu construo sites feitos pra transformar visitantes em clientes pagantes. Minha companheirinha, <b>Cora</b>, fica comigo em cada tarde criativa. Amo viajar, descobrir novos lugares, e minha fé em Jesus é parte essencial de quem eu sou e de como escolho viver.</p>
         <div class="langs" aria-label="Idiomas que eu falo">
           <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.5 22 8l-10 5.5L2 8z" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg> <span data-en="Portuguese">Português</span></span>
           <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#B22234"/><rect y="1.23" width="24" height="1.23" fill="#fff"/><rect y="3.69" width="24" height="1.23" fill="#fff"/><rect y="6.15" width="24" height="1.23" fill="#fff"/><rect y="8.62" width="24" height="1.23" fill="#fff"/><rect y="11.08" width="24" height="1.23" fill="#fff"/><rect y="13.54" width="24" height="1.23" fill="#fff"/><rect width="10.3" height="8.62" fill="#3C3B6E"/></svg> <span data-en="English">Inglês</span></span>
@@ -252,8 +265,6 @@
       document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
       window.SITE_LANG = lang;
       document.title = lang === "en" ? "About \u00b7 Gabriella Costa" : "Sobre \u00b7 Gabriella Costa";
-      var paw = document.querySelector(".pill.p2");
-      if (paw) paw.textContent = lang === "en" ? "\uD83D\uDC3E with Cora" : "\uD83D\uDC3E com a Cora";
       document.querySelectorAll(".lang button").forEach(function (b) {
         b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
       });
@@ -327,6 +338,23 @@
     }
     label(window.SITE_LANG);
     addEventListener("langchange", function (e) { label(e.detail); });
+  })();
+  </script>
+  <script>
+  /* the pill keeps its wording in English, and on a touch screen a tap calls Cora */
+  (function () {
+    var pill = document.querySelector(".pill.p2");
+    if (!pill) return;
+    var img = pill.querySelector("img");
+    function word(lang) {
+      pill.childNodes[0].nodeValue = lang === "en" ? "\uD83D\uDC3E with Cora" : "\uD83D\uDC3E com a Cora";
+      pill.setAttribute("aria-label", lang === "en" ? "Cora, Gabriella\u2019s little dog" : "Cora, a cachorrinha da Gabriella");
+    }
+    word(window.SITE_LANG);
+    addEventListener("langchange", function (e) { word(e.detail); });
+    if (!window.matchMedia || !matchMedia("(hover: hover)").matches) {
+      pill.addEventListener("click", function () { pill.classList.toggle("on"); });
+    }
   })();
   </script>
 </body>
