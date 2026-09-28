@@ -179,6 +179,15 @@
     }
     @media (prefers-reduced-motion: reduce) { .fl, .pill { animation: none; } }
 
+    .foot { background: var(--ink); padding: 0 clamp(20px, 6vw, 88px) clamp(34px, 5vh, 54px); }
+    .foot-in { max-width: 1220px; margin: 0 auto; padding-top: 26px; border-top: 1px solid rgba(244,239,250,.1);
+      display: flex; flex-wrap: wrap; gap: 14px 26px; align-items: center; justify-content: space-between;
+      font-size: .93rem; color: var(--soft); }
+    .visitas { font-variant-numeric: tabular-nums; color: var(--soft); opacity: .75; }
+    .visitas[hidden] { display: none; }
+    .foot nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    .foot a { color: var(--soft); text-decoration: none; transition: color .2s; }
+    .foot a:hover, .foot a:focus-visible { color: var(--text); outline: none; }
     .note { position: fixed; left: 50%; top: 12px; transform: translateX(-50%); z-index: 9;
       font-family: var(--body); font-size: .68rem; color: var(--soft); background: rgba(15,12,22,.7);
       border: 1px solid rgba(255,255,255,.08); padding: 6px 12px; border-radius: 999px; pointer-events: none; }
@@ -247,6 +256,19 @@
       </div>
     </div>
   </main>
+
+  <footer class="foot">
+    <div class="foot-in">
+      <span>&#169; <span id="yr">2026</span> Gabriella Costa &#183; São Paulo</span>
+      <span class="visitas" id="visitas" hidden></span>
+      <nav aria-label="Rodapé">
+        <a href="index.html#experiencias" data-en="Experiences">Experiências</a>
+        <a href="index.html#websites" data-en="Websites">Websites</a>
+        <a href="about.html" data-en="About">Sobre</a>
+        <a href="index.html#contato" data-en="Contact">Contato</a>
+      </nav>
+    </div>
+  </footer>
 
   <script>
   /* one switch for the whole page: swaps the copy both ways and remembers the choice */
@@ -355,6 +377,30 @@
     if (!window.matchMedia || !matchMedia("(hover: hover)").matches) {
       pill.addEventListener("click", function () { pill.classList.toggle("on"); });
     }
+  })();
+  </script>
+  <script>
+  /* a quiet counter: every visit adds one, but the number only shows for whoever asked for it
+     with ?contador, and her own visits are not counted */
+  (function () {
+    var page = location.pathname.indexOf("about") > -1 ? "visitas-sobre" : "visitas-site";
+    var mine = false;
+    try {
+      var q = location.search;
+      if (q.indexOf("contador=0") > -1) localStorage.removeItem("gc-contador");
+      else if (q.indexOf("contador") > -1) localStorage.setItem("gc-contador", "1");
+      mine = localStorage.getItem("gc-contador") === "1";
+    } catch (e) {}
+    var base = "https://abacus.jasoncameron.dev/";
+    var url = base + (mine ? "get" : "hit") + "/gabriellacosta.design/" + page;
+    var el = document.getElementById("visitas");
+    fetch(url).then(function (r) { return r.ok ? r.json() : { value: 0 }; }).then(function (j) {
+      if (!mine || !el || typeof j.value !== "number") return;
+      var en = document.documentElement.lang === "en";
+      var n = j.value;
+      el.textContent = n.toLocaleString(en ? "en-US" : "pt-BR") + (en ? (n === 1 ? " visit" : " visits") : (n === 1 ? " visita" : " visitas"));
+      el.hidden = false;
+    }).catch(function () {});
   })();
   </script>
 </body>
