@@ -290,6 +290,13 @@
     @media (max-width: 860px) { .biz-new { grid-template-columns: 1fr; } }
 
     .biz-rail-wrap { margin-top: clamp(40px, 7vh, 72px); }
+    .biz-more { max-width: calc(1220px + 2 * clamp(20px, 6vw, 88px)); margin: 18px auto 0;
+      padding: 0 clamp(20px, 6vw, 88px); }
+    .biz-more button { font-family: var(--body); font-size: 1rem; color: var(--soft); background: none;
+      border: 1px solid rgba(244,239,250,.18); border-radius: 999px; padding: 11px 22px; cursor: pointer;
+      transition: color .2s, border-color .2s; }
+    .biz-more button:hover, .biz-more button:focus-visible { color: var(--text); border-color: var(--hc); outline: none; }
+    .biz-more.is-open { display: none; }
     .biz-bar { display: flex; justify-content: flex-end; gap: 8px; padding: 0 clamp(20px, 6vw, 88px); margin-bottom: 14px;
       max-width: calc(1220px + 2 * clamp(20px, 6vw, 88px)); margin-left: auto; margin-right: auto; }
     .biz-bar button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(147,184,255,.5);
@@ -819,24 +826,10 @@
       </div>
       <ul class="biz-rail" id="bizRail" aria-label="Sites feitos para empresas">
         <li class="biz-card">
-          <a draggable="false" href="https://www.rk360photoboothrentals.com/" target="_blank" rel="noopener">
-            <img src="assets/rk360.webp" alt="RK360 Photo Booth Rentals" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">RK360 Photo Booth Rentals</span>
-            <span class="c" data-en="Events · Photo booth">Eventos · Cabine de fotos</span>
-          </a>
-        </li>
-        <li class="biz-card">
           <a draggable="false" href="https://providentiafinancialgroup.com" target="_blank" rel="noopener">
             <img src="assets/providentia-financial.jpg" alt="Providentia Financial Group" loading="lazy" decoding="async" draggable="false" />
             <span class="n">Providentia Financial Group</span>
             <span class="c" data-en="Life insurance &amp; financial planning · Brazilians in the US">Seguro de vida e planejamento financeiro · Brasileiros nos EUA</span>
-          </a>
-        </li>
-        <li class="biz-card">
-          <a draggable="false" href="https://ssrenovationsgroup.com/" target="_blank" rel="noopener">
-            <img src="assets/ss-renovations-group.jpg" alt="SS Renovations Group" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">SS Renovations Group</span>
-            <span class="c" data-en="Home renovations">Reforma residencial</span>
           </a>
         </li>
         <li class="biz-card">
@@ -854,48 +847,6 @@
           </a>
         </li>
         <li class="biz-card">
-          <a draggable="false" href="https://www.christmaslights-atlanta.com" target="_blank" rel="noopener">
-            <img src="assets/christmas-lights-atlanta.webp" alt="American Home Services Pro" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">Christmas Lights Atlanta</span>
-            <span class="c" data-en="Holiday light installation · Atlanta">Instalação de luzes de Natal · Atlanta</span>
-          </a>
-        </li>
-        <li class="biz-card">
-          <a draggable="false" href="https://www.butterflycleaning.company/" target="_blank" rel="noopener">
-            <img src="assets/butterfly-cleaning.jpg" alt="Butterfly Cleaning" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">Butterfly Cleaning</span>
-            <span class="c" data-en="Cleaning services · Atlanta">Serviços de limpeza · Atlanta</span>
-          </a>
-        </li>
-        <li class="biz-card">
-          <a draggable="false" href="https://bestchoice4uservices.com/" target="_blank" rel="noopener">
-            <img src="assets/best-choice-4u.webp" alt="Best Choice 4U" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">Best Choice 4U</span>
-            <span class="c" data-en="Cleaning services · Richmond, VA">Serviços de limpeza · Richmond, VA</span>
-          </a>
-        </li>
-        <li class="biz-card">
-          <a draggable="false" href="https://www.dpartyatlanta.com" target="_blank" rel="noopener">
-            <img src="assets/dparty-atlanta.webp" alt="D'Party" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">D'Party</span>
-            <span class="c" data-en="Dessert catering · Atlanta events">Doces para eventos · Atlanta</span>
-          </a>
-        </li>
-        <li class="biz-card">
-          <a draggable="false" href="https://www.sidingbylucas.com" target="_blank" rel="noopener">
-            <img src="assets/siding-by-lucas.jpg" alt="Siding by Lucas" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">Siding by Lucas</span>
-            <span class="c" data-en="Home services · Siding">Serviços domésticos · Revestimentos</span>
-          </a>
-        </li>
-        <li class="biz-card">
-          <a draggable="false" href="https://www.artflooratl.com" target="_blank" rel="noopener">
-            <img src="assets/art-floor-atl.jpg" alt="Art Floor ATL" loading="lazy" decoding="async" draggable="false" />
-            <span class="n">Art Floor ATL</span>
-            <span class="c" data-en="Tile &amp; stone · Atlanta">Azulejos e pedras · Atlanta</span>
-          </a>
-        </li>
-        <li class="biz-card">
           <a draggable="false" href="https://www.kingstablesourdough.com" target="_blank" rel="noopener">
             <img src="assets/kings-table-sourdough.jpg" alt="King's Table Sourdough" loading="lazy" decoding="async" draggable="false" />
             <span class="n">King's Table Sourdough</span>
@@ -903,48 +854,104 @@
           </a>
         </li>
         <li class="biz-card">
+          <a draggable="false" href="https://www.rk360photoboothrentals.com/" target="_blank" rel="noopener">
+            <img src="assets/rk360.webp" alt="RK360 Photo Booth Rentals" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">RK360 Photo Booth Rentals</span>
+            <span class="c" data-en="Events · Photo booth">Eventos · Cabine de fotos</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://ssrenovationsgroup.com/" target="_blank" rel="noopener">
+            <img src="assets/ss-renovations-group.jpg" alt="SS Renovations Group" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">SS Renovations Group</span>
+            <span class="c" data-en="Home renovations">Reforma residencial</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://www.christmaslights-atlanta.com" target="_blank" rel="noopener">
+            <img src="assets/christmas-lights-atlanta.webp" alt="American Home Services Pro" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">Christmas Lights Atlanta</span>
+            <span class="c" data-en="Holiday light installation · Atlanta">Instalação de luzes de Natal · Atlanta</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://www.butterflycleaning.company/" target="_blank" rel="noopener">
+            <img src="assets/butterfly-cleaning.jpg" alt="Butterfly Cleaning" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">Butterfly Cleaning</span>
+            <span class="c" data-en="Cleaning services · Atlanta">Serviços de limpeza · Atlanta</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://bestchoice4uservices.com/" target="_blank" rel="noopener">
+            <img src="assets/best-choice-4u.webp" alt="Best Choice 4U" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">Best Choice 4U</span>
+            <span class="c" data-en="Cleaning services · Richmond, VA">Serviços de limpeza · Richmond, VA</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://www.dpartyatlanta.com" target="_blank" rel="noopener">
+            <img src="assets/dparty-atlanta.webp" alt="D'Party" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">D'Party</span>
+            <span class="c" data-en="Dessert catering · Atlanta events">Doces para eventos · Atlanta</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://www.sidingbylucas.com" target="_blank" rel="noopener">
+            <img src="assets/siding-by-lucas.jpg" alt="Siding by Lucas" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">Siding by Lucas</span>
+            <span class="c" data-en="Home services · Siding">Serviços domésticos · Revestimentos</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
+          <a draggable="false" href="https://www.artflooratl.com" target="_blank" rel="noopener">
+            <img src="assets/art-floor-atl.jpg" alt="Art Floor ATL" loading="lazy" decoding="async" draggable="false" />
+            <span class="n">Art Floor ATL</span>
+            <span class="c" data-en="Tile &amp; stone · Atlanta">Azulejos e pedras · Atlanta</span>
+          </a>
+        </li>
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://www.ondeeutonafila.com.br" target="_blank" rel="noopener">
             <img src="assets/onde-eu-to-na-fila.jpg" alt="Onde Eu Tô Na Fila" loading="lazy" decoding="async" draggable="false" />
             <span class="n">Onde Eu Tô Na Fila</span>
             <span class="c" data-en="Web app · Queue tracker">Web app · Fila</span>
           </a>
         </li>
-        <li class="biz-card">
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://ksplumbingidaho.com/" target="_blank" rel="noopener">
             <img src="assets/ks-plumbing.jpg" alt="KS Plumbing" loading="lazy" decoding="async" draggable="false" />
             <span class="n">KS Plumbing</span>
             <span class="c" data-en="Plumbing services · Boise, ID">Serviços de encanamento · Boise, ID</span>
           </a>
         </li>
-        <li class="biz-card">
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://www.georgiaplasterandtile.com/" target="_blank" rel="noopener">
             <img src="assets/makeover-after.jpg" alt="Georgia Plaster &amp; Tile" loading="lazy" decoding="async" draggable="false" />
             <span class="n">Georgia Plaster &amp; Tile</span>
             <span class="c" data-en="Plaster &amp; tile · Georgia, USA">Reboco e azulejos · Geórgia, EUA</span>
           </a>
         </li>
-        <li class="biz-card">
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://reviveandremodeling.com" target="_blank" rel="noopener">
             <img src="assets/r-r-construction.webp" alt="R&amp;R Construction" loading="lazy" decoding="async" draggable="false" />
             <span class="n">R&amp;R Construction</span>
             <span class="c" data-en="Home remodeling · Atlanta">Reforma residencial · Atlanta</span>
           </a>
         </li>
-        <li class="biz-card">
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://www.espanholcomclaudia.com.br" target="_blank" rel="noopener">
             <img src="assets/espanhol-com-claudia.webp" alt="Espanhol com Claudia" loading="lazy" decoding="async" draggable="false" />
             <span class="n">Espanhol com Claudia</span>
             <span class="c" data-en="Spanish lessons · Online">Aulas de espanhol · Online</span>
           </a>
         </li>
-        <li class="biz-card">
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://www.michellebioestetica.com.br/" target="_blank" rel="noopener">
             <img src="assets/michelle-bioestetica.webp" alt="Michelle Souza, Estética e Saúde" loading="lazy" decoding="async" draggable="false" />
             <span class="n">Michelle Souza · Estética e Saúde</span>
             <span class="c" data-en="Aesthetic clinic · Goiânia, Brazil">Estética facial e corporal · Goiânia</span>
           </a>
         </li>
-        <li class="biz-card">
+        <li class="biz-card more" hidden>
           <a draggable="false" href="https://www.totalluxfinishes.com/" target="_blank" rel="noopener">
             <img src="assets/totallux-finishes.webp" alt="TotalLux Finishes" loading="lazy" decoding="async" draggable="false" />
             <span class="n">TotalLux Finishes</span>
@@ -952,6 +959,9 @@
           </a>
         </li>
       </ul>
+      <p class="biz-more">
+        <button type="button" id="bizMore" data-en="+ more projects" data-en-label="Show the other 14 websites" aria-label="Mostrar os outros 14 sites">+ mais projetos</button>
+      </p>
     </div>
   </section>
 
@@ -1463,6 +1473,15 @@
     function step() { var c = rail.querySelector(".biz-card"); return c ? (c.getBoundingClientRect().width + 24) * 2 : 600; }
     document.getElementById("bizPrev").addEventListener("click", function () { rail.scrollBy({ left: -step(), behavior: "smooth" }); });
     document.getElementById("bizNext").addEventListener("click", function () { rail.scrollBy({ left: step(), behavior: "smooth" }); });
+
+    /* the other thirteen wait behind the button */
+    var moreBtn = document.getElementById("bizMore");
+    if (moreBtn) {
+      moreBtn.addEventListener("click", function () {
+        rail.querySelectorAll(".biz-card.more").forEach(function (c) { c.hidden = false; });
+        moreBtn.parentElement.classList.add("is-open");
+      });
+    }
 
     var down = false, moved = false, x0 = 0, s0 = 0;
     rail.addEventListener("pointerdown", function (e) {
