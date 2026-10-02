@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#0F0C16" />
+  <title>Sites para empresas · Gabriella Costa</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Hanken+Grotesk:wght@400;500&family=Caveat:wght@500;600&display=swap" />
+
+  <script>
+  /* the chosen language has to be known before anything paints */
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("gc-lang"); } catch (e) {}
+    var lang = saved || ((navigator.language || "pt").toLowerCase().indexOf("pt") === 0 ? "pt" : "en");
+    window.SITE_LANG = lang;
+    document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+  })();
+  </script>
+
+  <style>
+    :root {
+      --ink: #0F0C16; --text: #F4EFFA; --soft: #9C94B0;
+      --pink: #FF8FCB; --violet: #B7A1FF; --blue: #93B8FF; --accent: #FF2D5F;
+      --display: "Poppins", "Century Gothic", system-ui, sans-serif;
+      --body: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --hand: "Caveat", "Bradley Hand", "Segoe Script", cursive;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--ink); color: var(--text); }
+    body { font-family: var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    .top { display: flex; align-items: center; justify-content: space-between;
+      padding: clamp(18px, 3vw, 34px) clamp(20px, 6vw, 88px); }
+    .mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px;
+      background: var(--accent); color: #fff; font-family: var(--display); font-weight: 600; font-size: .78rem; text-decoration: none; }
+    .lang { display: flex; align-items: center; gap: 2px; border: 1px solid rgba(244,239,250,.16); border-radius: 999px; padding: 3px; }
+    .lang button { font-family: var(--body); font-size: .82rem; color: var(--soft); background: none; border: 0;
+      border-radius: 999px; padding: 5px 11px; cursor: pointer; transition: color .2s, background .2s; }
+    .lang button:hover, .lang button:focus-visible { color: var(--text); outline: none; }
+    .lang button[aria-pressed="true"] { background: var(--text); color: var(--ink); }
+
+    main { padding: clamp(24px, 5vh, 56px) clamp(20px, 6vw, 88px) clamp(80px, 12vh, 140px); max-width: 1220px; margin: 0 auto; }
+    .label { font-family: var(--hand); font-weight: 600; line-height: 1; color: var(--blue);
+      font-size: clamp(1.9rem, 1.5rem + 1.2vw, 2.9rem); display: inline-block; transform: rotate(-1.6deg); }
+    h1 { font-family: var(--display); font-weight: 600; letter-spacing: -.045em; line-height: .92;
+      font-size: clamp(2.6rem, 1rem + 6vw, 6.4rem); margin-top: clamp(14px, 2.4vh, 24px); }
+    h1 span { display: block; }
+    .lead { color: #CFC8DD; font-size: clamp(1.05rem, 1rem + .4vw, 1.25rem); line-height: 1.6; max-width: 48ch; margin-top: 22px; }
+
+    .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px; margin-top: clamp(32px, 5vh, 56px);
+      padding-top: 26px; border-top: 1px solid rgba(244,239,250,.12); }
+    .price b { font-family: var(--display); font-weight: 600; letter-spacing: -.03em;
+      font-size: clamp(2rem, 1.4rem + 2.6vw, 3.6rem); }
+    .price em { font-style: normal; color: var(--soft); font-size: 1.05rem; }
+
+    .list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 40px; margin-top: 34px; max-width: 760px; }
+    .list li { position: relative; padding-left: 26px; color: #CFC8DD; line-height: 1.5; }
+    .list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--blue); }
+    @media (max-width: 640px) { .list { grid-template-columns: 1fr; } }
+
+    .ways { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; margin-top: clamp(34px, 5vh, 54px); }
+    .cta { font-family: var(--display); font-weight: 600; font-size: 1.05rem; color: #fff; background: var(--accent);
+      border-radius: 999px; padding: 15px 30px; text-decoration: none; transition: transform .2s var(--ease); }
+    .cta:hover, .cta:focus-visible { transform: translateY(-2px); outline: none; }
+    .ghost { color: var(--text); text-decoration: none; border-bottom: 2px solid rgba(244,239,250,.25);
+      padding-bottom: 3px; font-size: 1.02rem; transition: color .2s, border-color .2s; }
+    .ghost:hover, .ghost:focus-visible { color: var(--blue); border-color: var(--blue); outline: none; }
+
+    .note { margin-top: 30px; color: var(--soft); font-size: .98rem; line-height: 1.6; max-width: 52ch; }
+    .back { display: inline-block; margin-top: 44px; font-size: .98rem; color: var(--soft); text-decoration: none;
+      border-bottom: 1px solid rgba(244,239,250,.18); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+    .back:hover, .back:focus-visible { color: var(--text); border-color: var(--text); outline: none; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="index.html" aria-label="Gabriella Costa">GC</a>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <p class="label" data-en="websites for businesses">sites para empresas</p>
+    <h1><span data-en="A website">Um site</span><span data-en="that pays for itself.">que se paga.</span></h1>
+    <p class="lead" data-en="Design, copy, build and launch. You send what your business does, I come back with a site that is ready to receive clients.">Design, texto, construção e publicação. Você conta o que a sua empresa faz, eu devolvo um site pronto para receber cliente.</p>
+
+    <p class="price">
+      <b data-en="From $299 USD">A partir de US$ 299</b>
+      <em data-en="live in 5 days">no ar em 5 dias</em>
+    </p>
+
+    <ul class="list">
+      <li data-en="Design made for your business, never a template">Design feito para o seu negócio, nunca modelo pronto</li>
+      <li data-en="Written to convince, in Portuguese or English">Texto escrito para convencer, em português ou inglês</li>
+      <li data-en="Works on the phone first, where your client actually is">Funciona primeiro no celular, que é onde o seu cliente está</li>
+      <li data-en="Contact form landing straight in your inbox">Formulário de contato caindo direto no seu e-mail</li>
+      <li data-en="Google ready: titles, description and share image">Pronto para o Google: título, descrição e imagem de compartilhamento</li>
+      <li data-en="Your own domain, set up and pointed">Seu domínio, configurado e apontado</li>
+    </ul>
+
+    <p class="ways">
+      <a class="cta" href="https://wa.me/5511986726696?text=Oi%20Gabriella!%20Quero%20um%20site%20para%20a%20minha%20empresa." target="_blank" rel="noopener" data-en="Talk on WhatsApp">Falar no WhatsApp</a>
+      <a class="ghost" href="mailto:gabip3@gmail.com">gabip3@gmail.com</a>
+    </p>
+
+    <p class="note" data-en="The price depends on how many pages and what the site needs to do. Tell me about the business and I come back with the exact number, no surprises.">O valor varia com o tamanho do site e com o que ele precisa fazer. Me conta sobre o negócio que eu volto com o número exato, sem surpresa.</p>
+
+    <a class="back" href="index.html" data-en="See the work">Ver os trabalhos</a>
+  </main>
+
+  <script>
+  /* one switch for the whole page: swaps the copy both ways and remembers the choice */
+  (function () {
+    function text(el, lang) {
+      if (!el.hasAttribute("data-pt")) el.setAttribute("data-pt", el.textContent);
+      el.textContent = el.getAttribute(lang === "en" ? "data-en" : "data-pt");
+    }
+    function apply(lang, save) {
+      document.querySelectorAll("[data-en]").forEach(function (el) { text(el, lang); });
+      document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+      document.title = lang === "en" ? "Websites for businesses · Gabriella Costa" : "Sites para empresas · Gabriella Costa";
+      window.SITE_LANG = lang;
+      document.querySelectorAll(".lang button").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+      });
+      if (save) { try { localStorage.setItem("gc-lang", lang); } catch (e) {} }
+    }
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.addEventListener("click", function () { apply(b.getAttribute("data-lang"), true); });
+    });
+    apply(window.SITE_LANG, false);
+  })();
+  </script>
+</body>
+</html>
