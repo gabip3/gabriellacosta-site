@@ -572,13 +572,24 @@
     }
   </style>
   <script>
-  /* the chosen language has to be known before anything paints */
+  /* English is the default; a saved choice always wins, and the swapper lives here so the
+     text above the fold can change before the rest of the page paints */
   (function () {
     var saved = null;
     try { saved = localStorage.getItem("gc-lang"); } catch (e) {}
-    var lang = saved || ((navigator.language || "pt").toLowerCase().indexOf("pt") === 0 ? "pt" : "en");
-    window.SITE_LANG = lang;
-    document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+    window.SITE_LANG = saved === "pt" || saved === "en" ? saved : "en";
+    document.documentElement.lang = window.SITE_LANG === "en" ? "en" : "pt-BR";
+    window.gcSwap = function (root) {
+      var lang = window.SITE_LANG, scope = root || document;
+      scope.querySelectorAll("[data-en]").forEach(function (el) {
+        if (!el.hasAttribute("data-pt")) el.setAttribute("data-pt", el.textContent);
+        el.textContent = el.getAttribute(lang === "en" ? "data-en" : "data-pt");
+      });
+      scope.querySelectorAll("[data-en-html]").forEach(function (el) {
+        if (!el.hasAttribute("data-pt-html")) el.setAttribute("data-pt-html", el.innerHTML);
+        el.innerHTML = el.getAttribute(lang === "en" ? "data-en-html" : "data-pt-html");
+      });
+    };
   })();
   </script>
 </head>
@@ -621,6 +632,8 @@
 
     <p class="cue" aria-hidden="true"><i></i><span data-en="scroll">role</span></p>
   </section>
+
+  <script>window.gcSwap();</script>
 
   <section class="xp" id="experiencias" aria-labelledby="xp-h">
     <div class="xp-pitch">
@@ -1474,19 +1487,10 @@
   <script>
   /* one switch for the whole page: swaps the copy both ways and remembers the choice */
   (function () {
-    function text(el, lang) {
-      if (!el.hasAttribute("data-pt")) el.setAttribute("data-pt", el.textContent);
-      el.textContent = el.getAttribute(lang === "en" ? "data-en" : "data-pt");
-    }
-    function html(el, lang) {
-      if (!el.hasAttribute("data-pt-html")) el.setAttribute("data-pt-html", el.innerHTML);
-      el.innerHTML = el.getAttribute(lang === "en" ? "data-en-html" : "data-pt-html");
-    }
     function apply(lang, save) {
-      document.querySelectorAll("[data-en]").forEach(function (el) { text(el, lang); });
-      document.querySelectorAll("[data-en-html]").forEach(function (el) { html(el, lang); });
-      document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
       window.SITE_LANG = lang;
+      window.gcSwap();
+      document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
       document.title = lang === "en" ? "Gabriella Costa \u00b7 Websites, brands and digital experiences" : "Gabriella Costa \u00b7 Sites, marcas e experi\u00eancias digitais";
       var hit = document.getElementById("hit");
       if (hit) {
