@@ -538,6 +538,10 @@
     .ct-ways a:hover, .ct-ways a:focus-visible { color: #FFB27A; border-color: #FFB27A; outline: none; }
     .ct-ways a.wa { color: #25D366; }
     .ct-ways a.wa:hover, .ct-ways a.wa:focus-visible { color: #25D366; border-color: #25D366; }
+    .ct .langs { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+    .ct .chip { display: inline-flex; align-items: center; gap: 8px; font-size: .95rem; color: var(--text);
+      background: #15111D; border: 1px solid rgba(244,239,250,.12); border-radius: 999px; padding: 7px 14px 7px 8px; }
+    .ct .chip svg { width: 22px; height: 15px; border-radius: 3px; display: block; box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
     .ct-note { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(244,239,250,.12);
       font-size: .96rem; color: var(--soft); line-height: 1.6; max-width: 36ch; }
     @media (max-width: 860px) { .ct-grid { grid-template-columns: 1fr; } .ct .row { grid-template-columns: 1fr; } }
@@ -1019,6 +1023,12 @@
             <li><a class="wa" href="https://wa.me/5511986726696?text=Oi%20Gabriella!" target="_blank" rel="noopener">WhatsApp <em data-en="the fastest one">o mais rápido</em></a></li>
             <li><a href="mailto:gabip3@gmail.com">gabip3@gmail.com</a></li>
           </ul>
+          <div class="langs" aria-label="Idiomas que eu falo">
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.5 22 8l-10 5.5L2 8z" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg> <span data-en="Portuguese">Português</span></span>
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#B22234"/><rect y="1.23" width="24" height="1.23" fill="#fff"/><rect y="3.69" width="24" height="1.23" fill="#fff"/><rect y="6.15" width="24" height="1.23" fill="#fff"/><rect y="8.62" width="24" height="1.23" fill="#fff"/><rect y="11.08" width="24" height="1.23" fill="#fff"/><rect y="13.54" width="24" height="1.23" fill="#fff"/><rect width="10.3" height="8.62" fill="#3C3B6E"/></svg> <span data-en="English">Inglês</span></span>
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg> <span data-en="Spanish">Espanhol</span></span>
+            <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.33" fill="#000"/><rect y="5.33" width="24" height="5.33" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></svg> <span data-en="German">Alemão</span></span>
+          </div>
           <p class="ct-note" data-en="I answer the same day, from São Paulo, in Portuguese or English. Your details are only used to reply to you.">Eu respondo no mesmo dia, de São Paulo, em português ou inglês. Seus dados servem só pra te responder.</p>
         </div>
       </div>

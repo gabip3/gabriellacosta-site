@@ -159,6 +159,11 @@
     .chip svg { width: 22px; height: 15px; border-radius: 3px; display: block; box-shadow: 0 0 0 1px rgba(0,0,0,.35); }
     .chip i { font-style: normal; color: var(--soft); font-size: .86rem; }
 
+    .remote { color: var(--soft); font-size: 1rem; line-height: 1.6; margin-top: 22px; max-width: 42ch; }
+    .elsewhere { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; }
+    .elsewhere a { color: var(--text); font-size: 1rem; text-decoration: none;
+      border-bottom: 1px solid rgba(244,239,250,.22); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+    .elsewhere a:hover, .elsewhere a:focus-visible { color: #CDEB7E; border-color: #CDEB7E; outline: none; }
     .facts { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 30px; padding-top: 22px;
       border-top: 1px solid rgba(244,239,250,.12); font-size: 1rem; color: var(--soft); }
     .facts b { color: var(--text); font-family: var(--display); font-weight: 600; margin-right: 6px; }
@@ -257,9 +262,14 @@
           <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#fff"/><circle cx="12" cy="8" r="4" fill="#CD2E3A"/><path d="M12 4a4 4 0 0 0 0 8 2 2 0 0 1 0-4 2 2 0 0 0 0-4z" fill="#0047A0"/></svg> <span data-en-html="Korean <i>&#183; learning</i>">Coreano <i>&#183; aprendendo</i></span></span>
         </div>
         <p class="facts">
-          <span><b>500+</b><em style="font-style:normal" data-en="projects">projetos</em></span>
-          <span><b>15+</b><em style="font-style:normal" data-en="years of work">anos de estrada</em></span>
+          <span><b>15</b><em style="font-style:normal" data-en="years of work">anos de estrada</em></span>
+          <span><b>24</b><em style="font-style:normal" data-en="websites live">sites no ar</em></span>
           <span data-en="From São Paulo to the world">De São Paulo para o mundo</span>
+        </p>
+        <p class="remote" data-en="I work remotely from São Paulo (GMT-3), with teams in the US and Europe.">Trabalho remoto de São Paulo (GMT-3), com times nos Estados Unidos e na Europa.</p>
+        <p class="elsewhere">
+          <a href="https://www.linkedin.com/in/gabip3" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:gabip3@gmail.com">gabip3@gmail.com</a>
         </p>
         <a class="go" href="index.html#contato"><em style="font-style:normal" data-en="Let's talk">Vamos conversar</em> <span aria-hidden="true">&#8594;</span></a>
         <br />
