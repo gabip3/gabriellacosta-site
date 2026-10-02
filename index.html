@@ -153,7 +153,9 @@
     .hit:focus-visible { outline: 1px solid var(--accent); outline-offset: 10px; }
 
     .hint, .cap {
-      position: absolute; z-index: 3; transform: translateX(-50%);
+      /* o JS acerta a posicao quando o cerebro carrega; ate la ela ja nasce no lugar,
+         senao o texto encosta na borda esquerda e aparece cortado */
+      position: absolute; z-index: 3; left: 65%; transform: translateX(-50%);
       font-family: var(--body); font-size: 0.90rem; letter-spacing: 0;
       white-space: nowrap; pointer-events: none; transition: opacity .9s var(--ease), transform .9s var(--ease);
     }
@@ -472,6 +474,7 @@
       border-bottom: 1px solid rgba(244,239,250,.18); padding-bottom: 2px; width: fit-content; transition: color .2s, border-color .2s; }
     .xp-phone .open:hover, .xp-phone .open:focus-visible { color: var(--blue); border-color: var(--blue); outline: none; }
     @media (max-width: 760px) {
+      .hint, .cap { left: 50%; }
       .xp-phone { grid-template-columns: 1fr; justify-items: center; text-align: center; }
       .xp-phone p { margin-left: auto; margin-right: auto; }
       .xp-phone .open { margin-left: auto; margin-right: auto; }
@@ -1078,6 +1081,8 @@
     var hint = document.getElementById("hint");
     var cap = document.getElementById("cap");
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* aparelho fraco recebe o cerebro parado, igual a quem pede menos movimento */
+    if ((navigator.deviceMemory && navigator.deviceMemory <= 1) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2)) reduce = true;
 
     /* ---- language follows the visitor ---- */
     /* as palavras caem nas cores pasteis espalhadas pelo site */
