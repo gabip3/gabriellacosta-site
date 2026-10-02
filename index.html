@@ -185,6 +185,13 @@
       font-size: clamp(3.2rem, 1.2rem + 6.4vw, 8.2rem);
     }
     h1 span { display: block; }
+    .hire { margin-top: 18px; }
+    .hire a { font-family: var(--body); font-size: 1rem; color: var(--text); text-decoration: none;
+      border: 1px solid rgba(244,239,250,.28); border-radius: 999px; padding: 10px 20px; display: inline-block;
+      transition: color .2s, border-color .2s, transform .2s var(--ease); }
+    .hire a:hover, .hire a:focus-visible { color: var(--pink); border-color: var(--pink); transform: translateY(-2px); outline: none; }
+    .ct-ways a.hiring { color: var(--pink); }
+    .ct-ways a.hiring:hover, .ct-ways a.hiring:focus-visible { color: var(--pink); border-color: var(--pink); }
     .lead {
       margin-top: clamp(14px, 2.4vh, 24px); max-width: none;
       white-space: nowrap;
@@ -636,6 +643,7 @@
       <p class="eyebrow rise" data-en-html="creative studio, from São Paulo<br class='mb' /> to the world">estúdio criativo, de São Paulo<br class="mb" /> para o mundo</p>
       <h1 id="who"><span class="rise">Gabriella</span><span class="rise">Costa</span></h1>
       <p class="lead rise" data-en="Websites, brands and digital experiences.">Sites, marcas e experiências digitais.</p>
+      <p class="hire rise"><a href="mailto:gabip3@gmail.com?subject=Hiring%20at%20" data-en="Hiring? Let’s talk">Contratando? Vamos conversar</a></p>
     </div>
 
     <p class="cue" aria-hidden="true"><i></i><span data-en="scroll">role</span></p>
@@ -1022,6 +1030,7 @@
           <ul class="ct-ways">
             <li><a class="wa" href="https://wa.me/5511986726696?text=Oi%20Gabriella!" target="_blank" rel="noopener">WhatsApp <em data-en="the fastest one">o mais rápido</em></a></li>
             <li><a href="mailto:gabip3@gmail.com">gabip3@gmail.com</a></li>
+            <li><a class="hiring" href="mailto:gabip3@gmail.com?subject=Hiring%20at%20" data-en="Hiring? Let’s talk">Contratando? Vamos conversar</a></li>
           </ul>
           <div class="langs" aria-label="Idiomas que eu falo">
             <span class="chip"><svg viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><path d="M12 2.5 22 8l-10 5.5L2 8z" fill="#FFDF00"/><circle cx="12" cy="8" r="3" fill="#002776"/></svg> <span data-en="Portuguese">Português</span></span>
