@@ -590,9 +590,12 @@
   /* English is the default; a saved choice always wins, and the swapper lives here so the
      text above the fold can change before the rest of the page paints */
   (function () {
-    var saved = null;
+    var saved = null, asked = null;
     try { saved = localStorage.getItem("gc-lang"); } catch (e) {}
-    window.SITE_LANG = saved === "pt" || saved === "en" ? saved : "en";
+    /* um link pode pedir o idioma: /?lang=pt traz a visita ja em portugues */
+    var m = location.search.match(/[?&]lang=(pt|en)/);
+    if (m) { asked = m[1]; try { localStorage.setItem("gc-lang", asked); } catch (e) {} }
+    window.SITE_LANG = asked || (saved === "pt" || saved === "en" ? saved : "en");
     document.documentElement.lang = window.SITE_LANG === "en" ? "en" : "pt-BR";
     window.gcSwap = function (root) {
       var lang = window.SITE_LANG, scope = root || document;
