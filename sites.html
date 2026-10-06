@@ -22,6 +22,16 @@
   })();
   </script>
 
+  <!-- Google tag (gtag.js): Google Ads + GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17625323125"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17625323125');
+    gtag('config', 'G-1SC2E7QRS2');
+  </script>
+
   <style>
     :root {
       --ink: #0F0C16; --text: #F4EFFA; --soft: #9C94B0;
@@ -139,6 +149,15 @@
       b.addEventListener("click", function () { apply(b.getAttribute("data-lang"), true); });
     });
     apply(window.SITE_LANG, false);
+  })();
+  </script>
+  <script>
+  /* an ad click is only worth something if the lead is counted: both ways out report one */
+  (function () {
+    var send = function () { if (typeof gtag === "function") gtag("event", "conversion", { send_to: "AW-17625323125/PP2TCN_OoNccEPWstNRB" }); };
+    document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"]').forEach(function (a) {
+      a.addEventListener("click", function () { send(); });
+    });
   })();
   </script>
 </body>
