@@ -84,6 +84,28 @@
       padding-bottom: 3px; font-size: 1.02rem; transition: color .2s, border-color .2s; }
     .ghost:hover, .ghost:focus-visible { color: var(--blue); border-color: var(--blue); outline: none; }
 
+    .form { margin-top: clamp(34px, 5vh, 54px); max-width: 560px; display: grid; gap: 14px; }
+    .form label { display: block; font-size: .95rem; color: var(--soft); margin-bottom: 7px; }
+    .form input, .form select, .form textarea { width: 100%; font-family: var(--body); font-size: 1rem; color: var(--text);
+      background: #15111D; border: 1px solid rgba(244,239,250,.14); border-radius: 8px; padding: 13px 15px; transition: border-color .2s; }
+    .form textarea { min-height: 96px; resize: vertical; }
+    .form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--blue); }
+    .form select { appearance: none; cursor: pointer; }
+    .form select option { background: #15111D; color: var(--text); }
+    .form .hp { position: absolute; left: -9999px; opacity: 0; }
+    .form button { justify-self: start; font-family: var(--display); font-weight: 600; font-size: 1.05rem; color: #fff;
+      background: var(--accent); border: 0; border-radius: 999px; padding: 15px 32px; cursor: pointer;
+      transition: transform .2s var(--ease); }
+    .form button:hover, .form button:focus-visible { transform: translateY(-2px); outline: none; }
+    .form button[disabled] { opacity: .55; pointer-events: none; }
+    .status { font-size: .95rem; color: var(--soft); min-height: 1.2em; }
+    .status.err { color: var(--pink); }
+    .done { display: none; }
+    .done.show { display: block; }
+    .done p { font-family: var(--hand); font-weight: 600; color: #CDEB7E; line-height: 1.15;
+      font-size: clamp(1.9rem, 1.5rem + 1.2vw, 2.9rem); transform: rotate(-1.6deg); }
+    .done small { display: block; margin-top: 14px; font-size: 1rem; color: var(--soft); }
+
     .note { margin-top: 30px; color: var(--soft); font-size: .98rem; line-height: 1.6; max-width: 52ch; }
     .back { display: inline-block; margin-top: 44px; font-size: .98rem; color: var(--soft); text-decoration: none;
       border-bottom: 1px solid rgba(244,239,250,.18); padding-bottom: 2px; transition: color .2s, border-color .2s; }
@@ -105,8 +127,8 @@
     <p class="lead" data-en="Design, copy, build and launch. You send what your business does, I come back with a site that is ready to receive clients.">Design, texto, construção e publicação. Você conta o que a sua empresa faz, eu devolvo um site pronto para receber cliente.</p>
 
     <p class="price">
-      <b data-en="From $299 USD">A partir de US$ 299</b>
-      <em data-en="live in 5 days">no ar em 5 dias</em>
+      <b data-en="Live in 5 days">No ar em 5 dias</b>
+      <em data-en="quote made for your business">orçamento sob medida</em>
     </p>
 
     <ul class="list">
@@ -123,7 +145,43 @@
       <a class="ghost" href="mailto:gabip3@gmail.com">gabip3@gmail.com</a>
     </p>
 
-    <p class="note" data-en="The price depends on how many pages and what the site needs to do. Tell me about the business and I come back with the exact number, no surprises.">O valor varia com o tamanho do site e com o que ele precisa fazer. Me conta sobre o negócio que eu volto com o número exato, sem surpresa.</p>
+    <form class="form" id="askForm" novalidate>
+      <input type="hidden" name="access_key" value="3410c514-2783-40bb-8985-234c821ad80e" />
+      <input type="hidden" name="subject" value="Lead do anuncio (sites.html)" />
+      <input type="hidden" name="from_name" value="Anuncio Google" />
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div>
+        <label for="f-nome" data-en="Your name">Seu nome</label>
+        <input id="f-nome" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div>
+        <label for="f-contato" data-en="Email or WhatsApp">E-mail ou WhatsApp</label>
+        <input id="f-contato" name="contato" type="text" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="f-tipo" data-en="What do you need?">O que você precisa?</label>
+        <select id="f-tipo" name="tipo" required>
+          <option value="" data-en="Choose one">Escolha uma</option>
+          <option value="Site novo" data-en="A new website">Um site novo</option>
+          <option value="Refazer o site" data-en="Rebuild my website">Refazer o site que eu tenho</option>
+          <option value="Landing page" data-en="A landing page">Uma landing page</option>
+          <option value="Nao sei ainda" data-en="Not sure yet">Ainda não sei</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-msg" data-en="Tell me about the business (optional)">Me conta sobre o negócio (opcional)</label>
+        <textarea id="f-msg" name="message"></textarea>
+      </div>
+      <button type="submit" id="askSend" data-en="Ask for a quote">Pedir orçamento</button>
+      <p class="status" id="askStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="done" id="askDone">
+      <p data-en="got it, I answer shortly">chegou aqui, já já eu respondo</p>
+      <small data-en="If it is urgent, WhatsApp is faster.">Se for urgente, no WhatsApp eu sou mais rápida.</small>
+    </div>
+
+    <p class="note" data-en="The price depends on how many pages and what the site needs to do. Tell me about the business and I come back with the exact number, no surprises.">O valor varia com o tamanho do site e com o que ele precisa fazer. Me conta sobre o negócio que eu volto com o número exato, sem surpresa e sem compromisso.</p>
 
     <a class="back" href="index.html" data-en="See the work">Ver os trabalhos</a>
   </main>
@@ -157,6 +215,44 @@
     var send = function () { if (typeof gtag === "function") gtag("event", "conversion", { send_to: "AW-17625323125/PP2TCN_OoNccEPWstNRB" }); };
     document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"]').forEach(function (a) {
       a.addEventListener("click", function () { send(); });
+    });
+  })();
+  </script>
+  <script>
+  /* the quote form talks straight to Web3Forms and reports the lead to Ads */
+  (function () {
+    var f = document.getElementById("askForm");
+    if (!f) return;
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var en = document.documentElement.lang === "en";
+      var st = document.getElementById("askStatus"), btn = document.getElementById("askSend");
+      if (!f.checkValidity()) {
+        st.className = "status err";
+        st.textContent = en ? "Please fill in the fields." : "Preenche os campos, por favor.";
+        var bad = f.querySelector(":invalid"); if (bad) bad.focus();
+        return;
+      }
+      btn.disabled = true; st.className = "status";
+      st.textContent = en ? "Sending..." : "Enviando...";
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(f).entries()))
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        if (j.success) {
+          f.style.display = "none";
+          document.getElementById("askDone").classList.add("show");
+          if (typeof gtag === "function") gtag("event", "conversion", { send_to: "AW-17625323125/PP2TCN_OoNccEPWstNRB" });
+        } else {
+          st.className = "status err";
+          st.textContent = j.message || (en ? "Something went wrong. Try WhatsApp?" : "Deu algo errado. Tenta pelo WhatsApp?");
+          btn.disabled = false;
+        }
+      }).catch(function () {
+        st.className = "status err";
+        st.textContent = en ? "No connection. Try WhatsApp?" : "Sem conexão. Tenta pelo WhatsApp?";
+        btn.disabled = false;
+      });
     });
   })();
   </script>
