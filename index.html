@@ -541,6 +541,7 @@
     .ct-ways a { display: inline-flex; align-items: baseline; gap: 10px; color: var(--text); text-decoration: none;
       font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem, 1rem + .4vw, 1.35rem);
       border-bottom: 2px solid transparent; padding-bottom: 2px; transition: color .2s, border-color .2s; }
+    .ct-ways a em:empty { display: none; }
     .ct-ways a em { font-style: normal; font-family: var(--body); font-weight: 400; font-size: .92rem; color: var(--soft); }
     .ct-ways a:hover, .ct-ways a:focus-visible { color: #FFB27A; border-color: #FFB27A; outline: none; }
     .ct-ways a.wa { color: #25D366; }
@@ -1024,15 +1025,15 @@
 
           <div class="done" id="ctDone">
             <p data-en="got it, I answer shortly">chegou aqui, já já eu respondo</p>
-            <small data-en="If it is urgent, I am faster on WhatsApp.">Se for urgente, no WhatsApp eu sou mais rápida.</small>
+            <small data-en="If it is urgent, write me at gabip3@gmail.com.">Se for urgente, no WhatsApp eu sou mais rápida.</small>
           </div>
         </div>
 
         <div class="ct-side">
           <p class="intro" data-en="Prefer to talk without filling anything in? These are open too.">Prefere falar sem preencher nada? Esses aqui também estão abertos.</p>
           <ul class="ct-ways">
-            <li><a class="wa" href="https://wa.me/5511986726696?text=Oi%20Gabriella!" target="_blank" rel="noopener">WhatsApp <em data-en="the fastest one">o mais rápido</em></a></li>
-            <li><a href="mailto:gabip3@gmail.com">gabip3@gmail.com</a></li>
+            <li><a class="wa" href="https://wa.me/5511986726696?text=Oi%20Gabriella!" target="_blank" rel="noopener">WhatsApp <em data-en="Brazil">o mais rápido</em></a></li>
+            <li><a href="mailto:gabip3@gmail.com">gabip3@gmail.com <em data-en="the fastest one"></em></a></li>
             <li><a class="hiring" href="mailto:gabip3@gmail.com?subject=Hiring%20at%20" data-en="Hiring? Let’s talk">Contratando? Vamos conversar</a></li>
           </ul>
           <div class="langs" aria-label="Idiomas que eu falo">
@@ -1454,7 +1455,9 @@
     if (!st) return;
     function xpLang(lang) {
       var en = lang === "en";
-      document.getElementById("xpCta").href = "https://wa.me/5511986726696?text=" + encodeURIComponent(en ? "Hi Gabriella! I would like to talk about a digital experience." : "Oi Gabriella! Quero conversar sobre uma experiência digital.");
+      document.getElementById("xpCta").href = en
+        ? "mailto:gabip3@gmail.com?subject=Digital%20experience&body=Hi%20Gabriella!%20I%20would%20like%20to%20talk%20about%20a%20digital%20experience."
+        : "https://wa.me/5511986726696?text=" + encodeURIComponent("Oi Gabriella! Quero conversar sobre uma experiência digital.");
       st.querySelector(".xp-fig.blur").alt = en ? "Mariah Carey frozen in ice, art from the concept project" : "Mariah Carey congelada no gelo, arte do projeto conceitual";
     }
     xpLang(window.SITE_LANG);
@@ -1482,7 +1485,9 @@
     if (!rail) return;
     function bizLang(lang) {
       var en = lang === "en";
-      document.getElementById("bizCta").href = "https://wa.me/5511986726696?text=" + encodeURIComponent(en ? "Hi Gabriella! I would like a website for my business." : "Oi Gabriella! Quero um site para a minha empresa.");
+      document.getElementById("bizCta").href = en
+        ? "mailto:gabip3@gmail.com?subject=Website%20for%20my%20business&body=Hi%20Gabriella!%20I%20would%20like%20a%20website%20for%20my%20business."
+        : "https://wa.me/5511986726696?text=" + encodeURIComponent("Oi Gabriella! Quero um site para a minha empresa.");
       ["bizPrev", "bizNext"].forEach(function (id) {
         var b = document.getElementById(id);
         if (!b.hasAttribute("data-pt-label")) b.setAttribute("data-pt-label", b.getAttribute("aria-label"));
@@ -1635,6 +1640,20 @@
       el.textContent = n.toLocaleString(en ? "en-US" : "pt-BR") + (en ? (n === 1 ? " visit" : " visits") : (n === 1 ? " visita" : " visitas"));
       el.hidden = false;
     }).catch(function () {});
+  })();
+  </script>
+  <script>
+  /* todo caminho que leva a uma conversa conta como lead, nao so o formulario */
+  (function () {
+    var sent = {};
+    document.querySelectorAll('a[href^="https://wa.me"], a[href^="mailto:"]').forEach(function (a) {
+      a.addEventListener("click", function () {
+        var k = a.href;
+        if (sent[k]) return;
+        sent[k] = 1;
+        if (typeof gtag === "function") gtag("event", "conversion", { send_to: "AW-17625323125/PP2TCN_OoNccEPWstNRB" });
+      });
+    });
   })();
   </script>
 </body>
