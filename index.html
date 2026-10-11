@@ -1157,9 +1157,15 @@
       rainFloor = mobile ? Math.min(copyTop - 10, cy + bh * 0.5 + 60) : H - 2;
       /* no celular nao sobra faixa entre o cerebro e o nome dela, entao a legenda sobe:
          encosta no menu so quando a tela e curta, senao fica folgada acima do desenho */
-      var headEnd = head ? head.offsetTop + head.offsetHeight : 0;
+      /* o fim REAL dos botoes do topo, nao a caixa do menu, que tem respiro sobrando.
+         o botao hamburguer nasce depois deste script, entao nao da pra medir: os 12px cobrem ele */
+      var hb = hero.getBoundingClientRect(), headEnd = 0, tops = document.querySelectorAll(".top .mark, .top .lang");
+      for (var t = 0; t < tops.length; t++) {
+        var tr = tops[t].getBoundingClientRect();
+        if (tr.height) headEnd = Math.max(headEnd, tr.bottom - hb.top);
+      }
       var hy = mobile
-        ? Math.max(headEnd + 4, cy - bh * 0.5 - 26)
+        ? Math.max(headEnd + 12, cy - bh * 0.5 - 26)
         : cy + bh * 0.5 + 22;
       hint.style.display = cap.style.display = "";
       hint.style.left = cx + "px"; hint.style.top = hy + "px";
