@@ -1135,7 +1135,8 @@
     });
 
     /* ---- layout ---- */
-    var W, H, dpr, mobile, bw, bh, cx, cy, N;
+    var W, H, dpr, mobile, bw, bh, cx, cy, N, rainFloor;
+    var copy = hero.querySelector(".copy");
     function layout() {
       W = hero.clientWidth; H = hero.clientHeight;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1143,13 +1144,26 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (gl) { glc.width = cv.width; glc.height = cv.height; gl.viewport(0, 0, glc.width, glc.height); }
       mobile = W < 760 || H > W * 1.25;
-      if (mobile) { bw = Math.min(W * 0.9, (H * 0.44) / ASP); cx = W * 0.5; cy = H * 0.33; }
+      var copyTop = copy ? copy.offsetTop : H;
+      if (mobile) {
+        cx = W * 0.5; cy = H * 0.33;
+        /* numa tela curta o cerebro nao cabe inteiro acima do nome dela: encolhe em vez de invadir */
+        var fit = Math.max(120, (copyTop - 56 - cy) * 2) / ASP;
+        bw = Math.min(W * 0.9, (H * 0.44) / ASP, fit);
+      }
       else { bw = Math.min(W * 0.46, (H * 0.58) / ASP); cx = W * 0.65; cy = H * 0.42; }
       bh = bw * ASP;
       N = mobile ? 90 : 140; /* horizontal slices the wring turns independently */
       hit.style.left = (cx - bw * 0.47) + "px"; hit.style.top = (cy - bh * 0.46) + "px";
       hit.style.width = (bw * 0.94) + "px"; hit.style.height = (bh * 0.92) + "px";
+      /* offsetTop ignora o transform da animacao, entao nao mede o texto no meio do voo */
       var hy = cy + bh * 0.5 + (mobile ? 12 : 22);
+      /* a chuva para antes do texto: no celular o nome dela fica logo abaixo do cerebro */
+      rainFloor = mobile ? Math.min(copyTop - 10, cy + bh * 0.5 + 60) : H - 2;
+      if (mobile) hy = Math.min(hy, copyTop - 26);
+      /* se nao sobra faixa limpa entre o cerebro e o texto, some em vez de atropelar */
+      var room = !mobile || hy > cy + bh * 0.36;
+      hint.style.display = cap.style.display = room ? "" : "none";
       hint.style.left = cx + "px"; hint.style.top = hy + "px";
       cap.style.left = cx + "px"; cap.style.top = hy + "px";
     }
@@ -1243,7 +1257,7 @@
       var lim = mobile ? 180 : 320;
       while (owed >= 1) { owed -= 1; if (drops.length < lim) emit(); }
 
-      var floor = H - 2;
+      var floor = rainFloor;
       for (var i = drops.length - 1; i >= 0; i--) {
         var d = drops[i];
         if (d.w) {
