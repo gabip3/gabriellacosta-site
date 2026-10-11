@@ -1145,12 +1145,7 @@
       if (gl) { glc.width = cv.width; glc.height = cv.height; gl.viewport(0, 0, glc.width, glc.height); }
       mobile = W < 760 || H > W * 1.25;
       var copyTop = copy ? copy.offsetTop : H;
-      if (mobile) {
-        cx = W * 0.5; cy = H * 0.33;
-        /* numa tela curta o cerebro nao cabe inteiro acima do nome dela: encolhe em vez de invadir */
-        var fit = Math.max(120, (copyTop - 56 - cy) * 2) / ASP;
-        bw = Math.min(W * 0.9, (H * 0.44) / ASP, fit);
-      }
+      if (mobile) { bw = Math.min(W * 0.9, (H * 0.44) / ASP); cx = W * 0.5; cy = H * 0.33; }
       else { bw = Math.min(W * 0.46, (H * 0.58) / ASP); cx = W * 0.65; cy = H * 0.42; }
       bh = bw * ASP;
       N = mobile ? 90 : 140; /* horizontal slices the wring turns independently */
@@ -1162,7 +1157,7 @@
       rainFloor = mobile ? Math.min(copyTop - 10, cy + bh * 0.5 + 60) : H - 2;
       if (mobile) hy = Math.min(hy, copyTop - 26);
       /* se nao sobra faixa limpa entre o cerebro e o texto, some em vez de atropelar */
-      var room = !mobile || hy > cy + bh * 0.36;
+      var room = !mobile || cy + bh * 0.5 - hy < 24;
       hint.style.display = cap.style.display = room ? "" : "none";
       hint.style.left = cx + "px"; hint.style.top = hy + "px";
       cap.style.left = cx + "px"; cap.style.top = hy + "px";
