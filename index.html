@@ -1137,6 +1137,7 @@
     /* ---- layout ---- */
     var W, H, dpr, mobile, bw, bh, cx, cy, N, rainFloor;
     var copy = hero.querySelector(".copy");
+    var head = hero.querySelector(".top");
     function layout() {
       W = hero.clientWidth; H = hero.clientHeight;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1152,13 +1153,15 @@
       hit.style.left = (cx - bw * 0.47) + "px"; hit.style.top = (cy - bh * 0.46) + "px";
       hit.style.width = (bw * 0.94) + "px"; hit.style.height = (bh * 0.92) + "px";
       /* offsetTop ignora o transform da animacao, entao nao mede o texto no meio do voo */
-      var hy = cy + bh * 0.5 + (mobile ? 12 : 22);
       /* a chuva para antes do texto: no celular o nome dela fica logo abaixo do cerebro */
       rainFloor = mobile ? Math.min(copyTop - 10, cy + bh * 0.5 + 60) : H - 2;
-      if (mobile) hy = Math.min(hy, copyTop - 26);
-      /* se nao sobra faixa limpa entre o cerebro e o texto, some em vez de atropelar */
-      var room = !mobile || cy + bh * 0.5 - hy < 24;
-      hint.style.display = cap.style.display = room ? "" : "none";
+      /* no celular nao sobra faixa entre o cerebro e o nome dela, entao a legenda sobe:
+         encosta no menu so quando a tela e curta, senao fica folgada acima do desenho */
+      var headEnd = head ? head.offsetTop + head.offsetHeight : 0;
+      var hy = mobile
+        ? Math.max(headEnd + 4, cy - bh * 0.5 - 26)
+        : cy + bh * 0.5 + 22;
+      hint.style.display = cap.style.display = "";
       hint.style.left = cx + "px"; hint.style.top = hy + "px";
       cap.style.left = cx + "px"; cap.style.top = hy + "px";
     }
