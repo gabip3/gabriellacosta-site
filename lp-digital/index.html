@@ -612,6 +612,41 @@
   .fim__voltar:hover { text-decoration: underline; text-underline-offset: 6px; }
   .fim__voltar:focus-visible { outline: 1px solid var(--pen); outline-offset: 4px; }
 
+  /* O fecho: um versículo leve e um convite escrito à mão. */
+  .fim__versiculo { max-width: 32rem; margin: 0 auto; }
+
+  .fim__versiculo p {
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .fim__versiculo cite {
+    display: block;
+    margin-top: 0.9rem;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pen);
+  }
+
+  .fim__bora {
+    display: inline-block;
+    margin-top: 1.4rem;
+    font-size: clamp(2.2rem, 1.8rem + 1.6vw, 3.2rem);
+    transform: rotate(-4deg);
+  }
+
+  a.fim__bora { text-decoration: none; }
+  a.fim__bora:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+  .fim__bora + .fim__convite { margin-top: clamp(2rem, 6vh, 3.4rem); }
+
   /* Bolhinhas que sobem em volta do convite, como as lá de cima. */
   .fim__convite {
     position: relative;
@@ -743,7 +778,7 @@
   <div class="palavra__invite">
     <h1 class="palavra__title" id="palavra-titulo">
       <span>Uma palavra</span>
-      <em>para hoje.</em>
+      <em>para hoje</em>
     </h1>
     <p class="palavra__hint"><span id="palavraHint">Toque em uma bolha.</span></p>
     <button type="button" class="palavra__kb" id="palavraKb">Revelar minha palavra</button>
@@ -776,7 +811,7 @@
   </header>
 
   <section class="parte rv" aria-labelledby="parte-conceito">
-    <h2 class="parte__titulo" id="parte-conceito">Um motivo pra voltar <span class="sublinha">todo dia</span>.</h2>
+    <h2 class="parte__titulo" id="parte-conceito">Um motivo pra voltar <span class="sublinha">todo dia</span></h2>
     <div class="parte__texto">
       <p class="uma-linha">Site de artista, se não tem novidade, vira cartão de visita.</p>
       <p>As bolhas mudam isso. Todo dia, uma palavra nova e uma reflexão curta. Pequeno o bastante pra caber na rotina, constante o bastante pra virar hábito.</p>
@@ -787,7 +822,7 @@
   </section>
 
   <section class="parte rv" aria-labelledby="parte-mural">
-    <h2 class="parte__titulo" id="parte-mural">Voz <em>&amp; Luz.</em></h2>
+    <h2 class="parte__titulo" id="parte-mural">Voz <em>&amp; Luz</em></h2>
     <div class="parte__texto">
       <p>Um mural de testemunhos dentro do site. A pessoa escreve o nome e o que a tocou, e a mensagem aparece no mural, curtinha como um bilhete ou longa como um testemunho inteiro.</p>
       <p>No Instagram, os comentários se perdem no meio de tantos. Aqui, cada testemunho fica guardado e encontra quem precisa ler.</p>
@@ -804,7 +839,7 @@
   </section>
 
   <section class="parte rv" aria-labelledby="parte-loja">
-    <h2 class="parte__titulo" id="parte-loja">Uma vitrine <em>dentro do site.</em></h2>
+    <h2 class="parte__titulo" id="parte-loja">Uma vitrine <em>dentro do site</em></h2>
     <div class="vitrine">
       <p class="vitrine__peca">
         <svg class="vitrine__icone" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Camisetas"><circle cx="50" cy="50" r="47" fill="#ece2cb" stroke="none"/><path d="M38 27 26 32l-8 12 10 5 4-6v31q0 2 2 2h32q2 0 2-2V43l4 6 10-5-8-12-12-5c-4 6-20 6-24 0Z" fill="#fbfaf6"/><path d="M41 28.4c4 4 14 4 18 0M24.5 41.6l5.5 3M75.5 41.6l-5.5 3"/><path d="M74 20l1.4 3.6L79 25l-3.6 1.4L74 30l-1.4-3.6L69 25l3.6-1.4Z" fill="#c9a24a" stroke="none"/></svg>
@@ -822,7 +857,7 @@
   </section>
 
   <section class="parte rv" aria-labelledby="parte-projeto">
-    <h2 class="parte__titulo" id="parte-projeto">O projeto.</h2>
+    <h2 class="parte__titulo" id="parte-projeto">O projeto</h2>
     <div class="parte__texto">
       <p>Um site desenhado sob medida pra Luiza, leve e rápido no celular, que é onde está a maior parte do público.</p>
       <p>Na abertura, as bolhas com a palavra do dia (com a opção de pular a abertura, caso a pessoa não queira participar dessa experiência). Depois, tudo o que um site de artista precisa: bio, músicas, agenda, links das redes e fotos. Mais abaixo, a vitrine das peças oficiais. Também o mural Voz &amp; Luz. E um painel simples pra equipe subir as frases e a agenda e aprovar os testemunhos, sem depender de programador.</p>
@@ -834,7 +869,7 @@
   </section>
 
   <section class="parte rv" aria-labelledby="parte-erro">
-    <h2 class="parte__titulo" id="parte-erro">Até o erro <em>vira encontro.</em></h2>
+    <h2 class="parte__titulo" id="parte-erro">Até o erro <em>vira encontro</em></h2>
     <div class="parte__texto">
       <p>Todo site tem uma página de erro, a famosa 404, que aparece quando um link quebra. Normalmente é um aviso frio.</p>
       <p>Aqui ela vira um easter egg, um segredo escondido pra quem tropeça nele: um joguinho pixelado, no espírito do dinossauro do Google, em que a Rainha Ester corre até a presença do rei (baseado na história de Ester, capítulos 4 e 5).</p>
@@ -852,7 +887,7 @@
   </section>
 
   <section class="parte rv" aria-labelledby="parte-futuro">
-    <h2 class="parte__titulo" id="parte-futuro">Projetos <em>para o futuro.</em></h2>
+    <h2 class="parte__titulo" id="parte-futuro">Projetos <em>para o futuro</em></h2>
     <div class="parte__texto">
       <p><strong>LP Kids:</strong> mini devocionais pra ler junto com os filhos e materiais pra baixar e imprimir, pensados pro ministério infantil e pras células.</p>
     </div>
@@ -879,6 +914,12 @@
   </section>
 
   <footer class="fim rv">
+    <blockquote class="fim__versiculo">
+      <p>“Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos.”</p>
+      <cite>Provérbios 16:3</cite>
+    </blockquote>
+    <p class="mao fim__bora">bora?</p>
+
     <div class="fim__convite">
       <span class="bolhinha" aria-hidden="true"></span>
       <span class="bolhinha" aria-hidden="true"></span>
