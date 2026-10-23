@@ -126,6 +126,9 @@
 
   .palavra__mast time { text-align: right; }
 
+  /* No computador, as duas partes do título dividem a linha; no celular, cada uma tem a sua. */
+  .mast__site::before { content: " · "; }
+
   /* ---------- Convite ---------- */
 
   .palavra__invite {
@@ -350,8 +353,10 @@
   .notas__topo {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 0.6rem 2rem;
     padding-bottom: 1.4rem;
     border-bottom: 1px solid var(--ink-faint);
@@ -556,9 +561,10 @@
   .jogo__topo {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    text-align: left;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
     margin-bottom: 0.6rem;
     font-family: var(--sans);
     font-size: 0.68rem;
@@ -683,8 +689,10 @@
   /* ---------- Telas médias e estreitas ---------- */
 
   @media (max-width: 760px) {
-    .palavra__mast { flex-direction: column; gap: 0.5rem; font-size: 0.62rem; letter-spacing: 0.16em; }
-    .palavra__mast time { text-align: left; }
+    .palavra__mast { flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; font-size: 0.62rem; letter-spacing: 0.16em; }
+    .mast__titulo { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mast__site::before { content: none; }
+    .palavra__mast time { text-align: center; }
     .palavra__mast .wd { display: none; }
     .palavra__title em { padding-left: 0.7em; }
     .palavra__hint { padding-left: calc(0.7 * clamp(2.6rem, 6vw + 0.6rem, 7rem)); }
@@ -714,7 +722,7 @@
   <div class="palavra__grain" aria-hidden="true"></div>
 
   <header class="palavra__mast">
-    <span>Proposta / Orçamento · Site Luiza Possi</span>
+    <span class="mast__titulo"><span>Proposta / Orçamento</span><span class="mast__site">Site Luiza Possi</span></span>
     <time id="palavraHoje"></time>
   </header>
 
