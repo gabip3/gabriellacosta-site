@@ -609,12 +609,37 @@
     width: var(--t, 14px);
     height: var(--t, 14px);
     border-radius: 50%;
-    border: 1.5px solid rgba(22, 21, 18, 0.45);
-    background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.95) 0 14%, rgba(255, 255, 255, 0) 30%),
-                radial-gradient(circle at 70% 75%, rgba(201, 162, 74, 0.18), rgba(201, 162, 74, 0) 60%);
+    /* Quase transparente por dentro, como uma película de sabão contra a luz. */
+    background: radial-gradient(circle at 36% 30%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04) 58%, rgba(170, 190, 215, 0.14) 100%);
+    box-shadow: inset 0 0 0 0.5px rgba(22, 21, 18, 0.14);
     opacity: 0;
     pointer-events: none;
     animation: bolhinha-sobe var(--d, 6s) ease-in var(--a, 0s) infinite;
+  }
+
+  /* A borda furta-cor da película: azul, rosa, ouro e verde se alternando. */
+  .bolhinha::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 210deg, rgba(120, 160, 220, 0.75), rgba(220, 140, 190, 0.65), rgba(235, 195, 110, 0.65), rgba(110, 195, 185, 0.6), rgba(120, 160, 220, 0.75));
+    -webkit-mask: radial-gradient(closest-side, transparent 80%, #000 88%, #000 96%, transparent 100%);
+    mask: radial-gradient(closest-side, transparent 80%, #000 88%, #000 96%, transparent 100%);
+  }
+
+  /* O reflexo da luz: um arco no alto, à esquerda, e um ponto brilhante. */
+  .bolhinha::after {
+    content: "";
+    position: absolute;
+    inset: 16%;
+    border-radius: 50%;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.95);
+    border-left: 1px solid rgba(255, 255, 255, 0.55);
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    transform: rotate(-18deg);
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9));
   }
 
   .bolhinha:nth-child(1) { left: 4%;  --t: 16px; --d: 6.5s; --a: 0s; }
