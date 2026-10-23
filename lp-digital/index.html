@@ -594,6 +594,43 @@
   .fim__voltar:hover { text-decoration: underline; text-underline-offset: 6px; }
   .fim__voltar:focus-visible { outline: 1px solid var(--pen); outline-offset: 4px; }
 
+  /* Bolhinhas que sobem em volta do convite, como as lá de cima. */
+  .fim__convite {
+    position: relative;
+    display: inline-block;
+    padding: 3.2rem 2.4rem 0.4rem;
+  }
+
+  .fim__convite .fim__voltar { position: relative; z-index: 1; }
+
+  .bolhinha {
+    position: absolute;
+    bottom: 0.6rem;
+    width: var(--t, 14px);
+    height: var(--t, 14px);
+    border-radius: 50%;
+    border: 1.5px solid rgba(22, 21, 18, 0.45);
+    background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.95) 0 14%, rgba(255, 255, 255, 0) 30%),
+                radial-gradient(circle at 70% 75%, rgba(201, 162, 74, 0.18), rgba(201, 162, 74, 0) 60%);
+    opacity: 0;
+    pointer-events: none;
+    animation: bolhinha-sobe var(--d, 6s) ease-in var(--a, 0s) infinite;
+  }
+
+  .bolhinha:nth-child(1) { left: 4%;  --t: 16px; --d: 6.5s; --a: 0s; }
+  .bolhinha:nth-child(2) { left: 22%; --t: 26px; --d: 7.5s; --a: 1.6s; }
+  .bolhinha:nth-child(3) { left: 55%; --t: 14px; --d: 5.5s; --a: 3.1s; }
+  .bolhinha:nth-child(4) { left: 78%; --t: 21px; --d: 7s;   --a: 0.8s; }
+  .bolhinha:nth-child(5) { left: 94%; --t: 12px; --d: 6s;   --a: 2.4s; }
+
+  @keyframes bolhinha-sobe {
+    0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
+    15%  { opacity: 1; }
+    50%  { transform: translate(6px, -2.2rem) scale(1); }
+    85%  { opacity: 0.9; }
+    100% { transform: translate(-4px, -4.4rem) scale(1.05); opacity: 0; }
+  }
+
   /* ---------- Rótulos: sempre na sem serifa ---------- */
 
   .palavra__mast,
@@ -642,6 +679,7 @@
     .rv { transform: none; transition-duration: 0.4s; }
     .sublinha,
     .circulo::after { transition: none; }
+    .bolhinha { animation: none; opacity: 0.7; transform: translateY(-2rem); }
   }
 </style>
 </head>
@@ -791,7 +829,14 @@
   </section>
 
   <footer class="fim rv">
-    <button type="button" class="fim__voltar mao" id="fimVoltar">estourar mais uma bolha ↑</button>
+    <div class="fim__convite">
+      <span class="bolhinha" aria-hidden="true"></span>
+      <span class="bolhinha" aria-hidden="true"></span>
+      <span class="bolhinha" aria-hidden="true"></span>
+      <span class="bolhinha" aria-hidden="true"></span>
+      <span class="bolhinha" aria-hidden="true"></span>
+      <button type="button" class="fim__voltar mao" id="fimVoltar">estourar mais uma bolha ↑</button>
+    </div>
   </footer>
 
 </div>
@@ -1547,7 +1592,7 @@
   // O mundo tem 110 "pixels" de jogo de altura; a largura acompanha a tela,
   // pra cada pixel nunca ficar pequeno demais no celular.
   var W = 300, H = 86, CHAO = 70;
-  var META = 2600;          // distância até o trono
+  var META = 1800;          // distância até o trono
   var GRAVIDADE = 900, PULO = 300;
 
   var CORES = {
@@ -1705,7 +1750,9 @@
   }
 
   function passo(dt) {
-    var vel = Math.min(120 + andado * 0.035, 210);
+    // Um passo calmo, que acelera devagar. Em telas estreitas os obstáculos
+    // aparecem mais perto, então a Ester anda ainda mais devagar.
+    var vel = Math.min(70 + andado * 0.02, 120) * (0.6 + 0.4 * W / 300);
 
     if (estado === 'correndo' || estado === 'chegando') {
       // Pulo e gravidade.
