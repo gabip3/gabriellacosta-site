@@ -306,6 +306,18 @@
   .reveal__back:focus-visible::after { transform: scaleX(1); }
   .reveal__back:focus-visible { outline: none; }
 
+  /* Depois da palavra, dois caminhos: outra bolha ou seguir pra proposta. */
+  .reveal__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 2rem;
+    margin-top: clamp(1.4rem, 3.4vh, 2.4rem);
+  }
+
+  .reveal__acoes .reveal__back { margin-top: 0; }
+
+  .reveal__proposta { color: var(--gold); text-decoration: none; }
+
   .palavra__cue {
     position: absolute;
     right: calc(var(--gutter) - 0.4em);
@@ -699,6 +711,8 @@
     .palavra__reveal { padding-top: calc(max(var(--gutter), env(safe-area-inset-top)) + 2.6rem); }
     .reveal__word { font-size: clamp(3rem, 15.5vw, 8rem); }
     .reveal__body { grid-column: 1 / -1; padding-left: 12%; }
+    /* No celular, palavra e mensagem sobem juntas, sem um vão no meio. */
+    .palavra__reveal { grid-template-rows: auto auto; align-content: center; row-gap: 1.6rem; }
   }
 
   @media (max-height: 620px) and (min-width: 761px) {
@@ -743,7 +757,10 @@
         <cite id="revealRef"></cite>
       </blockquote>
       <p class="reveal__thought" id="revealThought"></p>
-      <button type="button" class="reveal__back" id="revealBack">Estourar outra bolha</button>
+      <div class="reveal__acoes">
+        <button type="button" class="reveal__back" id="revealBack">Estourar outra bolha</button>
+        <a class="reveal__back reveal__proposta" href="#notas" id="revealProposta">Ler a proposta ↓</a>
+      </div>
     </div>
   </article>
 
@@ -1455,6 +1472,11 @@
 
     if (openedByKeyboard) rBack.focus({ preventScroll: true });
   }
+
+  document.getElementById('revealProposta').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('notas').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  });
 
   function closeReveal() {
     if (!revealed) return;
