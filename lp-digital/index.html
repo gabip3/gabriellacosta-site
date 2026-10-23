@@ -392,6 +392,15 @@
 
   .parte__texto strong { font-weight: 400; color: var(--ink); }
 
+  /* Uma frase que pede uma linha só: passa da coluna e continua centralizada. */
+  .parte__texto .uma-linha {
+    position: relative;
+    left: 50%;
+    width: max-content;
+    max-width: calc(100vw - 2 * var(--gutter));
+    transform: translateX(-50%);
+  }
+
   .parte__nota { max-width: 24rem; margin: 1.6rem auto 0; transform: rotate(-2deg); }
 
   .sublinha {
@@ -668,7 +677,7 @@
   <section class="parte rv" aria-labelledby="parte-conceito">
     <h2 class="parte__titulo" id="parte-conceito">Um motivo pra voltar <span class="sublinha">todo dia</span>.</h2>
     <div class="parte__texto">
-      <p>Site de artista, se não tem novidade, vira cartão de visita.</p>
+      <p class="uma-linha">Site de artista, se não tem novidade, vira cartão de visita.</p>
       <p>As bolhas mudam isso. Todo dia, uma palavra nova e uma reflexão curta. Pequeno o bastante pra caber na rotina, constante o bastante pra virar hábito.</p>
       <p>Por que bolha? Estourar é um gesto pequeno, que transforma a visita num momento de pausa e reflexão. Amanhã tem outra esperando.</p>
     </div>
@@ -688,7 +697,7 @@
       <li class="postit">Eu e minha filha lemos a palavra juntas toda manhã.<span>Carla · BH</span></li>
       <li class="postit">Obrigado por contar sua história. Me deu coragem.<span>Paulo · SP</span></li>
     </ul>
-    <p class="mao parte__nota">exemplos de como fica ↑</p>
+    <p class="mao parte__nota">exemplos de como pode ficar ↑</p>
 
     <p class="parte__parenteses">(Toda mensagem fica pendente até a equipe aprovar. Nada vai pro ar sem passar pelo painel.)</p>
   </section>
